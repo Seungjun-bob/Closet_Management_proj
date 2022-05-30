@@ -21,7 +21,6 @@ bs = BeautifulSoup(html, 'html.parser')
 img = bs.select('#goodsRankList > li > div > div > a > img')
 
 n=1
-
 for content in img:
     imgUrl = content["data-original"]
     with urllib.request.urlopen(imgUrl) as f:
@@ -45,6 +44,7 @@ html = html.decode('utf-8')
 bs = BeautifulSoup(html, 'html.parser')
 img = bs.select('#goodsRankList > li > div > div > a > img')
 
+n=1
 for content in img:
     imgUrl = content["data-original"]
     with urllib.request.urlopen(imgUrl) as f:
