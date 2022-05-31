@@ -24,7 +24,7 @@ n = 1
 for content in img:
     imgUrl = content["data-original"]
     with urllib.request.urlopen(imgUrl) as f:
-        with open('./images/buttom_jean/jean' + str(n)+'.jpg','wb') as h: # w - write b - binary
+        with open('./images/bottom_jean/jean' + str(n)+'.jpg','wb') as h: # w - write b - binary
             img = f.read()
             h.write(img)
         n += 1
@@ -48,7 +48,7 @@ n = 1
 for content in img:
     imgUrl = content["data-original"]
     with urllib.request.urlopen(imgUrl) as f:
-        with open('./images/buttom_slacks/slacks' + str(n) + '.jpg', 'wb') as h:  # w - write b - binary
+        with open('./images/bottom_slacks/slacks' + str(n) + '.jpg', 'wb') as h:  # w - write b - binary
             img = f.read()
             h.write(img)
         n += 1
