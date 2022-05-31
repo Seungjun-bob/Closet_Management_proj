@@ -2,7 +2,6 @@ import urllib.request
 import urllib.parse
 from bs4 import BeautifulSoup
 from selenium import webdriver
-import time
 import requests
 
 driver = webdriver.Chrome('C:/Temp/chromedriver')
@@ -24,7 +23,7 @@ n = 1
 for content in img:
     imgUrl = content["data-original"]
     with urllib.request.urlopen(imgUrl) as f:
-        with open('./images/bottom_jean/jean' + str(n)+'.jpg','wb') as h: # w - write b - binary
+        with open('./images/bottom_jean/jean' + str(n)+'.jpg' , 'wb') as h: # w - write b - binary
             img = f.read()
             h.write(img)
         n += 1
