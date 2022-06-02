@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Home"
+        android:enabled="true"
+        android:id="@+id/first"
+        android:icon="@drawable/ic_baseline_home_24" />
+    <item android:title="Favorites"
+        android:enabled="true"
+        android:id="@+id/second"
+        android:icon="@drawable/ic_baseline_favorite_24" />
+    <item android:title="Email"
+        android:enabled="true"
+        android:id="@+id/third"
+        android:icon="@drawable/ic_baseline_email_24" />
+    <item android:title="Email"
+        android:enabled="true"
+        android:id="@+id/forth"
+        android:icon="@drawable/ic_baseline_person_24" />
+
+</menu>

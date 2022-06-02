@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_radius_background"
+    android:layout_gravity="center"
+    android:paddingHorizontal="50dp"
+    android:paddingVertical="10dp"
+    >
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="x"
+        android:layout_gravity="right"/>
+
+    <ImageView
+        android:id="@+id/img_detail"
+        android:layout_width="200dp"
+        android:layout_height="300dp"
+        android:background="#000"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:id="@+id/txt_dialog_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="구매일 : "/>
+    <TextView
+        android:id="@+id/txt_dialog_tag1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="태그1 : "/>
+    <TextView
+        android:id="@+id/txt_dialog_tag2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="태그2 : "/>
+</LinearLayout>
