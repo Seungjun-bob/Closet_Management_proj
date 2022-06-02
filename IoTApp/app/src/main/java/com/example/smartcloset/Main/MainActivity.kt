@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.example.smartcloset.Compare.Compare
+import com.example.smartcloset.Compare.CompareFragment
 import com.example.smartcloset.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
                     else -> {
 //                        bnv_main.itemIconTintList = ContextCompat.getColorStateList(this, R.color.color_bnv1)
 //                        bnv_main.itemTextColor = ContextCompat.getColorStateList(this, R.color.color_bnv1)
-                        Compare()
+                        CompareFragment()
                     }
                 }
             )

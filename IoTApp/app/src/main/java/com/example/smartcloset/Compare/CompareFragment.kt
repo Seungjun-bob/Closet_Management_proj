@@ -6,11 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.example.smartcloset.Main.MainActivity
 import com.example.smartcloset.R
 
-class Compare: Fragment() {
+class CompareFragment: Fragment() {
     var datalist =ArrayList<Int>()
     lateinit var mainActivity: MainActivity
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -29,6 +30,7 @@ class Compare: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //RecyclerView 선언
         var compareRecyclerView:RecyclerView? = getView()?.findViewById(R.id.compare_recycler)
+        compareRecyclerView!!.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL))
         for(i in 0..7){
             //비교할 옷 사진 데이터들을 받아와 표시할 곳
             datalist.add(R.drawable.p1)
