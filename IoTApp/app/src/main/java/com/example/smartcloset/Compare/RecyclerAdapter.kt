@@ -1,3 +1,4 @@
+// 테스트
 package com.example.smartcloset.Compare
 
 import android.app.AlertDialog
@@ -18,6 +19,7 @@ class RecyclerAdapter(var context: Context, var itemlayout:Int, var clothData:Ar
             compareImg = view.findViewById(R.id.img_compare)
             view.setOnClickListener{
                 //다이얼로그 띄우는 코드 작성
+                #
             }
         }
     }
