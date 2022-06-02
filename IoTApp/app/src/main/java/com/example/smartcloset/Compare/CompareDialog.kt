@@ -7,6 +7,6 @@ import android.view.View
 import com.example.smartcloset.R
 
 class CompareDialog(context:Context){
-
+//test test
 
 }
