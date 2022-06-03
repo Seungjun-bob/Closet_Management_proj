@@ -14,10 +14,15 @@ class RecyclerAdapter(var context: Context, var itemlayout:Int, var clothData:Ar
     inner class ViewHolder(view:View) : RecyclerView.ViewHolder(view){
         lateinit var compareImg: ImageView
         init {
+            var dialog = CompareDialog(context)
             //뷰 클릭 리스너 정의하기
             compareImg = view.findViewById(R.id.img_compare)
             view.setOnClickListener{
                 //다이얼로그 띄우는 코드 작성
+                //나중에 수정 필요
+                var position = adapterPosition
+                var clothObject = "나중엔 옷 객체를 전달해 DB에서 갖고와 보여줄 예정$position"
+                dialog.showDialog(clothObject)
             }
         }
     }

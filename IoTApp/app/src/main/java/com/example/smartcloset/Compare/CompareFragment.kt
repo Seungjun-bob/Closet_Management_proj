@@ -1,21 +1,46 @@
 package com.example.smartcloset.Compare
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.graphics.BitmapFactory
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.example.smartcloset.Main.MainActivity
 import com.example.smartcloset.R
+import kotlinx.android.synthetic.main.compare.view.*
+import kotlinx.android.synthetic.main.compare_item.*
+import java.io.File
+import java.net.URI
 
 class CompareFragment: Fragment() {
+    var uri : Uri? = null
+    lateinit var mContext : Context
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+        }
+    }
     var datalist =ArrayList<Int>()
     lateinit var mainActivity: MainActivity
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.compare, container, false)
+        val view = inflater.inflate(R.layout.compare, container, false)
+        view.btn_add_comparePic.setOnClickListener {
+            //등록 버튼 클릭 이벤트 리스너
+
+        }
+        return view
+
+
     }
 
     override fun onAttach(context: Context) {
@@ -24,6 +49,7 @@ class CompareFragment: Fragment() {
         //Context를 받아와 MainActivity로 캐스팅해주면 메소드들을 사용할 수 있다.
         //여기에서는 Adapter를 생성할 때 context를 넘겨주기 위해 이 방법을 사용했다.
         mainActivity = context as MainActivity
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -40,5 +66,7 @@ class CompareFragment: Fragment() {
         val adapter =RecyclerAdapter(mainActivity, R.layout.compare_item,datalist)
         compareRecyclerView?.adapter = adapter
 
+
     }
+
 }
