@@ -62,6 +62,7 @@ print(salesType)
 st = salesType.plot(kind='bar', figsize=(10, 8), grid=True)
 st.text(5, 18000, '(단위 : 십억)', ha='right', fontsize=11)
 st.legend(loc=2)
+plt.title('판매 채널별 거래액')
 plt.savefig("output5.png")
 
 #상품범위별
@@ -73,6 +74,7 @@ print(productType)
 pt = productType.plot(kind='bar', figsize=(10, 8), grid=True)
 pt.text(5, 18000, '(단위 : 십억)', ha='right', fontsize=11)
 pt.legend(loc=2)
+plt.title('상점 규모별 거래액')
 plt.savefig("output6.png")
 
 #운영유형별
@@ -84,4 +86,5 @@ print(businessType)
 bt = businessType.plot(kind='bar', figsize=(10, 8), grid=True)
 bt.text(5, 18000, '(단위 : 십억)', ha='right', fontsize=11)
 bt.legend(loc=2)
+plt.title('운영 유형별 거래액')
 plt.savefig("output7.png")
