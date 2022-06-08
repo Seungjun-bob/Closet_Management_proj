@@ -19,10 +19,10 @@ trash = pd.read_csv('trash.csv')
 trash = trash.set_index('year')
 print(trash)
 
-mycolormap1 = cm.get_cmap("gist_rainbow", 2)
-mycolor1 = [mycolormap1(i) for i in range(2)]
-
-trash['ton/day'].plot(kind='line', figsize=(10, 8), color=mycolor1, grid=True)
+tplt = trash['ton/day'].plot(kind='line', figsize=(10, 8), grid=True)
+tplt.text(4, 120, '(단위 : 톤)', ha='right', fontsize=11)
+tplt.legend(loc=2)
+plt.title('일간 폐의류량')
 plt.savefig("output1.png")
 
 #백화점
@@ -30,10 +30,10 @@ Dprofit = pd.read_csv('DepartmentProfit.csv')
 Dprofit = Dprofit.set_index('year')
 print(Dprofit)
 
-mycolormap2 = cm.get_cmap("gist_rainbow", 6)
-mycolor2 = [mycolormap2(i) for i in range(6)]
-
-Dprofit.plot(kind='line', figsize=(10, 8), color=mycolor2, grid=True)
+df = Dprofit.plot(kind='line', figsize=(10, 8), grid=True)
+df.text(1, 1, '(단위 : %)', ha='right', fontsize=11)
+df.legend(loc=2)
+plt.title('백화점 방문객 증감률')
 plt.savefig("output2.png")
 
 #패션 앱 사용자 수
@@ -41,15 +41,20 @@ appuser = pd.read_csv('appuser.csv')
 appuser = appuser.set_index('appname')
 print(appuser)
 
-mycolormap3 = cm.get_cmap("gist_rainbow", 1)
-mycolor3 = [mycolormap3(i) for i in range(1)]
-
 au1 = appuser['user'].plot(kind='bar', figsize=(10, 8), grid=True)
 au1.get_legend().set_visible(False)
+au1.text(60, 1000000, '(단위 : 명)', ha='right', fontsize=11)
+plt.title('패션앱 이용자 수')
 plt.savefig("output3.png")
 
-au2 = appuser['share'].plot(kind='line', figsize=(10, 8), grid=True)
+appuser2 = pd.read_csv('appuser.csv')
+appuser2 = appuser2.loc[:,['appname','share']]
+appuser2 = appuser2.set_index('appname')
+
+au2 = appuser2.plot(kind='bar', figsize=(10, 8), grid=True)
+plt.title('패션앱 시장 점유율')
 au2.get_legend().set_visible(False)
+au2.text(60, 40, '(단위 : %)', ha='right', fontsize=11)
 plt.savefig("output4.png")
 
 #온라인몰 유형별 매출액#
