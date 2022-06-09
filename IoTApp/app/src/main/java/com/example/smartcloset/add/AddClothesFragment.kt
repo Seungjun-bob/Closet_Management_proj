@@ -19,7 +19,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.example.smartcloset.R
-import com.example.smartcloset.main.MainActivity
+import com.example.smartcloset.MainActivity
 import kotlinx.android.synthetic.main.addclothes.*
 import kotlinx.android.synthetic.main.addclothes.view.*
 

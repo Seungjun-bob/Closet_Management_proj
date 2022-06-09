@@ -1,4 +1,4 @@
-package com.example.smartcloset.main
+package com.example.smartcloset.login
 
 import android.content.Intent
 import android.os.Bundle

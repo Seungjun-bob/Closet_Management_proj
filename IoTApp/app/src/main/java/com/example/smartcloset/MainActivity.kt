@@ -1,4 +1,4 @@
-package com.example.smartcloset.main
+package com.example.smartcloset
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

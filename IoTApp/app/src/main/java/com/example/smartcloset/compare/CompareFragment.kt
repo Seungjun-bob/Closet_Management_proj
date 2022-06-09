@@ -20,7 +20,7 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
-import com.example.smartcloset.main.MainActivity
+import com.example.smartcloset.MainActivity
 import com.example.smartcloset.R
 import kotlinx.android.synthetic.main.compare.*
 import kotlinx.android.synthetic.main.compare.view.*
