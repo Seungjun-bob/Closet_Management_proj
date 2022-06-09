@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--상의 색상 배열-->
+<resources>
+    <string-array name="tagdata1_4">
+        <item></item>
+        <item>검정</item>
+        <item>화이트</item>
+        <item>네이비</item>
+        <item>카키</item>
+        <item>블루</item>
+        <item>핑크</item>
+        <item>그린</item>
+        <item>노랑</item>
+        <item>베이지</item>
+        <item>브라운</item>
+
+    </string-array>
+
+</resources>
