@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.smartcloset">
+    <!-- 갤러리 권한 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 카메라 권한 -->
+    <uses-permission android:name="android.permission.CAMERA" />
 
-    <!--갤러리 권한-->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-
-    <!--카메라 권한-->
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <!-- 위치 권한 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -16,23 +17,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartCloset">
-        <activity android:name=".login.FirstLogin" android:exported="true">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".login.FindId"></activity>
-        <activity android:name=".login.FindPw"></activity>
-        <activity android:name=".login.Register"></activity>
-        <activity android:name=".myPage.MyPage"></activity>
+        <activity android:name=".login.FindId" />
+        <activity android:name=".login.FindPw" />
+        <activity android:name=".login.Register" />
+        <activity android:name=".myPage.MyPage" />
         <activity android:name=".check.Check" />
         <activity android:name=".add.AddClothes" />
-        <activity android:name=".MainActivity"></activity>
-
-
-
 
 
         <provider
@@ -40,10 +40,9 @@
             android:authorities="com.example.smartcloset.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
-
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/external"/>
+                android:resource="@xml/external" />
         </provider>
     </application>
 
