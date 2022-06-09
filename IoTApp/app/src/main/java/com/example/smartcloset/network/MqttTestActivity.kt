@@ -14,7 +14,6 @@ class MqttTestActivity : AppCompatActivity(), View.OnClickListener {
     val sub_topic = "iot/#"
     val server_uri = "tcp://192.168.200.107:1883" //broker의 ip와 port
     var mymqtt : MyMqtt? = null
-    var auto = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
