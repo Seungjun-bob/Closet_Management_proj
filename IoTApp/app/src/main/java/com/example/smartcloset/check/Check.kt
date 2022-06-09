@@ -1,12 +1,12 @@
-package com.example.smartcloset.MyPage
+package com.example.smartcloset.check
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.smartcloset.R
 
-class MyPage : AppCompatActivity() {
+class Check : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_my_page)
+        setContentView(R.layout.activity_check)
     }
 }

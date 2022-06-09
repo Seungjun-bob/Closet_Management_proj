@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--상의종류 배열-->
+<resources>
+    <string-array name="tagdata1_3">
+        <item></item>
+        <item>가디건</item>
+        <item>셋업자켓</item>
+        <item>바람막이</item>
+        <item>져지</item>
+        <item>롱패딩</item>
+        <item>숏패딩</item>
+        <item>가죽자켓</item>
+    </string-array>
+
+</resources>

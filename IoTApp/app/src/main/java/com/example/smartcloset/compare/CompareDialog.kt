@@ -1,9 +1,7 @@
-package com.example.smartcloset.Compare
+package com.example.smartcloset.compare
 
 import android.app.Dialog
 import android.content.Context
-import android.os.Bundle
-import android.view.View
 import android.view.WindowManager
 import com.example.smartcloset.R
 import kotlinx.android.synthetic.main.cloth_detail_dialog.*

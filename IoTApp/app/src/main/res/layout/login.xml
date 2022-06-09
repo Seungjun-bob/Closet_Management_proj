@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Main.MainActivity"
+    tools:context=".MainActivity"
     android:orientation="vertical">
     <ImageView
         android:layout_width="wrap_content"
@@ -29,6 +29,7 @@
             android:id="@+id/id"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:hint="abc@gmail.com"
             />
     </LinearLayout>
     <LinearLayout
