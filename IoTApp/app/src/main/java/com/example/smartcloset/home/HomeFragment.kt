@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.icu.text.SimpleDateFormat
+import android.location.Location
 import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -19,26 +20,39 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView
 import com.example.smartcloset.MainActivity
 import com.example.smartcloset.R
+import com.example.smartcloset.compare.RecyclerAdapter
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.LocationServices
 import kotlinx.android.synthetic.main.home.*
 import kotlinx.android.synthetic.main.home.view.*
 
 class HomeFragment : Fragment() {
 
     val PERMISSION_LOCATION = 10
-
     lateinit var mainActivity: MainActivity
-    lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    var datalist =ArrayList<Int>()
+
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+
+    companion object {
+        fun newInstance() = HomeFragment()
+    }
+
+
+
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.home, container, false)
         requirePermissions(arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION), PERMISSION_LOCATION)
         requirePermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), PERMISSION_LOCATION)
+
 
         return view
     }
@@ -47,6 +61,52 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         view.location.setText("온도")
 
+        // 리사이클러 뷰
+        var compareRecyclerView: RecyclerView? = getView()?.findViewById(R.id.compare_recycler)
+        compareRecyclerView!!.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL))
+        for(i in 0..7){
+            //비교할 옷 사진 데이터들을 받아와 표시할 곳
+            datalist.add(R.drawable.p1)
+        }
+
+        //Adapter 생성하고 연결해주기
+        val adapter = RecyclerAdapter(mainActivity, R.layout.home,datalist)
+        compareRecyclerView?.adapter = adapter
+
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity().applicationContext)
+
+        if (ActivityCompat.checkSelfPermission(
+                mainActivity,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                mainActivity,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return
+        }
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener { location : Location? ->
+                if (location != null) {
+                    temperature.text = location.latitude.toString()
+                }
+
+                if (location != null) {
+                    weather.text = location.longitude.toString()
+                }
+            }
     }
 
 
@@ -118,34 +178,5 @@ class HomeFragment : Fragment() {
         mainActivity = context as MainActivity
 
     }
-//    val locationCallback = object : LocationCallback() {
-//        override fun onLocationResult(locationResult: LocationResult) {
-//            if (locationResult == null) {
-//                return
-//            }
-//
-//            for (location in locationResult.locations) {
-//                if (location != null) {
-//                    val latitude = location.latitude
-//                    val longitude = location.longitude
-//                    Log.d(
-//                        "Test",
-//                        "GPS Location changed, Latitude: $latitude, Longitude: $longitude"
-//                    )
-//                }
-//            }
-//        }
-//    }
 
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        val locationRequest = LocationRequest.create()
-//        locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-//        locationRequest.interval = 5 * 1000
-//
-//        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-//        fusedLocationProviderClient.requestLocationUpdates(locationRequest,
-//            locationCallback,
-//            Looper.getMainLooper());
-//    }
 }

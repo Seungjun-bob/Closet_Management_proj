@@ -8,13 +8,13 @@
     tools:context=".home.HomeFragment">
 
     <TextView
-            android:id="@+id/location"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="location"
-            android:gravity="center"/>
+        android:id="@+id/location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="location" />
 
-        <TextView
+    <TextView
             android:id="@+id/temperature"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="275dp"
+        android:layout_height="220dp"
         android:orientation="vertical">
 
         <EditText
@@ -43,11 +43,18 @@
             android:inputType="textPersonName"
             android:text="날씨에 맞는 옷 추천" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/compare_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <EditText
@@ -57,6 +64,13 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:text="유행 옷 추천" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/compare_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
     </LinearLayout>
 
 
