@@ -2,12 +2,14 @@ package com.example.smartcloset.Main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.example.smartcloset.Compare.Compare
+import com.example.smartcloset.Compare.CompareFragment
 import com.example.smartcloset.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.security.Permission
 
 class MainActivity : AppCompatActivity() {
 
@@ -51,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                     else -> {
 //                        bnv_main.itemIconTintList = ContextCompat.getColorStateList(this, R.color.color_bnv1)
 //                        bnv_main.itemTextColor = ContextCompat.getColorStateList(this, R.color.color_bnv1)
-                        Compare()
+                        CompareFragment()
                     }
                 }
             )
@@ -59,6 +61,8 @@ class MainActivity : AppCompatActivity() {
         }
         bnv_main.selectedItemId = R.id.first
     }
+
+
 
     private fun changeFragment(fragment: Fragment) {
         supportFragmentManager
