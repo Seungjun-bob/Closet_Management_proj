@@ -36,7 +36,6 @@ class AddClothesFragment: Fragment() {
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
     var datalist =ArrayList<Int>()
     lateinit var mainActivity: MainActivity
@@ -268,10 +267,8 @@ class AddClothesFragment: Fragment() {
                                             override fun onNothingSelected(parent: AdapterView<*>?) {
                                             }
                                         }
-
                                     }
                                 }
-
                             }
                             override fun onNothingSelected(parent: AdapterView<*>?) {
                             }
@@ -284,7 +281,6 @@ class AddClothesFragment: Fragment() {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 //                result.text = "선택된 가수가 없습니다."
             }
-
         }
 
 
@@ -300,7 +296,6 @@ class AddClothesFragment: Fragment() {
         // 카메라 버튼 클릭 리스너 구현
         viewF.camera_addclothes.setOnClickListener(View.OnClickListener {
             requirePermissions(arrayOf(Manifest.permission.CAMERA), PERMISSION_CAMERA)
-
         })
 
         viewF.cancel_addclothes.setOnClickListener{
@@ -311,6 +306,18 @@ class AddClothesFragment: Fragment() {
         }
         return viewF
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**자식 액티비티에서 권한 요청 시 직접 호출하는 메서드
      * @param permissions 권한 처리를 할 권한 목록
