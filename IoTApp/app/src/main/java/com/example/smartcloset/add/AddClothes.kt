@@ -1,6 +1,6 @@
 //************************카메라 기능 따로 떼어놓은 파일
 
-package com.example.smartcloset.Add
+package com.example.smartcloset.add
 
 import android.Manifest
 import android.content.ContentValues
@@ -16,7 +16,6 @@ import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
-import androidx.fragment.app.Fragment
 import com.example.smartcloset.R
 import kotlinx.android.synthetic.main.addclothes.*
 

@@ -1,16 +1,14 @@
-package com.example.smartcloset.Main
+package com.example.smartcloset.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.example.smartcloset.Add.AddClothesFragment
-import com.example.smartcloset.Compare.CompareFragment
+import com.example.smartcloset.add.AddClothesFragment
+import com.example.smartcloset.compare.CompareFragment
 import com.example.smartcloset.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import java.security.Permission
 
 class MainActivity : AppCompatActivity() {
 

@@ -16,20 +16,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartCloset">
-        <activity android:name=".Main.FirstLogin" android:exported="true">
+        <activity android:name=".main.FirstLogin" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Main.FindId"></activity>
-        <activity android:name=".Main.FindPw"></activity>
-        <activity android:name=".Main.Register"></activity>
-        <activity android:name=".MyPage.MyPage"></activity>
-        <activity android:name=".Check.Check" />
-        <activity android:name=".Add.AddClothes" />
-        <activity android:name=".Main.MainActivity"></activity>
+        <activity android:name=".main.FindId"></activity>
+        <activity android:name=".main.FindPw"></activity>
+        <activity android:name=".main.Register"></activity>
+        <activity android:name=".myPage.MyPage"></activity>
+        <activity android:name=".check.Check" />
+        <activity android:name=".add.AddClothes" />
+        <activity android:name=".main.MainActivity"></activity>
 
 
 

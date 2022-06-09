@@ -1,12 +1,10 @@
-package com.example.smartcloset.Compare
+package com.example.smartcloset.compare
 
 import android.Manifest
-import android.app.Activity
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.BitmapFactory
 import android.icu.text.SimpleDateFormat
 import android.net.Uri
 import android.os.Build
@@ -19,19 +17,13 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat.checkSelfPermission
-import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
-import com.example.smartcloset.Main.MainActivity
+import com.example.smartcloset.main.MainActivity
 import com.example.smartcloset.R
-import kotlinx.android.synthetic.main.addclothes.*
 import kotlinx.android.synthetic.main.compare.*
 import kotlinx.android.synthetic.main.compare.view.*
-import kotlinx.android.synthetic.main.compare_item.*
-import java.io.File
-import java.net.URI
 
 
 class CompareFragment: Fragment() {
