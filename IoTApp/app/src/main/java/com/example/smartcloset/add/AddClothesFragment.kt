@@ -349,11 +349,7 @@ class AddClothesFragment: Fragment() {
      * @param grantResults 권한 목록에 대한 승인/미승인 값, 권한 목록의 개수와 같은 수의 결괏값이 전달된다.
      * */
     @RequiresApi(Build.VERSION_CODES.N)
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (grantResults.all { it == PackageManager.PERMISSION_GRANTED }) {
             permissionGranted(requestCode)

@@ -1,5 +1,6 @@
 package com.example.smartcloset
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
@@ -7,8 +8,11 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.smartcloset.add.AddClothesFragment
 import com.example.smartcloset.compare.CompareFragment
-import com.example.smartcloset.R
+import com.example.smartcloset.home.Home
+import com.example.smartcloset.login.FIRSTBUTTON
+import com.example.smartcloset.myPage.MyPage
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                             R.color.color_bnv1
                         )
 //                        frag1_txt.text = "ok"
-                        AddClothesFragment()
+                        Home()
                         // Respond to navigation item 1 click
                     }
                     R.id.second -> {
@@ -59,6 +63,12 @@ class MainActivity : AppCompatActivity() {
             true
         }
         bnv_main.selectedItemId = R.id.first
+        //마이페이지 버튼
+        mypage.setOnClickListener {
+            val intent = Intent(this, MyPage::class.java).apply {    // 괄호 안에 있는 MyPage수정하세요!
+            }
+            startActivityForResult(intent, FIRSTBUTTON)
+        }
     }
 
 
