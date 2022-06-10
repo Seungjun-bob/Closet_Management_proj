@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+
     val fl: FrameLayout by lazy {
         findViewById(R.id.fl_con)
     }
