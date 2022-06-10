@@ -10,6 +10,7 @@ import com.example.smartcloset.add.AddClothesFragment
 import com.example.smartcloset.compare.CompareFragment
 import com.example.smartcloset.login.FIRSTBUTTON
 import com.example.smartcloset.myPage.MyPage
+import com.example.smartcloset.home.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -38,7 +39,7 @@ class MainActivity : AppCompatActivity() {
                             R.color.color_bnv1
                         )
 //                        frag1_txt.text = "ok"
-                        AddClothesFragment()
+                        HomeFragment()
                         // Respond to navigation item 1 click
                     }
                     R.id.second -> {
