@@ -133,6 +133,8 @@ class CompareFragment: Fragment() {
         values.put(MediaStore.Images.Media.MIME_TYPE, mimeType)
         return mainActivity.contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
     }
+
+    //Launcher (ActivityResultLuncher로 변경해야함)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -140,7 +142,9 @@ class CompareFragment: Fragment() {
             when (requestCode) {
                 REQUEST_CAMERA -> {
                     realUri?.let { uri ->
+                        //사진이 찍히면 이미지뷰에 띄워줌, DB로 전송도 해서 값을 받아와 밑의 RecyclerViewㅇ[ 보여줘야함
                         img_compare_preview.setImageURI(uri)
+
                     }
                 }
             }
