@@ -1,14 +1,14 @@
 import pandas as pd
 import random
 
-ClothesCODE = ['CODE'+str(i) for i in range(101)]
+ClothesCODE = ['CODE'+str(i) for i in range(1,101)]
 colorList = ['red', 'blue', 'white', 'black', 'yellow']
-color = [random.choice(colorList) for i in range(101)]
+color = [random.choice(colorList) for i in range(1,101)]
 categoryList = ['jean', 'cotton', 'jogger', 'slacks', 'skirt',
                 'longPants', 'shortPants', 'hoodie', 'knit',
                 'longShirts', 'shortShirts', 'sweatShirts', 'dressShirts']
-category = [random.choice(categoryList) for i in range(101)]
-img = ['img'+str(i) for i in range(101)]
+category = [random.choice(categoryList) for i in range(1,101)]
+img = ['img'+str(i) for i in range(1,101)]
 
 Clothes = pd.DataFrame(
     {'ClothesCODE': ClothesCODE,
