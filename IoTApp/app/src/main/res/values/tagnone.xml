@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--기본 의류 카테고리-->
+<resources>
+    <string-array name="tagnone">
+        <item></item>
+
+    </string-array>
+
+</resources>

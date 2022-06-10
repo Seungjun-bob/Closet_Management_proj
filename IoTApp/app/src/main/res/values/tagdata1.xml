@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--기본 의류 카테고리-->
 <resources>
     <string-array name="tagdata1">
+        <item></item>
         <item>상의</item>
         <item>하의</item>
         <item>아우터</item>
