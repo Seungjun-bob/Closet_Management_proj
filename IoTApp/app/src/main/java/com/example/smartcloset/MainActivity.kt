@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
 //                        bnv_main.itemIconTintList = ContextCompat.getColorStateList(this, R.color.color_bnv1)
 //                        bnv_main.itemTextColor = ContextCompat.getColorStateList(this, R.color.color_bnv1)
                         CompareFragment()
+
                     }
                 }
             )
