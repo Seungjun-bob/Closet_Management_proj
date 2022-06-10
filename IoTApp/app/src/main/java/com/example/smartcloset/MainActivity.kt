@@ -8,7 +8,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.smartcloset.add.AddClothesFragment
 import com.example.smartcloset.compare.CompareFragment
-import com.example.smartcloset.home.Home
 import com.example.smartcloset.login.FIRSTBUTTON
 import com.example.smartcloset.myPage.MyPage
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -38,7 +37,7 @@ class MainActivity : AppCompatActivity() {
                             R.color.color_bnv1
                         )
 //                        frag1_txt.text = "ok"
-                        Home()
+                        AddClothesFragment()
                         // Respond to navigation item 1 click
                     }
                     R.id.second -> {
