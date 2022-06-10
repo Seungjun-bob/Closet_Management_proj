@@ -36,7 +36,7 @@ class FirstLogin: AppCompatActivity(), View.OnClickListener {
                     var jsonobj = JSONObject()
                     jsonobj.put("ID",id.text)
                     jsonobj.put("PW",pw.text)
-                    val url = "http://192.168.200.107:8000/login"
+                    val url = "http://192.168.200.107:8000/login" // 장고 로그인페이지 url
 
                     //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
                     val client = OkHttpClient()
@@ -55,9 +55,8 @@ class FirstLogin: AppCompatActivity(), View.OnClickListener {
                     val result:String? = response.body()?.string()
                     Log.d("http",result!!)
                     //로그인 성공여부가 메시지로 전달되면 그에 따라 다르게 작업할 수 있도록 코드
-
-
                 }
+
             }
             R.id.findid -> {
                 val intent = Intent(this, FindId::class.java).apply{

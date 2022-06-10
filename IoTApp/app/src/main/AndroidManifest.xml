@@ -17,6 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartCloset">
+        <activity
+            android:name=".login.FirstLogin"/>
 
         <activity
             android:name=".MainActivity"
