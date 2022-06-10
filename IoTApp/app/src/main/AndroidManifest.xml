@@ -6,6 +6,9 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 카메라 권한 -->
     <uses-permission android:name="android.permission.CAMERA" />
 
+    <!-- 위치 권한 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,7 +17,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartCloset">
         <activity
-            android:name=".login.FirstLogin"
+            android:name=".login.FirstLogin"/>
+
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +34,6 @@
         <activity android:name=".myPage.MyPage" />
         <activity android:name=".check.Check" />
         <activity android:name=".add.AddClothes" />
-        <activity android:name=".MainActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
