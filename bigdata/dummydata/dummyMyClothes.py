@@ -2,7 +2,7 @@ import pandas as pd
 import random
 
 CODE = ['my'+str(i) for i in range(1001)]
-ClothesCODEList = ['CODE'+str(i) for i in range(1001)]
+ClothesCODEList = ['CODE'+str(i) for i in range(101)]
 ClothesCODE = [random.choice(ClothesCODEList) for i in range(1001)]
 IDList = ['dummy'+str(i) for i in range(101)]
 ID = [random.choice(IDList) for i in range(1001)]
