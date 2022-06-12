@@ -32,6 +32,14 @@ import com.google.android.gms.location.LocationServices
 import kotlinx.android.synthetic.main.home.*
 import kotlinx.android.synthetic.main.home.view.*
 
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.smartcloset.home.WeatherAdapter
+import com.example.smartcloset.home.ModelWeather
+import retrofit2.Call
+import retrofit2.Response
+import java.util.*
+
+
 class HomeFragment : Fragment() {
 
     val PERMISSION_LOCATION = 10
@@ -44,6 +52,12 @@ class HomeFragment : Fragment() {
         fun newInstance() = HomeFragment()
     }
 
+    lateinit var weatherRecyclerView : RecyclerView
+
+    private var base_date = "20210510"  // 발표 일자
+    private var base_time = "1400"      // 발표 시각
+    private var nx = "55"               // 예보지점 X 좌표
+    private var ny = "127"              // 예보지점 Y 좌표
 
 
 
@@ -56,27 +70,26 @@ class HomeFragment : Fragment() {
 
         return view
     }
-
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.location.setText("온도")
+        weatherRecyclerView = view.weatherRecyclerView
 
-        // 리사이클러 뷰
-        var compareRecyclerView: RecyclerView? = getView()?.findViewById(R.id.compare_recycler)
-        compareRecyclerView!!.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL))
-        for(i in 0..7){
-            //비교할 옷 사진 데이터들을 받아와 표시할 곳
-            datalist.add(R.drawable.p1)
-        }
 
-        //Adapter 생성하고 연결해주기
-        val adapter = RecyclerAdapter(mainActivity, R.layout.home,datalist)
-        compareRecyclerView?.adapter = adapter
+        // 리사이클러 뷰 매니저 설정
+        weatherRecyclerView.layoutManager = LinearLayoutManager(mainActivity)
+
+        // nx, ny지점의 날씨 가져와서 설정하기
+        setWeather(nx, ny)
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity().applicationContext)
 
@@ -107,7 +120,105 @@ class HomeFragment : Fragment() {
                     weather.text = location.longitude.toString()
                 }
             }
+
+
     }
+    @RequiresApi(Build.VERSION_CODES.N)
+    private fun setWeather(nx : String, ny : String) {
+        // 준비 단계 : base_date(발표 일자), base_time(발표 시각)
+        // 현재 날짜, 시간 정보 가져오기
+        val cal = Calendar.getInstance()
+        base_date = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(cal.time) // 현재 날짜
+        val timeH = SimpleDateFormat("HH", Locale.getDefault()).format(cal.time) // 현재 시각
+        val timeM = SimpleDateFormat("HH", Locale.getDefault()).format(cal.time) // 현재 분
+        // API 가져오기 적당하게 변환
+        base_time = getBaseTime(timeH, timeM)
+        // 현재 시각이 00시이고 45분 이하여서 baseTime이 2330이면 어제 정보 받아오기
+        if (timeH == "00" && base_time == "2330") {
+            cal.add(Calendar.DATE, -1).toString()
+            base_date = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(cal.time)
+        }
+
+        // 날씨 정보 가져오기
+        // (한 페이지 결과 수 = 60, 페이지 번호 = 1, 응답 자료 형식-"JSON", 발표 날싸, 발표 시각, 예보지점 좌표)
+        val call = ApiObject.retrofitService.GetWeather(60, 1, "JSON", base_date, base_time, nx, ny)
+
+        // 비동기적으로 실행하기
+        call.enqueue(object : retrofit2.Callback<WEATHER> {
+            // 응답 성공 시
+            override fun onResponse(call: Call<WEATHER>, response: Response<WEATHER>) {
+                if (response.isSuccessful) {
+                    Log.d("test",response.body().toString())
+                    // 날씨 정보 가져오기
+                    val it: List<ITEM> = response.body()!!.response.body.items.item
+
+                    // 현재 시각부터 1시간 뒤의 날씨 6개를 담을 배열
+                    val weatherArr = arrayOf(ModelWeather(), ModelWeather(), ModelWeather(), ModelWeather(), ModelWeather(), ModelWeather())
+
+                    // 배열 채우기
+                    var index = 0
+                    val totalCount = response.body()!!.response.body.totalCount - 1
+                    Log.d("test","$totalCount:==>${it[0]}")
+                    for (i in 0..totalCount) {
+                        index %= 6
+                        when(it[i].category) {
+                            "PTY" -> weatherArr[index].rainType = it[i].fcstDate   // 강수 형태
+                            "REH" -> weatherArr[index].humidity = it[i].fcstTime     // 습도
+                            "SKY" -> weatherArr[index].sky = it[i].fcstValue          // 하늘 상태
+                            "T1H" -> weatherArr[index].temp = it[i].category         // 기온
+                            else -> continue
+                        }
+                        index++
+                    }
+
+                    // 각 날짜 배열 시간 설정
+                    for (i in 0..5) weatherArr[i].fcstTime = it[i].fcstTime
+
+                    // 리사이클러 뷰에 데이터 연결
+                    weatherRecyclerView.adapter = WeatherAdapter(weatherArr)
+
+                    // 토스트 띄우기
+//                    Toast.makeText(applicationContext, it[0].fcstDate + ", " + it[0].fcstTime + "의 날씨 정보입니다.", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<WEATHER>, t: Throwable) {
+
+            }
+
+            // 응답 실패 시
+//            override fun onFailure(call: Call<WEATHER>, t: Throwable) {
+//                val tvError = findViewById<TextView>(R.id.tvError)
+//                tvError.text = "api fail : " +  t.message.toString() + "\n 다시 시도해주세요."
+//                tvError.visibility = View.VISIBLE
+//                Log.d("api fail", t.message.toString())
+//            }
+        })
+    }
+
+    // baseTime 설정하기
+    private fun getBaseTime(h : String, m : String) : String {
+        var result = ""
+
+        // 45분 전이면
+        if (m.toInt() < 45) {
+            // 0시면 2330
+            if (h == "00") result = "2330"
+            // 아니면 1시간 전 날씨 정보 부르기
+            else {
+                var resultH = h.toInt() - 1
+                // 1자리면 0 붙여서 2자리로 만들기
+                if (resultH < 10) result = "0" + resultH + "30"
+                // 2자리면 그대로
+                else result = resultH.toString() + "30"
+            }
+        }
+        // 45분 이후면 바로 정보 받아오기
+        else result = h + "30"
+
+        return result
+    }
+
 
 
 

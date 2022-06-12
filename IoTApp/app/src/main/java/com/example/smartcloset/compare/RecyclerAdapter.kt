@@ -14,7 +14,7 @@ class RecyclerAdapter(var context: Context, var itemlayout:Int, var clothData:Ar
         init {
             var dialog = CompareDialog(context)
             //뷰 클릭 리스너 정의하기
-            compareImg = view.findViewById(R.id.img_home)
+            compareImg = view.findViewById(R.id.img_compare)
             view.setOnClickListener{
                 //다이얼로그 띄우는 코드 작성
                 //나중에 수정 필요

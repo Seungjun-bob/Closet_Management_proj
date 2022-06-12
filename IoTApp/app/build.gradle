@@ -50,4 +50,8 @@ dependencies {
 
     // GPS
     implementation 'com.google.android.gms:play-services:12.0.1'
+
+    // 날씨
+    implementation 'com.squareup.retrofit2:retrofit:2.8.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.8.0'
 }
