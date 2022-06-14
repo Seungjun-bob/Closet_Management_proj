@@ -8,27 +8,11 @@
     tools:context=".home.HomeFragment">
 
     <TextView
-        android:id="@+id/location"
+        android:id="@+id/tvDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="location" />
-
-    <TextView
-            android:id="@+id/temperature"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="temperature"
-            android:gravity="center"/>
-
-    <TextView
-        android:id="@+id/weather"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="weather"
-        android:gravity="center"/>
+        android:text="date" />
 
     <TextView
         android:id="@+id/tvError"
@@ -61,13 +45,6 @@
             android:inputType="textPersonName"
             android:text="날씨에 맞는 옷 추천" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/weather_recycler"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -83,12 +60,6 @@
             android:inputType="textPersonName"
             android:text="유행 옷 추천" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recommend_recycler"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
     </LinearLayout>
 
 

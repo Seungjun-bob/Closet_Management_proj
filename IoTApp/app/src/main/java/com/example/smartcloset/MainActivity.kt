@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.example.smartcloset.about.AboutFragment
 import com.example.smartcloset.add.AddClothesFragment
 import com.example.smartcloset.compare.CompareFragment
 import com.example.smartcloset.login.FIRSTBUTTON
