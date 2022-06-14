@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     val fl: FrameLayout by lazy {
         findViewById(R.id.fl_con)
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
