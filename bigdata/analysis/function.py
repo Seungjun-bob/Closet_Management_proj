@@ -14,12 +14,17 @@ df = pd.merge(UserData, MyClothes, left_on='ID', right_on='ID', how='left')
 df2 = pd.merge(df, todayInfo, left_on='ID', right_on='ID', how='left')
 print(df2)
 
-for i in range(1, 101):
-    dummy = df2[df2['ID'] == 'dummy'+str(i)]
-    Clothes['clothes'] = Clothes['color'] + ' - ' + Clothes['category']
-    dummy['clothes'] = dummy['myColor'] + ' - ' + dummy['myCategory']
-    dontHave = pd.merge(Clothes, dummy, left_on='clothes', right_on='clothes', how='left')
-    dontHave2 = dontHave[['clothes','img']].loc[dontHave['ID'].isnull()]
-    print('dummy'+str(i))
-    print(dontHave2.drop_duplicates())
-    print()
+userID = input('ID를 입력하세요 >> ')
+
+dummy = df2[df2['ID'] == userID]
+Clothes['clothes'] = Clothes['color'] + ' - ' + Clothes['category']
+dummy['clothes'] = dummy['myColor'] + ' - ' + dummy['myCategory']
+Have = pd.merge(Clothes, dummy, left_on='clothes', right_on='clothes', how='left')
+Have2 = Have[['clothes']].loc[Have['ID'].isnull()]
+myMaxCategory = dummy['myCategory'].value_counts()[dummy['myCategory'].value_counts() ==
+                                                   max((dummy['myCategory'].value_counts()))].head(1)
+myMaxCategory
+myMaxColor = dummy['myColor'].value_counts()[dummy['myColor'].value_counts() ==
+                                             max(dummy['myColor'].value_counts())].head(1)
+print(userID)
+print(Have2[Have2['category'] == myMaxCategory]) # 듀블 말고 max유저 옷으로 바꾸기
