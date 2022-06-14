@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.example.smartcloset.about.AboutFragment
 import com.example.smartcloset.add.AddClothesFragment
 import com.example.smartcloset.compare.CompareFragment
 
@@ -16,6 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
 
     val fl: FrameLayout by lazy {
         findViewById(R.id.fl_con)
