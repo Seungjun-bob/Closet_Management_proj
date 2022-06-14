@@ -19,7 +19,7 @@ trash = pd.read_csv('trash.csv')
 trash = trash.set_index('year')
 print(trash)
 
-trash['ton/day'].plot(kind='line', figsize=(10, 8), grid=True)
+trash['ton/day'].plot(kind='line', figsize=(10, 8), marker='o', linewidth=2)
 plt.text(4, 7, '(단위 : 톤)')
 plt.legend(loc=2)
 plt.title('일간 폐의류량')
@@ -30,7 +30,7 @@ Dprofit = pd.read_csv('DepartmentProfit.csv')
 Dprofit = Dprofit.set_index('year')
 print(Dprofit)
 
-Dprofit.plot(kind='line', figsize=(10, 8), grid=True)
+Dprofit.plot(kind='line', figsize=(10, 8), marker='o', linewidth=2)
 plt.title('백화점 방문객 증감률')
 plt.text(4, 7, '(단위 : %)')
 plt.legend(loc=2)
@@ -42,7 +42,7 @@ appuser = appuser.loc[:,['appname', 'user']]
 appuser = appuser.set_index('appname')
 print(appuser)
 
-appuser.plot(kind='bar', figsize=(10, 8), grid=True)
+appuser.plot(kind='bar', figsize=(10, 8))
 plt.title('패션앱 이용자 수')
 plt.text(55, 1050000, '(단위 : 명)')
 plt.savefig("output3.png")
@@ -51,7 +51,7 @@ appuser2 = pd.read_csv('appuser.csv')
 appuser2 = appuser2.loc[:,['appname','share']]
 appuser2 = appuser2.set_index('appname')
 
-appuser2.plot(kind='bar', figsize=(10, 8), grid=True)
+appuser2.plot(kind='bar', figsize=(10, 8))
 plt.title('패션앱 시장 점유율')
 plt.text(55, 40, '(단위 : %)')
 plt.savefig("output4.png")
@@ -63,7 +63,7 @@ salesType = salesType.set_index('year')
 salesType = salesType/1000
 print(salesType)
 
-salesType.plot(kind='bar', figsize=(10, 8), grid=True)
+salesType.plot(kind='bar', figsize=(10, 8), linewidth=2)
 plt.text(4, 18000, '(단위 : 십억)')
 plt.legend(loc=2)
 plt.title('판매 채널별 거래액')
@@ -75,7 +75,7 @@ productType = productType.set_index('year')
 productType = productType/1000
 print(productType)
 
-productType.plot(kind='bar', figsize=(10, 8), grid=True)
+productType.plot(kind='bar', figsize=(10, 8), linewidth=2)
 plt.text(4, 18000, '(단위 : 십억)')
 plt.legend(loc=2)
 plt.title('상점 규모별 거래액')
@@ -87,7 +87,7 @@ businessType = businessType.set_index('year')
 businessType = businessType/1000
 print(businessType)
 
-businessType.plot(kind='bar', figsize=(10, 8), grid=True)
+businessType.plot(kind='bar', figsize=(10, 8), linewidth=2)
 plt.text(4, 18000, '(단위 : 십억)')
 plt.legend(loc=2)
 plt.title('운영 유형별 거래액')
