@@ -1,16 +1,14 @@
 package com.example.smartcloset.home
 
 import android.Manifest
-import android.content.ContentValues
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Point
 import android.icu.text.SimpleDateFormat
-import android.net.Uri
+import android.location.Location
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -19,20 +17,42 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import com.example.smartcloset.MainActivity
 import com.example.smartcloset.R
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationCallback
-import com.google.android.gms.location.LocationResult
 import kotlinx.android.synthetic.main.home.*
 import kotlinx.android.synthetic.main.home.view.*
+
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.smartcloset.compare.RecyclerAdapter
+import com.google.android.gms.location.*
+import retrofit2.Call
+import retrofit2.Response
+import java.util.*
+import androidx.databinding.DataBindingUtil.setContentView
+import androidx.recyclerview.widget.DividerItemDecoration
+
 
 class HomeFragment : Fragment() {
 
     val PERMISSION_LOCATION = 10
-
     lateinit var mainActivity: MainActivity
-    lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    private var curPoint : Point? = null
+    var datalist =ArrayList<Int>()
+
+    companion object {
+        fun newInstance() = HomeFragment()
+    }
+
+    lateinit var weatherRecyclerView : RecyclerView
+    lateinit var clothRecyclerView : RecyclerView
+
+    private var base_date = "20210510"  // 발표 일자
+    private var base_time = "1400"      // 발표 시각
+    private var nx = 55              // 예보지점 X 좌표
+    private var ny = 127            // 예보지점 Y 좌표
+
+
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -40,17 +60,167 @@ class HomeFragment : Fragment() {
         requirePermissions(arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION), PERMISSION_LOCATION)
         requirePermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), PERMISSION_LOCATION)
 
+
         return view
     }
-
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.location.setText("온도")
 
+        weatherRecyclerView = view.weatherRecyclerView
+
+        // 리사이클러 뷰 매니저 설정
+        weatherRecyclerView.layoutManager = LinearLayoutManager(mainActivity).also { it.orientation = LinearLayoutManager.HORIZONTAL }
+
+        //RecyclerView 선언
+        var clothRecyclerView:RecyclerView? = getView()?.findViewById(R.id.home_recycler)
+
+        for(i in 0..7){
+            //비교할 옷 사진 데이터들을 받아와 표시할 곳
+            datalist.add(R.drawable.p1)
+        }
+
+        val adapter = ClothAdapter(mainActivity, R.layout.home_item, datalist)
+        clothRecyclerView?.adapter = adapter
+
+        // 내 위치 위경도 가져와서 날씨 정보 설정하기
+        requestLocation()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+
+
+//        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity().applicationContext)
+
+        if (ActivityCompat.checkSelfPermission(
+                mainActivity,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                mainActivity,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return
+        }
+    }
+    @RequiresApi(Build.VERSION_CODES.N)
+    private fun setWeather(nx: Int, ny: Int) {
+        // 준비 단계 : base_date(발표 일자), base_time(발표 시각)
+        // 현재 날짜, 시간 정보 가져오기
+        val cal = Calendar.getInstance(TimeZone.getTimeZone("Asia/Seoul"), Locale.KOREA)
+        base_date = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(cal.time) // 현재 날짜
+        val timeH = SimpleDateFormat("HH", Locale.getDefault()).format(cal.time) // 현재 시각
+        val timeM = SimpleDateFormat("HH", Locale.getDefault()).format(cal.time) // 현재 분
+        // API 가져오기 적당하게 변환
+        base_time = Common().getBaseTime(timeH, timeM)
+        // 현재 시각이 00시이고 45분 이하여서 baseTime이 2330이면 어제 정보 받아오기
+        if (timeH == "00" && base_time == "2330") {
+            cal.add(Calendar.DATE, -1).toString()
+            base_date = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(cal.time)
+        }
+        Log.d("test","$base_date (${base_date.length} , $base_time(${base_time.length}) $nx , $ny")
+        // 날씨 정보 가져오기
+        // (한 페이지 결과 수 = 60, 페이지 번호 = 1, 응답 자료 형식-"JSON", 발표 날싸, 발표 시각, 예보지점 좌표)
+        val call = ApiObject.retrofitService.getWeather(60, 1, "JSON", base_date, base_time, nx, ny)
+//        val call = ApiObject.retrofitService.getWeather(60, 1, "JSON", "20220614", "0600", nx, ny)
+                // 비동기적으로 실행하기
+        call.enqueue(object : retrofit2.Callback<WEATHER> {
+            // 응답 성공 시
+            override fun onResponse(call: Call<WEATHER>, response: Response<WEATHER>) {
+                if (response.isSuccessful) {
+                    // 날씨 정보 가져오기
+                    val it: List<ITEM> = response.body()!!.response.body.items.item
+                    Log.d("test","${it[0].toString()}")
+                    // 현재 시각부터 1시간 뒤의 날씨 6개를 담을 배열
+                    val weatherArr = arrayOf(ModelWeather(), ModelWeather(), ModelWeather(), ModelWeather(), ModelWeather(), ModelWeather())
+
+                    // 배열 채우기
+                    var index = 0
+                    val totalCount = response.body()!!.response.body.totalCount - 1
+                    Log.d("test", response.body().toString())
+                    for (i in 0..totalCount) {
+                        index %= 6
+                        when(it[i].category) {
+
+                            "PTY" -> weatherArr[index].rainType = it[i].fcstValue   // 강수 형태
+                            "REH" -> weatherArr[index].humidity = it[i].fcstValue     // 습도
+                            "SKY" -> weatherArr[index].sky = it[i].fcstValue          // 하늘 상태
+                            "T1H" -> weatherArr[index].temp = it[i].fcstValue        // 기온
+                            else -> continue
+                        }
+                        index++
+                    }
+                    // 각 날짜 배열 시간 설정
+                    for (i in 0..5) weatherArr[i].fcstTime = it[i].fcstTime
+
+                    // 리사이클러 뷰에 데이터 연결
+                    weatherRecyclerView.adapter = WeatherAdapter(weatherArr)
+
+                    // 토스트 띄우기
+                    Toast.makeText(mainActivity, it[0].fcstDate + ", " + it[0].fcstTime + "의 날씨 정보입니다.", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<WEATHER>, t: Throwable) {
+
+            }
+//
+//             응답 실패 시
+//            override fun onFailure(call: Call<WEATHER>, t: Throwable) {
+//                val tvError = findViewById<TextView>(R.id.tvError)
+//                tvError.text = "api fail : " +  t.message.toString() + "\n 다시 시도해주세요."
+//                tvError.visibility = View.VISIBLE
+//                Log.d("api fail", t.message.toString())
+//            }
+        })
     }
 
 
+//     내 현재 위치의 위경도를 격자 좌표로 변환하여 해당 위치의 날씨정보 설정하기
+    private fun requestLocation() {
+        val locationClient = LocationServices.getFusedLocationProviderClient(mainActivity)
 
+        try {
+            // 나의 현재 위치 요청
+            val locationRequest = LocationRequest.create()
+            locationRequest.run {
+                priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+                interval = 60 * 1000    // 요청 간격(1초)
+            }
+            val locationCallback = object : LocationCallback() {
+                // 요청 결과
+                @RequiresApi(Build.VERSION_CODES.N)
+                override fun onLocationResult(p0: LocationResult?) {
+                    p0?.let {
+                        for (location in it.locations) {
+                            // 현재 위치의 위경도를 격자 좌표로 변환
+                            curPoint = Common().dfsXyConv(location.latitude, location.longitude)
+
+                            // 오늘 날짜 텍스트뷰 설정
+                            tvDate.text = SimpleDateFormat("MM월 dd일", Locale.getDefault()).format(Calendar.getInstance().time) + "날씨"
+                            // nx, ny지점의 날씨 가져와서 설정하기
+                            setWeather(curPoint!!.x, curPoint!!.y)
+                        }
+                    }
+                }
+            }
+
+            // 내 위치 실시간으로 감지
+            locationClient?.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper())
+        } catch (e : SecurityException) {
+            e.printStackTrace()
+        }
+    }
 
     /**자식 액티비티에서 권한 요청 시 직접 호출하는 메서드
      * @param permissions 권한 처리를 할 권한 목록
@@ -118,34 +288,5 @@ class HomeFragment : Fragment() {
         mainActivity = context as MainActivity
 
     }
-//    val locationCallback = object : LocationCallback() {
-//        override fun onLocationResult(locationResult: LocationResult) {
-//            if (locationResult == null) {
-//                return
-//            }
-//
-//            for (location in locationResult.locations) {
-//                if (location != null) {
-//                    val latitude = location.latitude
-//                    val longitude = location.longitude
-//                    Log.d(
-//                        "Test",
-//                        "GPS Location changed, Latitude: $latitude, Longitude: $longitude"
-//                    )
-//                }
-//            }
-//        }
-//    }
 
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        val locationRequest = LocationRequest.create()
-//        locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-//        locationRequest.interval = 5 * 1000
-//
-//        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-//        fusedLocationProviderClient.requestLocationUpdates(locationRequest,
-//            locationCallback,
-//            Looper.getMainLooper());
-//    }
 }
