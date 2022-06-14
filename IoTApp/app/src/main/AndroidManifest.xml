@@ -41,7 +41,6 @@
         <activity android:name=".check.Check" />
         <activity android:name=".add.AddClothes" />
 
-
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.smartcloset.fileprovider"
@@ -52,5 +51,6 @@
                 android:resource="@xml/external" />
         </provider>
     </application>
+
 
 </manifest>
