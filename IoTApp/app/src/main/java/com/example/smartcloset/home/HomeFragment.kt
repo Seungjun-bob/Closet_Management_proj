@@ -22,15 +22,14 @@ import com.example.smartcloset.MainActivity
 import com.example.smartcloset.R
 import kotlinx.android.synthetic.main.home.*
 import kotlinx.android.synthetic.main.home.view.*
-
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.smartcloset.compare.RecyclerAdapter
 import com.google.android.gms.location.*
 import retrofit2.Call
-import retrofit2.Response
 import java.util.*
 import androidx.databinding.DataBindingUtil.setContentView
 import androidx.recyclerview.widget.DividerItemDecoration
+import retrofit2.Response
 
 
 class HomeFragment : Fragment() {

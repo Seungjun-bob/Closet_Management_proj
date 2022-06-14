@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
                             R.color.color_bnv1
                         )
 //                        frag1_txt.text = "ok"
-                        AddClothesFragment()
+                        HomeFragment()
                         // Respond to navigation item 1 click
                     }
                     R.id.second -> {
