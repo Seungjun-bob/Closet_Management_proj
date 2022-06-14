@@ -17,16 +17,4 @@ Clothes = pd.DataFrame(
      'img': img
      })
 print(Clothes)
-Clothes['MainCategory'] = ['bottom'
-                           if s == 'jean'
-                              or s == 'cotton'
-                              or s == 'jogger'
-                              or s == 'slacks'
-                              or s == 'skirt'
-                              or s == 'longPants'
-                              or s == 'shortPants'
-                           else
-                                'top'
-                           for s in Clothes['category']]
-print(Clothes)
 Clothes.to_csv('dummyClothes.csv', encoding='Utf-8')
