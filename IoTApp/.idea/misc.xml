@@ -3,9 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Seungjun/Desktop/BIGDATA_edu/Closet_Management_proj/IoTApp/app/src/main/res/layout/about_list_item.xml" value="0.1" />
+        <entry key="..\:/Users/Seungjun/Desktop/BIGDATA_edu/Closet_Management_proj/IoTApp/app/src/main/res/layout/activity_check.xml" value="0.1953125" />
+        <entry key="..\:/Users/Seungjun/Desktop/BIGDATA_edu/Closet_Management_proj/IoTApp/app/src/main/res/layout/activity_main.xml" value="0.1953125" />
         <entry key="..\:/Users/Seungjun/Desktop/BIGDATA_edu/Closet_Management_proj/IoTApp/app/src/main/res/layout/compare.xml" value="0.18385416666666668" />
         <entry key="..\:/Users/Seungjun/Desktop/BIGDATA_edu/Closet_Management_proj/IoTApp/app/src/main/res/layout/compare_item.xml" value="0.18385416666666668" />
-        <entry key="..\:/Users/Seungjun/Desktop/BIGDATA_edu/Closet_Management_proj/IoTApp/app/src/main/res/layout/home.xml" value="0.25" />
+        <entry key="..\:/Users/Seungjun/Desktop/BIGDATA_edu/Closet_Management_proj/IoTApp/app/src/main/res/layout/fragment_about.xml" value="0.17708333333333334" />
+        <entry key="..\:/Users/Seungjun/Desktop/BIGDATA_edu/Closet_Management_proj/IoTApp/app/src/main/res/layout/home.xml" value="0.33" />
         <entry key="..\:/Users/Seungjun/Desktop/BIGDATA_edu/Closet_Management_proj/IoTApp/app/src/main/res/layout/home_item.xml" value="0.18385416666666668" />
         <entry key="..\:/Users/Seungjun/Desktop/BIGDATA_edu/Closet_Management_proj/IoTApp/app/src/main/res/layout/home_weather_item.xml" value="0.3619791666666667" />
       </map>

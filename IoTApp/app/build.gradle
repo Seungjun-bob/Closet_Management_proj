@@ -9,6 +9,9 @@ android {
     compileSdkVersion 31
     buildToolsVersion "30.0.0"
 
+    buildFeatures {
+        dataBinding = true
+    }
     defaultConfig {
         applicationId "com.example.smartcloset"
         minSdkVersion 23

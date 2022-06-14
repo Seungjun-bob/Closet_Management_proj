@@ -75,20 +75,6 @@
                 android:text=""
                 android:textSize="20dp"/>
         </TableRow>
-        <TableRow>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="옷 추천"
-                android:textSize="20dp"
-                android:paddingRight="30dp"/>
-            <TextView
-                android:id="@+id/tvRecommends"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="20dp"/>
-        </TableRow>
     </TableLayout>
 
 </LinearLayout>
