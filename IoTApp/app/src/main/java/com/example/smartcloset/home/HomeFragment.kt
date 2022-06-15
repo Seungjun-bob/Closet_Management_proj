@@ -22,14 +22,15 @@ import com.example.smartcloset.MainActivity
 import com.example.smartcloset.R
 import kotlinx.android.synthetic.main.home.*
 import kotlinx.android.synthetic.main.home.view.*
+
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.smartcloset.compare.RecyclerAdapter
 import com.google.android.gms.location.*
 import retrofit2.Call
+import retrofit2.Response
 import java.util.*
 import androidx.databinding.DataBindingUtil.setContentView
 import androidx.recyclerview.widget.DividerItemDecoration
-import retrofit2.Response
 
 
 class HomeFragment : Fragment() {
@@ -204,12 +205,11 @@ class HomeFragment : Fragment() {
                         for (location in it.locations) {
                             // 현재 위치의 위경도를 격자 좌표로 변환
                             curPoint = Common().dfsXyConv(location.latitude, location.longitude)
-                            Log.d("kim","${location.latitude} ========== ${location.longitude}")
+
                             // 오늘 날짜 텍스트뷰 설정
                             tvDate.text = SimpleDateFormat("MM월 dd일", Locale.getDefault()).format(Calendar.getInstance().time) + "날씨"
                             // nx, ny지점의 날씨 가져와서 설정하기
-                            Log.d("kim","${curPoint!!.x} ===== ${curPoint!!.y}")
-                            setWeather(55, 127)
+                            setWeather(curPoint!!.x, curPoint!!.y)
                         }
                     }
                 }
