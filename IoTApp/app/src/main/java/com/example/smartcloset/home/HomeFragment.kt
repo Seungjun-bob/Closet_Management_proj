@@ -205,14 +205,11 @@ class HomeFragment : Fragment() {
                         for (location in it.locations) {
                             // 현재 위치의 위경도를 격자 좌표로 변환
                             curPoint = Common().dfsXyConv(location.latitude, location.longitude)
-                            Log.d("kim", "${location.latitude} ========== ${location.longitude}")
+                            Log.d("kim","${location.latitude} ========== ${location.longitude}")
                             // 오늘 날짜 텍스트뷰 설정
-                            tvDate.text = SimpleDateFormat(
-                                "MM월 dd일",
-                                Locale.getDefault()
-                            ).format(Calendar.getInstance().time) + "날씨"
+                            tvDate.text = SimpleDateFormat("MM월 dd일", Locale.getDefault()).format(Calendar.getInstance().time) + "날씨"
                             // nx, ny지점의 날씨 가져와서 설정하기
-                            Log.d("kim", "${curPoint!!.x} ===== ${curPoint!!.y}")
+                            Log.d("kim","${curPoint!!.x} ===== ${curPoint!!.y}")
                             setWeather(55, 127)
                         }
                     }

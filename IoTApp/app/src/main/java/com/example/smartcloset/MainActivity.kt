@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.smartcloset.about.AboutFragment
 import com.example.smartcloset.add.AddClothesFragment
+import com.example.smartcloset.check.Check
 import com.example.smartcloset.compare.CompareFragment
 
 import com.example.smartcloset.login.FIRSTBUTTON
@@ -57,7 +58,7 @@ class MainActivity : AppCompatActivity() {
                     R.id.third -> {
 //                        bnv_main.itemIconTintList = ContextCompat.getColorStateList(this, R.color.color_bnv2)
 //                        bnv_main.itemTextColor = ContextCompat.getColorStateList(this, R.color.color_bnv2)
-                        AddClothesFragment()
+                        Check()
                         // Respond to navigation item 3 click
                     }
                     else -> {
