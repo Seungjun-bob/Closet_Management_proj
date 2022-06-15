@@ -15,6 +15,9 @@ import com.example.smartcloset.myPage.MyPage
 import com.example.smartcloset.home.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.FileInputStream
+import java.nio.ByteBuffer
+import java.nio.channels.FileChannel
 
 class MainActivity : AppCompatActivity() {
 
@@ -84,5 +87,12 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.fl_con, fragment)
             .commit()
     }
-
+    private fun loadModelFile(): ByteBuffer{
+        val assetFileDescriptor = this.assets.openFd("simple_5_classfication-fp16.tflite")
+        val fileInputStream = FileInputStream(assetFileDescriptor.fileDescriptor)
+        val fileChannel = fileInputStream.channel
+        val startOffset = assetFileDescriptor.startOffset
+        val length = assetFileDescriptor.length
+        return fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, length)
+    }
 }
