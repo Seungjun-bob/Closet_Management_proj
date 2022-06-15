@@ -31,19 +31,41 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="옷장안 상태"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            />
+
+        <TextView
+            android:id="@+id/closet_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black"
+            />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="220dp"
         android:orientation="vertical">
 
-        <EditText
+        <TextView
             android:id="@+id/weather_recommendation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="날씨에 맞는 옷 추천" />
+            android:text="날씨에 맞는 옷 추천"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            />
 
     </LinearLayout>
 
@@ -52,13 +74,15 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <EditText
+        <TextView
             android:id="@+id/recommendation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="유행 옷 추천" />
+            android:text="유행 옷 추천"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            />
 
     </LinearLayout>
 
