@@ -12,6 +12,20 @@
         <entry key="..\:/Users/Seungjun/Desktop/BIGDATA_edu/Closet_Management_proj/IoTApp/app/src/main/res/layout/home.xml" value="0.33" />
         <entry key="..\:/Users/Seungjun/Desktop/BIGDATA_edu/Closet_Management_proj/IoTApp/app/src/main/res/layout/home_item.xml" value="0.18385416666666668" />
         <entry key="..\:/Users/Seungjun/Desktop/BIGDATA_edu/Closet_Management_proj/IoTApp/app/src/main/res/layout/home_weather_item.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/zuppa/AndroidStudioProjects/Closet_Management_proj/IoTApp/app/src/main/res/layout/activity_check.xml" value="0.16302083333333334" />
+        <entry key="..\:/Users/zuppa/AndroidStudioProjects/Closet_Management_proj/IoTApp/app/src/main/res/layout/activity_http_test.xml" value="0.11955420466058764" />
+        <entry key="..\:/Users/zuppa/AndroidStudioProjects/Closet_Management_proj/IoTApp/app/src/main/res/layout/addclothes.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/zuppa/AndroidStudioProjects/Closet_Management_proj/IoTApp/app/src/main/res/layout/check_detail_dialog.xml" value="0.20384615384615384" />
+        <entry key="..\:/Users/zuppa/AndroidStudioProjects/Closet_Management_proj/IoTApp/app/src/main/res/layout/check_edit_dialog.xml" value="0.12082066869300911" />
+        <entry key="..\:/Users/zuppa/AndroidStudioProjects/Closet_Management_proj/IoTApp/app/src/main/res/layout/checkclothes.xml" value="0.264" />
+        <entry key="..\:/Users/zuppa/AndroidStudioProjects/Closet_Management_proj/IoTApp/app/src/main/res/layout/cloth_detail_dialog.xml" value="0.1" />
+        <entry key="..\:/Users/zuppa/AndroidStudioProjects/Closet_Management_proj/IoTApp/app/src/main/res/layout/cloth_item.xml" value="0.24479166666666666" />
+        <entry key="..\:/Users/zuppa/AndroidStudioProjects/Closet_Management_proj/IoTApp/app/src/main/res/layout/compare_item.xml" value="0.11955420466058764" />
+        <entry key="..\:/Users/zuppa/AndroidStudioProjects/Closet_Management_proj/IoTApp/app/src/main/res/layout/findid.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/zuppa/AndroidStudioProjects/Closet_Management_proj/IoTApp/app/src/main/res/layout/findpw.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/zuppa/AndroidStudioProjects/Closet_Management_proj/IoTApp/app/src/main/res/layout/home.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/zuppa/AndroidStudioProjects/Closet_Management_proj/IoTApp/app/src/main/res/layout/home_item.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/zuppa/AndroidStudioProjects/Closet_Management_proj/IoTApp/app/src/main/res/layout/home_weather_item.xml" value="0.24947916666666667" />
       </map>
     </option>
   </component>
