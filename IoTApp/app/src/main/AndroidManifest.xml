@@ -35,7 +35,6 @@
         <activity android:name=".login.Register" />
         <activity android:name=".myPage.MyPage" />
         <activity android:name=".myPage.MyPage_Edit"/>
-        <activity android:name=".check.Check" />
         <activity android:name=".add.AddClothes" />
 
         <provider
