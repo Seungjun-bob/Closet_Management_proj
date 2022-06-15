@@ -45,6 +45,11 @@ class ClothDetailDialog(context: Context) {
             dialog.dismiss()
         }
 
+        edit.setOnClickListener {
+            val editDialog = ClothEditDialog(dialog.context)
+            editDialog.showeditDia("옷")
+        }
+
 //        edit.setOnClickListener{
 //            //edit dialog가 열려야함
 //            val dialog = ClothEditDialog(this)
