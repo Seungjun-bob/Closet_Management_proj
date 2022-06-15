@@ -10,9 +10,6 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.smartcloset.MainActivity
 import com.example.smartcloset.R
-import com.example.smartcloset.compare.Cloth
-import okio.Utf8.size
-import java.nio.file.Files.size
 
 //class CheckAdapter(var context: Context, var itemlayout:Int, var ClothData: ArrayList<Int>):RecyclerView.Adapter<CheckAdapter.ViewHolder>(), Filterable {
 class CheckAdapter(val context: MainActivity, val clothList: Int, var ClothData: ArrayList<Int>) : RecyclerView.Adapter<CheckAdapter.Holder>() {
