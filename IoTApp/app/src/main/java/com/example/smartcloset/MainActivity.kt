@@ -14,13 +14,20 @@ import com.example.smartcloset.compare.CompareFragment
 import com.example.smartcloset.login.FIRSTBUTTON
 import com.example.smartcloset.myPage.MyPage
 import com.example.smartcloset.home.HomeFragment
+import com.example.smartcloset.network.MyMqtt
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.home.*
+import org.eclipse.paho.client.mqttv3.MqttMessage
 import java.io.FileInputStream
 import java.nio.ByteBuffer
 import java.nio.channels.FileChannel
 
 class MainActivity : AppCompatActivity() {
+    // mqtt
+    val sub_topic = "iot"
+    val server_uri = "tcp://192.168.0.2:1883" //broker의 ip와 port
+    var mymqtt : MyMqtt? = null
 
 
     val fl: FrameLayout by lazy {
@@ -30,6 +37,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        //Mqtt통신을 수행항 Mqtt객체를 생성
+        mymqtt = MyMqtt(this,server_uri)
+        //브로커에서 메시지 전달되면 호출될 메소드를 넘기기
+        mymqtt?.mysetCallback(::onReceived)
+        //브로커연결
+        mymqtt?.connect(arrayOf<String>(sub_topic)) //
 
         val bnv_main = findViewById<BottomNavigationView>(R.id.bnv_main)
 
@@ -95,5 +108,13 @@ class MainActivity : AppCompatActivity() {
         val startOffset = assetFileDescriptor.startOffset
         val length = assetFileDescriptor.length
         return fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, length)
+    }
+    fun onReceived(topic:String,message: MqttMessage){
+        //토픽의 수신을 처리
+        //예)EditText의 내용을 출력하기, 영상출력, ... 도착된 메시지 안에서 온도 습도 데이터를 이용해서 차트 그리기, 모션 detect 알림 등...
+        var msg = String(message.payload)
+        closet_status?.text = msg
+
+//        Log.d("mymqtt",msg)
     }
 }
