@@ -17,7 +17,8 @@ android {
         targetSdkVersion 31
         versionCode 1
         versionName "1.0"
-
+        // mypage 추가
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -61,4 +62,8 @@ dependencies {
     // 날씨
     implementation 'com.squareup.retrofit2:retrofit:2.8.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.8.0'
+
+    // Mypage - Graph
+    implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
+    implementation("androidx.multidex:multidex:2.0.1")
 }

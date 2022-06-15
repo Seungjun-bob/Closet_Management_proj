@@ -1,79 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="370dp"
+    android:layout_height="150dp"
+    android:layout_margin="20dp"
     android:orientation="vertical"
-    android:layout_margin="20dp">
+    android:background="@drawable/weather_background"
+    android:adjustViewBounds="true"
+    android:scaleType="fitCenter">
 
     <TextView
         android:id="@+id/tvTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:text="00시 날씨"
         android:textColor="@color/black"
-        android:textSize="24dp"
-        android:layout_marginBottom="10dp"/>
+        android:textSize="24dp" />
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="#ddeeff">
+        android:orientation="vertical">
+
         <TableRow>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingRight="30dp"
                 android:text="강수 형태"
-                android:textSize="20dp"
-                android:paddingRight="30dp"/>
+                android:textSize="20dp" />
+
             <TextView
                 android:id="@+id/tvRainType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:textSize="20dp"/>
+                android:textSize="20dp" />
         </TableRow>
+
         <TableRow>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingRight="30dp"
                 android:text="습도"
-                android:textSize="20dp"
-                android:paddingRight="30dp"/>
+                android:textSize="20dp" />
+
             <TextView
                 android:id="@+id/tvHumidity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:textSize="20dp"/>
+                android:textSize="20dp" />
         </TableRow>
+
         <TableRow>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingRight="30dp"
                 android:text="하늘 상태"
-                android:textSize="20dp"
-                android:paddingRight="30dp"/>
+                android:textSize="20dp" />
+
             <TextView
                 android:id="@+id/tvSky"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:textSize="20dp"/>
+                android:textSize="20dp" />
         </TableRow>
+
         <TableRow>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingRight="30dp"
                 android:text="기온"
-                android:textSize="20dp"
-                android:paddingRight="30dp"/>
+                android:textSize="20dp" />
+
             <TextView
                 android:id="@+id/tvTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:textSize="20dp"/>
+                android:textSize="20dp" />
         </TableRow>
     </TableLayout>
 
