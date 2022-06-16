@@ -1,11 +1,12 @@
 import pandas as pd
+from django.shortcuts import render
 
 def top_rcmd(request):
     Clothes = pd.read_csv('../dummydata/dummyClothes.csv', encoding='Utf-8', index_col=0)
     MyClothes = pd.read_csv('../dummydata/dummyMyClothes.csv', encoding='Utf-8', index_col=0)
     UserData = pd.read_csv('../dummydata/dummyUser.csv', encoding='Utf-8', index_col=0)
     df = pd.merge(UserData, MyClothes, left_on='ID', right_on='ID', how='left')
-    user_id = request
+    user_id = request.GET.get("id")
     dummy = df[df['ID'] == user_id]
     Clothes['MainCategory'] = ['bottom'
                                if s == 'jean'
@@ -39,15 +40,18 @@ def top_rcmd(request):
     my_max_category = sum(my_max_category, [])
     top_rcmd_clothes = top_clothes[top_clothes['category'] == my_max_category[0]].loc[:, ['clothes']]
     top_rcmd_img = top_clothes[top_clothes['category'] == my_max_category[0]].loc[:, ['img']]
-    print(top_rcmd_clothes)
-    print(top_rcmd_img)
+    context = {
+        'top_clothes' : top_rcmd_clothes,
+        'top_img' : top_rcmd_img
+    }
+    return render(request, 'test.html', context)
 
 def bottom_rcmd(request):
     Clothes = pd.read_csv('../dummydata/dummyClothes.csv', encoding='Utf-8', index_col=0)
     MyClothes = pd.read_csv('../dummydata/dummyMyClothes.csv', encoding='Utf-8', index_col=0)
     UserData = pd.read_csv('../dummydata/dummyUser.csv', encoding='Utf-8', index_col=0)
     df = pd.merge(UserData, MyClothes, left_on='ID', right_on='ID', how='left')
-    userid = request
+    userid = request.GET.get("id")
     dummy = df[df['ID'] == userid]
     Clothes['MainCategory'] = ['bottom'
                                if s == 'jean'
@@ -81,7 +85,26 @@ def bottom_rcmd(request):
     my_max_category = sum(my_max_category, [])
     bottom_rcmd_clothes = bottom_clothes[bottom_clothes['category'] == my_max_category[0]].loc[:, ['clothes']]
     bottom_rcmd_img = bottom_clothes[bottom_clothes['category'] == my_max_category[0]].loc[:, ['img']]
-    print(bottom_rcmd_clothes)
-    print(bottom_rcmd_img)
+    context = {
+        'bottom_clothes': bottom_rcmd_clothes,
+        'bottom_img': bottom_rcmd_img
+    }
+    return render(request, 'test.html', context)
 
-top_rcmd('dummy1')
+def compare(request):
+    MyClothes = pd.read_csv('../dummydata/dummyMyClothes.csv', encoding='Utf-8', index_col=0)
+    UserData = pd.read_csv('../dummydata/dummyUser.csv', encoding='Utf-8', index_col=0)
+    df = pd.merge(UserData, MyClothes, left_on='ID', right_on='ID', how='left')
+    userid = request.GET.get("id")
+    category = request.GET.get("category")
+    color = request.GET.get("color")
+    dummy = df[df['ID'] == userid]
+    compare_category = dummy[dummy['category'] == category and dummy['color'] == color].loc[:, ['category']]
+    compare_color = dummy[dummy['category'] == category and dummy['color'] == color].loc[:, ['color']]
+    compare_img = dummy[dummy['category'] == category and dummy['color'] == color].loc[:, ['img']]
+    context = {
+        'compare_category': compare_category,
+        'compare_color': compare_color,
+        'compare_img': compare_img
+    }
+    return render(request, 'test.html', context)
