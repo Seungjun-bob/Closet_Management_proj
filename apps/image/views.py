@@ -34,12 +34,20 @@ class UploadImage(CreateView):
                                    path=path_weightfile, source='local'  )
 
 
-            # 이미지 측정 갯수 옵션 (1개일 경우 한개만 측정 보통 2개로 세팅 , 사진이 1인 전신샷이라고 가정)
+            # 이미지 라벨 갯수 옵션 ( 보통 2개로 세팅 (상의,하의 ) , 사진이 1인 전신샷이라고 가정)
             model.max_det = 2
+
+            # 라벨링 된 옷 데이터만 따로 저장 기능
+
 
 
             results = model(img, size=640)
 
+            crops = results.crop(save=True)  # cropped detections dictionary
+            test01 = crops[0]
+            test02 = crops[1]
+
+            # 반환시 좌표로 넘파이 어레이로 반환 다시 이미지파일 변환 과정 필요
 
 
             # 추가 옷 종류만 json 파일로 표시 가능
@@ -61,6 +69,11 @@ class UploadImage(CreateView):
                 "form": form,
                 "inference_img": inference_img,
                 'cloths_type' : cloths_type,
+                'crop_01' : test01,
+                'crop_02': test02,
+
+
+
 
 
 
