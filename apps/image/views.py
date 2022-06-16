@@ -34,8 +34,12 @@ class UploadImage(CreateView):
                                    path=path_weightfile, source='local'  )
 
             results = model(img, size=640)
-            test01 = results.pandas().xyxy[0]
 
+
+
+            # 추가 옷 종류만 json 파일로 표시 가능
+            cloths_type = results.pandas().xyxy[0]['name'].to_json(orient='records')
+            #test = results.pandas().xyxy[0] (라벨데이터 전체 txt 출력)
 
             # Results
 
@@ -51,7 +55,8 @@ class UploadImage(CreateView):
             context = {
                 "form": form,
                 "inference_img": inference_img,
-                'test01' : test01
+                'cloths_type' : cloths_type,
+
 
 
 
