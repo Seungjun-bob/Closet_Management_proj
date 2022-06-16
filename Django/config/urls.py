@@ -21,6 +21,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("image.urls", namespace="image")),
+    path('recommend/', include('recommend.urls')),
 ]
 
 if settings.DEBUG:
