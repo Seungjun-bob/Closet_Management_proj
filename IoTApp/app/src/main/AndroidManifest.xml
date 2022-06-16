@@ -3,10 +3,13 @@
     package="com.example.smartcloset">
     <!-- 갤러리 권한 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 카메라 권한 -->
-    <uses-permission android:name="android.permission.CAMERA" /> <!-- 위치 권한 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 카메라 권한 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- 위치 권한 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 날씨 API 가져오기 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 날씨 API 가져오기 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -19,7 +22,6 @@
         android:theme="@style/Theme.SmartCloset"
         android:usesCleartextTraffic="true">
         <!-- mypage graph -->
-        android:name="androidx.multidex.MultiDexApplication"
         <activity android:name=".login.FirstLogin" />
         <activity
             android:name=".MainActivity"
@@ -34,9 +36,9 @@
         <activity android:name=".login.FindPw" />
         <activity android:name=".login.Register" />
         <activity android:name=".myPage.MyPage" />
-        <activity android:name=".myPage.MyPage_Edit"/>
+        <activity android:name=".myPage.MyPage_Edit" />
         <activity android:name=".add.AddClothes" />
-        <!--        mqtt 서비스 -->
+        <!-- mqtt 서비스 -->
         <service android:name="org.eclipse.paho.android.service.MqttService" />
 
         <provider
