@@ -1,11 +1,9 @@
 import pandas as pd
 
-Clothes = pd.read_csv('../dummydata/dummyClothes.csv', encoding='Utf-8')
-MyClothes = pd.read_csv('../dummydata/dummyMyClothes.csv', encoding='Utf-8')
-UserData = pd.read_csv('../dummydata/dummyUser.csv', encoding='Utf-8')
-todayInfo = pd.read_csv('../dummydata/dummyToday.csv', encoding='Utf-8')
-
 def top_rcmd(request):
+    Clothes = pd.read_csv('../dummydata/dummyClothes.csv', encoding='Utf-8', index_col=0)
+    MyClothes = pd.read_csv('../dummydata/dummyMyClothes.csv', encoding='Utf-8', index_col=0)
+    UserData = pd.read_csv('../dummydata/dummyUser.csv', encoding='Utf-8', index_col=0)
     df = pd.merge(UserData, MyClothes, left_on='ID', right_on='ID', how='left')
     user_id = request
     dummy = df[df['ID'] == user_id]
@@ -39,10 +37,15 @@ def top_rcmd(request):
     my_max_category = pd.DataFrame(my_max_category)
     my_max_category = my_max_category.reset_index().values.tolist()
     my_max_category = sum(my_max_category, [])
-    print(top_clothes[top_clothes['category'] == my_max_category[0]].loc[:, ['color', 'category', 'img']])
-
+    top_rcmd_clothes = top_clothes[top_clothes['category'] == my_max_category[0]].loc[:, ['clothes']]
+    top_rcmd_img = top_clothes[top_clothes['category'] == my_max_category[0]].loc[:, ['img']]
+    print(top_rcmd_clothes)
+    print(top_rcmd_img)
 
 def bottom_rcmd(request):
+    Clothes = pd.read_csv('../dummydata/dummyClothes.csv', encoding='Utf-8', index_col=0)
+    MyClothes = pd.read_csv('../dummydata/dummyMyClothes.csv', encoding='Utf-8', index_col=0)
+    UserData = pd.read_csv('../dummydata/dummyUser.csv', encoding='Utf-8', index_col=0)
     df = pd.merge(UserData, MyClothes, left_on='ID', right_on='ID', how='left')
     userid = request
     dummy = df[df['ID'] == userid]
@@ -76,6 +79,9 @@ def bottom_rcmd(request):
     my_max_category = pd.DataFrame(my_max_category)
     my_max_category = my_max_category.reset_index().values.tolist()
     my_max_category = sum(my_max_category, [])
-    print(bottom_clothes[bottom_clothes['category'] == my_max_category[0]].loc[:, ['color', 'category', 'img']])
+    bottom_rcmd_clothes = bottom_clothes[bottom_clothes['category'] == my_max_category[0]].loc[:, ['clothes']]
+    bottom_rcmd_img = bottom_clothes[bottom_clothes['category'] == my_max_category[0]].loc[:, ['img']]
+    print(bottom_rcmd_clothes)
+    print(bottom_rcmd_img)
 
-bottom_rcmd('dummy1')
+top_rcmd('dummy1')
