@@ -16,7 +16,7 @@
                 <form action="" enctype="multipart/form-data" id="imageUploadForm" method="post"> 
                     {% csrf_token %}
                     {{ form|crispy }}
-                    <button class="btn btn-outline-success" type="submit">Submit</button>
+                    <button class="btn btn-outline-success" type="submit">결과값 추론</button>
                 </form>
             </div>
         </div>
@@ -26,7 +26,10 @@
             {% else %}
                 The inferenced image will be displayed here.
             {% endif %}
-        </div>    
+        </div>
+    <textarea id="result_txt" , rows="5" , cols="25">
+        {{test01}}
+    </textarea>
     </div>
 {% endblock content %}
 
