@@ -1,1001 +1,1001 @@
-TodayID,ID,today,weather,temp,dust
-Today1,dummy80,2022-06-06,rain,16.8,37
-Today2,dummy85,2022-04-22,rain,20.7,23.9
-Today3,dummy37,2022-05-18,rain,27.8,119
-Today4,dummy44,2022-04-21,fog,21.6,19.5
-Today5,dummy94,2022-05-07,sun,26.9,54.3
-Today6,dummy30,2022-06-09,fog,17.3,103.8
-Today7,dummy37,2022-04-28,cloud,18.2,115.7
-Today8,dummy85,2022-05-15,cloud,24.6,40.7
-Today9,dummy75,2022-05-03,rain,21.5,91.1
-Today10,dummy32,2022-05-26,fog,29,85.7
-Today11,dummy74,2022-05-06,rain,25.6,70.8
-Today12,dummy45,2022-04-30,fog,16.1,86.3
-Today13,dummy16,2022-05-10,fog,17.3,25.5
-Today14,dummy53,2022-05-30,fog,18.3,41.4
-Today15,dummy48,2022-05-22,rain,21.2,88.2
-Today16,dummy80,2022-05-13,sun,18.6,101.5
-Today17,dummy26,2022-04-10,sun,27.3,99.3
-Today18,dummy28,2022-05-23,rain,21.1,56.6
-Today19,dummy28,2022-05-16,cloud,25,4.9
-Today20,dummy98,2022-05-16,sun,16.1,102.6
-Today21,dummy1,2022-04-18,fog,22.6,58.4
-Today22,dummy35,2022-05-30,cloud,29.3,46.8
-Today23,dummy6,2022-06-09,cloud,28.6,25.8
-Today24,dummy22,2022-05-19,rain,22.5,45.2
-Today25,dummy44,2022-05-27,rain,17.9,124.8
-Today26,dummy92,2022-06-05,rain,26.5,141.2
-Today27,dummy16,2022-05-16,rain,17.8,106.6
-Today28,dummy38,2022-05-10,sun,23.4,100.8
-Today29,dummy58,2022-04-10,fog,19.2,25.3
-Today30,dummy49,2022-04-09,fog,15.6,129.9
-Today31,dummy96,2022-06-08,rain,24.1,137.6
-Today32,dummy57,2022-04-07,cloud,16.3,40.5
-Today33,dummy85,2022-04-03,rain,22.5,26.8
-Today34,dummy18,2022-04-08,sun,26.3,69
-Today35,dummy18,2022-05-13,rain,22.1,54.3
-Today36,dummy36,2022-05-18,cloud,28.9,136.1
-Today37,dummy28,2022-06-03,sun,20.5,21.6
-Today38,dummy90,2022-05-30,cloud,24.3,89.7
-Today39,dummy24,2022-04-09,fog,28.4,114.8
-Today40,dummy91,2022-05-26,cloud,19.2,46.5
-Today41,dummy50,2022-04-28,sun,29.9,83
-Today42,dummy54,2022-04-10,fog,19.2,111.4
-Today43,dummy80,2022-05-27,rain,18.8,23.7
-Today44,dummy10,2022-05-06,fog,16.7,10.6
-Today45,dummy87,2022-05-19,cloud,15.7,7.5
-Today46,dummy19,2022-05-01,cloud,15.5,33.8
-Today47,dummy92,2022-04-03,sun,26.1,49.6
-Today48,dummy49,2022-05-03,sun,27.9,132.7
-Today49,dummy71,2022-05-06,sun,15.4,126.3
-Today50,dummy66,2022-04-17,fog,27.9,51
-Today51,dummy54,2022-05-10,cloud,25.2,38.3
-Today52,dummy96,2022-05-12,cloud,22.8,13.8
-Today53,dummy53,2022-05-12,rain,23.5,124.5
-Today54,dummy46,2022-06-05,rain,23.7,90.8
-Today55,dummy1,2022-04-28,cloud,23.8,63.3
-Today56,dummy53,2022-04-04,sun,19.5,108.6
-Today57,dummy51,2022-05-29,sun,23.2,144.3
-Today58,dummy84,2022-06-08,sun,25.9,70.1
-Today59,dummy65,2022-05-04,sun,19.5,9.7
-Today60,dummy57,2022-06-01,cloud,24.8,119.6
-Today61,dummy58,2022-04-21,sun,19.6,100.7
-Today62,dummy84,2022-04-20,sun,29.8,73.9
-Today63,dummy73,2022-04-07,fog,23.1,97
-Today64,dummy28,2022-05-09,rain,19.8,113.9
-Today65,dummy53,2022-05-05,cloud,16.3,57.2
-Today66,dummy67,2022-04-23,sun,23.8,116.6
-Today67,dummy16,2022-05-13,cloud,21.7,20.9
-Today68,dummy94,2022-05-18,cloud,26.7,93.5
-Today69,dummy93,2022-05-27,rain,29.7,106.4
-Today70,dummy58,2022-04-11,sun,24.8,112.5
-Today71,dummy79,2022-06-09,rain,20.2,5.3
-Today72,dummy9,2022-05-07,rain,24.4,7.2
-Today73,dummy23,2022-04-29,cloud,23.7,123.7
-Today74,dummy17,2022-05-10,sun,18.3,45
-Today75,dummy10,2022-05-26,fog,18.1,118.3
-Today76,dummy80,2022-06-08,sun,22.8,53.7
-Today77,dummy95,2022-05-25,fog,22.5,76.3
-Today78,dummy96,2022-04-29,sun,23.3,137.5
-Today79,dummy34,2022-04-09,cloud,24,74.3
-Today80,dummy55,2022-04-19,fog,21.4,79.8
-Today81,dummy48,2022-04-15,fog,28,96.4
-Today82,dummy95,2022-06-08,cloud,22.5,112
-Today83,dummy69,2022-04-06,fog,17.7,3.1
-Today84,dummy23,2022-04-27,rain,27,10.4
-Today85,dummy49,2022-05-27,rain,18.2,35.3
-Today86,dummy46,2022-04-18,sun,16.1,136.9
-Today87,dummy70,2022-05-20,sun,16.4,112.4
-Today88,dummy22,2022-06-08,rain,18.6,96.8
-Today89,dummy41,2022-04-23,sun,18,74.4
-Today90,dummy4,2022-04-24,sun,16.3,114.2
-Today91,dummy23,2022-05-13,sun,19,144.9
-Today92,dummy60,2022-05-29,rain,19.7,29.5
-Today93,dummy6,2022-04-08,cloud,20.9,149
-Today94,dummy57,2022-05-28,cloud,26.1,16.7
-Today95,dummy34,2022-04-03,rain,22.7,124.5
-Today96,dummy7,2022-06-07,sun,15.8,48.4
-Today97,dummy95,2022-05-06,fog,22.9,46.7
-Today98,dummy35,2022-04-23,cloud,26.1,63.6
-Today99,dummy78,2022-05-07,fog,29.2,90.3
-Today100,dummy26,2022-06-02,sun,28.5,73
-Today101,dummy80,2022-05-21,rain,23.4,149.3
-Today102,dummy86,2022-05-22,fog,19,120.8
-Today103,dummy42,2022-04-22,fog,20.6,61
-Today104,dummy44,2022-05-04,fog,24.6,108.8
-Today105,dummy26,2022-04-05,sun,19.1,110
-Today106,dummy65,2022-04-30,fog,18.4,19.1
-Today107,dummy70,2022-05-24,fog,18.4,94
-Today108,dummy48,2022-06-05,fog,27.2,44.3
-Today109,dummy81,2022-05-21,sun,27.4,41.4
-Today110,dummy94,2022-04-10,rain,20.8,135.2
-Today111,dummy38,2022-04-13,cloud,26.7,147.5
-Today112,dummy38,2022-06-05,sun,28,109.6
-Today113,dummy43,2022-04-26,fog,18.2,40.1
-Today114,dummy47,2022-04-20,rain,17.5,8
-Today115,dummy86,2022-04-20,sun,26,134.8
-Today116,dummy41,2022-05-18,cloud,15.4,57.4
-Today117,dummy34,2022-05-06,cloud,27.7,26.8
-Today118,dummy56,2022-04-28,sun,25.7,83
-Today119,dummy59,2022-04-16,cloud,28.7,103.7
-Today120,dummy54,2022-06-09,sun,29.2,94.8
-Today121,dummy67,2022-05-10,cloud,25.3,24.8
-Today122,dummy23,2022-04-09,fog,29.8,50.7
-Today123,dummy27,2022-04-17,cloud,27.7,98.9
-Today124,dummy28,2022-04-26,fog,24.5,105.3
-Today125,dummy64,2022-05-23,fog,24.5,51.4
-Today126,dummy7,2022-06-09,sun,17.7,91.8
-Today127,dummy25,2022-04-05,sun,25.6,48.8
-Today128,dummy86,2022-05-31,sun,20.6,113.7
-Today129,dummy17,2022-05-10,sun,22.5,40
-Today130,dummy57,2022-05-15,sun,19.2,69.2
-Today131,dummy5,2022-04-30,cloud,25.7,104.2
-Today132,dummy83,2022-06-03,rain,16.7,55.5
-Today133,dummy77,2022-04-11,fog,16,52.2
-Today134,dummy75,2022-04-09,sun,20,24.7
-Today135,dummy89,2022-05-31,cloud,15.3,73.6
-Today136,dummy15,2022-06-08,sun,24.6,134.3
-Today137,dummy77,2022-05-11,fog,19.5,53.9
-Today138,dummy65,2022-04-05,sun,29.3,36.3
-Today139,dummy25,2022-04-26,sun,26.7,30
-Today140,dummy65,2022-05-09,sun,22.1,142.3
-Today141,dummy51,2022-04-08,rain,23.9,107.3
-Today142,dummy8,2022-05-21,sun,23.6,136.4
-Today143,dummy48,2022-05-17,sun,27.6,28.8
-Today144,dummy81,2022-04-05,rain,25.8,2
-Today145,dummy46,2022-05-13,rain,28.7,134.7
-Today146,dummy83,2022-05-07,rain,22.6,116.7
-Today147,dummy72,2022-04-03,cloud,16.7,71.9
-Today148,dummy88,2022-05-21,rain,22.7,84.3
-Today149,dummy74,2022-05-25,cloud,29.9,69.3
-Today150,dummy13,2022-05-19,cloud,20,144.6
-Today151,dummy6,2022-04-19,sun,26.2,99.9
-Today152,dummy57,2022-06-03,cloud,16.2,136.2
-Today153,dummy78,2022-04-24,fog,16.3,94.3
-Today154,dummy11,2022-05-11,cloud,20.6,1.6
-Today155,dummy63,2022-04-22,sun,25.5,138.2
-Today156,dummy27,2022-04-14,sun,15.6,132.2
-Today157,dummy13,2022-04-11,cloud,20,59
-Today158,dummy7,2022-05-22,rain,21.5,51
-Today159,dummy10,2022-06-04,cloud,27.9,144.4
-Today160,dummy67,2022-05-23,fog,29.8,17.5
-Today161,dummy99,2022-05-01,rain,23,116.3
-Today162,dummy81,2022-05-24,sun,23.1,132.3
-Today163,dummy28,2022-04-05,rain,23.9,54.6
-Today164,dummy97,2022-04-08,cloud,21.5,128.2
-Today165,dummy73,2022-05-19,rain,21.9,64.4
-Today166,dummy9,2022-04-17,cloud,21.3,104.7
-Today167,dummy36,2022-04-18,fog,27.2,103
-Today168,dummy87,2022-04-24,fog,24,18.1
-Today169,dummy74,2022-05-20,rain,27,96.1
-Today170,dummy18,2022-05-14,rain,29,111
-Today171,dummy43,2022-05-27,rain,26.2,26.6
-Today172,dummy9,2022-06-10,sun,22.6,31.4
-Today173,dummy71,2022-04-27,fog,17.4,102.9
-Today174,dummy75,2022-06-09,rain,23.5,30
-Today175,dummy35,2022-04-15,rain,22.1,70
-Today176,dummy75,2022-05-19,sun,24.8,28.5
-Today177,dummy72,2022-05-25,rain,23.5,57.4
-Today178,dummy36,2022-04-08,cloud,24.2,72.2
-Today179,dummy96,2022-04-17,rain,16.7,6.5
-Today180,dummy34,2022-05-06,fog,21.7,14.3
-Today181,dummy51,2022-05-15,rain,22.7,68.4
-Today182,dummy19,2022-05-27,sun,19.2,21.6
-Today183,dummy77,2022-04-15,fog,27.1,46
-Today184,dummy3,2022-05-02,fog,25.1,113.5
-Today185,dummy26,2022-05-18,cloud,24.7,48.1
-Today186,dummy6,2022-05-27,cloud,20.8,60.8
-Today187,dummy3,2022-05-01,cloud,25.8,50.8
-Today188,dummy3,2022-04-18,rain,21.9,45.7
-Today189,dummy54,2022-05-09,sun,15.5,31.7
-Today190,dummy71,2022-05-07,sun,19.2,54.2
-Today191,dummy97,2022-06-08,sun,24.6,66.1
-Today192,dummy23,2022-06-06,fog,24.6,115.2
-Today193,dummy69,2022-05-15,fog,18.2,72.8
-Today194,dummy100,2022-04-20,fog,29.3,38.2
-Today195,dummy62,2022-04-07,cloud,16.7,11.9
-Today196,dummy36,2022-05-06,fog,22.8,142.8
-Today197,dummy80,2022-05-23,rain,25.4,81.6
-Today198,dummy67,2022-04-08,sun,17.4,114.9
-Today199,dummy98,2022-04-10,fog,28,112.4
-Today200,dummy96,2022-04-27,rain,25.5,20.4
-Today201,dummy100,2022-06-06,cloud,22.9,62.5
-Today202,dummy6,2022-05-24,fog,24.1,9.1
-Today203,dummy70,2022-04-22,sun,18.8,35.3
-Today204,dummy41,2022-05-24,rain,29.6,2.2
-Today205,dummy43,2022-05-04,sun,24,146
-Today206,dummy50,2022-05-02,rain,17.4,121.2
-Today207,dummy55,2022-05-01,rain,22.4,78.8
-Today208,dummy7,2022-05-23,fog,21.3,114.3
-Today209,dummy26,2022-04-17,cloud,15.9,10.1
-Today210,dummy28,2022-05-29,sun,18.6,114.4
-Today211,dummy4,2022-05-21,fog,15,6.3
-Today212,dummy45,2022-05-14,sun,29.4,146.3
-Today213,dummy54,2022-05-03,cloud,22.4,36.1
-Today214,dummy94,2022-06-08,sun,20.5,105.3
-Today215,dummy58,2022-04-26,cloud,22.3,34.8
-Today216,dummy90,2022-05-08,cloud,23.4,0.9
-Today217,dummy45,2022-05-26,rain,15.9,46.4
-Today218,dummy94,2022-04-01,cloud,27.6,80.9
-Today219,dummy43,2022-06-06,sun,22.1,80.8
-Today220,dummy52,2022-05-23,cloud,20.4,2.7
-Today221,dummy82,2022-04-21,cloud,15.9,121.2
-Today222,dummy72,2022-05-20,cloud,21.4,131.8
-Today223,dummy34,2022-05-10,rain,29.7,60.6
-Today224,dummy80,2022-04-28,rain,17.6,96.4
-Today225,dummy28,2022-04-23,rain,27.4,107.7
-Today226,dummy25,2022-05-09,rain,18,131.5
-Today227,dummy97,2022-05-10,cloud,25.7,71.5
-Today228,dummy12,2022-04-18,fog,22.1,26.1
-Today229,dummy38,2022-05-28,cloud,16.5,57.9
-Today230,dummy56,2022-04-13,sun,19,56.8
-Today231,dummy47,2022-05-02,cloud,26.7,106.2
-Today232,dummy29,2022-05-23,cloud,16.2,141
-Today233,dummy3,2022-04-15,cloud,19.7,27.4
-Today234,dummy14,2022-04-08,rain,23.8,8.8
-Today235,dummy94,2022-04-25,rain,23.7,41.7
-Today236,dummy68,2022-05-18,sun,19.3,80.3
-Today237,dummy70,2022-05-08,fog,26.5,50.1
-Today238,dummy55,2022-04-06,sun,27.9,149.9
-Today239,dummy35,2022-05-20,fog,27.5,90.2
-Today240,dummy66,2022-05-21,rain,24.6,89
-Today241,dummy89,2022-04-02,fog,27.1,104.6
-Today242,dummy9,2022-04-09,rain,22.8,18.2
-Today243,dummy79,2022-06-06,cloud,16.4,45.4
-Today244,dummy10,2022-04-17,sun,25.3,83.9
-Today245,dummy95,2022-06-08,fog,27.7,114.7
-Today246,dummy53,2022-05-28,fog,29.9,74.1
-Today247,dummy83,2022-06-06,fog,24.8,49.4
-Today248,dummy81,2022-05-12,fog,29.7,114.5
-Today249,dummy98,2022-05-02,rain,25.2,103.4
-Today250,dummy55,2022-04-10,cloud,19,30.7
-Today251,dummy47,2022-04-05,cloud,18.4,82.3
-Today252,dummy82,2022-04-21,fog,17.3,5
-Today253,dummy29,2022-05-15,rain,29,139.9
-Today254,dummy57,2022-04-23,sun,17.4,96
-Today255,dummy83,2022-04-30,rain,18.7,68.2
-Today256,dummy97,2022-04-09,sun,23,38.4
-Today257,dummy37,2022-04-02,fog,21.2,73
-Today258,dummy41,2022-04-01,sun,19.3,5.5
-Today259,dummy9,2022-04-23,fog,29.6,88.6
-Today260,dummy59,2022-05-13,fog,29.9,55.2
-Today261,dummy88,2022-05-16,fog,20.9,126.8
-Today262,dummy50,2022-04-12,rain,23.8,112.4
-Today263,dummy56,2022-04-13,fog,27.8,91.3
-Today264,dummy97,2022-06-09,fog,15.2,149.2
-Today265,dummy95,2022-05-28,fog,19.7,141.4
-Today266,dummy95,2022-04-03,sun,25.9,9.4
-Today267,dummy7,2022-06-08,cloud,18.6,22.1
-Today268,dummy32,2022-05-31,sun,20.3,27.4
-Today269,dummy79,2022-05-07,sun,22,49.9
-Today270,dummy64,2022-05-03,sun,29.2,96.7
-Today271,dummy86,2022-04-01,sun,22.8,11.5
-Today272,dummy12,2022-05-17,rain,24.3,86.7
-Today273,dummy2,2022-05-30,rain,24,123.2
-Today274,dummy82,2022-05-07,sun,19.8,110.4
-Today275,dummy98,2022-04-28,cloud,26.6,79.7
-Today276,dummy49,2022-04-11,sun,23.6,55.9
-Today277,dummy91,2022-05-20,cloud,23.3,129.4
-Today278,dummy46,2022-04-01,rain,18.9,147
-Today279,dummy3,2022-05-15,rain,25.1,1.9
-Today280,dummy62,2022-05-17,cloud,28.4,63.8
-Today281,dummy58,2022-05-23,rain,17.6,35.4
-Today282,dummy96,2022-04-10,fog,27.9,11.6
-Today283,dummy91,2022-05-26,fog,15.4,78.8
-Today284,dummy88,2022-05-17,sun,25.7,149.8
-Today285,dummy21,2022-05-31,sun,15.5,64.7
-Today286,dummy99,2022-05-03,fog,21.2,121.8
-Today287,dummy99,2022-06-02,sun,18.2,54.3
-Today288,dummy60,2022-05-27,rain,26.9,98.6
-Today289,dummy95,2022-05-22,cloud,26.6,91.9
-Today290,dummy18,2022-04-28,fog,18.5,11.1
-Today291,dummy31,2022-05-13,sun,27,56.3
-Today292,dummy4,2022-05-13,fog,26.8,84.1
-Today293,dummy39,2022-05-15,sun,16.3,40.4
-Today294,dummy11,2022-04-14,rain,20.7,37.5
-Today295,dummy7,2022-05-15,cloud,27.7,54.9
-Today296,dummy53,2022-05-15,cloud,18.9,66.7
-Today297,dummy37,2022-06-05,fog,17.7,14.7
-Today298,dummy40,2022-05-15,cloud,17.7,29.3
-Today299,dummy40,2022-05-27,sun,22.1,135.9
-Today300,dummy34,2022-04-30,rain,28.4,106.1
-Today301,dummy90,2022-05-27,sun,21.9,145.9
-Today302,dummy77,2022-05-03,sun,25.8,147.1
-Today303,dummy27,2022-05-27,rain,19.6,34.6
-Today304,dummy66,2022-05-12,cloud,29.4,54.6
-Today305,dummy90,2022-05-24,sun,19.3,57
-Today306,dummy67,2022-05-01,cloud,20.7,36.6
-Today307,dummy97,2022-05-21,rain,25.1,101.4
-Today308,dummy67,2022-04-21,fog,25.3,88.7
-Today309,dummy58,2022-04-29,sun,16.7,93.3
-Today310,dummy20,2022-04-10,sun,22.3,3.2
-Today311,dummy7,2022-05-08,fog,22.8,15.8
-Today312,dummy40,2022-04-15,fog,28,132.6
-Today313,dummy25,2022-05-01,cloud,19.1,148.7
-Today314,dummy45,2022-04-30,fog,17.1,95.6
-Today315,dummy73,2022-04-07,rain,22.4,128
-Today316,dummy83,2022-04-13,cloud,18.8,20.1
-Today317,dummy46,2022-06-01,sun,17,2.6
-Today318,dummy3,2022-05-01,rain,21.1,64
-Today319,dummy51,2022-04-03,sun,29.5,41.4
-Today320,dummy26,2022-04-25,cloud,22.6,58.1
-Today321,dummy16,2022-04-30,fog,24.2,51.4
-Today322,dummy4,2022-05-23,rain,15.9,41.6
-Today323,dummy73,2022-04-10,cloud,23.4,86.8
-Today324,dummy55,2022-05-12,rain,24.2,14
-Today325,dummy71,2022-04-05,fog,29.2,82.6
-Today326,dummy49,2022-05-10,cloud,26.4,142.7
-Today327,dummy46,2022-06-02,sun,19.2,67.8
-Today328,dummy68,2022-04-03,rain,24,93.3
-Today329,dummy95,2022-04-25,sun,27.3,102.1
-Today330,dummy77,2022-04-27,rain,19.6,37.5
-Today331,dummy3,2022-05-09,cloud,22.1,57
-Today332,dummy6,2022-05-08,rain,16.4,22.7
-Today333,dummy1,2022-06-04,rain,24.6,96.6
-Today334,dummy25,2022-05-26,cloud,27.9,16.4
-Today335,dummy18,2022-05-03,fog,23.2,35.5
-Today336,dummy79,2022-04-23,fog,15.1,25.9
-Today337,dummy69,2022-04-20,rain,17,47.1
-Today338,dummy82,2022-04-04,cloud,23.3,31.9
-Today339,dummy34,2022-04-15,fog,21.5,37.2
-Today340,dummy18,2022-04-17,rain,26.2,4.2
-Today341,dummy39,2022-05-08,cloud,28,32
-Today342,dummy91,2022-04-13,sun,18,87.5
-Today343,dummy5,2022-04-16,cloud,25.7,145.9
-Today344,dummy63,2022-05-26,rain,18.5,125
-Today345,dummy30,2022-04-13,rain,23.6,128.7
-Today346,dummy28,2022-05-02,fog,22.2,95.5
-Today347,dummy61,2022-05-04,fog,28.9,25.6
-Today348,dummy44,2022-04-24,fog,29.5,30
-Today349,dummy97,2022-05-04,sun,22.7,140.6
-Today350,dummy50,2022-05-22,rain,20.7,27.3
-Today351,dummy50,2022-04-18,rain,17.7,6.5
-Today352,dummy11,2022-04-11,cloud,19.9,11.9
-Today353,dummy3,2022-05-20,fog,28.4,73.1
-Today354,dummy51,2022-04-08,cloud,25.7,1.6
-Today355,dummy20,2022-06-08,rain,21.8,62.8
-Today356,dummy13,2022-04-18,rain,25.7,142.6
-Today357,dummy20,2022-04-22,fog,18.1,114.1
-Today358,dummy52,2022-04-24,fog,25,0.9
-Today359,dummy64,2022-05-14,sun,29,39.9
-Today360,dummy58,2022-04-15,rain,19.4,10.9
-Today361,dummy42,2022-05-03,fog,19.4,146.8
-Today362,dummy84,2022-04-19,rain,28.1,13.3
-Today363,dummy38,2022-06-09,fog,25.7,111.3
-Today364,dummy63,2022-04-24,rain,30,38.8
-Today365,dummy11,2022-05-23,rain,15.2,83.4
-Today366,dummy47,2022-04-29,cloud,16.7,122.6
-Today367,dummy90,2022-04-20,sun,15.9,40.6
-Today368,dummy3,2022-04-25,rain,25,34.4
-Today369,dummy59,2022-05-31,fog,21,147.8
-Today370,dummy97,2022-04-06,cloud,15.6,51.3
-Today371,dummy97,2022-05-27,fog,22.5,42.6
-Today372,dummy49,2022-04-16,sun,24.5,10.8
-Today373,dummy16,2022-06-09,rain,15.3,68.6
-Today374,dummy60,2022-05-18,fog,27.9,107.5
-Today375,dummy85,2022-05-15,sun,21.2,7
-Today376,dummy32,2022-05-06,rain,21.4,38.8
-Today377,dummy92,2022-04-06,fog,21.5,117.6
-Today378,dummy11,2022-04-09,sun,21.7,126.1
-Today379,dummy14,2022-06-06,cloud,28.5,85.5
-Today380,dummy80,2022-04-24,rain,29.9,141.4
-Today381,dummy37,2022-05-21,fog,15.4,18.9
-Today382,dummy41,2022-04-23,rain,18.7,129.2
-Today383,dummy81,2022-04-16,cloud,24.6,113.1
-Today384,dummy63,2022-04-18,cloud,22.3,57.2
-Today385,dummy99,2022-05-23,rain,26.6,109.5
-Today386,dummy98,2022-04-11,cloud,27.6,145.3
-Today387,dummy38,2022-05-05,sun,26.8,14
-Today388,dummy3,2022-04-06,cloud,26.6,98.4
-Today389,dummy96,2022-05-26,cloud,17.2,64.1
-Today390,dummy28,2022-05-30,rain,15.2,99.9
-Today391,dummy99,2022-04-23,sun,29,96
-Today392,dummy15,2022-05-26,rain,28.8,122.2
-Today393,dummy66,2022-05-26,fog,22.7,87.7
-Today394,dummy71,2022-05-28,rain,24.1,43.1
-Today395,dummy56,2022-04-04,cloud,17.9,127.7
-Today396,dummy85,2022-06-02,fog,15.3,1.3
-Today397,dummy79,2022-04-23,fog,21.5,149.6
-Today398,dummy96,2022-05-14,rain,15.9,16.2
-Today399,dummy67,2022-04-17,sun,23.1,114.6
-Today400,dummy60,2022-04-08,cloud,19.1,40.2
-Today401,dummy81,2022-04-12,cloud,27,57.6
-Today402,dummy21,2022-04-24,rain,24,89.9
-Today403,dummy81,2022-05-11,fog,20.9,96.5
-Today404,dummy91,2022-04-11,cloud,22,49.2
-Today405,dummy60,2022-04-20,rain,15.8,68.1
-Today406,dummy77,2022-05-26,rain,16.8,49.8
-Today407,dummy25,2022-04-24,cloud,20.6,33.4
-Today408,dummy11,2022-04-09,rain,24.7,100.8
-Today409,dummy46,2022-06-07,fog,23.3,16.2
-Today410,dummy23,2022-04-14,cloud,30,66.3
-Today411,dummy19,2022-05-13,cloud,22.9,90.5
-Today412,dummy40,2022-05-14,rain,16.6,144.6
-Today413,dummy26,2022-04-10,fog,23.3,76.9
-Today414,dummy21,2022-04-16,sun,18.8,137.4
-Today415,dummy69,2022-05-28,fog,26.7,21.2
-Today416,dummy61,2022-05-05,fog,22.9,15.3
-Today417,dummy84,2022-04-03,sun,15.9,16.3
-Today418,dummy59,2022-04-16,sun,20.8,138.5
-Today419,dummy60,2022-05-03,cloud,24.8,34.9
-Today420,dummy100,2022-04-08,cloud,26.8,59.6
-Today421,dummy36,2022-05-23,cloud,30,42.6
-Today422,dummy60,2022-04-16,fog,15.6,26.2
-Today423,dummy84,2022-04-22,sun,17.1,70.5
-Today424,dummy67,2022-04-28,rain,19.9,100.8
-Today425,dummy16,2022-05-24,rain,17.7,1
-Today426,dummy89,2022-05-26,rain,22.1,145.7
-Today427,dummy36,2022-04-21,fog,16.8,26.2
-Today428,dummy36,2022-04-23,fog,26.8,117.4
-Today429,dummy73,2022-04-22,sun,17.6,92.7
-Today430,dummy16,2022-05-20,cloud,21.1,108.6
-Today431,dummy48,2022-05-28,sun,15.2,58.4
-Today432,dummy45,2022-05-12,fog,25.1,57.1
-Today433,dummy28,2022-04-06,fog,19.1,44.7
-Today434,dummy50,2022-04-04,fog,21.4,102.8
-Today435,dummy65,2022-04-29,cloud,21.9,72.8
-Today436,dummy40,2022-05-26,sun,25.5,37.4
-Today437,dummy20,2022-04-01,sun,22.4,142.6
-Today438,dummy83,2022-05-11,fog,15.5,69.6
-Today439,dummy7,2022-05-21,rain,27.1,50.8
-Today440,dummy46,2022-06-01,rain,28.8,137.3
-Today441,dummy31,2022-05-17,cloud,24.2,36.9
-Today442,dummy72,2022-05-08,fog,23.8,21.1
-Today443,dummy48,2022-06-02,sun,18.6,146.2
-Today444,dummy41,2022-05-15,fog,23.5,106.4
-Today445,dummy22,2022-04-08,sun,21.6,93.8
-Today446,dummy39,2022-05-10,rain,17.8,135.5
-Today447,dummy94,2022-05-09,cloud,27.8,67.9
-Today448,dummy68,2022-05-13,sun,22.3,118.4
-Today449,dummy48,2022-06-04,fog,16.2,60.9
-Today450,dummy18,2022-05-21,sun,24.7,10.5
-Today451,dummy69,2022-04-19,sun,28.1,112.9
-Today452,dummy65,2022-05-25,cloud,25.6,136.5
-Today453,dummy85,2022-04-19,fog,25.6,106.3
-Today454,dummy3,2022-05-15,fog,16.5,15.8
-Today455,dummy83,2022-05-26,sun,27.1,90.9
-Today456,dummy7,2022-05-04,sun,22,74.7
-Today457,dummy42,2022-04-21,cloud,22.3,119.9
-Today458,dummy21,2022-04-18,fog,19.1,29.6
-Today459,dummy49,2022-04-06,sun,26.1,140.7
-Today460,dummy79,2022-04-04,fog,25.8,90.2
-Today461,dummy38,2022-04-26,rain,21.8,49
-Today462,dummy38,2022-04-18,cloud,18.6,37.3
-Today463,dummy40,2022-04-21,fog,23.3,30.9
-Today464,dummy66,2022-05-04,sun,23.4,115.9
-Today465,dummy85,2022-06-07,rain,19.9,106.6
-Today466,dummy8,2022-06-02,rain,16.6,111.1
-Today467,dummy75,2022-04-26,cloud,26.1,32.3
-Today468,dummy14,2022-04-05,fog,16.3,38.9
-Today469,dummy25,2022-05-21,fog,18.8,99.6
-Today470,dummy16,2022-05-31,sun,28.1,65
-Today471,dummy38,2022-05-06,fog,17.7,94.7
-Today472,dummy54,2022-04-12,fog,22.8,85.3
-Today473,dummy22,2022-04-01,cloud,20.7,124.5
-Today474,dummy51,2022-04-07,rain,23.3,26
-Today475,dummy48,2022-04-10,sun,26.6,112
-Today476,dummy29,2022-05-07,cloud,18.1,10.4
-Today477,dummy40,2022-05-11,cloud,21.3,13
-Today478,dummy24,2022-05-25,sun,28,55.8
-Today479,dummy32,2022-05-16,rain,25.1,66.9
-Today480,dummy80,2022-05-28,cloud,15.5,94.5
-Today481,dummy45,2022-04-21,cloud,21.8,138.6
-Today482,dummy8,2022-05-12,cloud,21.3,66.5
-Today483,dummy8,2022-05-14,fog,23.6,39.9
-Today484,dummy17,2022-04-07,fog,29.3,12.7
-Today485,dummy63,2022-04-30,fog,21.5,44.1
-Today486,dummy51,2022-04-25,rain,15,51.7
-Today487,dummy93,2022-04-10,fog,24.3,7
-Today488,dummy92,2022-05-13,fog,20.6,43.5
-Today489,dummy1,2022-05-20,cloud,18.7,80.9
-Today490,dummy43,2022-05-12,rain,27.6,112.6
-Today491,dummy88,2022-04-15,cloud,29,36.2
-Today492,dummy21,2022-06-03,fog,25.8,4.4
-Today493,dummy17,2022-05-12,rain,18,77.4
-Today494,dummy76,2022-04-03,fog,16,105.3
-Today495,dummy60,2022-04-14,rain,17.1,99.6
-Today496,dummy30,2022-05-09,rain,23,127
-Today497,dummy18,2022-05-17,rain,28.5,111.2
-Today498,dummy91,2022-04-03,rain,15.3,120.4
-Today499,dummy16,2022-06-02,fog,24.3,116.8
-Today500,dummy43,2022-04-04,sun,19,146.4
-Today501,dummy36,2022-05-18,fog,20.4,118.2
-Today502,dummy47,2022-04-27,sun,17.7,107.4
-Today503,dummy86,2022-04-20,fog,15.2,6.9
-Today504,dummy82,2022-04-20,fog,23,14.3
-Today505,dummy8,2022-04-23,fog,21.4,31.9
-Today506,dummy81,2022-04-05,cloud,19.9,56.5
-Today507,dummy79,2022-06-02,fog,23.5,90.1
-Today508,dummy81,2022-05-14,sun,25,94.4
-Today509,dummy77,2022-05-24,cloud,17,137.3
-Today510,dummy17,2022-04-15,sun,28.7,23
-Today511,dummy89,2022-06-01,fog,17.3,24.7
-Today512,dummy22,2022-05-06,fog,24.6,38
-Today513,dummy32,2022-04-04,cloud,22.7,50.3
-Today514,dummy41,2022-05-30,sun,24.2,21.1
-Today515,dummy5,2022-06-02,fog,29.7,16.8
-Today516,dummy79,2022-05-02,cloud,28.7,34
-Today517,dummy50,2022-06-07,rain,24.3,19.7
-Today518,dummy65,2022-05-13,rain,22.3,50.3
-Today519,dummy77,2022-04-15,cloud,18.3,16.9
-Today520,dummy66,2022-04-20,fog,28.2,124.9
-Today521,dummy7,2022-05-25,cloud,23.9,47.6
-Today522,dummy73,2022-05-30,rain,29.8,23
-Today523,dummy51,2022-05-06,rain,20,42.5
-Today524,dummy100,2022-05-06,cloud,22.8,107.3
-Today525,dummy64,2022-05-17,cloud,30,19.2
-Today526,dummy89,2022-04-25,fog,23.3,135.2
-Today527,dummy84,2022-05-17,sun,20.5,107.1
-Today528,dummy4,2022-06-05,rain,29.9,67
-Today529,dummy31,2022-06-01,fog,20.1,57.8
-Today530,dummy42,2022-04-23,sun,17.8,52.9
-Today531,dummy35,2022-04-16,sun,24.9,90
-Today532,dummy70,2022-06-01,rain,17.5,1.2
-Today533,dummy72,2022-04-28,sun,25.4,22.2
-Today534,dummy6,2022-05-21,fog,25.6,31.9
-Today535,dummy45,2022-05-12,cloud,15.5,102.6
-Today536,dummy46,2022-05-02,sun,28.9,4.6
-Today537,dummy48,2022-05-23,sun,20.1,146.6
-Today538,dummy4,2022-04-12,rain,20.2,133.7
-Today539,dummy44,2022-06-02,cloud,27.7,141.7
-Today540,dummy15,2022-05-12,rain,23.3,84.5
-Today541,dummy56,2022-06-08,sun,19.6,46.1
-Today542,dummy27,2022-05-16,sun,26.9,4
-Today543,dummy22,2022-05-19,rain,15.8,40
-Today544,dummy52,2022-05-03,sun,21.3,13.9
-Today545,dummy53,2022-04-07,rain,18.9,95
-Today546,dummy82,2022-04-21,sun,15,69.5
-Today547,dummy22,2022-05-16,sun,17.8,62.5
-Today548,dummy84,2022-04-24,sun,17.7,36.5
-Today549,dummy90,2022-04-08,rain,28.3,144.8
-Today550,dummy56,2022-04-30,cloud,19.3,137.8
-Today551,dummy1,2022-04-10,rain,18.2,24.7
-Today552,dummy8,2022-05-13,cloud,29.4,105
-Today553,dummy14,2022-06-09,fog,15.3,116.6
-Today554,dummy86,2022-05-16,fog,21.6,75
-Today555,dummy100,2022-05-11,sun,27,144.8
-Today556,dummy34,2022-05-16,rain,17.1,47.5
-Today557,dummy59,2022-04-11,rain,29.1,139.8
-Today558,dummy70,2022-06-08,rain,17.7,18.2
-Today559,dummy52,2022-05-02,fog,16,22.2
-Today560,dummy55,2022-05-26,rain,24.4,56.2
-Today561,dummy7,2022-04-11,sun,15.6,131.6
-Today562,dummy99,2022-06-01,fog,18.3,142.5
-Today563,dummy70,2022-04-10,sun,18.6,13.7
-Today564,dummy35,2022-05-17,fog,28.2,43.1
-Today565,dummy44,2022-04-29,rain,20.2,65.7
-Today566,dummy80,2022-04-22,cloud,18.4,25
-Today567,dummy58,2022-05-10,sun,24.5,131.3
-Today568,dummy40,2022-06-01,cloud,16.4,31.5
-Today569,dummy20,2022-05-25,fog,15,116
-Today570,dummy32,2022-06-01,fog,29.7,51.4
-Today571,dummy72,2022-04-04,sun,25.9,4.2
-Today572,dummy65,2022-04-07,sun,22.7,142.1
-Today573,dummy72,2022-04-16,sun,16.8,24.1
-Today574,dummy18,2022-05-18,rain,18.2,24.1
-Today575,dummy44,2022-04-11,cloud,23.1,84.8
-Today576,dummy75,2022-04-01,rain,15.1,121.5
-Today577,dummy6,2022-04-10,rain,19.3,104.9
-Today578,dummy65,2022-04-23,fog,18.1,70.8
-Today579,dummy48,2022-05-31,cloud,17.9,34
-Today580,dummy75,2022-05-15,sun,26.7,24.3
-Today581,dummy71,2022-05-06,sun,16.3,94
-Today582,dummy93,2022-05-20,rain,27.6,68.3
-Today583,dummy4,2022-04-11,sun,21.8,92.5
-Today584,dummy69,2022-06-07,rain,19.2,96.4
-Today585,dummy56,2022-06-01,rain,21.4,71.8
-Today586,dummy13,2022-05-19,cloud,23.1,2
-Today587,dummy68,2022-04-08,rain,25.8,24.7
-Today588,dummy21,2022-05-19,rain,15.5,99.3
-Today589,dummy44,2022-04-12,cloud,18.1,116.7
-Today590,dummy12,2022-06-10,cloud,29.7,79
-Today591,dummy73,2022-04-14,cloud,20.2,109.9
-Today592,dummy18,2022-05-17,fog,28.3,129.7
-Today593,dummy84,2022-04-18,sun,29.7,101
-Today594,dummy76,2022-04-02,fog,22.9,32.2
-Today595,dummy15,2022-05-13,cloud,29.9,128
-Today596,dummy49,2022-04-18,sun,18.6,137.3
-Today597,dummy78,2022-06-08,rain,25.4,4.9
-Today598,dummy8,2022-05-22,cloud,19.6,73.7
-Today599,dummy91,2022-05-04,fog,17.8,90.2
-Today600,dummy28,2022-04-01,rain,16.5,125.7
-Today601,dummy12,2022-04-09,sun,21.8,39.6
-Today602,dummy39,2022-05-26,sun,21,16.5
-Today603,dummy63,2022-04-30,cloud,25.1,142.3
-Today604,dummy47,2022-04-16,sun,21.4,124.4
-Today605,dummy56,2022-04-12,rain,25.9,125.6
-Today606,dummy49,2022-05-07,sun,20.7,13.6
-Today607,dummy97,2022-06-03,cloud,25.3,52.8
-Today608,dummy71,2022-05-23,fog,25.4,42.2
-Today609,dummy74,2022-05-17,cloud,25.9,41.8
-Today610,dummy31,2022-04-08,cloud,20,26.8
-Today611,dummy46,2022-04-29,cloud,24.5,135.5
-Today612,dummy74,2022-06-08,rain,25.3,71.4
-Today613,dummy76,2022-06-02,fog,15.6,98.1
-Today614,dummy85,2022-05-10,fog,21.4,150
-Today615,dummy17,2022-05-02,fog,22.1,19.5
-Today616,dummy51,2022-04-09,rain,17,119.9
-Today617,dummy91,2022-04-14,fog,15.5,60.5
-Today618,dummy60,2022-04-30,rain,16.6,40.2
-Today619,dummy74,2022-06-08,rain,26.6,9.4
-Today620,dummy81,2022-06-09,cloud,15,79.7
-Today621,dummy100,2022-04-21,sun,18.9,42.6
-Today622,dummy100,2022-04-13,cloud,22.8,92.1
-Today623,dummy41,2022-04-28,sun,16.7,79.7
-Today624,dummy43,2022-06-03,rain,23.4,82.6
-Today625,dummy63,2022-05-29,sun,23.2,44
-Today626,dummy41,2022-04-12,rain,28.8,109.1
-Today627,dummy89,2022-04-10,fog,27.3,42.6
-Today628,dummy50,2022-05-20,cloud,20.8,105.8
-Today629,dummy52,2022-05-10,sun,25.1,147.5
-Today630,dummy22,2022-06-09,fog,24.2,85.9
-Today631,dummy42,2022-05-20,cloud,28.9,149
-Today632,dummy3,2022-05-01,cloud,28.3,141.2
-Today633,dummy66,2022-06-06,fog,19.4,126.1
-Today634,dummy80,2022-05-27,cloud,23.7,147.6
-Today635,dummy51,2022-05-12,rain,20.3,3.9
-Today636,dummy11,2022-04-22,cloud,24.3,101.2
-Today637,dummy93,2022-04-16,fog,16.6,28.6
-Today638,dummy6,2022-05-22,rain,21.7,47.1
-Today639,dummy38,2022-04-05,cloud,28.8,95.4
-Today640,dummy80,2022-05-12,fog,27.1,39.1
-Today641,dummy22,2022-05-28,cloud,25.3,72.4
-Today642,dummy28,2022-04-08,fog,19.7,31.2
-Today643,dummy38,2022-05-01,sun,25.4,37.4
-Today644,dummy53,2022-04-22,sun,15.4,123.4
-Today645,dummy76,2022-05-21,cloud,18.6,48.2
-Today646,dummy99,2022-05-09,sun,26.9,54.4
-Today647,dummy45,2022-04-26,sun,17.4,114.8
-Today648,dummy37,2022-05-07,cloud,16.3,37.6
-Today649,dummy94,2022-05-20,rain,20.4,60.2
-Today650,dummy12,2022-05-18,fog,23.8,136.1
-Today651,dummy72,2022-04-25,fog,25.6,134.3
-Today652,dummy31,2022-04-17,cloud,25.8,4.4
-Today653,dummy22,2022-05-14,sun,27,96.4
-Today654,dummy36,2022-06-07,rain,15.8,45
-Today655,dummy10,2022-04-07,cloud,27.8,57.4
-Today656,dummy51,2022-05-04,rain,20.1,0.2
-Today657,dummy39,2022-04-30,cloud,26.3,82.1
-Today658,dummy11,2022-05-20,fog,17.4,96
-Today659,dummy85,2022-04-07,cloud,26.2,67.9
-Today660,dummy88,2022-04-27,fog,24.1,81.5
-Today661,dummy25,2022-05-30,sun,17.5,64.6
-Today662,dummy15,2022-05-11,cloud,18.3,111.9
-Today663,dummy86,2022-05-01,fog,22.8,88.7
-Today664,dummy28,2022-05-17,cloud,25.9,1.8
-Today665,dummy1,2022-05-15,rain,21.4,88.1
-Today666,dummy96,2022-06-10,sun,22.2,82.4
-Today667,dummy94,2022-05-11,sun,24.7,7.3
-Today668,dummy13,2022-06-08,cloud,19.7,14.2
-Today669,dummy79,2022-04-21,cloud,29.9,74.4
-Today670,dummy34,2022-05-14,rain,18.9,102.6
-Today671,dummy84,2022-05-02,fog,16.8,81.8
-Today672,dummy80,2022-04-06,sun,25.3,66.1
-Today673,dummy31,2022-04-04,rain,17.2,147.1
-Today674,dummy61,2022-04-07,rain,29.6,144.3
-Today675,dummy22,2022-06-03,sun,16,27.9
-Today676,dummy37,2022-04-25,sun,23.8,4.3
-Today677,dummy95,2022-05-28,rain,17.8,76.6
-Today678,dummy38,2022-04-18,rain,25.5,12.5
-Today679,dummy100,2022-05-20,cloud,22.8,118.8
-Today680,dummy40,2022-06-04,cloud,16.3,144.6
-Today681,dummy22,2022-05-07,sun,26.8,86.2
-Today682,dummy95,2022-04-08,rain,29.7,128.9
-Today683,dummy72,2022-06-10,sun,19.5,11.6
-Today684,dummy58,2022-05-03,cloud,22.1,78.9
-Today685,dummy74,2022-05-15,sun,22,27.9
-Today686,dummy2,2022-06-06,cloud,26.9,61.3
-Today687,dummy6,2022-05-20,fog,26.5,63.6
-Today688,dummy70,2022-05-14,cloud,17.9,45
-Today689,dummy1,2022-05-15,cloud,27.6,7.8
-Today690,dummy96,2022-05-01,rain,21.9,117.1
-Today691,dummy61,2022-05-04,rain,21.8,102.9
-Today692,dummy18,2022-05-26,cloud,16.5,34.5
-Today693,dummy45,2022-05-23,fog,23.5,9.5
-Today694,dummy86,2022-04-08,sun,29.1,62.7
-Today695,dummy13,2022-05-04,fog,25.4,53.1
-Today696,dummy12,2022-04-18,rain,27.9,68.2
-Today697,dummy54,2022-04-08,rain,15,65.9
-Today698,dummy6,2022-05-26,cloud,24.4,93.2
-Today699,dummy18,2022-05-27,fog,23.6,84.8
-Today700,dummy74,2022-04-09,rain,25.5,49.8
-Today701,dummy94,2022-04-01,sun,24.4,58.6
-Today702,dummy73,2022-05-25,sun,26.7,89.3
-Today703,dummy49,2022-05-27,cloud,26.1,20.4
-Today704,dummy73,2022-05-12,sun,17.9,42.8
-Today705,dummy30,2022-04-27,rain,15.9,104.5
-Today706,dummy60,2022-05-11,sun,18.1,39.8
-Today707,dummy35,2022-05-04,sun,16.3,11.1
-Today708,dummy2,2022-05-25,rain,29.4,8.6
-Today709,dummy66,2022-04-06,cloud,22,77
-Today710,dummy85,2022-05-09,sun,26.8,38.3
-Today711,dummy4,2022-05-26,sun,30,133.8
-Today712,dummy84,2022-04-29,sun,29.2,73.7
-Today713,dummy58,2022-04-24,sun,19.7,5.2
-Today714,dummy59,2022-05-19,cloud,18.6,108.3
-Today715,dummy63,2022-05-19,rain,24.6,143.9
-Today716,dummy98,2022-04-29,rain,15.8,101.4
-Today717,dummy34,2022-05-01,rain,21.8,30.4
-Today718,dummy26,2022-05-03,fog,27.7,96.5
-Today719,dummy80,2022-04-08,rain,24.8,127.8
-Today720,dummy51,2022-04-02,rain,17.1,92.9
-Today721,dummy100,2022-04-11,sun,26.1,42.3
-Today722,dummy84,2022-05-24,fog,29.4,103.4
-Today723,dummy48,2022-04-23,fog,24.5,67.6
-Today724,dummy83,2022-06-04,sun,15,8
-Today725,dummy33,2022-04-25,cloud,23,114.1
-Today726,dummy6,2022-04-13,sun,25.3,3.1
-Today727,dummy43,2022-04-13,sun,27.4,131.8
-Today728,dummy30,2022-04-16,cloud,19.4,40.2
-Today729,dummy2,2022-04-23,cloud,28.2,60.8
-Today730,dummy15,2022-04-30,sun,25.1,8.8
-Today731,dummy79,2022-05-24,fog,15.4,116
-Today732,dummy17,2022-05-24,fog,25.4,136.4
-Today733,dummy48,2022-04-08,sun,17.4,0.5
-Today734,dummy73,2022-04-08,cloud,18.8,38.4
-Today735,dummy39,2022-06-05,fog,18.1,101.7
-Today736,dummy49,2022-04-19,rain,21.2,122.5
-Today737,dummy82,2022-05-20,sun,20.7,112.1
-Today738,dummy13,2022-04-08,sun,20.5,144.5
-Today739,dummy100,2022-04-20,rain,23.3,39.5
-Today740,dummy15,2022-04-29,rain,19.3,59.9
-Today741,dummy44,2022-04-14,rain,20.8,13.8
-Today742,dummy25,2022-04-03,rain,26.6,126.4
-Today743,dummy16,2022-05-04,fog,19.8,64.4
-Today744,dummy27,2022-04-19,cloud,25.4,106.7
-Today745,dummy23,2022-05-11,fog,27.1,123.7
-Today746,dummy28,2022-04-28,fog,30,102.2
-Today747,dummy48,2022-04-22,rain,19.8,43.4
-Today748,dummy70,2022-04-09,sun,20.9,62.2
-Today749,dummy97,2022-05-20,sun,28.9,68.4
-Today750,dummy93,2022-05-20,fog,18.5,87.9
-Today751,dummy84,2022-04-02,rain,28.7,127.7
-Today752,dummy5,2022-05-12,fog,21.3,76.5
-Today753,dummy42,2022-04-10,cloud,16.8,125.5
-Today754,dummy30,2022-04-16,rain,28.4,31.4
-Today755,dummy89,2022-05-23,cloud,28.1,24.4
-Today756,dummy73,2022-05-31,cloud,25.7,122.6
-Today757,dummy57,2022-05-27,sun,18.8,43.3
-Today758,dummy37,2022-05-28,sun,20.7,114
-Today759,dummy13,2022-05-04,fog,29.9,37.9
-Today760,dummy69,2022-06-03,rain,21.3,9.5
-Today761,dummy94,2022-04-01,rain,28.9,40.8
-Today762,dummy42,2022-04-08,sun,27.6,112.9
-Today763,dummy52,2022-04-24,cloud,22.8,118.6
-Today764,dummy19,2022-05-18,cloud,15.1,57.6
-Today765,dummy37,2022-06-09,rain,25.8,47.8
-Today766,dummy4,2022-06-01,sun,25.3,94.7
-Today767,dummy43,2022-06-04,cloud,18.3,109.6
-Today768,dummy33,2022-04-21,sun,24.6,14.1
-Today769,dummy58,2022-05-05,fog,29.6,0.6
-Today770,dummy71,2022-05-07,rain,19,60.1
-Today771,dummy87,2022-04-27,sun,26.8,14.1
-Today772,dummy45,2022-04-11,sun,21.8,98.8
-Today773,dummy32,2022-05-13,fog,28.5,86.5
-Today774,dummy89,2022-05-26,cloud,15,98.8
-Today775,dummy86,2022-04-04,fog,19.7,64.8
-Today776,dummy69,2022-04-02,sun,17.8,97
-Today777,dummy35,2022-04-23,fog,16,78.1
-Today778,dummy23,2022-05-14,rain,27.6,48.8
-Today779,dummy11,2022-05-12,rain,22,105.3
-Today780,dummy68,2022-04-13,rain,27,103.4
-Today781,dummy33,2022-05-26,sun,27.4,47.1
-Today782,dummy4,2022-06-06,cloud,15.6,122.3
-Today783,dummy67,2022-06-03,sun,25.4,143
-Today784,dummy73,2022-05-01,sun,19.7,122.7
-Today785,dummy91,2022-05-20,fog,25.6,20.5
-Today786,dummy57,2022-06-07,fog,23.3,123.9
-Today787,dummy27,2022-05-21,sun,25.1,67.3
-Today788,dummy99,2022-04-20,rain,28.9,65.4
-Today789,dummy20,2022-05-04,fog,24.3,71.9
-Today790,dummy39,2022-04-23,cloud,24.8,150
-Today791,dummy79,2022-06-02,cloud,21.5,147.7
-Today792,dummy48,2022-06-03,fog,26,39.6
-Today793,dummy52,2022-06-05,rain,23.6,7.9
-Today794,dummy17,2022-04-08,fog,24.5,88.2
-Today795,dummy26,2022-05-24,sun,18,148.8
-Today796,dummy33,2022-04-24,rain,28.3,48.1
-Today797,dummy76,2022-05-05,fog,20.8,137.1
-Today798,dummy82,2022-04-13,cloud,25.3,80.6
-Today799,dummy5,2022-05-10,cloud,20.1,23.2
-Today800,dummy94,2022-06-09,sun,18.3,26.3
-Today801,dummy85,2022-05-09,sun,28.5,95.1
-Today802,dummy65,2022-05-07,sun,19.6,10.7
-Today803,dummy39,2022-05-12,rain,21.9,43.9
-Today804,dummy84,2022-05-12,rain,20.3,60
-Today805,dummy91,2022-04-21,rain,22.1,54.3
-Today806,dummy21,2022-04-21,fog,19.5,62.7
-Today807,dummy4,2022-05-13,cloud,24.7,24
-Today808,dummy5,2022-04-19,sun,17.7,148
-Today809,dummy64,2022-05-17,sun,17.9,23.3
-Today810,dummy7,2022-05-21,rain,21.9,104
-Today811,dummy28,2022-04-11,rain,21.3,28.1
-Today812,dummy2,2022-04-14,sun,24.9,103.4
-Today813,dummy75,2022-04-04,cloud,18.1,12.2
-Today814,dummy92,2022-04-18,rain,18.9,95.3
-Today815,dummy34,2022-04-26,rain,16,125.4
-Today816,dummy92,2022-04-10,cloud,29.3,21.5
-Today817,dummy13,2022-05-16,fog,26,59.4
-Today818,dummy29,2022-05-28,fog,24.3,73.2
-Today819,dummy98,2022-04-16,cloud,15.2,138.5
-Today820,dummy51,2022-05-08,sun,30,45
-Today821,dummy26,2022-04-29,fog,22.2,99.7
-Today822,dummy65,2022-04-19,rain,19.4,98.5
-Today823,dummy67,2022-04-28,rain,23,38.3
-Today824,dummy94,2022-06-01,fog,18.9,145.5
-Today825,dummy27,2022-04-21,sun,27.2,18.4
-Today826,dummy23,2022-04-06,sun,18.6,89.2
-Today827,dummy56,2022-05-25,rain,24,6.2
-Today828,dummy93,2022-05-06,cloud,27,93.5
-Today829,dummy43,2022-04-06,sun,23.5,104.7
-Today830,dummy9,2022-04-21,rain,21.1,24.4
-Today831,dummy47,2022-04-26,sun,18.7,61.2
-Today832,dummy46,2022-04-04,fog,17.3,33.5
-Today833,dummy62,2022-06-01,fog,17.5,34
-Today834,dummy54,2022-04-17,sun,28,18.4
-Today835,dummy43,2022-05-12,rain,27.4,76.7
-Today836,dummy28,2022-06-09,fog,16,110.1
-Today837,dummy16,2022-05-28,fog,19.3,21.9
-Today838,dummy4,2022-05-17,rain,17.1,50.2
-Today839,dummy67,2022-05-12,fog,27.2,117.7
-Today840,dummy2,2022-04-20,cloud,19.7,49.6
-Today841,dummy96,2022-05-23,rain,23.6,82
-Today842,dummy76,2022-05-09,cloud,16.8,78.5
-Today843,dummy13,2022-04-03,rain,28.3,113
-Today844,dummy26,2022-05-03,fog,27.8,68.8
-Today845,dummy99,2022-04-07,rain,24,51.4
-Today846,dummy36,2022-05-18,cloud,22.2,85.5
-Today847,dummy29,2022-05-22,rain,22.8,142.7
-Today848,dummy99,2022-04-18,sun,21.7,76.8
-Today849,dummy46,2022-06-09,cloud,23,51.5
-Today850,dummy83,2022-04-14,sun,16.7,62.3
-Today851,dummy90,2022-04-19,fog,19,18.5
-Today852,dummy48,2022-05-18,cloud,15.3,17.2
-Today853,dummy86,2022-04-02,sun,24,42.4
-Today854,dummy48,2022-05-03,sun,28,30.5
-Today855,dummy99,2022-06-02,cloud,22,14.1
-Today856,dummy66,2022-04-08,sun,29.2,135.8
-Today857,dummy74,2022-05-31,sun,15,67
-Today858,dummy28,2022-05-24,rain,20.7,60.6
-Today859,dummy92,2022-05-31,sun,20.5,27.4
-Today860,dummy12,2022-04-25,rain,27.4,93.2
-Today861,dummy16,2022-05-21,fog,26.9,90.6
-Today862,dummy29,2022-05-16,cloud,22,77.7
-Today863,dummy60,2022-06-09,fog,25.1,55.5
-Today864,dummy59,2022-04-17,rain,20.3,99.1
-Today865,dummy53,2022-05-24,fog,15.4,131
-Today866,dummy57,2022-04-26,fog,23.1,106.1
-Today867,dummy34,2022-04-14,cloud,21.9,61.2
-Today868,dummy20,2022-04-28,fog,16.4,28.8
-Today869,dummy2,2022-05-17,sun,21.6,27.8
-Today870,dummy12,2022-04-08,sun,18.3,134.8
-Today871,dummy71,2022-04-15,fog,26.2,28.2
-Today872,dummy73,2022-04-03,fog,23.4,125
-Today873,dummy13,2022-05-14,fog,27,89.9
-Today874,dummy96,2022-06-08,rain,26.3,82.2
-Today875,dummy48,2022-05-26,fog,15.7,26.7
-Today876,dummy57,2022-04-12,rain,28.8,147.2
-Today877,dummy5,2022-04-04,sun,29.5,5
-Today878,dummy16,2022-06-03,sun,22.1,149.4
-Today879,dummy93,2022-05-15,sun,22.9,86.4
-Today880,dummy11,2022-05-21,rain,28.5,83.1
-Today881,dummy86,2022-05-28,fog,29,149
-Today882,dummy52,2022-05-20,rain,24.9,32.8
-Today883,dummy30,2022-04-19,rain,27.6,58.8
-Today884,dummy99,2022-05-15,cloud,21.6,81.8
-Today885,dummy41,2022-04-30,fog,19,5.2
-Today886,dummy42,2022-04-25,fog,24.8,93.9
-Today887,dummy20,2022-06-05,fog,24.8,46.8
-Today888,dummy42,2022-04-22,sun,16.2,144.6
-Today889,dummy90,2022-04-11,rain,24,113
-Today890,dummy15,2022-05-09,rain,22,119.7
-Today891,dummy57,2022-05-03,fog,15.4,92.4
-Today892,dummy94,2022-05-28,rain,27.2,105
-Today893,dummy49,2022-04-17,fog,17.5,47.6
-Today894,dummy18,2022-05-29,fog,15.1,74.5
-Today895,dummy55,2022-04-29,rain,28.3,47.9
-Today896,dummy43,2022-06-06,rain,27.9,74.2
-Today897,dummy23,2022-05-12,fog,22.9,133.3
-Today898,dummy46,2022-04-16,cloud,23.5,60.6
-Today899,dummy97,2022-06-10,fog,16.3,27.5
-Today900,dummy43,2022-04-18,cloud,18.7,64.2
-Today901,dummy83,2022-04-02,rain,20.8,79.3
-Today902,dummy90,2022-06-02,rain,28.9,136.2
-Today903,dummy2,2022-04-06,fog,29.7,137.9
-Today904,dummy80,2022-04-28,fog,27.6,112
-Today905,dummy9,2022-04-22,fog,26.8,135.5
-Today906,dummy49,2022-05-30,fog,20.3,94.4
-Today907,dummy27,2022-04-19,fog,20.2,27.6
-Today908,dummy23,2022-04-21,sun,29.6,116.1
-Today909,dummy1,2022-04-16,fog,28.7,38.6
-Today910,dummy55,2022-04-05,sun,20.2,63.6
-Today911,dummy10,2022-04-16,cloud,19.9,0.5
-Today912,dummy11,2022-05-29,rain,18.3,73
-Today913,dummy22,2022-04-23,sun,28.7,90.9
-Today914,dummy9,2022-05-24,rain,26.5,12.6
-Today915,dummy73,2022-06-08,sun,26.5,131.2
-Today916,dummy20,2022-05-10,cloud,18.3,76.3
-Today917,dummy100,2022-04-28,cloud,16.7,94.8
-Today918,dummy54,2022-05-27,rain,23.7,18.2
-Today919,dummy72,2022-05-02,rain,16.9,98.1
-Today920,dummy88,2022-06-03,cloud,20.5,131.1
-Today921,dummy29,2022-05-22,fog,23.1,116.5
-Today922,dummy20,2022-05-01,cloud,28.1,89
-Today923,dummy29,2022-04-20,cloud,20.6,92.6
-Today924,dummy35,2022-05-20,rain,28,5.2
-Today925,dummy37,2022-05-05,sun,23.6,14
-Today926,dummy15,2022-05-06,rain,22.6,16.8
-Today927,dummy49,2022-04-01,cloud,26.8,35.7
-Today928,dummy56,2022-04-25,cloud,22.5,126
-Today929,dummy46,2022-05-04,sun,27.4,67
-Today930,dummy64,2022-04-16,sun,20.9,32.4
-Today931,dummy10,2022-04-23,rain,15.3,56.8
-Today932,dummy56,2022-06-02,cloud,19,22.8
-Today933,dummy53,2022-04-13,sun,15,81.9
-Today934,dummy10,2022-06-08,sun,15.4,11.2
-Today935,dummy39,2022-04-24,rain,28.9,129.4
-Today936,dummy31,2022-04-20,sun,19,59.7
-Today937,dummy32,2022-05-07,cloud,15.7,103.1
-Today938,dummy65,2022-05-12,sun,19.1,16.1
-Today939,dummy75,2022-05-13,sun,16.3,139.3
-Today940,dummy98,2022-05-05,cloud,15.9,118.3
-Today941,dummy13,2022-05-11,sun,15.4,15.2
-Today942,dummy51,2022-04-30,fog,28.2,8.3
-Today943,dummy9,2022-04-11,cloud,18.5,84.7
-Today944,dummy91,2022-06-02,fog,25.1,19.5
-Today945,dummy57,2022-04-25,cloud,16.2,31.8
-Today946,dummy23,2022-06-08,rain,29,41.1
-Today947,dummy9,2022-05-24,sun,22.9,126.6
-Today948,dummy12,2022-04-29,rain,28.6,133.1
-Today949,dummy59,2022-04-17,sun,16.3,17.6
-Today950,dummy45,2022-04-13,fog,16.9,48.1
-Today951,dummy84,2022-05-23,fog,28.8,65.5
-Today952,dummy2,2022-05-18,rain,26.3,45.8
-Today953,dummy76,2022-04-14,cloud,27.2,77.9
-Today954,dummy24,2022-05-09,rain,27.2,78.9
-Today955,dummy66,2022-04-04,sun,27.9,70.3
-Today956,dummy76,2022-06-06,fog,15.2,108.8
-Today957,dummy99,2022-05-28,sun,22,115.7
-Today958,dummy30,2022-05-05,rain,19.6,114.3
-Today959,dummy2,2022-05-26,fog,23.4,80.3
-Today960,dummy1,2022-05-16,fog,29.3,31.9
-Today961,dummy18,2022-06-10,cloud,18.3,113.2
-Today962,dummy67,2022-05-27,sun,18.6,104.4
-Today963,dummy73,2022-04-15,sun,26.1,100.1
-Today964,dummy6,2022-05-03,fog,15.4,28
-Today965,dummy87,2022-04-18,sun,18.4,95.4
-Today966,dummy36,2022-04-02,sun,16.9,133
-Today967,dummy94,2022-04-05,fog,25.9,35.1
-Today968,dummy34,2022-04-12,rain,19.9,12.4
-Today969,dummy77,2022-04-17,cloud,18.9,139.5
-Today970,dummy72,2022-05-31,sun,29.1,112.7
-Today971,dummy27,2022-05-28,cloud,16.6,38.5
-Today972,dummy83,2022-05-29,sun,16.6,65.3
-Today973,dummy62,2022-04-03,cloud,15.6,131.5
-Today974,dummy98,2022-05-05,cloud,23.7,142.4
-Today975,dummy71,2022-05-21,cloud,20.8,10.6
-Today976,dummy21,2022-05-30,sun,20.1,31.9
-Today977,dummy90,2022-05-27,sun,24.9,66.9
-Today978,dummy81,2022-05-31,cloud,19.8,13.4
-Today979,dummy67,2022-05-10,cloud,26.3,55.8
-Today980,dummy77,2022-05-17,sun,15.4,13
-Today981,dummy8,2022-04-21,cloud,28.5,63.9
-Today982,dummy56,2022-04-21,sun,25.7,17.8
-Today983,dummy23,2022-05-30,fog,17,11.3
-Today984,dummy58,2022-04-24,cloud,21.9,92.2
-Today985,dummy52,2022-05-16,cloud,25.1,13.1
-Today986,dummy15,2022-05-07,fog,23.3,60
-Today987,dummy58,2022-05-24,sun,26.9,91.4
-Today988,dummy73,2022-06-06,cloud,16.6,69.1
-Today989,dummy60,2022-05-19,sun,23.6,30.3
-Today990,dummy3,2022-05-07,sun,26,79.5
-Today991,dummy37,2022-05-14,rain,25.7,118.4
-Today992,dummy38,2022-05-29,sun,20.9,102
-Today993,dummy52,2022-04-26,fog,23.7,69.3
-Today994,dummy5,2022-04-11,sun,25.6,138.6
-Today995,dummy67,2022-06-06,cloud,28.3,114.6
-Today996,dummy88,2022-04-28,rain,27.6,97.1
-Today997,dummy75,2022-05-16,cloud,25.2,52.7
-Today998,dummy96,2022-05-01,fog,16.5,134.5
-Today999,dummy22,2022-04-25,cloud,19.7,23.3
-Today1000,dummy90,2022-06-05,cloud,23.3,59.3
+,TodayID,ID,today,weather,temp,dust
+0,Today1,dummy92,2022-06-11 10:00:00,cloud,16.0,140.2
+1,Today2,dummy100,2022-06-10 23:00:00,rain,27.5,121.5
+2,Today3,dummy50,2022-06-08 02:00:00,cloud,17.6,121.6
+3,Today4,dummy49,2022-06-11 09:00:00,cloud,24.7,114.9
+4,Today5,dummy49,2022-06-11 16:00:00,cloud,26.0,51.6
+5,Today6,dummy68,2022-06-09 09:00:00,sun,19.2,126.1
+6,Today7,dummy40,2022-06-08 21:00:00,rain,21.6,23.0
+7,Today8,dummy10,2022-06-10 03:00:00,cloud,21.0,5.4
+8,Today9,dummy5,2022-06-11 15:00:00,fog,24.3,117.6
+9,Today10,dummy33,2022-06-10 06:00:00,cloud,16.7,42.0
+10,Today11,dummy22,2022-06-09 00:00:00,sun,21.2,86.5
+11,Today12,dummy68,2022-06-09 05:00:00,cloud,18.4,54.0
+12,Today13,dummy79,2022-06-10 13:00:00,cloud,25.3,136.1
+13,Today14,dummy78,2022-06-09 10:00:00,fog,27.1,57.0
+14,Today15,dummy81,2022-06-10 17:00:00,sun,23.7,86.4
+15,Today16,dummy10,2022-06-10 09:00:00,sun,27.0,104.0
+16,Today17,dummy20,2022-06-10 19:00:00,fog,22.4,52.0
+17,Today18,dummy17,2022-06-08 22:00:00,sun,27.8,77.2
+18,Today19,dummy50,2022-06-09 00:00:00,rain,22.9,31.8
+19,Today20,dummy14,2022-06-10 00:00:00,rain,29.9,118.0
+20,Today21,dummy24,2022-06-11 18:00:00,rain,27.3,54.1
+21,Today22,dummy66,2022-06-10 22:00:00,sun,21.0,81.0
+22,Today23,dummy53,2022-06-11 13:00:00,sun,17.2,131.7
+23,Today24,dummy76,2022-06-11 07:00:00,sun,25.6,113.3
+24,Today25,dummy32,2022-06-09 12:00:00,cloud,22.3,54.4
+25,Today26,dummy61,2022-06-10 22:00:00,fog,22.8,124.9
+26,Today27,dummy37,2022-06-09 15:00:00,cloud,19.3,19.4
+27,Today28,dummy41,2022-06-11 22:00:00,sun,29.3,111.0
+28,Today29,dummy94,2022-06-09 18:00:00,rain,24.2,44.0
+29,Today30,dummy48,2022-06-11 21:00:00,sun,15.1,48.2
+30,Today31,dummy3,2022-06-10 22:00:00,rain,18.3,38.3
+31,Today32,dummy70,2022-06-08 09:00:00,sun,15.2,148.6
+32,Today33,dummy8,2022-06-08 01:00:00,sun,17.7,107.7
+33,Today34,dummy79,2022-06-09 10:00:00,fog,28.6,87.1
+34,Today35,dummy55,2022-06-11 00:00:00,sun,23.3,90.0
+35,Today36,dummy79,2022-06-10 23:00:00,fog,24.3,89.7
+36,Today37,dummy52,2022-06-11 20:00:00,rain,29.0,61.8
+37,Today38,dummy18,2022-06-11 06:00:00,sun,23.6,52.2
+38,Today39,dummy17,2022-06-10 15:00:00,rain,23.4,128.8
+39,Today40,dummy83,2022-06-11 00:00:00,rain,20.2,5.4
+40,Today41,dummy92,2022-06-09 00:00:00,rain,24.1,145.8
+41,Today42,dummy49,2022-06-08 08:00:00,fog,20.2,42.6
+42,Today43,dummy74,2022-06-09 04:00:00,fog,20.8,67.5
+43,Today44,dummy75,2022-06-09 17:00:00,cloud,18.6,122.0
+44,Today45,dummy55,2022-06-12 00:00:00,fog,15.8,113.5
+45,Today46,dummy66,2022-06-08 14:00:00,fog,24.1,65.9
+46,Today47,dummy87,2022-06-09 01:00:00,fog,20.2,136.9
+47,Today48,dummy78,2022-06-09 19:00:00,cloud,22.5,103.7
+48,Today49,dummy64,2022-06-11 18:00:00,fog,22.1,121.8
+49,Today50,dummy26,2022-06-12 00:00:00,cloud,18.7,39.2
+50,Today51,dummy37,2022-06-10 20:00:00,rain,25.9,112.4
+51,Today52,dummy5,2022-06-09 08:00:00,sun,29.2,11.3
+52,Today53,dummy89,2022-06-09 17:00:00,sun,17.3,18.7
+53,Today54,dummy100,2022-06-09 03:00:00,sun,27.8,30.6
+54,Today55,dummy21,2022-06-10 10:00:00,cloud,17.5,127.0
+55,Today56,dummy29,2022-06-08 11:00:00,cloud,22.7,118.4
+56,Today57,dummy22,2022-06-11 20:00:00,sun,29.3,140.3
+57,Today58,dummy88,2022-06-10 02:00:00,fog,26.1,146.0
+58,Today59,dummy67,2022-06-11 09:00:00,fog,24.0,33.6
+59,Today60,dummy1,2022-06-08 00:00:00,rain,28.7,67.8
+60,Today61,dummy90,2022-06-11 01:00:00,fog,27.0,23.3
+61,Today62,dummy51,2022-06-08 00:00:00,rain,19.8,38.5
+62,Today63,dummy85,2022-06-08 17:00:00,fog,21.7,144.7
+63,Today64,dummy77,2022-06-09 20:00:00,sun,27.5,26.3
+64,Today65,dummy80,2022-06-09 11:00:00,fog,20.5,117.4
+65,Today66,dummy88,2022-06-10 11:00:00,sun,29.3,103.4
+66,Today67,dummy83,2022-06-09 07:00:00,sun,16.7,118.6
+67,Today68,dummy100,2022-06-10 21:00:00,sun,17.7,9.2
+68,Today69,dummy93,2022-06-09 12:00:00,sun,21.5,66.7
+69,Today70,dummy12,2022-06-11 07:00:00,rain,19.6,48.2
+70,Today71,dummy57,2022-06-12 00:00:00,rain,20.7,91.4
+71,Today72,dummy83,2022-06-11 16:00:00,fog,16.3,126.3
+72,Today73,dummy29,2022-06-10 15:00:00,sun,27.6,10.7
+73,Today74,dummy93,2022-06-08 19:00:00,rain,21.4,9.1
+74,Today75,dummy30,2022-06-11 22:00:00,fog,22.4,16.4
+75,Today76,dummy18,2022-06-08 11:00:00,rain,25.0,12.1
+76,Today77,dummy59,2022-06-10 05:00:00,sun,19.0,29.0
+77,Today78,dummy56,2022-06-08 20:00:00,sun,28.2,1.3
+78,Today79,dummy67,2022-06-10 03:00:00,rain,20.4,82.1
+79,Today80,dummy65,2022-06-11 23:00:00,cloud,18.8,141.2
+80,Today81,dummy78,2022-06-08 22:00:00,cloud,21.6,145.1
+81,Today82,dummy50,2022-06-09 21:00:00,cloud,16.7,93.0
+82,Today83,dummy12,2022-06-08 02:00:00,rain,19.0,41.8
+83,Today84,dummy33,2022-06-10 06:00:00,cloud,28.5,27.8
+84,Today85,dummy20,2022-06-09 09:00:00,fog,21.3,132.5
+85,Today86,dummy62,2022-06-08 05:00:00,cloud,17.9,86.7
+86,Today87,dummy48,2022-06-11 21:00:00,cloud,19.1,37.4
+87,Today88,dummy97,2022-06-11 19:00:00,sun,18.1,46.0
+88,Today89,dummy32,2022-06-11 13:00:00,cloud,28.2,96.6
+89,Today90,dummy84,2022-06-08 06:00:00,fog,25.7,63.5
+90,Today91,dummy50,2022-06-10 00:00:00,cloud,19.8,3.0
+91,Today92,dummy68,2022-06-11 22:00:00,cloud,30.0,40.7
+92,Today93,dummy20,2022-06-09 10:00:00,rain,21.9,141.8
+93,Today94,dummy17,2022-06-09 17:00:00,rain,15.1,143.6
+94,Today95,dummy94,2022-06-10 02:00:00,fog,17.9,29.8
+95,Today96,dummy46,2022-06-10 14:00:00,fog,26.2,102.9
+96,Today97,dummy64,2022-06-08 04:00:00,rain,28.5,129.0
+97,Today98,dummy37,2022-06-08 07:00:00,sun,29.0,104.4
+98,Today99,dummy64,2022-06-09 22:00:00,cloud,19.8,37.7
+99,Today100,dummy53,2022-06-08 18:00:00,fog,22.5,30.2
+100,Today101,dummy10,2022-06-08 20:00:00,cloud,29.0,120.8
+101,Today102,dummy67,2022-06-11 08:00:00,rain,17.5,50.4
+102,Today103,dummy96,2022-06-11 21:00:00,sun,22.2,91.0
+103,Today104,dummy64,2022-06-10 04:00:00,sun,24.3,21.6
+104,Today105,dummy20,2022-06-08 04:00:00,fog,15.7,103.0
+105,Today106,dummy23,2022-06-10 14:00:00,rain,22.2,0.8
+106,Today107,dummy56,2022-06-09 12:00:00,fog,16.4,104.8
+107,Today108,dummy98,2022-06-10 02:00:00,sun,25.8,106.3
+108,Today109,dummy34,2022-06-09 09:00:00,fog,27.1,16.3
+109,Today110,dummy82,2022-06-11 09:00:00,sun,27.9,5.8
+110,Today111,dummy51,2022-06-08 16:00:00,sun,21.9,91.5
+111,Today112,dummy31,2022-06-11 09:00:00,sun,22.4,147.4
+112,Today113,dummy11,2022-06-08 17:00:00,cloud,17.9,148.4
+113,Today114,dummy86,2022-06-11 09:00:00,rain,22.6,114.8
+114,Today115,dummy40,2022-06-09 14:00:00,rain,25.4,74.0
+115,Today116,dummy76,2022-06-09 19:00:00,cloud,18.4,12.8
+116,Today117,dummy41,2022-06-08 20:00:00,rain,28.2,101.4
+117,Today118,dummy92,2022-06-10 21:00:00,fog,19.0,24.8
+118,Today119,dummy86,2022-06-09 10:00:00,rain,26.6,131.5
+119,Today120,dummy9,2022-06-10 20:00:00,fog,29.8,12.1
+120,Today121,dummy58,2022-06-09 04:00:00,fog,20.7,62.8
+121,Today122,dummy71,2022-06-09 07:00:00,rain,16.7,141.2
+122,Today123,dummy59,2022-06-11 09:00:00,fog,16.1,92.6
+123,Today124,dummy26,2022-06-09 22:00:00,cloud,18.9,17.9
+124,Today125,dummy8,2022-06-10 01:00:00,fog,28.1,4.7
+125,Today126,dummy82,2022-06-08 10:00:00,rain,18.3,134.3
+126,Today127,dummy75,2022-06-08 12:00:00,rain,17.1,18.4
+127,Today128,dummy43,2022-06-08 18:00:00,cloud,15.5,24.1
+128,Today129,dummy7,2022-06-11 00:00:00,fog,18.7,12.6
+129,Today130,dummy40,2022-06-11 15:00:00,fog,23.0,46.8
+130,Today131,dummy76,2022-06-08 21:00:00,fog,17.1,92.6
+131,Today132,dummy13,2022-06-09 06:00:00,fog,22.0,76.0
+132,Today133,dummy2,2022-06-11 14:00:00,fog,24.1,85.6
+133,Today134,dummy40,2022-06-09 00:00:00,fog,20.9,97.9
+134,Today135,dummy49,2022-06-09 21:00:00,sun,25.4,35.3
+135,Today136,dummy44,2022-06-11 09:00:00,sun,25.9,124.3
+136,Today137,dummy15,2022-06-10 13:00:00,cloud,21.8,77.4
+137,Today138,dummy13,2022-06-09 02:00:00,rain,20.0,49.3
+138,Today139,dummy17,2022-06-12 00:00:00,sun,23.5,103.1
+139,Today140,dummy27,2022-06-11 02:00:00,cloud,23.0,99.9
+140,Today141,dummy24,2022-06-11 22:00:00,cloud,19.1,53.2
+141,Today142,dummy2,2022-06-10 21:00:00,cloud,27.9,90.2
+142,Today143,dummy96,2022-06-11 05:00:00,fog,29.2,5.9
+143,Today144,dummy17,2022-06-11 00:00:00,sun,16.4,12.6
+144,Today145,dummy23,2022-06-08 19:00:00,sun,20.6,80.4
+145,Today146,dummy54,2022-06-09 20:00:00,sun,18.3,12.6
+146,Today147,dummy88,2022-06-11 09:00:00,rain,20.7,11.4
+147,Today148,dummy75,2022-06-10 08:00:00,sun,20.3,99.7
+148,Today149,dummy77,2022-06-08 01:00:00,rain,21.4,111.6
+149,Today150,dummy11,2022-06-11 14:00:00,rain,25.0,81.1
+150,Today151,dummy73,2022-06-10 04:00:00,cloud,24.9,59.2
+151,Today152,dummy100,2022-06-10 09:00:00,fog,20.6,54.1
+152,Today153,dummy15,2022-06-09 14:00:00,sun,16.1,59.8
+153,Today154,dummy44,2022-06-08 18:00:00,cloud,26.0,59.9
+154,Today155,dummy20,2022-06-08 14:00:00,rain,23.0,147.7
+155,Today156,dummy11,2022-06-11 05:00:00,sun,18.8,56.5
+156,Today157,dummy29,2022-06-09 23:00:00,cloud,24.8,48.7
+157,Today158,dummy63,2022-06-08 21:00:00,sun,16.8,33.3
+158,Today159,dummy79,2022-06-10 03:00:00,rain,23.7,128.5
+159,Today160,dummy52,2022-06-11 08:00:00,cloud,29.7,89.1
+160,Today161,dummy97,2022-06-09 04:00:00,sun,15.3,109.5
+161,Today162,dummy69,2022-06-10 20:00:00,sun,27.5,134.3
+162,Today163,dummy41,2022-06-10 17:00:00,cloud,29.1,1.8
+163,Today164,dummy44,2022-06-09 08:00:00,rain,27.3,117.9
+164,Today165,dummy6,2022-06-11 00:00:00,rain,16.5,22.5
+165,Today166,dummy4,2022-06-11 09:00:00,sun,28.5,146.3
+166,Today167,dummy96,2022-06-11 05:00:00,rain,20.5,38.0
+167,Today168,dummy91,2022-06-09 17:00:00,cloud,27.9,112.7
+168,Today169,dummy35,2022-06-09 10:00:00,rain,22.2,121.6
+169,Today170,dummy32,2022-06-08 11:00:00,cloud,18.2,123.1
+170,Today171,dummy32,2022-06-08 12:00:00,sun,24.1,36.3
+171,Today172,dummy53,2022-06-09 03:00:00,fog,20.8,75.0
+172,Today173,dummy49,2022-06-10 22:00:00,cloud,26.1,57.5
+173,Today174,dummy82,2022-06-10 20:00:00,sun,29.2,17.5
+174,Today175,dummy31,2022-06-08 21:00:00,cloud,20.0,128.4
+175,Today176,dummy19,2022-06-11 10:00:00,cloud,19.5,43.4
+176,Today177,dummy9,2022-06-09 00:00:00,fog,16.6,36.5
+177,Today178,dummy99,2022-06-08 23:00:00,cloud,16.0,86.2
+178,Today179,dummy50,2022-06-08 20:00:00,cloud,20.2,4.6
+179,Today180,dummy39,2022-06-11 22:00:00,sun,29.7,50.1
+180,Today181,dummy42,2022-06-08 15:00:00,fog,23.4,17.5
+181,Today182,dummy56,2022-06-09 08:00:00,fog,20.9,59.4
+182,Today183,dummy35,2022-06-12 00:00:00,rain,23.4,103.3
+183,Today184,dummy68,2022-06-11 00:00:00,fog,29.8,95.4
+184,Today185,dummy54,2022-06-11 06:00:00,cloud,28.1,46.5
+185,Today186,dummy4,2022-06-11 14:00:00,rain,22.8,87.9
+186,Today187,dummy43,2022-06-10 16:00:00,fog,26.5,86.1
+187,Today188,dummy5,2022-06-09 17:00:00,rain,17.6,5.5
+188,Today189,dummy29,2022-06-08 05:00:00,rain,27.8,28.4
+189,Today190,dummy4,2022-06-10 06:00:00,sun,17.4,44.1
+190,Today191,dummy12,2022-06-10 02:00:00,cloud,17.9,5.9
+191,Today192,dummy33,2022-06-09 11:00:00,sun,26.5,117.6
+192,Today193,dummy79,2022-06-09 00:00:00,sun,25.2,51.8
+193,Today194,dummy49,2022-06-09 09:00:00,sun,28.0,62.2
+194,Today195,dummy91,2022-06-11 19:00:00,rain,19.7,23.2
+195,Today196,dummy17,2022-06-09 22:00:00,rain,18.9,14.7
+196,Today197,dummy54,2022-06-08 21:00:00,cloud,24.5,108.6
+197,Today198,dummy48,2022-06-11 23:00:00,sun,24.0,23.2
+198,Today199,dummy44,2022-06-11 22:00:00,sun,26.4,93.3
+199,Today200,dummy81,2022-06-10 17:00:00,cloud,19.5,125.9
+200,Today201,dummy25,2022-06-10 06:00:00,fog,21.5,43.0
+201,Today202,dummy99,2022-06-11 12:00:00,fog,29.1,59.0
+202,Today203,dummy90,2022-06-09 15:00:00,rain,19.7,12.3
+203,Today204,dummy95,2022-06-11 07:00:00,fog,22.8,58.4
+204,Today205,dummy12,2022-06-11 15:00:00,sun,15.1,51.8
+205,Today206,dummy97,2022-06-09 11:00:00,rain,19.9,129.2
+206,Today207,dummy57,2022-06-11 01:00:00,cloud,24.4,119.7
+207,Today208,dummy52,2022-06-08 00:00:00,rain,16.3,91.6
+208,Today209,dummy100,2022-06-10 17:00:00,fog,28.7,62.6
+209,Today210,dummy64,2022-06-10 11:00:00,rain,25.3,65.9
+210,Today211,dummy47,2022-06-08 15:00:00,fog,21.2,129.0
+211,Today212,dummy57,2022-06-10 04:00:00,sun,23.2,130.8
+212,Today213,dummy90,2022-06-09 11:00:00,cloud,26.5,85.1
+213,Today214,dummy48,2022-06-11 09:00:00,rain,27.1,127.7
+214,Today215,dummy47,2022-06-08 05:00:00,cloud,28.9,14.4
+215,Today216,dummy72,2022-06-10 14:00:00,cloud,15.0,41.1
+216,Today217,dummy3,2022-06-11 11:00:00,fog,15.5,45.4
+217,Today218,dummy28,2022-06-08 13:00:00,rain,15.7,87.3
+218,Today219,dummy5,2022-06-09 12:00:00,fog,17.9,33.0
+219,Today220,dummy75,2022-06-08 23:00:00,fog,21.3,118.0
+220,Today221,dummy9,2022-06-10 18:00:00,cloud,23.9,107.9
+221,Today222,dummy44,2022-06-11 22:00:00,cloud,16.7,47.8
+222,Today223,dummy93,2022-06-08 09:00:00,rain,17.4,88.6
+223,Today224,dummy27,2022-06-11 02:00:00,sun,17.9,107.4
+224,Today225,dummy60,2022-06-11 04:00:00,sun,26.0,126.1
+225,Today226,dummy3,2022-06-11 04:00:00,rain,24.5,118.8
+226,Today227,dummy47,2022-06-09 21:00:00,sun,26.2,95.3
+227,Today228,dummy70,2022-06-11 03:00:00,fog,19.4,32.8
+228,Today229,dummy76,2022-06-11 09:00:00,rain,26.5,79.3
+229,Today230,dummy63,2022-06-09 23:00:00,fog,19.2,137.7
+230,Today231,dummy17,2022-06-09 20:00:00,fog,29.8,30.0
+231,Today232,dummy77,2022-06-09 08:00:00,cloud,15.2,138.8
+232,Today233,dummy8,2022-06-10 10:00:00,cloud,26.0,86.7
+233,Today234,dummy74,2022-06-08 14:00:00,rain,21.0,101.1
+234,Today235,dummy23,2022-06-09 03:00:00,rain,15.7,38.5
+235,Today236,dummy79,2022-06-08 12:00:00,cloud,25.6,128.6
+236,Today237,dummy58,2022-06-09 13:00:00,fog,27.9,131.2
+237,Today238,dummy43,2022-06-10 00:00:00,rain,17.9,44.2
+238,Today239,dummy37,2022-06-11 09:00:00,fog,21.6,137.5
+239,Today240,dummy37,2022-06-09 21:00:00,sun,18.6,44.5
+240,Today241,dummy39,2022-06-09 21:00:00,fog,19.4,92.9
+241,Today242,dummy23,2022-06-08 18:00:00,sun,28.3,100.9
+242,Today243,dummy13,2022-06-10 02:00:00,cloud,19.3,100.3
+243,Today244,dummy99,2022-06-11 16:00:00,rain,21.5,69.9
+244,Today245,dummy29,2022-06-10 19:00:00,sun,25.4,18.8
+245,Today246,dummy3,2022-06-09 15:00:00,fog,23.0,28.7
+246,Today247,dummy58,2022-06-08 13:00:00,fog,18.0,15.6
+247,Today248,dummy95,2022-06-10 07:00:00,fog,19.6,119.2
+248,Today249,dummy39,2022-06-10 11:00:00,rain,23.0,142.4
+249,Today250,dummy15,2022-06-09 12:00:00,cloud,29.1,42.3
+250,Today251,dummy45,2022-06-09 04:00:00,fog,29.4,7.3
+251,Today252,dummy76,2022-06-08 03:00:00,cloud,16.9,16.9
+252,Today253,dummy44,2022-06-11 01:00:00,cloud,28.2,64.1
+253,Today254,dummy12,2022-06-11 19:00:00,rain,23.0,121.9
+254,Today255,dummy12,2022-06-08 10:00:00,fog,15.2,97.2
+255,Today256,dummy47,2022-06-10 19:00:00,rain,29.0,132.7
+256,Today257,dummy56,2022-06-09 02:00:00,fog,29.6,67.2
+257,Today258,dummy56,2022-06-09 23:00:00,cloud,20.9,39.2
+258,Today259,dummy64,2022-06-10 23:00:00,rain,25.6,105.5
+259,Today260,dummy42,2022-06-10 21:00:00,fog,25.5,36.5
+260,Today261,dummy11,2022-06-08 20:00:00,sun,18.9,70.6
+261,Today262,dummy61,2022-06-10 04:00:00,rain,27.3,123.1
+262,Today263,dummy94,2022-06-08 13:00:00,cloud,29.2,63.5
+263,Today264,dummy87,2022-06-09 18:00:00,sun,29.9,70.1
+264,Today265,dummy1,2022-06-10 20:00:00,sun,20.5,79.1
+265,Today266,dummy37,2022-06-10 04:00:00,cloud,28.3,46.9
+266,Today267,dummy22,2022-06-10 23:00:00,cloud,19.0,25.5
+267,Today268,dummy69,2022-06-11 12:00:00,sun,23.9,0.8
+268,Today269,dummy76,2022-06-09 17:00:00,cloud,24.8,28.8
+269,Today270,dummy55,2022-06-10 23:00:00,sun,28.7,80.1
+270,Today271,dummy94,2022-06-11 22:00:00,cloud,18.2,104.0
+271,Today272,dummy84,2022-06-08 14:00:00,fog,17.0,124.6
+272,Today273,dummy97,2022-06-08 18:00:00,fog,24.1,85.6
+273,Today274,dummy19,2022-06-10 02:00:00,rain,28.5,38.0
+274,Today275,dummy52,2022-06-10 11:00:00,rain,24.8,108.5
+275,Today276,dummy39,2022-06-10 10:00:00,rain,17.7,19.0
+276,Today277,dummy5,2022-06-10 23:00:00,cloud,21.4,95.5
+277,Today278,dummy36,2022-06-11 15:00:00,sun,28.2,138.6
+278,Today279,dummy60,2022-06-11 07:00:00,fog,28.6,71.2
+279,Today280,dummy86,2022-06-08 12:00:00,sun,26.2,93.4
+280,Today281,dummy12,2022-06-10 10:00:00,rain,24.6,84.3
+281,Today282,dummy4,2022-06-09 00:00:00,rain,18.0,92.0
+282,Today283,dummy81,2022-06-09 15:00:00,fog,18.2,19.4
+283,Today284,dummy97,2022-06-11 08:00:00,rain,20.9,91.0
+284,Today285,dummy56,2022-06-08 22:00:00,rain,24.4,21.4
+285,Today286,dummy43,2022-06-10 03:00:00,rain,23.9,83.8
+286,Today287,dummy21,2022-06-11 19:00:00,sun,28.7,78.2
+287,Today288,dummy41,2022-06-08 11:00:00,rain,24.2,131.4
+288,Today289,dummy17,2022-06-08 23:00:00,cloud,18.1,79.9
+289,Today290,dummy15,2022-06-09 05:00:00,rain,15.8,89.2
+290,Today291,dummy98,2022-06-08 20:00:00,rain,27.7,54.6
+291,Today292,dummy98,2022-06-11 23:00:00,fog,15.0,113.5
+292,Today293,dummy28,2022-06-10 14:00:00,sun,25.3,87.3
+293,Today294,dummy15,2022-06-08 01:00:00,fog,29.3,138.4
+294,Today295,dummy68,2022-06-10 01:00:00,fog,24.5,33.3
+295,Today296,dummy72,2022-06-09 07:00:00,sun,18.0,130.3
+296,Today297,dummy17,2022-06-12 00:00:00,cloud,19.5,41.0
+297,Today298,dummy62,2022-06-09 13:00:00,cloud,17.7,121.4
+298,Today299,dummy85,2022-06-11 18:00:00,rain,20.7,114.6
+299,Today300,dummy69,2022-06-10 03:00:00,cloud,28.8,21.9
+300,Today301,dummy59,2022-06-08 20:00:00,fog,16.0,45.9
+301,Today302,dummy35,2022-06-09 19:00:00,rain,28.7,86.3
+302,Today303,dummy7,2022-06-08 10:00:00,sun,27.3,115.8
+303,Today304,dummy40,2022-06-10 07:00:00,fog,19.3,132.8
+304,Today305,dummy6,2022-06-08 20:00:00,sun,18.0,83.8
+305,Today306,dummy44,2022-06-09 06:00:00,fog,18.4,115.6
+306,Today307,dummy40,2022-06-09 21:00:00,cloud,18.4,28.2
+307,Today308,dummy54,2022-06-10 02:00:00,rain,21.7,87.3
+308,Today309,dummy74,2022-06-11 00:00:00,fog,21.7,15.3
+309,Today310,dummy84,2022-06-10 16:00:00,cloud,29.8,10.7
+310,Today311,dummy72,2022-06-09 19:00:00,rain,21.1,31.1
+311,Today312,dummy21,2022-06-11 17:00:00,sun,17.0,33.8
+312,Today313,dummy84,2022-06-09 18:00:00,rain,19.9,30.3
+313,Today314,dummy86,2022-06-10 14:00:00,cloud,24.0,85.1
+314,Today315,dummy68,2022-06-09 13:00:00,rain,28.6,107.2
+315,Today316,dummy3,2022-06-09 03:00:00,cloud,24.5,144.2
+316,Today317,dummy21,2022-06-10 15:00:00,rain,23.5,86.5
+317,Today318,dummy55,2022-06-10 10:00:00,fog,20.8,108.1
+318,Today319,dummy58,2022-06-08 08:00:00,sun,16.5,75.4
+319,Today320,dummy23,2022-06-10 01:00:00,sun,23.7,110.4
+320,Today321,dummy39,2022-06-08 14:00:00,sun,24.8,138.6
+321,Today322,dummy39,2022-06-08 07:00:00,fog,24.0,58.1
+322,Today323,dummy83,2022-06-10 04:00:00,sun,22.9,109.0
+323,Today324,dummy100,2022-06-08 16:00:00,fog,23.6,100.7
+324,Today325,dummy25,2022-06-10 06:00:00,cloud,19.5,82.8
+325,Today326,dummy91,2022-06-10 07:00:00,sun,29.4,130.5
+326,Today327,dummy96,2022-06-10 12:00:00,sun,21.3,118.5
+327,Today328,dummy5,2022-06-10 20:00:00,rain,20.9,26.7
+328,Today329,dummy61,2022-06-11 02:00:00,fog,29.5,15.6
+329,Today330,dummy61,2022-06-09 02:00:00,sun,21.6,48.4
+330,Today331,dummy26,2022-06-08 09:00:00,rain,21.9,148.8
+331,Today332,dummy49,2022-06-08 11:00:00,cloud,24.0,11.0
+332,Today333,dummy75,2022-06-10 15:00:00,sun,28.5,42.5
+333,Today334,dummy73,2022-06-09 10:00:00,sun,27.3,75.1
+334,Today335,dummy54,2022-06-11 00:00:00,rain,23.8,107.0
+335,Today336,dummy7,2022-06-08 19:00:00,fog,25.5,98.0
+336,Today337,dummy24,2022-06-11 18:00:00,rain,18.5,13.5
+337,Today338,dummy43,2022-06-09 13:00:00,sun,22.1,32.4
+338,Today339,dummy53,2022-06-11 17:00:00,cloud,30.0,101.7
+339,Today340,dummy97,2022-06-09 17:00:00,sun,24.5,81.8
+340,Today341,dummy31,2022-06-10 01:00:00,cloud,22.1,116.8
+341,Today342,dummy96,2022-06-11 10:00:00,fog,28.6,23.8
+342,Today343,dummy73,2022-06-10 14:00:00,cloud,28.3,79.3
+343,Today344,dummy35,2022-06-09 01:00:00,rain,23.3,143.8
+344,Today345,dummy93,2022-06-10 06:00:00,cloud,20.2,59.0
+345,Today346,dummy19,2022-06-11 07:00:00,sun,20.7,25.0
+346,Today347,dummy18,2022-06-11 09:00:00,fog,29.0,100.3
+347,Today348,dummy29,2022-06-08 12:00:00,rain,16.0,119.4
+348,Today349,dummy82,2022-06-11 06:00:00,cloud,17.4,128.8
+349,Today350,dummy43,2022-06-11 08:00:00,sun,16.3,60.9
+350,Today351,dummy51,2022-06-10 15:00:00,cloud,27.9,16.9
+351,Today352,dummy34,2022-06-09 07:00:00,rain,22.9,70.6
+352,Today353,dummy64,2022-06-10 19:00:00,cloud,25.6,2.1
+353,Today354,dummy86,2022-06-10 09:00:00,fog,29.5,0.6
+354,Today355,dummy48,2022-06-11 06:00:00,cloud,27.9,60.6
+355,Today356,dummy44,2022-06-08 15:00:00,rain,24.2,107.7
+356,Today357,dummy23,2022-06-09 06:00:00,sun,16.6,96.7
+357,Today358,dummy36,2022-06-11 20:00:00,fog,21.9,70.0
+358,Today359,dummy24,2022-06-09 05:00:00,cloud,28.8,108.0
+359,Today360,dummy72,2022-06-08 19:00:00,fog,25.4,53.8
+360,Today361,dummy36,2022-06-08 10:00:00,cloud,17.2,14.2
+361,Today362,dummy75,2022-06-10 14:00:00,cloud,22.2,59.7
+362,Today363,dummy55,2022-06-09 13:00:00,fog,19.6,86.4
+363,Today364,dummy67,2022-06-09 12:00:00,cloud,23.0,59.5
+364,Today365,dummy98,2022-06-08 23:00:00,sun,24.2,15.0
+365,Today366,dummy70,2022-06-09 16:00:00,sun,18.7,127.2
+366,Today367,dummy76,2022-06-11 19:00:00,rain,28.5,96.4
+367,Today368,dummy42,2022-06-10 08:00:00,rain,22.1,91.4
+368,Today369,dummy100,2022-06-08 13:00:00,rain,22.4,128.2
+369,Today370,dummy93,2022-06-10 05:00:00,rain,15.7,133.8
+370,Today371,dummy56,2022-06-11 23:00:00,rain,20.0,91.6
+371,Today372,dummy15,2022-06-08 07:00:00,cloud,22.2,108.8
+372,Today373,dummy36,2022-06-10 09:00:00,fog,19.9,72.2
+373,Today374,dummy15,2022-06-08 18:00:00,fog,18.2,17.2
+374,Today375,dummy84,2022-06-08 10:00:00,rain,29.6,74.9
+375,Today376,dummy51,2022-06-09 10:00:00,fog,26.2,150.0
+376,Today377,dummy55,2022-06-11 02:00:00,rain,17.0,102.0
+377,Today378,dummy95,2022-06-10 01:00:00,cloud,23.9,117.7
+378,Today379,dummy40,2022-06-11 12:00:00,sun,26.8,90.1
+379,Today380,dummy57,2022-06-10 15:00:00,sun,18.8,138.6
+380,Today381,dummy80,2022-06-09 18:00:00,cloud,24.9,62.7
+381,Today382,dummy28,2022-06-09 19:00:00,sun,28.9,73.9
+382,Today383,dummy67,2022-06-09 22:00:00,fog,20.0,63.2
+383,Today384,dummy54,2022-06-10 14:00:00,rain,27.1,131.1
+384,Today385,dummy73,2022-06-08 09:00:00,rain,26.8,6.4
+385,Today386,dummy30,2022-06-10 12:00:00,cloud,21.7,134.5
+386,Today387,dummy45,2022-06-08 21:00:00,sun,19.5,63.0
+387,Today388,dummy42,2022-06-09 03:00:00,fog,19.0,53.3
+388,Today389,dummy60,2022-06-10 00:00:00,fog,22.7,8.0
+389,Today390,dummy32,2022-06-11 00:00:00,sun,19.9,146.9
+390,Today391,dummy58,2022-06-09 16:00:00,fog,19.7,3.6
+391,Today392,dummy18,2022-06-08 22:00:00,cloud,25.1,92.3
+392,Today393,dummy2,2022-06-09 13:00:00,rain,18.6,37.0
+393,Today394,dummy69,2022-06-11 09:00:00,fog,25.2,25.9
+394,Today395,dummy65,2022-06-09 14:00:00,fog,28.9,36.4
+395,Today396,dummy65,2022-06-08 15:00:00,rain,23.7,20.1
+396,Today397,dummy25,2022-06-09 06:00:00,fog,17.0,78.7
+397,Today398,dummy85,2022-06-11 14:00:00,rain,27.1,22.9
+398,Today399,dummy13,2022-06-08 11:00:00,cloud,27.4,85.4
+399,Today400,dummy68,2022-06-09 03:00:00,sun,17.2,15.0
+400,Today401,dummy50,2022-06-08 05:00:00,rain,17.0,140.8
+401,Today402,dummy63,2022-06-09 13:00:00,rain,26.3,21.5
+402,Today403,dummy77,2022-06-10 17:00:00,fog,29.3,79.7
+403,Today404,dummy40,2022-06-11 20:00:00,cloud,27.6,116.4
+404,Today405,dummy85,2022-06-11 21:00:00,rain,17.9,105.4
+405,Today406,dummy3,2022-06-10 02:00:00,cloud,18.9,62.9
+406,Today407,dummy61,2022-06-10 07:00:00,sun,22.3,22.4
+407,Today408,dummy75,2022-06-11 02:00:00,sun,18.3,78.7
+408,Today409,dummy52,2022-06-10 13:00:00,cloud,29.7,28.8
+409,Today410,dummy61,2022-06-08 10:00:00,fog,17.0,23.2
+410,Today411,dummy65,2022-06-11 00:00:00,sun,29.7,37.8
+411,Today412,dummy71,2022-06-08 06:00:00,rain,27.5,126.8
+412,Today413,dummy34,2022-06-08 06:00:00,cloud,26.1,45.9
+413,Today414,dummy92,2022-06-09 15:00:00,rain,21.6,56.1
+414,Today415,dummy63,2022-06-09 12:00:00,rain,27.2,134.5
+415,Today416,dummy40,2022-06-08 17:00:00,sun,25.3,133.6
+416,Today417,dummy6,2022-06-09 09:00:00,rain,24.3,63.4
+417,Today418,dummy65,2022-06-11 07:00:00,cloud,16.3,60.4
+418,Today419,dummy34,2022-06-10 19:00:00,fog,15.1,134.9
+419,Today420,dummy51,2022-06-08 16:00:00,cloud,26.2,2.7
+420,Today421,dummy30,2022-06-09 00:00:00,sun,26.2,117.4
+421,Today422,dummy36,2022-06-08 15:00:00,sun,25.7,1.9
+422,Today423,dummy100,2022-06-09 00:00:00,rain,21.3,90.4
+423,Today424,dummy40,2022-06-09 15:00:00,fog,29.8,2.1
+424,Today425,dummy92,2022-06-11 10:00:00,sun,22.7,126.5
+425,Today426,dummy44,2022-06-08 13:00:00,cloud,21.2,137.5
+426,Today427,dummy66,2022-06-10 09:00:00,rain,24.4,51.3
+427,Today428,dummy22,2022-06-10 16:00:00,rain,18.6,46.8
+428,Today429,dummy83,2022-06-10 06:00:00,rain,25.4,136.9
+429,Today430,dummy62,2022-06-10 02:00:00,cloud,22.6,30.4
+430,Today431,dummy62,2022-06-09 14:00:00,rain,30.0,149.4
+431,Today432,dummy7,2022-06-08 20:00:00,cloud,17.3,62.9
+432,Today433,dummy9,2022-06-11 12:00:00,rain,16.2,17.5
+433,Today434,dummy63,2022-06-11 05:00:00,fog,19.2,114.9
+434,Today435,dummy62,2022-06-09 14:00:00,cloud,26.8,2.1
+435,Today436,dummy71,2022-06-09 18:00:00,sun,15.9,6.4
+436,Today437,dummy9,2022-06-11 22:00:00,cloud,16.3,15.1
+437,Today438,dummy18,2022-06-11 14:00:00,cloud,18.4,16.8
+438,Today439,dummy15,2022-06-09 06:00:00,cloud,19.1,122.2
+439,Today440,dummy59,2022-06-09 02:00:00,sun,16.1,48.7
+440,Today441,dummy10,2022-06-09 11:00:00,sun,16.8,53.9
+441,Today442,dummy1,2022-06-08 17:00:00,cloud,17.3,128.2
+442,Today443,dummy36,2022-06-08 17:00:00,fog,25.4,72.9
+443,Today444,dummy18,2022-06-11 11:00:00,cloud,16.5,78.7
+444,Today445,dummy25,2022-06-11 04:00:00,sun,18.1,35.4
+445,Today446,dummy43,2022-06-08 19:00:00,sun,24.2,96.5
+446,Today447,dummy59,2022-06-10 11:00:00,rain,15.2,124.7
+447,Today448,dummy70,2022-06-11 20:00:00,rain,19.9,37.1
+448,Today449,dummy2,2022-06-10 05:00:00,fog,19.4,60.6
+449,Today450,dummy94,2022-06-10 10:00:00,fog,17.2,83.9
+450,Today451,dummy93,2022-06-11 21:00:00,cloud,15.3,7.9
+451,Today452,dummy91,2022-06-11 01:00:00,cloud,29.1,78.1
+452,Today453,dummy97,2022-06-08 12:00:00,fog,22.1,139.6
+453,Today454,dummy95,2022-06-11 11:00:00,fog,16.1,84.5
+454,Today455,dummy63,2022-06-08 22:00:00,fog,20.3,138.7
+455,Today456,dummy93,2022-06-10 03:00:00,rain,25.3,119.2
+456,Today457,dummy87,2022-06-11 02:00:00,fog,22.1,108.1
+457,Today458,dummy61,2022-06-11 08:00:00,sun,17.6,31.0
+458,Today459,dummy61,2022-06-10 19:00:00,rain,19.0,43.7
+459,Today460,dummy94,2022-06-08 20:00:00,sun,17.2,3.3
+460,Today461,dummy84,2022-06-09 14:00:00,cloud,26.3,48.6
+461,Today462,dummy35,2022-06-10 13:00:00,fog,20.2,15.9
+462,Today463,dummy59,2022-06-09 00:00:00,rain,24.7,140.0
+463,Today464,dummy46,2022-06-11 14:00:00,sun,17.0,121.8
+464,Today465,dummy24,2022-06-10 03:00:00,rain,21.7,49.2
+465,Today466,dummy66,2022-06-09 10:00:00,fog,23.8,9.0
+466,Today467,dummy71,2022-06-10 08:00:00,rain,29.8,81.8
+467,Today468,dummy24,2022-06-10 23:00:00,fog,19.5,49.5
+468,Today469,dummy5,2022-06-09 00:00:00,sun,23.7,84.2
+469,Today470,dummy19,2022-06-09 04:00:00,fog,15.6,57.0
+470,Today471,dummy83,2022-06-11 01:00:00,cloud,29.5,2.6
+471,Today472,dummy80,2022-06-11 05:00:00,cloud,24.0,125.9
+472,Today473,dummy54,2022-06-10 14:00:00,sun,18.8,7.4
+473,Today474,dummy31,2022-06-10 22:00:00,rain,23.5,148.6
+474,Today475,dummy9,2022-06-08 07:00:00,rain,21.2,5.0
+475,Today476,dummy29,2022-06-08 02:00:00,rain,18.8,59.5
+476,Today477,dummy54,2022-06-08 00:00:00,fog,19.3,107.3
+477,Today478,dummy61,2022-06-10 04:00:00,cloud,21.0,40.2
+478,Today479,dummy66,2022-06-09 19:00:00,rain,16.9,90.5
+479,Today480,dummy57,2022-06-09 03:00:00,rain,29.9,46.0
+480,Today481,dummy12,2022-06-08 17:00:00,sun,24.9,59.5
+481,Today482,dummy43,2022-06-11 08:00:00,rain,24.1,9.7
+482,Today483,dummy6,2022-06-10 06:00:00,rain,16.0,58.0
+483,Today484,dummy96,2022-06-08 22:00:00,rain,23.7,0.0
+484,Today485,dummy43,2022-06-10 12:00:00,rain,23.9,54.9
+485,Today486,dummy57,2022-06-09 07:00:00,fog,17.0,96.5
+486,Today487,dummy45,2022-06-10 22:00:00,cloud,21.4,124.0
+487,Today488,dummy11,2022-06-09 21:00:00,fog,17.8,143.3
+488,Today489,dummy48,2022-06-08 06:00:00,rain,20.4,148.9
+489,Today490,dummy89,2022-06-08 21:00:00,sun,23.8,90.0
+490,Today491,dummy17,2022-06-09 13:00:00,rain,16.7,2.9
+491,Today492,dummy22,2022-06-08 13:00:00,cloud,17.5,94.1
+492,Today493,dummy58,2022-06-08 05:00:00,sun,17.8,46.1
+493,Today494,dummy14,2022-06-11 13:00:00,fog,15.4,113.3
+494,Today495,dummy87,2022-06-09 04:00:00,cloud,22.9,134.6
+495,Today496,dummy46,2022-06-09 00:00:00,sun,23.0,43.9
+496,Today497,dummy22,2022-06-08 10:00:00,rain,27.6,54.4
+497,Today498,dummy63,2022-06-09 17:00:00,rain,20.5,68.6
+498,Today499,dummy19,2022-06-09 19:00:00,cloud,20.2,148.4
+499,Today500,dummy82,2022-06-10 12:00:00,cloud,20.1,70.5
+500,Today501,dummy89,2022-06-09 07:00:00,cloud,25.9,146.3
+501,Today502,dummy29,2022-06-08 00:00:00,sun,25.1,34.4
+502,Today503,dummy78,2022-06-10 20:00:00,sun,27.2,130.0
+503,Today504,dummy6,2022-06-09 14:00:00,rain,16.6,131.9
+504,Today505,dummy46,2022-06-09 13:00:00,fog,26.3,30.9
+505,Today506,dummy56,2022-06-09 22:00:00,rain,29.7,92.9
+506,Today507,dummy66,2022-06-10 11:00:00,fog,27.2,66.5
+507,Today508,dummy11,2022-06-12 00:00:00,sun,27.6,146.4
+508,Today509,dummy93,2022-06-10 10:00:00,cloud,18.0,53.8
+509,Today510,dummy13,2022-06-10 06:00:00,cloud,19.3,115.7
+510,Today511,dummy93,2022-06-08 10:00:00,sun,29.5,32.0
+511,Today512,dummy76,2022-06-10 15:00:00,cloud,21.3,12.0
+512,Today513,dummy79,2022-06-10 10:00:00,rain,25.2,88.8
+513,Today514,dummy16,2022-06-11 15:00:00,fog,20.8,146.2
+514,Today515,dummy89,2022-06-09 12:00:00,cloud,26.2,98.2
+515,Today516,dummy77,2022-06-11 20:00:00,rain,18.8,11.3
+516,Today517,dummy40,2022-06-09 02:00:00,cloud,19.9,48.7
+517,Today518,dummy49,2022-06-11 22:00:00,fog,16.8,138.0
+518,Today519,dummy91,2022-06-09 13:00:00,sun,24.8,16.7
+519,Today520,dummy67,2022-06-09 09:00:00,sun,20.8,113.6
+520,Today521,dummy91,2022-06-09 11:00:00,fog,17.8,10.8
+521,Today522,dummy34,2022-06-10 06:00:00,cloud,22.3,95.0
+522,Today523,dummy20,2022-06-10 17:00:00,fog,28.4,2.0
+523,Today524,dummy49,2022-06-08 06:00:00,rain,25.2,55.8
+524,Today525,dummy63,2022-06-08 05:00:00,fog,27.0,146.8
+525,Today526,dummy24,2022-06-08 22:00:00,sun,15.4,141.6
+526,Today527,dummy37,2022-06-10 22:00:00,cloud,15.9,10.7
+527,Today528,dummy84,2022-06-10 03:00:00,fog,22.8,21.7
+528,Today529,dummy98,2022-06-11 04:00:00,cloud,15.5,137.8
+529,Today530,dummy76,2022-06-11 18:00:00,rain,25.2,41.5
+530,Today531,dummy95,2022-06-10 04:00:00,fog,28.1,97.2
+531,Today532,dummy100,2022-06-09 00:00:00,fog,23.6,51.3
+532,Today533,dummy46,2022-06-09 11:00:00,sun,22.9,104.0
+533,Today534,dummy26,2022-06-09 12:00:00,sun,19.0,83.4
+534,Today535,dummy26,2022-06-11 18:00:00,rain,27.0,60.5
+535,Today536,dummy83,2022-06-08 01:00:00,fog,29.0,2.7
+536,Today537,dummy76,2022-06-11 09:00:00,cloud,26.2,42.5
+537,Today538,dummy31,2022-06-09 02:00:00,sun,21.0,148.4
+538,Today539,dummy66,2022-06-11 10:00:00,sun,27.9,132.0
+539,Today540,dummy51,2022-06-10 12:00:00,rain,17.3,16.3
+540,Today541,dummy25,2022-06-10 10:00:00,fog,22.8,34.7
+541,Today542,dummy33,2022-06-10 19:00:00,cloud,18.4,133.7
+542,Today543,dummy5,2022-06-09 22:00:00,fog,20.4,10.7
+543,Today544,dummy70,2022-06-09 02:00:00,sun,26.3,81.5
+544,Today545,dummy76,2022-06-08 12:00:00,sun,21.3,100.8
+545,Today546,dummy92,2022-06-11 03:00:00,fog,25.3,132.1
+546,Today547,dummy43,2022-06-11 16:00:00,sun,20.5,5.6
+547,Today548,dummy41,2022-06-09 09:00:00,cloud,25.2,20.2
+548,Today549,dummy61,2022-06-08 19:00:00,rain,27.1,8.7
+549,Today550,dummy51,2022-06-08 14:00:00,rain,20.5,12.7
+550,Today551,dummy36,2022-06-11 05:00:00,fog,17.1,111.6
+551,Today552,dummy43,2022-06-09 05:00:00,sun,26.6,74.0
+552,Today553,dummy54,2022-06-08 22:00:00,cloud,18.6,143.6
+553,Today554,dummy88,2022-06-08 11:00:00,sun,24.6,72.7
+554,Today555,dummy95,2022-06-11 02:00:00,cloud,23.5,84.0
+555,Today556,dummy21,2022-06-11 17:00:00,rain,25.5,47.5
+556,Today557,dummy54,2022-06-08 02:00:00,cloud,26.5,73.0
+557,Today558,dummy26,2022-06-09 23:00:00,cloud,17.6,148.8
+558,Today559,dummy26,2022-06-11 00:00:00,fog,28.2,41.0
+559,Today560,dummy27,2022-06-10 04:00:00,rain,26.1,119.4
+560,Today561,dummy64,2022-06-10 23:00:00,fog,22.3,13.3
+561,Today562,dummy99,2022-06-10 16:00:00,sun,16.1,33.8
+562,Today563,dummy74,2022-06-09 19:00:00,rain,16.2,79.6
+563,Today564,dummy96,2022-06-09 07:00:00,sun,18.3,40.5
+564,Today565,dummy29,2022-06-08 09:00:00,rain,30.0,51.0
+565,Today566,dummy48,2022-06-10 00:00:00,cloud,24.9,54.0
+566,Today567,dummy6,2022-06-08 13:00:00,rain,16.5,107.8
+567,Today568,dummy40,2022-06-11 07:00:00,rain,22.3,148.5
+568,Today569,dummy57,2022-06-11 18:00:00,sun,29.4,34.7
+569,Today570,dummy63,2022-06-09 12:00:00,fog,24.1,12.6
+570,Today571,dummy81,2022-06-11 04:00:00,sun,26.3,119.6
+571,Today572,dummy100,2022-06-08 17:00:00,rain,26.5,81.3
+572,Today573,dummy14,2022-06-09 10:00:00,cloud,16.5,105.1
+573,Today574,dummy17,2022-06-09 21:00:00,fog,29.3,7.5
+574,Today575,dummy65,2022-06-08 17:00:00,cloud,27.4,21.3
+575,Today576,dummy63,2022-06-10 16:00:00,cloud,26.2,78.2
+576,Today577,dummy92,2022-06-11 21:00:00,rain,22.5,58.7
+577,Today578,dummy30,2022-06-08 23:00:00,rain,15.8,120.3
+578,Today579,dummy89,2022-06-09 23:00:00,fog,29.2,138.0
+579,Today580,dummy92,2022-06-11 01:00:00,fog,19.5,11.5
+580,Today581,dummy44,2022-06-11 13:00:00,fog,23.4,2.9
+581,Today582,dummy31,2022-06-08 13:00:00,sun,24.3,10.8
+582,Today583,dummy93,2022-06-10 09:00:00,sun,21.2,126.4
+583,Today584,dummy9,2022-06-08 00:00:00,fog,26.5,28.4
+584,Today585,dummy93,2022-06-11 12:00:00,rain,17.9,97.5
+585,Today586,dummy67,2022-06-09 01:00:00,rain,28.8,11.2
+586,Today587,dummy30,2022-06-08 08:00:00,rain,21.1,38.1
+587,Today588,dummy30,2022-06-11 06:00:00,cloud,27.2,28.8
+588,Today589,dummy46,2022-06-10 17:00:00,cloud,17.4,1.7
+589,Today590,dummy78,2022-06-11 22:00:00,fog,18.7,35.9
+590,Today591,dummy35,2022-06-08 08:00:00,rain,16.2,143.9
+591,Today592,dummy54,2022-06-11 01:00:00,sun,17.7,67.9
+592,Today593,dummy9,2022-06-11 18:00:00,rain,22.1,143.4
+593,Today594,dummy22,2022-06-09 08:00:00,cloud,16.5,109.8
+594,Today595,dummy21,2022-06-10 18:00:00,cloud,27.8,89.8
+595,Today596,dummy91,2022-06-09 20:00:00,rain,17.2,25.0
+596,Today597,dummy72,2022-06-08 13:00:00,sun,25.0,111.3
+597,Today598,dummy13,2022-06-11 21:00:00,cloud,16.2,80.9
+598,Today599,dummy15,2022-06-11 08:00:00,sun,17.8,130.9
+599,Today600,dummy15,2022-06-09 14:00:00,sun,21.8,58.0
+600,Today601,dummy86,2022-06-09 05:00:00,sun,21.2,121.7
+601,Today602,dummy27,2022-06-09 14:00:00,fog,26.6,30.9
+602,Today603,dummy87,2022-06-10 19:00:00,fog,24.9,104.3
+603,Today604,dummy78,2022-06-08 07:00:00,sun,22.8,119.3
+604,Today605,dummy59,2022-06-08 17:00:00,rain,17.4,10.6
+605,Today606,dummy90,2022-06-11 19:00:00,sun,16.7,75.4
+606,Today607,dummy51,2022-06-09 18:00:00,sun,27.2,116.4
+607,Today608,dummy5,2022-06-10 20:00:00,fog,25.9,80.5
+608,Today609,dummy75,2022-06-10 20:00:00,rain,18.7,92.4
+609,Today610,dummy39,2022-06-09 05:00:00,rain,25.9,130.0
+610,Today611,dummy87,2022-06-11 17:00:00,fog,17.1,138.2
+611,Today612,dummy100,2022-06-10 11:00:00,fog,16.9,34.6
+612,Today613,dummy93,2022-06-11 00:00:00,fog,23.1,105.7
+613,Today614,dummy96,2022-06-11 23:00:00,rain,27.0,26.8
+614,Today615,dummy44,2022-06-08 19:00:00,sun,24.2,120.1
+615,Today616,dummy4,2022-06-08 18:00:00,fog,24.9,147.5
+616,Today617,dummy2,2022-06-10 13:00:00,rain,25.9,50.9
+617,Today618,dummy75,2022-06-09 22:00:00,fog,15.9,37.0
+618,Today619,dummy6,2022-06-09 14:00:00,fog,15.5,43.4
+619,Today620,dummy57,2022-06-11 22:00:00,rain,22.3,125.2
+620,Today621,dummy28,2022-06-08 17:00:00,rain,15.7,83.1
+621,Today622,dummy13,2022-06-08 23:00:00,sun,23.6,149.1
+622,Today623,dummy66,2022-06-09 22:00:00,fog,17.5,117.5
+623,Today624,dummy82,2022-06-09 02:00:00,fog,25.6,17.8
+624,Today625,dummy50,2022-06-08 10:00:00,cloud,28.4,76.6
+625,Today626,dummy79,2022-06-11 18:00:00,cloud,20.3,145.9
+626,Today627,dummy51,2022-06-11 17:00:00,sun,27.7,48.5
+627,Today628,dummy95,2022-06-10 22:00:00,cloud,27.0,5.1
+628,Today629,dummy70,2022-06-10 19:00:00,rain,28.6,146.0
+629,Today630,dummy16,2022-06-08 02:00:00,sun,29.1,113.6
+630,Today631,dummy86,2022-06-10 12:00:00,sun,26.6,32.2
+631,Today632,dummy33,2022-06-08 12:00:00,sun,26.0,13.1
+632,Today633,dummy31,2022-06-08 10:00:00,sun,28.1,26.1
+633,Today634,dummy14,2022-06-11 05:00:00,cloud,16.2,127.1
+634,Today635,dummy69,2022-06-09 14:00:00,sun,20.5,54.2
+635,Today636,dummy49,2022-06-09 00:00:00,cloud,15.1,16.2
+636,Today637,dummy71,2022-06-09 10:00:00,fog,20.5,16.6
+637,Today638,dummy42,2022-06-09 08:00:00,rain,17.2,0.3
+638,Today639,dummy79,2022-06-10 18:00:00,sun,29.1,11.7
+639,Today640,dummy14,2022-06-10 11:00:00,sun,15.3,13.2
+640,Today641,dummy71,2022-06-10 16:00:00,cloud,21.1,146.1
+641,Today642,dummy32,2022-06-10 23:00:00,cloud,23.1,80.7
+642,Today643,dummy22,2022-06-09 22:00:00,sun,21.7,108.3
+643,Today644,dummy22,2022-06-09 15:00:00,sun,26.5,123.7
+644,Today645,dummy76,2022-06-08 16:00:00,rain,20.1,98.3
+645,Today646,dummy86,2022-06-11 01:00:00,sun,22.7,103.3
+646,Today647,dummy38,2022-06-11 12:00:00,rain,28.0,45.8
+647,Today648,dummy22,2022-06-08 12:00:00,sun,28.4,143.8
+648,Today649,dummy90,2022-06-08 22:00:00,rain,17.3,144.7
+649,Today650,dummy6,2022-06-09 12:00:00,cloud,16.3,79.9
+650,Today651,dummy70,2022-06-08 09:00:00,sun,29.0,47.1
+651,Today652,dummy29,2022-06-08 05:00:00,fog,15.3,135.9
+652,Today653,dummy22,2022-06-08 04:00:00,fog,28.2,125.2
+653,Today654,dummy47,2022-06-11 19:00:00,rain,26.7,50.4
+654,Today655,dummy89,2022-06-08 22:00:00,fog,26.2,91.6
+655,Today656,dummy10,2022-06-11 09:00:00,rain,21.5,144.5
+656,Today657,dummy58,2022-06-09 15:00:00,sun,21.5,13.0
+657,Today658,dummy37,2022-06-10 03:00:00,fog,18.0,52.7
+658,Today659,dummy40,2022-06-11 11:00:00,fog,18.8,111.0
+659,Today660,dummy30,2022-06-11 16:00:00,sun,29.5,31.2
+660,Today661,dummy5,2022-06-08 06:00:00,rain,28.0,47.0
+661,Today662,dummy66,2022-06-10 22:00:00,fog,26.8,22.5
+662,Today663,dummy4,2022-06-11 19:00:00,cloud,19.0,14.1
+663,Today664,dummy71,2022-06-10 01:00:00,cloud,28.4,67.2
+664,Today665,dummy68,2022-06-11 06:00:00,cloud,28.1,147.3
+665,Today666,dummy65,2022-06-08 02:00:00,fog,22.6,118.5
+666,Today667,dummy52,2022-06-09 05:00:00,cloud,15.8,37.4
+667,Today668,dummy41,2022-06-10 21:00:00,fog,23.7,68.5
+668,Today669,dummy21,2022-06-11 13:00:00,rain,22.3,126.5
+669,Today670,dummy8,2022-06-10 22:00:00,rain,28.9,92.8
+670,Today671,dummy5,2022-06-10 23:00:00,cloud,18.7,103.7
+671,Today672,dummy23,2022-06-10 04:00:00,sun,29.5,78.1
+672,Today673,dummy99,2022-06-08 14:00:00,rain,26.3,75.2
+673,Today674,dummy38,2022-06-11 03:00:00,cloud,18.8,95.9
+674,Today675,dummy29,2022-06-09 04:00:00,sun,24.9,115.1
+675,Today676,dummy19,2022-06-10 03:00:00,rain,28.7,59.9
+676,Today677,dummy43,2022-06-09 03:00:00,fog,29.5,64.5
+677,Today678,dummy5,2022-06-08 14:00:00,fog,29.0,131.9
+678,Today679,dummy70,2022-06-08 11:00:00,fog,29.5,32.4
+679,Today680,dummy14,2022-06-10 02:00:00,sun,18.3,120.2
+680,Today681,dummy87,2022-06-10 04:00:00,fog,15.3,10.4
+681,Today682,dummy79,2022-06-11 13:00:00,rain,17.7,147.3
+682,Today683,dummy34,2022-06-09 02:00:00,fog,16.7,51.5
+683,Today684,dummy22,2022-06-10 20:00:00,fog,27.2,40.0
+684,Today685,dummy67,2022-06-08 17:00:00,sun,26.8,111.1
+685,Today686,dummy95,2022-06-10 17:00:00,rain,23.9,95.7
+686,Today687,dummy1,2022-06-09 07:00:00,fog,22.4,76.9
+687,Today688,dummy63,2022-06-09 07:00:00,sun,26.3,122.8
+688,Today689,dummy50,2022-06-08 12:00:00,rain,21.2,99.3
+689,Today690,dummy17,2022-06-10 02:00:00,fog,28.5,99.7
+690,Today691,dummy60,2022-06-08 23:00:00,rain,21.9,27.8
+691,Today692,dummy52,2022-06-08 23:00:00,fog,15.3,130.1
+692,Today693,dummy7,2022-06-10 14:00:00,fog,29.4,98.5
+693,Today694,dummy58,2022-06-11 15:00:00,sun,15.3,9.7
+694,Today695,dummy100,2022-06-08 04:00:00,sun,17.2,1.1
+695,Today696,dummy26,2022-06-10 22:00:00,fog,27.9,37.4
+696,Today697,dummy68,2022-06-10 10:00:00,rain,21.3,107.7
+697,Today698,dummy68,2022-06-11 08:00:00,rain,15.5,91.7
+698,Today699,dummy92,2022-06-11 22:00:00,fog,27.2,56.5
+699,Today700,dummy23,2022-06-10 09:00:00,fog,22.5,42.9
+700,Today701,dummy35,2022-06-11 23:00:00,sun,27.1,18.8
+701,Today702,dummy52,2022-06-08 15:00:00,rain,22.5,29.2
+702,Today703,dummy65,2022-06-09 22:00:00,sun,19.3,43.3
+703,Today704,dummy98,2022-06-08 06:00:00,sun,26.5,9.8
+704,Today705,dummy31,2022-06-09 17:00:00,sun,20.9,141.5
+705,Today706,dummy62,2022-06-08 00:00:00,sun,19.7,116.7
+706,Today707,dummy15,2022-06-10 15:00:00,cloud,17.6,25.7
+707,Today708,dummy88,2022-06-10 14:00:00,rain,17.6,141.9
+708,Today709,dummy92,2022-06-10 20:00:00,sun,20.9,140.9
+709,Today710,dummy20,2022-06-09 23:00:00,fog,23.6,98.9
+710,Today711,dummy58,2022-06-08 07:00:00,cloud,26.5,25.7
+711,Today712,dummy2,2022-06-10 14:00:00,rain,17.5,97.3
+712,Today713,dummy81,2022-06-11 23:00:00,sun,23.7,82.9
+713,Today714,dummy16,2022-06-11 05:00:00,fog,29.0,53.7
+714,Today715,dummy35,2022-06-09 16:00:00,sun,21.1,52.5
+715,Today716,dummy89,2022-06-11 16:00:00,sun,23.1,111.4
+716,Today717,dummy36,2022-06-09 16:00:00,rain,19.6,119.3
+717,Today718,dummy8,2022-06-09 13:00:00,sun,29.2,39.4
+718,Today719,dummy39,2022-06-10 19:00:00,rain,24.6,42.6
+719,Today720,dummy31,2022-06-11 16:00:00,sun,26.9,41.7
+720,Today721,dummy34,2022-06-11 00:00:00,cloud,22.2,43.7
+721,Today722,dummy34,2022-06-08 09:00:00,rain,28.6,132.7
+722,Today723,dummy38,2022-06-08 05:00:00,fog,22.5,15.3
+723,Today724,dummy83,2022-06-11 18:00:00,fog,27.9,123.1
+724,Today725,dummy90,2022-06-08 07:00:00,rain,21.7,29.1
+725,Today726,dummy8,2022-06-09 06:00:00,rain,21.9,86.1
+726,Today727,dummy39,2022-06-11 23:00:00,fog,27.8,144.0
+727,Today728,dummy96,2022-06-08 04:00:00,rain,23.7,33.1
+728,Today729,dummy14,2022-06-10 09:00:00,rain,27.9,79.0
+729,Today730,dummy22,2022-06-10 23:00:00,cloud,22.2,103.2
+730,Today731,dummy93,2022-06-11 19:00:00,sun,18.9,14.1
+731,Today732,dummy57,2022-06-11 22:00:00,rain,19.5,32.6
+732,Today733,dummy93,2022-06-10 14:00:00,rain,27.3,65.5
+733,Today734,dummy60,2022-06-11 10:00:00,rain,28.4,141.5
+734,Today735,dummy49,2022-06-11 17:00:00,cloud,16.3,38.8
+735,Today736,dummy65,2022-06-12 00:00:00,rain,18.0,108.2
+736,Today737,dummy4,2022-06-09 23:00:00,rain,26.2,35.6
+737,Today738,dummy63,2022-06-08 13:00:00,rain,21.7,23.6
+738,Today739,dummy58,2022-06-08 02:00:00,sun,20.6,45.4
+739,Today740,dummy42,2022-06-10 11:00:00,rain,29.5,123.1
+740,Today741,dummy74,2022-06-11 19:00:00,fog,18.0,128.8
+741,Today742,dummy10,2022-06-11 20:00:00,cloud,17.2,59.1
+742,Today743,dummy37,2022-06-09 15:00:00,cloud,27.3,58.1
+743,Today744,dummy89,2022-06-08 01:00:00,rain,24.7,64.5
+744,Today745,dummy79,2022-06-11 09:00:00,sun,17.6,103.2
+745,Today746,dummy4,2022-06-10 06:00:00,fog,19.5,17.0
+746,Today747,dummy18,2022-06-10 19:00:00,fog,27.6,58.7
+747,Today748,dummy16,2022-06-11 01:00:00,sun,19.0,6.9
+748,Today749,dummy89,2022-06-09 04:00:00,cloud,20.2,43.0
+749,Today750,dummy35,2022-06-08 17:00:00,cloud,18.8,10.4
+750,Today751,dummy100,2022-06-09 18:00:00,fog,29.8,118.8
+751,Today752,dummy85,2022-06-08 07:00:00,fog,24.5,82.5
+752,Today753,dummy26,2022-06-11 01:00:00,sun,26.5,122.6
+753,Today754,dummy61,2022-06-08 11:00:00,cloud,15.1,67.1
+754,Today755,dummy31,2022-06-09 17:00:00,cloud,29.0,50.3
+755,Today756,dummy25,2022-06-10 18:00:00,fog,24.3,82.7
+756,Today757,dummy54,2022-06-11 04:00:00,fog,17.6,126.3
+757,Today758,dummy20,2022-06-08 17:00:00,cloud,23.7,128.6
+758,Today759,dummy82,2022-06-11 11:00:00,sun,27.4,18.4
+759,Today760,dummy58,2022-06-09 02:00:00,sun,18.9,56.8
+760,Today761,dummy93,2022-06-09 01:00:00,fog,26.1,56.0
+761,Today762,dummy14,2022-06-09 07:00:00,cloud,28.1,67.4
+762,Today763,dummy1,2022-06-08 15:00:00,sun,26.6,122.8
+763,Today764,dummy99,2022-06-08 07:00:00,cloud,29.0,38.3
+764,Today765,dummy84,2022-06-09 07:00:00,fog,26.6,65.7
+765,Today766,dummy89,2022-06-10 09:00:00,sun,22.6,121.3
+766,Today767,dummy57,2022-06-09 02:00:00,cloud,16.8,69.9
+767,Today768,dummy42,2022-06-11 06:00:00,fog,21.1,40.9
+768,Today769,dummy3,2022-06-08 17:00:00,sun,22.8,41.5
+769,Today770,dummy82,2022-06-10 04:00:00,sun,25.5,120.5
+770,Today771,dummy57,2022-06-11 02:00:00,fog,20.1,63.8
+771,Today772,dummy26,2022-06-11 02:00:00,fog,20.4,69.7
+772,Today773,dummy24,2022-06-11 14:00:00,cloud,15.2,118.6
+773,Today774,dummy34,2022-06-10 11:00:00,sun,25.0,121.2
+774,Today775,dummy72,2022-06-11 21:00:00,cloud,29.5,25.6
+775,Today776,dummy59,2022-06-09 13:00:00,rain,16.5,38.5
+776,Today777,dummy60,2022-06-11 22:00:00,fog,22.8,137.7
+777,Today778,dummy69,2022-06-09 19:00:00,cloud,28.3,137.5
+778,Today779,dummy12,2022-06-10 08:00:00,rain,22.3,73.7
+779,Today780,dummy38,2022-06-09 22:00:00,sun,16.8,147.1
+780,Today781,dummy61,2022-06-10 08:00:00,fog,15.3,49.2
+781,Today782,dummy56,2022-06-09 05:00:00,sun,21.3,94.3
+782,Today783,dummy38,2022-06-09 11:00:00,fog,16.8,7.1
+783,Today784,dummy90,2022-06-08 14:00:00,fog,29.3,144.7
+784,Today785,dummy29,2022-06-10 16:00:00,sun,20.8,122.6
+785,Today786,dummy47,2022-06-08 04:00:00,fog,26.9,107.3
+786,Today787,dummy22,2022-06-09 04:00:00,cloud,15.6,74.1
+787,Today788,dummy28,2022-06-11 00:00:00,rain,27.2,109.3
+788,Today789,dummy3,2022-06-09 03:00:00,fog,26.4,107.3
+789,Today790,dummy21,2022-06-08 04:00:00,sun,17.4,113.3
+790,Today791,dummy15,2022-06-08 07:00:00,cloud,27.3,121.8
+791,Today792,dummy40,2022-06-11 13:00:00,cloud,22.6,8.2
+792,Today793,dummy62,2022-06-11 19:00:00,sun,18.7,147.5
+793,Today794,dummy11,2022-06-11 09:00:00,sun,24.7,7.1
+794,Today795,dummy5,2022-06-09 08:00:00,sun,17.3,20.3
+795,Today796,dummy49,2022-06-11 02:00:00,sun,21.1,33.9
+796,Today797,dummy54,2022-06-08 11:00:00,fog,18.4,143.7
+797,Today798,dummy79,2022-06-10 02:00:00,sun,25.6,38.6
+798,Today799,dummy33,2022-06-10 02:00:00,rain,21.9,34.9
+799,Today800,dummy39,2022-06-10 03:00:00,rain,22.4,20.8
+800,Today801,dummy74,2022-06-08 23:00:00,fog,24.2,124.6
+801,Today802,dummy8,2022-06-10 11:00:00,rain,15.8,24.7
+802,Today803,dummy51,2022-06-08 06:00:00,fog,29.2,68.4
+803,Today804,dummy93,2022-06-10 04:00:00,rain,26.4,22.1
+804,Today805,dummy6,2022-06-08 00:00:00,fog,22.7,147.1
+805,Today806,dummy44,2022-06-08 13:00:00,cloud,29.1,117.4
+806,Today807,dummy34,2022-06-08 22:00:00,sun,18.5,34.1
+807,Today808,dummy35,2022-06-11 07:00:00,cloud,27.6,138.0
+808,Today809,dummy22,2022-06-10 05:00:00,fog,16.7,48.6
+809,Today810,dummy99,2022-06-11 15:00:00,cloud,24.7,94.8
+810,Today811,dummy36,2022-06-08 06:00:00,cloud,25.1,27.5
+811,Today812,dummy50,2022-06-09 11:00:00,cloud,20.8,21.4
+812,Today813,dummy70,2022-06-09 00:00:00,rain,21.4,53.2
+813,Today814,dummy33,2022-06-11 18:00:00,sun,25.7,14.1
+814,Today815,dummy26,2022-06-09 10:00:00,cloud,24.2,13.5
+815,Today816,dummy17,2022-06-10 10:00:00,sun,24.8,106.5
+816,Today817,dummy12,2022-06-11 23:00:00,sun,20.0,59.7
+817,Today818,dummy58,2022-06-09 07:00:00,rain,26.9,32.0
+818,Today819,dummy4,2022-06-09 07:00:00,rain,16.9,118.2
+819,Today820,dummy94,2022-06-08 03:00:00,sun,27.1,112.3
+820,Today821,dummy15,2022-06-08 18:00:00,sun,22.2,58.0
+821,Today822,dummy43,2022-06-09 03:00:00,cloud,19.0,85.0
+822,Today823,dummy10,2022-06-10 11:00:00,fog,20.3,103.8
+823,Today824,dummy53,2022-06-11 23:00:00,rain,24.1,135.8
+824,Today825,dummy3,2022-06-08 02:00:00,fog,16.3,66.5
+825,Today826,dummy76,2022-06-09 16:00:00,cloud,17.3,1.0
+826,Today827,dummy96,2022-06-11 02:00:00,cloud,25.1,60.3
+827,Today828,dummy34,2022-06-12 00:00:00,fog,18.5,11.9
+828,Today829,dummy28,2022-06-10 17:00:00,sun,27.9,31.9
+829,Today830,dummy22,2022-06-08 11:00:00,sun,17.8,74.5
+830,Today831,dummy73,2022-06-09 01:00:00,cloud,27.6,76.9
+831,Today832,dummy48,2022-06-08 22:00:00,cloud,18.7,61.0
+832,Today833,dummy25,2022-06-10 08:00:00,sun,27.6,114.2
+833,Today834,dummy97,2022-06-11 03:00:00,rain,23.8,10.7
+834,Today835,dummy86,2022-06-10 11:00:00,fog,20.4,127.0
+835,Today836,dummy23,2022-06-11 10:00:00,rain,28.7,28.6
+836,Today837,dummy41,2022-06-11 12:00:00,sun,23.3,94.5
+837,Today838,dummy66,2022-06-08 12:00:00,sun,22.2,52.4
+838,Today839,dummy97,2022-06-10 20:00:00,fog,24.5,87.9
+839,Today840,dummy4,2022-06-11 03:00:00,fog,24.3,81.8
+840,Today841,dummy57,2022-06-08 19:00:00,cloud,21.0,61.2
+841,Today842,dummy98,2022-06-10 02:00:00,sun,17.6,102.0
+842,Today843,dummy37,2022-06-08 22:00:00,fog,21.5,74.6
+843,Today844,dummy93,2022-06-11 02:00:00,sun,24.2,3.3
+844,Today845,dummy24,2022-06-09 04:00:00,fog,21.5,140.8
+845,Today846,dummy96,2022-06-10 16:00:00,sun,24.5,56.7
+846,Today847,dummy71,2022-06-10 22:00:00,cloud,17.1,62.6
+847,Today848,dummy14,2022-06-08 04:00:00,cloud,24.6,44.4
+848,Today849,dummy15,2022-06-09 07:00:00,rain,28.4,29.3
+849,Today850,dummy42,2022-06-11 04:00:00,fog,29.5,128.7
+850,Today851,dummy46,2022-06-11 15:00:00,cloud,22.2,114.0
+851,Today852,dummy47,2022-06-09 03:00:00,fog,19.5,49.6
+852,Today853,dummy37,2022-06-10 13:00:00,cloud,24.3,144.1
+853,Today854,dummy18,2022-06-08 21:00:00,sun,16.0,61.1
+854,Today855,dummy60,2022-06-10 18:00:00,fog,29.5,19.3
+855,Today856,dummy40,2022-06-09 03:00:00,cloud,25.4,7.2
+856,Today857,dummy64,2022-06-11 19:00:00,rain,29.7,1.7
+857,Today858,dummy15,2022-06-11 13:00:00,rain,20.5,137.6
+858,Today859,dummy95,2022-06-09 19:00:00,cloud,16.1,102.8
+859,Today860,dummy44,2022-06-08 06:00:00,fog,15.0,93.5
+860,Today861,dummy29,2022-06-08 20:00:00,rain,15.2,101.9
+861,Today862,dummy88,2022-06-08 23:00:00,rain,20.7,91.5
+862,Today863,dummy76,2022-06-08 20:00:00,fog,27.3,142.4
+863,Today864,dummy24,2022-06-09 06:00:00,cloud,21.4,62.3
+864,Today865,dummy21,2022-06-09 15:00:00,fog,15.0,113.3
+865,Today866,dummy94,2022-06-10 00:00:00,cloud,28.7,34.9
+866,Today867,dummy96,2022-06-10 08:00:00,cloud,23.3,143.4
+867,Today868,dummy48,2022-06-11 06:00:00,sun,17.2,31.6
+868,Today869,dummy25,2022-06-09 12:00:00,sun,17.3,147.9
+869,Today870,dummy3,2022-06-11 06:00:00,cloud,20.3,104.5
+870,Today871,dummy78,2022-06-11 10:00:00,fog,21.2,94.9
+871,Today872,dummy5,2022-06-10 09:00:00,sun,18.2,86.1
+872,Today873,dummy60,2022-06-08 08:00:00,rain,17.2,17.3
+873,Today874,dummy83,2022-06-10 20:00:00,sun,29.2,27.7
+874,Today875,dummy91,2022-06-09 15:00:00,sun,20.3,118.6
+875,Today876,dummy49,2022-06-08 09:00:00,cloud,23.7,95.9
+876,Today877,dummy78,2022-06-10 01:00:00,cloud,16.5,29.7
+877,Today878,dummy28,2022-06-10 06:00:00,rain,24.4,116.6
+878,Today879,dummy32,2022-06-08 02:00:00,fog,21.2,87.7
+879,Today880,dummy3,2022-06-11 03:00:00,rain,19.2,24.4
+880,Today881,dummy85,2022-06-11 04:00:00,fog,25.1,125.6
+881,Today882,dummy48,2022-06-11 00:00:00,sun,29.3,89.0
+882,Today883,dummy10,2022-06-10 14:00:00,rain,19.4,87.1
+883,Today884,dummy4,2022-06-09 22:00:00,fog,18.7,125.0
+884,Today885,dummy5,2022-06-11 04:00:00,fog,27.4,41.3
+885,Today886,dummy44,2022-06-11 04:00:00,fog,28.5,147.9
+886,Today887,dummy46,2022-06-10 04:00:00,fog,21.2,105.1
+887,Today888,dummy98,2022-06-09 15:00:00,rain,22.4,142.2
+888,Today889,dummy65,2022-06-10 16:00:00,cloud,24.5,32.3
+889,Today890,dummy76,2022-06-11 18:00:00,cloud,26.8,59.3
+890,Today891,dummy11,2022-06-09 03:00:00,fog,26.8,7.5
+891,Today892,dummy49,2022-06-11 00:00:00,rain,23.7,64.7
+892,Today893,dummy93,2022-06-09 14:00:00,sun,23.4,135.9
+893,Today894,dummy86,2022-06-09 23:00:00,cloud,20.2,136.3
+894,Today895,dummy64,2022-06-11 23:00:00,fog,15.6,107.9
+895,Today896,dummy99,2022-06-11 02:00:00,sun,17.8,50.5
+896,Today897,dummy79,2022-06-09 09:00:00,sun,18.9,59.4
+897,Today898,dummy30,2022-06-10 00:00:00,fog,17.2,1.2
+898,Today899,dummy53,2022-06-10 10:00:00,rain,20.5,57.4
+899,Today900,dummy27,2022-06-10 10:00:00,fog,22.1,43.3
+900,Today901,dummy84,2022-06-11 11:00:00,cloud,20.5,30.1
+901,Today902,dummy42,2022-06-09 10:00:00,fog,16.5,119.6
+902,Today903,dummy64,2022-06-11 03:00:00,fog,28.8,90.0
+903,Today904,dummy32,2022-06-09 03:00:00,rain,27.8,67.3
+904,Today905,dummy28,2022-06-09 19:00:00,rain,18.2,101.5
+905,Today906,dummy71,2022-06-10 07:00:00,fog,19.0,110.5
+906,Today907,dummy83,2022-06-09 09:00:00,sun,28.1,72.0
+907,Today908,dummy23,2022-06-11 02:00:00,sun,24.2,43.3
+908,Today909,dummy89,2022-06-10 09:00:00,rain,29.6,141.0
+909,Today910,dummy92,2022-06-08 04:00:00,cloud,22.7,139.7
+910,Today911,dummy91,2022-06-08 11:00:00,cloud,17.9,39.7
+911,Today912,dummy4,2022-06-09 21:00:00,rain,29.4,84.0
+912,Today913,dummy46,2022-06-10 05:00:00,sun,23.1,35.8
+913,Today914,dummy21,2022-06-08 08:00:00,rain,23.7,36.1
+914,Today915,dummy49,2022-06-08 12:00:00,cloud,29.8,88.5
+915,Today916,dummy61,2022-06-10 11:00:00,fog,20.8,145.1
+916,Today917,dummy67,2022-06-08 04:00:00,rain,18.5,53.7
+917,Today918,dummy92,2022-06-09 10:00:00,sun,18.3,141.8
+918,Today919,dummy1,2022-06-11 22:00:00,fog,17.9,108.9
+919,Today920,dummy92,2022-06-09 13:00:00,rain,22.6,13.3
+920,Today921,dummy22,2022-06-08 17:00:00,cloud,25.1,107.2
+921,Today922,dummy8,2022-06-11 11:00:00,cloud,25.1,28.6
+922,Today923,dummy52,2022-06-09 01:00:00,fog,16.6,65.0
+923,Today924,dummy98,2022-06-11 02:00:00,cloud,19.4,3.9
+924,Today925,dummy15,2022-06-09 04:00:00,rain,25.8,49.5
+925,Today926,dummy5,2022-06-10 09:00:00,fog,22.6,23.2
+926,Today927,dummy98,2022-06-10 10:00:00,sun,25.2,113.7
+927,Today928,dummy44,2022-06-08 11:00:00,cloud,25.1,92.5
+928,Today929,dummy10,2022-06-10 23:00:00,cloud,21.0,13.8
+929,Today930,dummy91,2022-06-08 14:00:00,rain,15.0,39.8
+930,Today931,dummy72,2022-06-10 14:00:00,fog,19.9,43.9
+931,Today932,dummy49,2022-06-12 00:00:00,cloud,19.9,43.1
+932,Today933,dummy93,2022-06-09 11:00:00,sun,22.2,43.6
+933,Today934,dummy47,2022-06-09 04:00:00,sun,18.2,21.8
+934,Today935,dummy2,2022-06-09 22:00:00,sun,21.8,101.6
+935,Today936,dummy19,2022-06-10 07:00:00,sun,18.8,53.5
+936,Today937,dummy57,2022-06-11 05:00:00,sun,17.6,70.6
+937,Today938,dummy4,2022-06-11 23:00:00,fog,17.0,13.4
+938,Today939,dummy92,2022-06-11 18:00:00,rain,24.6,47.8
+939,Today940,dummy40,2022-06-11 05:00:00,rain,24.8,28.0
+940,Today941,dummy46,2022-06-09 07:00:00,sun,27.2,16.2
+941,Today942,dummy44,2022-06-09 03:00:00,rain,19.1,43.1
+942,Today943,dummy40,2022-06-10 01:00:00,fog,17.4,135.1
+943,Today944,dummy100,2022-06-11 04:00:00,rain,29.1,62.1
+944,Today945,dummy67,2022-06-11 03:00:00,cloud,20.3,99.2
+945,Today946,dummy11,2022-06-09 09:00:00,fog,25.8,20.8
+946,Today947,dummy3,2022-06-11 11:00:00,fog,23.7,39.5
+947,Today948,dummy92,2022-06-10 17:00:00,sun,23.1,87.4
+948,Today949,dummy96,2022-06-08 11:00:00,sun,26.4,92.2
+949,Today950,dummy27,2022-06-09 02:00:00,sun,25.2,104.1
+950,Today951,dummy72,2022-06-10 16:00:00,cloud,15.9,19.3
+951,Today952,dummy22,2022-06-11 09:00:00,fog,19.5,36.2
+952,Today953,dummy86,2022-06-09 10:00:00,sun,17.9,7.9
+953,Today954,dummy52,2022-06-09 22:00:00,rain,18.4,140.2
+954,Today955,dummy66,2022-06-11 10:00:00,rain,22.4,37.9
+955,Today956,dummy62,2022-06-09 10:00:00,cloud,30.0,36.4
+956,Today957,dummy48,2022-06-08 23:00:00,sun,23.7,24.6
+957,Today958,dummy91,2022-06-09 07:00:00,rain,15.3,26.9
+958,Today959,dummy85,2022-06-11 21:00:00,fog,27.7,25.5
+959,Today960,dummy8,2022-06-10 19:00:00,rain,24.0,4.4
+960,Today961,dummy98,2022-06-11 22:00:00,cloud,16.3,78.9
+961,Today962,dummy42,2022-06-08 02:00:00,rain,21.4,3.2
+962,Today963,dummy31,2022-06-10 23:00:00,cloud,20.6,84.1
+963,Today964,dummy54,2022-06-09 15:00:00,sun,19.1,9.4
+964,Today965,dummy88,2022-06-09 13:00:00,fog,25.8,14.7
+965,Today966,dummy12,2022-06-11 10:00:00,sun,15.1,12.5
+966,Today967,dummy81,2022-06-09 14:00:00,sun,27.2,129.9
+967,Today968,dummy58,2022-06-10 17:00:00,sun,24.8,123.9
+968,Today969,dummy12,2022-06-08 22:00:00,sun,28.9,111.2
+969,Today970,dummy54,2022-06-10 14:00:00,rain,21.6,22.0
+970,Today971,dummy57,2022-06-09 04:00:00,sun,16.1,129.4
+971,Today972,dummy29,2022-06-11 21:00:00,sun,27.4,100.5
+972,Today973,dummy96,2022-06-11 18:00:00,cloud,21.8,79.0
+973,Today974,dummy24,2022-06-09 03:00:00,cloud,15.8,104.7
+974,Today975,dummy43,2022-06-09 19:00:00,fog,18.1,34.8
+975,Today976,dummy24,2022-06-11 05:00:00,sun,19.3,103.6
+976,Today977,dummy5,2022-06-11 18:00:00,rain,27.2,128.8
+977,Today978,dummy32,2022-06-10 17:00:00,sun,26.9,36.1
+978,Today979,dummy83,2022-06-10 00:00:00,rain,26.6,141.9
+979,Today980,dummy92,2022-06-08 04:00:00,fog,18.9,43.7
+980,Today981,dummy52,2022-06-11 23:00:00,sun,28.4,78.9
+981,Today982,dummy63,2022-06-10 21:00:00,rain,16.2,6.6
+982,Today983,dummy23,2022-06-10 21:00:00,sun,22.2,65.3
+983,Today984,dummy50,2022-06-10 13:00:00,fog,22.9,63.0
+984,Today985,dummy38,2022-06-10 18:00:00,sun,21.8,101.2
+985,Today986,dummy64,2022-06-09 02:00:00,rain,22.9,45.8
+986,Today987,dummy50,2022-06-08 03:00:00,cloud,22.3,38.2
+987,Today988,dummy24,2022-06-10 15:00:00,fog,28.3,5.5
+988,Today989,dummy22,2022-06-10 15:00:00,rain,22.7,93.2
+989,Today990,dummy5,2022-06-09 05:00:00,sun,24.1,122.4
+990,Today991,dummy17,2022-06-11 09:00:00,rain,18.7,4.4
+991,Today992,dummy37,2022-06-10 16:00:00,fog,22.8,58.2
+992,Today993,dummy26,2022-06-10 17:00:00,cloud,16.7,128.0
+993,Today994,dummy3,2022-06-08 14:00:00,rain,20.4,111.0
+994,Today995,dummy35,2022-06-11 14:00:00,rain,16.2,36.8
+995,Today996,dummy54,2022-06-08 04:00:00,fog,24.7,47.5
+996,Today997,dummy71,2022-06-11 18:00:00,cloud,16.2,93.7
+997,Today998,dummy14,2022-06-10 05:00:00,fog,19.9,136.6
+998,Today999,dummy89,2022-06-10 03:00:00,fog,18.3,80.3
+999,Today1000,dummy59,2022-06-10 04:00:00,sun,17.2,84.4
