@@ -33,6 +33,11 @@ class UploadImage(CreateView):
             model = torch.hub.load(path_hubconfig, 'custom',
                                    path=path_weightfile, source='local'  )
 
+
+            # 이미지 측정 갯수 옵션 (1개일 경우 한개만 측정 보통 2개로 세팅 , 사진이 1인 전신샷이라고 가정)
+            model.max_det = 2
+
+
             results = model(img, size=640)
 
 
