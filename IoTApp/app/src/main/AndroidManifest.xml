@@ -32,7 +32,6 @@
         <activity android:name=".login.FindPw" />
         <activity android:name=".login.Register" />
         <activity android:name=".myPage.MyPage" />
-        <activity android:name=".check.Check" />
         <activity android:name=".add.AddClothes" />
 
         <provider
