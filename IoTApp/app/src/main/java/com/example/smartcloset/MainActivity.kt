@@ -111,12 +111,10 @@ class MainActivity : AppCompatActivity() {
     }
     fun onReceived(topic:String,message: MqttMessage){
         //토픽의 수신을 처리
-        //예)EditText의 내용을 출력하기, 영상출력, ... 도착된 메시지 안에서 온도 습도 데이터를 이용해서 차트 그리기, 모션 detect 알림 등...
         var msg = String(message.payload).split(':')
         dust_status?.text = msg[1]
         hum_status?.text = msg[3]
         temp_status?.text = msg[5]
 
-//        Log.d("mymqtt",msg)
     }
 }
