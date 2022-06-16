@@ -41,16 +41,85 @@
             android:text="옷장안 상태"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/closet_status"
-            android:layout_width="match_parent"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="  미세먼지 : "
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/dust_status"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:text=""
             android:textColor="@color/black"
             />
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ug/m3"
+            android:textColor="@color/black"
+            />
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="      온도 : "
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/temp_status"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="oC"
+            android:textColor="@color/black"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="      습도 : "
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/hum_status"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="%"
+            android:textColor="@color/black"
+            />
+    </LinearLayout>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"

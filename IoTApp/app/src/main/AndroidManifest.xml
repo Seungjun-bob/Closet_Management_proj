@@ -19,7 +19,6 @@
         android:theme="@style/Theme.SmartCloset"
         android:usesCleartextTraffic="true">
         <!-- mypage graph -->
-        android:name="androidx.multidex.MultiDexApplication"
         <activity android:name=".login.FirstLogin" />
         <activity
             android:name=".MainActivity"
@@ -34,9 +33,9 @@
         <activity android:name=".login.FindPw" />
         <activity android:name=".login.Register" />
         <activity android:name=".myPage.MyPage" />
-        <activity android:name=".myPage.MyPage_Edit"/>
+        <activity android:name=".myPage.MyPage_Edit" />
         <activity android:name=".add.AddClothes" />
-        <!--        mqtt 서비스 -->
+        <!-- mqtt 서비스 -->
         <service android:name="org.eclipse.paho.android.service.MqttService" />
 
         <provider
