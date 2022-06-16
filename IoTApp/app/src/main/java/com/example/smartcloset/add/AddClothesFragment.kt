@@ -20,6 +20,7 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.example.smartcloset.R
 import com.example.smartcloset.MainActivity
+import com.example.smartcloset.network.MyMqtt
 import kotlinx.android.synthetic.main.addclothes.*
 import kotlinx.android.synthetic.main.addclothes.view.*
 
@@ -36,6 +37,7 @@ class AddClothesFragment: Fragment() {
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
     var datalist =ArrayList<Int>()
     lateinit var mainActivity: MainActivity
@@ -293,7 +295,7 @@ class AddClothesFragment: Fragment() {
             requirePermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), PERMISSION_Album)
         }
 
-        // 카메라 버튼 클릭 리스너 구현
+        // 카메 라 버튼 클릭 리스너 구현
         viewF.camera_addclothes.setOnClickListener(View.OnClickListener {
             requirePermissions(arrayOf(Manifest.permission.CAMERA), PERMISSION_CAMERA)
         })
@@ -347,11 +349,7 @@ class AddClothesFragment: Fragment() {
      * @param grantResults 권한 목록에 대한 승인/미승인 값, 권한 목록의 개수와 같은 수의 결괏값이 전달된다.
      * */
     @RequiresApi(Build.VERSION_CODES.N)
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (grantResults.all { it == PackageManager.PERMISSION_GRANTED }) {
             permissionGranted(requestCode)

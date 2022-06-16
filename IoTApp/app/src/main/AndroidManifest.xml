@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.smartcloset">
-
-    <!--갤러리 권한-->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-
-    <!--카메라 권한-->
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <!-- 갤러리 권한 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 카메라 권한 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- 위치 권한 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 날씨 API 가져오기 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -15,35 +19,36 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SmartCloset">
-        <activity android:name=".login.FirstLogin" android:exported="true">
+        android:theme="@style/Theme.SmartCloset"
+        android:usesCleartextTraffic="true">
+        <!-- mypage graph -->
+        <activity android:name=".login.FirstLogin" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".login.FindId"></activity>
-        <activity android:name=".login.FindPw"></activity>
-        <activity android:name=".login.Register"></activity>
-        <activity android:name=".myPage.MyPage"></activity>
-        <activity android:name=".check.Check" />
+        <activity android:name=".login.FindId" />
+        <activity android:name=".login.FindPw" />
+        <activity android:name=".login.Register" />
+        <activity android:name=".myPage.MyPage" />
+        <activity android:name=".myPage.MyPage_Edit" />
         <activity android:name=".add.AddClothes" />
-        <activity android:name=".MainActivity"></activity>
-
-
-
-
+        <!-- mqtt 서비스 -->
+        <service android:name="org.eclipse.paho.android.service.MqttService" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.smartcloset.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
-
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/external"/>
+                android:resource="@xml/external" />
         </provider>
     </application>
 

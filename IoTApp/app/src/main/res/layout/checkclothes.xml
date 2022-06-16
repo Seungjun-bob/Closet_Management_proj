@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_gravity="center">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_scrollFlags="scroll|enterAlways"
+        >
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linearLayout"-->
+<!--        android:layout_width="413dp"-->
+<!--        android:layout_height="61dp"-->
+<!--        android:orientation="horizontal">-->
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/FilterList1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="전체" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/FilterList2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="반팔상의" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/FilterList3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="긴팔상의"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/FilterList4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="민소매" />
+
+<!--    </com.google.android.material.tabs.TabLayout>-->
+
+<!--    <com.google.android.material.tabs.TabLayout-->
+<!--        android:id="@+id/tabLayout2"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linearLayout2"-->
+<!--        android:layout_width="413dp"-->
+<!--        android:layout_height="54dp"-->
+<!--        android:orientation="horizontal">-->
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/FilterList5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="반바지"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/FilterList6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="긴바지"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/FilterList7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="치마"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/FilterList8"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="원피스"/>
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <TextView
+        android:id="@+id/result_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="1dp"
+        android:text="조회 결과"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/result_grid"
+        android:layout_width="match_parent"
+        android:layout_height="665dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="3" />
+
+</LinearLayout>
