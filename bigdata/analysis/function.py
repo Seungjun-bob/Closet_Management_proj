@@ -2,9 +2,9 @@ import pandas as pd
 from django.shortcuts import render
 
 def top_rcmd(request):
-    Clothes = pd.read_csv('../dummydata/dummyClothes.csv', encoding='Utf-8', index_col=0)
-    MyClothes = pd.read_csv('../dummydata/dummyMyClothes.csv', encoding='Utf-8', index_col=0)
-    UserData = pd.read_csv('../dummydata/dummyUser.csv', encoding='Utf-8', index_col=0)
+    Clothes = pd.read_csv('D:/lee/study/cluster project/Closet_Management_proj/bigdata/dummydata/dummyClothes.csv', encoding='Utf-8', index_col=0)
+    MyClothes = pd.read_csv('D:/lee/study/cluster project/Closet_Management_proj/bigdata/dummydata/dummyMyClothes.csv', encoding='Utf-8', index_col=0)
+    UserData = pd.read_csv('D:/lee/study/cluster project/Closet_Management_proj/bigdata/dummydata/dummyUser.csv', encoding='Utf-8', index_col=0)
     df = pd.merge(UserData, MyClothes, left_on='ID', right_on='ID', how='left')
     user_id = request.GET.get("id")
     dummy = df[df['ID'] == user_id]
