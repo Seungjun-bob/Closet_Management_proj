@@ -99,9 +99,9 @@ def compare(request):
     category = request.GET.get("category")
     color = request.GET.get("color")
     dummy = df[df['ID'] == userid]
-    compare_category = dummy[(dummy['myCategory'] == category) & (dummy['myColor'] == color)].loc[:, ['category']]
-    compare_color = dummy[(dummy['myCategory'] == category) & (dummy['myColor'] == color)].loc[:, ['color']]
-    compare_img = dummy[(dummy['myCategory'] == category) & (dummy['myColor'] == color)].loc[:, ['img']]
+    compare_category = dummy[(dummy['myCategory'] == category) & (dummy['myColor'] == color)].loc[:, ['myCategory']]
+    compare_color = dummy[(dummy['myCategory'] == category) & (dummy['myColor'] == color)].loc[:, ['myColor']]
+    compare_img = dummy[(dummy['myCategory'] == category) & (dummy['myColor'] == color)].loc[:, ['myImg']]
     context = {
         'compare_category': compare_category,
         'compare_color': compare_color,
