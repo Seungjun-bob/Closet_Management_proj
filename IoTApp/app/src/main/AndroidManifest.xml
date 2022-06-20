@@ -13,6 +13,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!-- 인터넷 접속할 수 있는 권한 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 네트워크에 연결됐는지 확인할 수 있게 하는 권한 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 디바이스가 sleep상태에 빠지지 않도록 하는 권한 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
 
     <application
@@ -24,15 +30,17 @@
         android:theme="@style/Theme.SmartCloset"
         android:usesCleartextTraffic="true">
         <!-- mypage graph -->
-        <activity android:name=".login.FirstLogin" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
+        <activity android:name=".login.FirstLogin" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+
         </activity>
         <activity android:name=".login.FindId" />
         <activity android:name=".login.FindPw" />
