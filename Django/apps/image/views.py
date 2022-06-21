@@ -31,6 +31,70 @@ from scipy.stats import mode
 # 7. (4), (6) 합쳐서 돌려보기
 
 
+def real(url):
+    path = "C:/Users/a/PycharmProjects/Closet_Management_proj/Django/media/images/" + "test3.png"
+    urllib.request.urlretrieve(url, path)
+    img = 'C:/Users/a/PycharmProjects/Closet_Management_proj/Django/media/images/test3.png'
+    img_instance = ImageModel(
+        image=img
+    )
+    img_instance.save()  # 넘파이나 바이너리로 저장하는 기능
+
+    uploaded_img_qs = ImageModel.objects.filter().last()
+    img_bytes = uploaded_img_qs.image.read()
+    img = im.open(io.BytesIO(img_bytes))
+
+    path_hubconfig = "C:/Users/a/PycharmProjects/Closet_Management_proj/Django/yolov5_code"  # yolov5 폴더 루트
+    path_weightfile = "C:/Users/a/PycharmProjects/Closet_Management_proj/Django/yolov5_code/train_file/best.pt"  # yolov5 가중치로 학습한 pt파일위치
+    model = torch.hub.load(path_hubconfig, 'custom',
+                           path=path_weightfile, source='local')
+
+    # 이미지 라벨 갯수 옵션 ( 보통 2개로 세팅 (상의,하의 ) , 사진이 1인 전신샷이라고 가정)
+    model.max_det = 2
+
+    # 라벨 지정 학률 (너무 낮은 확률이면 애매한 옷도 모두 지정해버림)
+    model.conf = 0.6
+
+    # 라벨링 된 옷 데이터만 따로 저장 기능
+    results = model(img, size=640)
+
+    # 크롭파일 이미지화 진행중
+    # 이미지가 한개일때 에러 발생 , 해결해야됨
+    crops = results.crop(save=True)  # cropped detections dictionary
+    test01 = crops[0]
+    test02 = crops[1]
+
+    # 추가 옷 종류만 json 파일로 표시 가능
+    cloths_type = results.pandas().xyxy[0]['name']
+    # test = results.pandas().xyxy[0] (라벨데이터 전체출력)
+
+    # Results 업로드 이미지와 추론라벨 넘파이 결과값을 다시 이미지로 변환
+
+    results.render()
+    for img in results.imgs:
+        img_base64 = im.fromarray(img)
+        # 결과 저장 및 폴더지정
+        img_base64.save("media/yolo_out/result0.jpg", format="JPEG")
+    inference_img = "/media/yolo_out/result0.jpg"
+
+    form = ImageUploadForm()
+
+    context = {
+        "form": form,
+        "inference_img": inference_img,
+        'cloths_type': cloths_type,
+        'test01': test01,
+        'test02': test02
+
+    }
+
+def doit(request):
+    url = "https://closetimg103341-dev.s3.us-west-2.amazonaws.com/test2.png"
+    real(url)
+
+    return render(request, 'image/test01.html')
+
+
 class UploadImage(CreateView):
     model = ImageModel
     template_name = 'image/imagemodel_form.html'
@@ -132,8 +196,8 @@ class UploadImage(CreateView):
             for img in results.imgs:
                 img_base64 = im.fromarray(img)
                 # 결과 저장 및 폴더지정
-                img_base64.save("media/yolo_out/result.jpg", format="JPEG")
-            inference_img = "/media/yolo_out/result.jpg"
+                img_base64.save("media/yolo_out/result0.jpg", format="JPEG")
+            inference_img = "/media/yolo_out/result0.jpg"
 
 
             form = ImageUploadForm()
