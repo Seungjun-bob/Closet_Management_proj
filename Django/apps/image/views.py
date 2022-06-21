@@ -1,7 +1,9 @@
 import io
 from PIL import Image as im
 import torch
-
+import pandas as pd
+import random
+import datetime
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
 
@@ -121,7 +123,7 @@ class UploadImage(CreateView):
 
 
             # 추가 옷 종류만 json 파일로 표시 가능
-            cloths_type = results.pandas().xyxy[0]['name'].to_json(orient='records')
+            cloths_type = results.pandas().xyxy[0]['name']
             #test = results.pandas().xyxy[0] (라벨데이터 전체출력)
 
             # Results 업로드 이미지와 추론라벨 넘파이 결과값을 다시 이미지로 변환
@@ -135,6 +137,31 @@ class UploadImage(CreateView):
 
 
             form = ImageUploadForm()
+            MyClothes = pd.DataFrame(
+                {'CODE': [],
+                 'ID': [],
+                 'myColor': [],
+                 'myCategory': [],
+                 'myImg': [],
+                 'BuyDate': []
+                 })
+            color_type = ['white', 'blue']
+            CODE = ['my' + str(len(MyClothes['CODE']) + 1 + i) for i in range(len(cloths_type))]
+            IDList = ['dummy' + str(i) for i in range(1, 101)]
+            ID = request.GET.get("id")
+            BuyDate = [datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S') for i in range(len(cloths_type))]
+            myImg = ['img' + str(len(MyClothes['CODE']) + 1) for i in range(len(cloths_type))]
+
+            MyClothes_add = pd.DataFrame(
+                {'CODE': CODE,
+                 'ID': ID,
+                 'myColor': color_type,
+                 'myCategory': cloths_type,
+                 'myImg': myImg,
+                 'BuyDate': BuyDate
+                 })
+            MyClothes = pd.concat([MyClothes, MyClothes_add])
+            print(MyClothes)
             context = {
                 "form": form,
                 "inference_img": inference_img,

@@ -6,5 +6,6 @@ from . import views
 app_name = "image"
 
 urlpatterns = [
-    path("", views.UploadImage.as_view(), name="upload_image_url")
+    path("", views.UploadImage.as_view(), name="upload_image_url"),
+    #path('test/', views.modelRun, name = "modelRun"),
 ]
