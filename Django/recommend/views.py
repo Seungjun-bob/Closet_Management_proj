@@ -88,4 +88,4 @@ def myclothes(request):
          'BuyDate': BuyDate
          })
     MyClothes = pd.concat([MyClothes, MyClothes_add])
-    return render(request, 'test1.html', context)
+    return render(request, 'test1.html')
