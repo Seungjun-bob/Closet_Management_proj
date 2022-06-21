@@ -22,11 +22,11 @@ def rcmd(request):
     my_max_category = pd.DataFrame(my_max_category)
     my_max_category = my_max_category.reset_index().values.tolist()
     my_max_category = sum(my_max_category, [])
-    rcmd_clothes = Clothes[Clothes['category'] == my_max_category[0]].loc[:, ['clothes']]
-    rcmd_img = Clothes[Clothes['category'] == my_max_category[0]].loc[:, ['img']]
+    rcmd_clothes = Clothes[Clothes['category'] == my_max_category[0]].loc[:, ['clothes']].head(5)
+    rcmd_img = Clothes[Clothes['category'] == my_max_category[0]].loc[:, ['img']].head(5)
     for i in range(1, 3):
-        rcmd_clothes_add = Clothes[Clothes['category'] == my_max_category[2*i]].loc[:, ['clothes']]
-        rcmd_img_add = Clothes[Clothes['category'] == my_max_category[2*i]].loc[:, ['img']]
+        rcmd_clothes_add = Clothes[Clothes['category'] == my_max_category[2*i]].loc[:, ['clothes']].head(5)
+        rcmd_img_add = Clothes[Clothes['category'] == my_max_category[2*i]].loc[:, ['img']].head(5)
         rcmd_clothes = pd.concat([rcmd_clothes,rcmd_clothes_add])
         rcmd_img = pd.concat([rcmd_img,rcmd_img_add])
     context = {
