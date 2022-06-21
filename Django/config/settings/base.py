@@ -64,6 +64,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'recommend',
     'rest_framework',
+    'login',
+    'register',
 
     #### Project Apps ####
     'image',
