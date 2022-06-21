@@ -27,8 +27,8 @@ def rcmd(request):
     for i in range(1, 3):
         rcmd_clothes_add = Clothes[Clothes['category'] == my_max_category[2*i]].loc[:, ['clothes']].head(5)
         rcmd_img_add = Clothes[Clothes['category'] == my_max_category[2*i]].loc[:, ['img']].head(5)
-        rcmd_clothes = pd.concat([rcmd_clothes,rcmd_clothes_add])
-        rcmd_img = pd.concat([rcmd_img,rcmd_img_add])
+        rcmd_clothes = pd.concat([rcmd_clothes, rcmd_clothes_add])
+        rcmd_img = pd.concat([rcmd_img, rcmd_img_add])
     context = {
         'clothes' : rcmd_clothes['clothes'],
         'img' : rcmd_img['img'],
