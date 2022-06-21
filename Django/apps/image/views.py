@@ -63,9 +63,9 @@ def real(url):
     crops = results.crop(save=True)  # cropped detections dictionary
     test01 = crops[0]
     test02 = crops[1]
-
+    print(type(test01))
     # 추가 옷 종류만 json 파일로 표시 가능
-    cloths_type = results.pandas().xyxy[0]['name']
+    cloths_type = results.pandas().xyxy[0]['name'].to_json(orient='records')
     # test = results.pandas().xyxy[0] (라벨데이터 전체출력)
 
     # Results 업로드 이미지와 추론라벨 넘파이 결과값을 다시 이미지로 변환
@@ -85,14 +85,14 @@ def real(url):
         'cloths_type': cloths_type,
         'test01': test01,
         'test02': test02
-
     }
+    return context
 
 def doit(request):
     url = "https://closetimg103341-dev.s3.us-west-2.amazonaws.com/test2.png"
-    real(url)
+    returnReal = real(url)
 
-    return render(request, 'image/test01.html')
+    return render(request, 'image/test01.html', returnReal)
 
 
 class UploadImage(CreateView):
