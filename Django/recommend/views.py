@@ -3,9 +3,12 @@ from django.template import loader
 from django.http import HttpResponse, JsonResponse
 import pandas as pd
 
+
 def recommend(request) :
     name = request.GET.get('id', "")
-    context = {'result' : name}
+
+    context = {'result': name,
+               }
     return render(request, 'test.html', context)
 
 def rcmd(request):

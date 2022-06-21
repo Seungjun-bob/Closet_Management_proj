@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'recommend',
+    'rest_framework',
 
     #### Project Apps ####
     'image',
