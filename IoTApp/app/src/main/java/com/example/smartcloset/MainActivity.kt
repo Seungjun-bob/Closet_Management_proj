@@ -26,7 +26,7 @@ import java.nio.channels.FileChannel
 class MainActivity : AppCompatActivity() {
     // mqtt
     val sub_topic = "iot/sensordata"
-    val server_uri = "tcp://192.168.0.2:1883" //broker의 ip와 port 54.187.211.80
+    val server_uri = "tcp://54.212.177.89:1883" //broker의 ip와 port 54.187.211.80
     var mymqtt : MyMqtt? = null
 
 
