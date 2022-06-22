@@ -299,7 +299,6 @@ class AddClothesFragment: Fragment() {
         // 카메 라 버튼 클릭 리스너 구현
         viewF.camera_addclothes.setOnClickListener(View.OnClickListener {
             requirePermissions(arrayOf(Manifest.permission.CAMERA), PERMISSION_CAMERA)
-            requirePermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), PERMISSION_CAMERA)
 
         })
 
