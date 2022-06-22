@@ -126,7 +126,6 @@ class FindPw: AppCompatActivity(), View.OnClickListener {
                         }
                     }
                 }
-
             }
             R.id.back_findpw -> {
                 val intent = Intent(this, FirstLogin::class.java).apply {
