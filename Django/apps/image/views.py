@@ -18,7 +18,6 @@ import matplotlib.image as mpimg
 import numpy as np
 from scipy.stats import mode
 
-
 # 스토리지 이미지 이름을 이용해서 접근 후 결과값 반환 코드 작성필요
 # 1. 이미지 url을 모델에 넣어 돌려보기
 # 1-1. 불필요한 거 지우기(버튼 등..)
@@ -50,7 +49,7 @@ def real(request, url):
                            path=path_weightfile, source='local')
 
     # 이미지 라벨 갯수 옵션 ( 보통 2개로 세팅 (상의,하의 ) , 사진이 1인 전신샷이라고 가정)
-    model.max_det = 2
+    model.max_det = 1
 
     # 라벨 지정 학률 (너무 낮은 확률이면 애매한 옷도 모두 지정해버림)
     model.conf = 0.6
@@ -62,7 +61,7 @@ def real(request, url):
     # 이미지가 한개일때 에러 발생 , 해결해야됨
     crops = results.crop(save=True)  # cropped detections dictionary
     test01 = crops[0]
-    test02 = crops[1]
+    #test02 = crops[1]
 
     # 추가 옷 종류만 json 파일로 표시 가능
     cloths_type = results.pandas().xyxy[0]['name'].to_json(orient='records')
@@ -82,7 +81,7 @@ def real(request, url):
         "inference_img": inference_img,
         'cloths_type': cloths_type,
         'test01': test01,
-        'test02': test02,
+        #'test02': test02,
     }
 
     # rcmd - bigdata
@@ -95,7 +94,7 @@ def real(request, url):
          'myImg': [],
          'BuyDate': []
          })
-    color_type = ['white', 'blue']
+    color_type = ['white']
     CODE = ['my' + str(len(MyClothes['CODE']) + 1 + i) for i in range(len(clothes))]
     IDList = ['dummy' + str(i) for i in range(1, 101)]
     ID = request.GET.get("id")
@@ -116,47 +115,9 @@ def real(request, url):
     return context
 
 def doit(request):
-    url = "https://closetimg103341-dev.s3.us-west-2.amazonaws.com/test2.png"
+    #url = request.GET.get('img')
+    url = "https://closetimg103341-dev.s3.us-west-2.amazonaws.com/test3.png"
     returnReal = real(request, url)
-    imgNp = mpimg.imread(
-        'C:/Users/a/PycharmProjects/Closet_Management_proj/Django/runs/detect/exp6/crops/trousers/image0.jpg')
-    # img color avg value
-    Red = []
-    Green = []
-    Blue = []
-
-    for x in imgNp:
-        for y in x:
-            Red.append(y[0])
-            Green.append(y[1])
-            Blue.append(y[2])
-
-    R_max = max(Red)
-    G_max = max(Green)
-    B_max = max(Blue)
-
-    R_avg = sum(Red) / len(Red)
-    G_avg = sum(Green) / len(Green)
-    B_avg = sum(Blue) / len(Blue)
-
-    R_mode = mode(Red)
-    G_mode = mode(Green)
-    B_mode = mode(Blue)
-
-    print("Max Value")
-    print("R : ", R_max)
-    print("G : ", G_max)
-    print("B : ", B_max)
-
-    print("Avg Value")
-    print("R : ", R_avg)
-    print("G : ", G_avg)
-    print("B : ", B_avg)
-
-    print("Mode Value")
-    print("R : ", R_mode[0][0])
-    print("G : ", G_mode[0][0])
-    print("B : ", B_mode[0][0])
     return render(request, 'image/test01.html', returnReal)
 
 
@@ -206,7 +167,7 @@ class UploadImage(CreateView):
             test01 = crops[0]
             test02 = crops[1]
 
-            imgNp = mpimg.imread('C:/Users/a/PycharmProjects/Closet_Management_proj/Django/runs/detect/exp6/crops/trousers/image0.jpg')
+            imgNp = mpimg.imread('C:/Users/a/PycharmProjects/Closet_Management_proj/Django/runs/detect/exp36/crops/trousers/image0.jpg')
             # img color avg value
             Red = []
             Green = []
