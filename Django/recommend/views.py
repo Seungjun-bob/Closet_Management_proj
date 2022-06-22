@@ -43,10 +43,7 @@ def compare(request):
     df = pd.merge(UserData, MyClothes, left_on='ID', right_on='ID', how='left')
     userid = request.GET.get("id")
     category = request.GET.get("category")
-    color = request.GET.get("color")
     dummy = df[df['ID'] == userid]
-    compare_category = dummy[(dummy['myCategory'] == category) & (dummy['myColor'] == color)].loc[:, ['myCategory']]
-    compare_color = dummy[(dummy['myCategory'] == category) & (dummy['myColor'] == color)].loc[:, ['myColor']]
     compare_img = dummy[(dummy['myCategory'] == category)].loc[:, ['myImg']]
 
     # 결과값 리스트에 저장

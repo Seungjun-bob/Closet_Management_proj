@@ -2,7 +2,6 @@ import io
 from PIL import Image as im
 import torch
 import pandas as pd
-import random
 import datetime
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
@@ -30,11 +29,10 @@ from scipy.stats import mode
 # 6. 색상 결과 값 json으로 앱에서 출력하기
 # 7. (4), (6) 합쳐서 돌려보기
 
-
-def real(url):
-    path = "C:/Users/a/PycharmProjects/Closet_Management_proj/Django/media/images/" + "test3.png"
+def real(request, url):
+    path = "D:/lee/study/cluster project/Closet_Management_proj/Django/media/images/" + "test3.png"
     urllib.request.urlretrieve(url, path)
-    img = 'C:/Users/a/PycharmProjects/Closet_Management_proj/Django/media/images/test3.png'
+    img = 'D:/lee/study/cluster project/Closet_Management_proj/Django/media/images/test3.png'
     img_instance = ImageModel(
         image=img
     )
@@ -44,8 +42,8 @@ def real(url):
     img_bytes = uploaded_img_qs.image.read()
     img = im.open(io.BytesIO(img_bytes))
 
-    path_hubconfig = "C:/Users/a/PycharmProjects/Closet_Management_proj/Django/yolov5_code"  # yolov5 폴더 루트
-    path_weightfile = "C:/Users/a/PycharmProjects/Closet_Management_proj/Django/yolov5_code/train_file/best.pt"  # yolov5 가중치로 학습한 pt파일위치
+    path_hubconfig = "D:/lee/study/cluster project/Closet_Management_proj/Django/yolov5_code"  # yolov5 폴더 루트
+    path_weightfile = "D:/lee/study/cluster project/Closet_Management_proj/Django/yolov5_code/train_file/best.pt"  # yolov5 가중치로 학습한 pt파일위치
     model = torch.hub.load(path_hubconfig, 'custom',
                            path=path_weightfile, source='local')
 
@@ -79,6 +77,28 @@ def real(url):
 
     form = ImageUploadForm()
 
+    clothes = results.pandas().xyxy[0]['name']
+    MyClothes = pd.read_csv('D:/lee/study/cluster project/Closet_Management_proj/Django/apps/image/result/dummyMyClothes.csv',  encoding='Utf-8', index_col=0)
+    color_type = ['white', 'blue']
+    CODE = ['my' + str(len(MyClothes['CODE']) + 1 + i) for i in range(len(clothes))]
+    ID = request.GET.get("id")
+    BuyDate = request.GET.get("buyDate")
+    myImg = [request.GET.get("imgName") for i in range(len(clothes))]
+
+    MyClothes_add = pd.DataFrame(
+        {'CODE': CODE,
+         'ID': ID,
+         'myColor': color_type,
+         'myCategory': clothes,
+         'myImg': myImg,
+         'BuyDate': BuyDate
+         })
+    MyClothes = pd.concat([MyClothes, MyClothes_add])
+    #if 유저가 저장버튼 누르면
+    #    디비저장 코드 입력
+    # else 날려라
+    #    저장 안되고 날아감
+    MyClothes.to_csv('D:/lee/study/cluster project/Closet_Management_proj/Django/apps/image/result/dummyMyClothes.csv', encoding='utf-8')
     context = {
         "form": form,
         "inference_img": inference_img,
@@ -90,7 +110,7 @@ def real(url):
 
 def doit(request):
     url = "https://closetimg103341-dev.s3.us-west-2.amazonaws.com/test2.png"
-    returnReal = real(url)
+    returnReal = real(request, url)
 
     return render(request, 'image/test01.html', returnReal)
 
@@ -104,9 +124,9 @@ class UploadImage(CreateView):
         form = ImageUploadForm(request.POST, request.FILES)
         if form.is_valid(): # is_valid() 메서드 데이터의 유효성 검사하는 역할
             url = "https://closetimg103341-dev.s3.us-west-2.amazonaws.com/test2.png"
-            path = "C:/Users/a/PycharmProjects/Closet_Management_proj/Django/media/images/" + "test3.png"
+            path = "D:/lee/study/cluster project/Closet_Management_proj/Django/media/images/" + "test3.png"
             urllib.request.urlretrieve(url, path)
-            img = 'C:/Users/a/PycharmProjects/Closet_Management_proj/Django/media/images/test3.png'
+            img = 'D:/lee/study/cluster project/Closet_Management_proj/Django/media/images/test3.png'
             img_instance = ImageModel(
                 image=img
             )
@@ -116,8 +136,8 @@ class UploadImage(CreateView):
             img_bytes = uploaded_img_qs.image.read()
             img = im.open(io.BytesIO(img_bytes))
 
-            path_hubconfig = "C:/Users/a/PycharmProjects/Closet_Management_proj/Django/yolov5_code" # yolov5 폴더 루트
-            path_weightfile = "C:/Users/a/PycharmProjects/Closet_Management_proj/Django/yolov5_code/train_file/best.pt" # yolov5 가중치로 학습한 pt파일위치
+            path_hubconfig = "D:/lee/study/cluster project/Closet_Management_proj/Django/yolov5_code" # yolov5 폴더 루트
+            path_weightfile = "D:/lee/study/cluster project/Closet_Management_proj/Django/yolov5_code/train_file/best.pt" # yolov5 가중치로 학습한 pt파일위치
             model = torch.hub.load(path_hubconfig, 'custom',
                                    path=path_weightfile, source='local'  )
 
@@ -201,31 +221,6 @@ class UploadImage(CreateView):
 
 
             form = ImageUploadForm()
-            MyClothes = pd.DataFrame(
-                {'CODE': [],
-                 'ID': [],
-                 'myColor': [],
-                 'myCategory': [],
-                 'myImg': [],
-                 'BuyDate': []
-                 })
-            color_type = ['white', 'blue']
-            CODE = ['my' + str(len(MyClothes['CODE']) + 1 + i) for i in range(len(cloths_type))]
-            IDList = ['dummy' + str(i) for i in range(1, 101)]
-            ID = request.GET.get("id")
-            BuyDate = [datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S') for i in range(len(cloths_type))]
-            myImg = ['img' + str(len(MyClothes['CODE']) + 1) for i in range(len(cloths_type))]
-
-            MyClothes_add = pd.DataFrame(
-                {'CODE': CODE,
-                 'ID': ID,
-                 'myColor': color_type,
-                 'myCategory': cloths_type,
-                 'myImg': myImg,
-                 'BuyDate': BuyDate
-                 })
-            MyClothes = pd.concat([MyClothes, MyClothes_add])
-            print(MyClothes)
             context = {
                 "form": form,
                 "inference_img": inference_img,
