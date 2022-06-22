@@ -59,6 +59,7 @@ class FindId: AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.submit_findid -> {
+                thread {
                     var name = name_findid.text.toString()
                     var birthday = birthday_findid.text.toString()
 
@@ -75,8 +76,8 @@ class FindId: AppCompatActivity(), View.OnClickListener {
                     if (!isExistBlank && isBirthdayright) {
                         //서버로 전송할 JSONObject 만들기 - 사용자가 입력한 id와 password를 담고 있음
                         var jsonobj = JSONObject()
-                        jsonobj.put("NAME",name)
-                        jsonobj.put("BIRTHDAY",birthday)
+                        jsonobj.put("NAME", name)
+                        jsonobj.put("BIRTHDAY", birthday)
 
 
                         val url = "http://192.168.200.107:8000/findid" // 장고 로그인페이지 url - 나중에 수정
@@ -89,14 +90,14 @@ class FindId: AppCompatActivity(), View.OnClickListener {
                         //서버에 요청을 담당하는 객체
                         val builder = Request.Builder()    // request객체를 만들어주는 객체 생성
                         builder.url(url)                   //Builder객체에 request할 주소(네트워크상의 주소)셋팅
-                        builder.post(RequestBody.create(MediaType.parse("application/json"),jsondata)) // 요청메시지 만들고 요청메시지의 타입이 json이라고 설정
+                        builder.post(RequestBody.create(MediaType.parse("application/json"), jsondata)) // 요청메시지 만들고 요청메시지의 타입이 json이라고 설정
                         val myrequest: Request = builder.build() //Builder객체를 이용해서 request객체 만들기
                         //생성한 request 객체를 이용해서 웹에 request하기 - request결과로 response 객체가 리턴
                         val response: Response = client.newCall(myrequest).execute()
 
                         //response에서 메시지꺼내서 로그 출력하기
-                        val result:String? = response.body()?.string()
-                        Log.d("http",result!!)
+                        val result: String? = response.body()?.string()
+                        Log.d("http", result!!)
                         //로그인 성공여부가 메시지로 전달되면 그에 따라 다르게 작업할 수 있도록 코드
 
                         // 성공 토스트 메세지 띄우기**************테스트 완료후 삭제
@@ -110,13 +111,15 @@ class FindId: AppCompatActivity(), View.OnClickListener {
                             runOnUiThread {
                                 dialog("blank")
                             }
-                        }else if (!isBirthdayright) {
+                        } else if (!isBirthdayright) {
                             runOnUiThread {
                                 dialog("wrong birthday")
                             }
                         }
                     }
                 }
+            }
+
 
 
             R.id.back_findid -> {
