@@ -53,14 +53,14 @@ class Register: AppCompatActivity() {
 
         submit_register.setOnClickListener {
             thread {
-                var id = id_register.text.toString()
+                var email = id_register.text.toString()
                 var pw = pw_register.text.toString()
                 var pwcheck = pwcheck_register.text.toString()
                 var name = name_register.text.toString()
                 var birthday = birthday_register.text.toString()
 
                 // 유저가 항목을 다 채우지 않았을 경우
-                if (id.isEmpty() || pw.isEmpty() || pwcheck.isEmpty() || name.isEmpty() || birthday.isEmpty() || gen =="") {
+                if (email.isEmpty() || pw.isEmpty() || pwcheck.isEmpty() || name.isEmpty() || birthday.isEmpty() || gen =="") {
                     isExistBlank = true
                 } else {
                     isExistBlank = false
@@ -80,14 +80,15 @@ class Register: AppCompatActivity() {
 
                 if (!isExistBlank && isPWSame && isBirthdayright) {
                     //서버로 전송할 JSONObject 만들기 - 사용자가 입력한 id와 password를 담고 있음
-                            var jsonobj = JSONObject()
-                            jsonobj.put("ID",id)
-                            jsonobj.put("PW",pw)
-                            jsonobj.put("NAME",name)
-                            jsonobj.put("BIRTHDAY",birthday)
-                            jsonobj.put("GENDER",gen)
 
-                            val url = "http://192.168.200.107:8000/register" // 장고 로그인페이지 url - 나중에 수정
+                            var jsonobj = JSONObject()
+                            jsonobj.put("email",email)
+                            jsonobj.put("pw",pw)
+                            jsonobj.put("pwcheck",pwcheck)
+                            jsonobj.put("name",name)
+                            jsonobj.put("birth","2022-06-22")
+                            jsonobj.put("gender",1)
+                            val url = "http://172.30.1.47:8000/register/" // 장고 로그인페이지 url - 나중에 수정
 
                             //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
                             val client = OkHttpClient()
