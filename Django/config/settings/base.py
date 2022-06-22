@@ -43,6 +43,11 @@ def get_secret(setting):
         error_msg = f"Set the {setting} secret variable"
         raise ImproperlyConfigured(error_msg)
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ]
+}
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = get_secret("DJANGO_SECRET_KEY")
@@ -50,10 +55,7 @@ SECRET_KEY = get_secret("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    "127.0.0.1",
-    "0.0.0.0",
-]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -66,6 +68,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'recommend',
+    'rest_framework',
+    'login',
+    'register',
 
     #### Project Apps ####
     'image',
@@ -122,8 +127,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(BASE_DIR / 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME':'test_db',
+        'USER':'root',
+        'PASSWORD':'1111',
+        'HOST':'localhost',
+        'PORT':'3306'
     }
 }
 
