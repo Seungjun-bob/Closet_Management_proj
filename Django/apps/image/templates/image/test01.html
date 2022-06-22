@@ -11,7 +11,7 @@
 
 {% block content %}
         <div class="mt-4">
-          <img src="/media/yolo_out/result0.jpg" class="img-fluid"/>
+          <img src="{{inference_img}}" class="img-fluid"/>
         </div>
         <textarea id="result_txt" , rows="20" , cols="150">
             json형식 :  {{cloths_type}}
