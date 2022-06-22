@@ -22,11 +22,10 @@ buildscript {
 
 allprojects {
     repositories {
-        //google()
-        //jcenter()
+//        google()
+//        jcenter()
 
-        //mavenCentral()
-
+//        mavenCentral()
     }
 }
 
