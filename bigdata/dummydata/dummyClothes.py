@@ -4,9 +4,9 @@ import random
 ClothesCODE = ['CODE'+str(i) for i in range(1, 101)]
 colorList = ['red', 'blue', 'white', 'black', 'yellow']
 color = [random.choice(colorList) for i in range(1, 101)]
-categoryList = ['jean', 'cotton', 'jogger', 'slacks', 'skirt',
-                'longPants', 'shortPants', 'bottomEtc', 'hoodie', 'knit',
-                'longShirts', 'shortShirts', 'sweatShirts', 'dressShirts','topEtc']
+categoryList = ['short_sleeve_top', 'long_sleeve_top', 'short_sleeve_outer', 'long_sleeve_outer',
+                'vest', 'sling', 'shirts', 'trousers', 'skirt', 'short_sleeve_dress', 'long_sleeve_dress',
+                'vest_dress', 'sling_dress']
 category = [random.choice(categoryList) for i in range(1, 101)]
 img = ['img'+str(i) for i in range(1, 101)]
 
