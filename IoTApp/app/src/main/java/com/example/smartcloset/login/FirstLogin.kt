@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.smartcloset.MainActivity
 import com.example.smartcloset.R
 import kotlinx.android.synthetic.main.findpw.*
 import kotlinx.android.synthetic.main.login.*
@@ -74,7 +75,9 @@ class FirstLogin: AppCompatActivity(), View.OnClickListener {
                         var jsonobj = JSONObject()
                         jsonobj.put("ID", id)
                         jsonobj.put("PW", pw)
-                        val url = "http://192.168.200.107:8000/login" // 장고 로그인페이지 url
+
+                        // 장고 로그인페이지 url - 추후 수정
+                        val url = "http://192.168.200.107:8000/login"
 
                         //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
                         val client = OkHttpClient()
@@ -98,9 +101,18 @@ class FirstLogin: AppCompatActivity(), View.OnClickListener {
                         val result: String? = response.body()?.string()
                         Log.d("http", result!!)
                         //로그인 성공여부가 메시지로 전달되면 그에 따라 다르게 작업할 수 있도록 코드
+
+                        // 로그인 성공 토스트 메세지 띄우기
                         runOnUiThread {
                             Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
                         }
+
+                        //메인 액티비티로 이동
+                        val intent = Intent(this, MainActivity::class.java).apply{
+                        }
+                        startActivity(intent)
+
+
                     } else {
                         // 상태에 따라 다른 다이얼로그 띄워주기
                         if (isExistBlank) {   // 작성 안한 항목이 있을 경우

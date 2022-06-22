@@ -86,10 +86,10 @@ class FindPw: AppCompatActivity(), View.OnClickListener {
                         jsonobj.put("NAME",name)
                         jsonobj.put("BIRTHDAY",birthday)
 
+                        // 장고 페이지 url - 나중에 수정
+                        val url = "http://192.168.200.107:8000/findpw"
 
-                        val url = "http://192.168.200.107:8000/findpw" // 장고 로그인페이지 url - 나중에 수정
-
-                        //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
+                        //Okhttp3라이브러리의 OkHttpClient객체를 이용해서 작업
                         val client = OkHttpClient()
 
                         //json데이터를 이용해서 request 처리
