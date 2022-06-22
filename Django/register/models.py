@@ -7,6 +7,7 @@ class UserData(models.Model):
         )
     email = models.CharField(max_length=40)
     pw = models.CharField(max_length=40)
+    pwcheck = models.CharField(max_length=40)
     name = models.CharField(max_length=10)
     birth = models.DateField()
     gender = models.IntegerField(choices=GENDER_CHOICES)
