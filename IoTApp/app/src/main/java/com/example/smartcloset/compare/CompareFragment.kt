@@ -5,8 +5,10 @@ import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.ImageDecoder
 import android.icu.text.SimpleDateFormat
+import android.media.Image
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -29,6 +31,7 @@ import kotlinx.android.synthetic.main.compare.*
 import kotlinx.android.synthetic.main.compare.view.*
 import okhttp3.*
 import org.json.JSONObject
+import java.io.OutputStream
 import kotlin.concurrent.thread
 
 
@@ -110,7 +113,7 @@ class CompareFragment: Fragment() {
     private fun openCamera() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
 
-        createImageUri(newFileName(), "image/jpg")?.let { uri ->
+        createImageUri(newFileName(), "image/bmp")?.let { uri -> //드디어. . . 이부분이랑
             realUri = uri // var 맞나?
             // MediaStore.EXTRA_OUTPUT을 Key로 하여 Uri를 넘겨주면
             // 일반적인 Camera App은 이를 받아 내가 지정한 경로에 사진을 찍어서 저장시킨다.
@@ -127,7 +130,7 @@ class CompareFragment: Fragment() {
         //여기서 이미지 이름을 http로 보내줘야 할 거 같음
         img_name = filename
 //        sendImgName(img_name)
-        return "$filename.jpg"
+        return "$filename.bmp"   // 이 부분 바꿨고..
     }
 
     private fun createImageUri(filename: String, mimeType: String): Uri? {
@@ -150,12 +153,15 @@ class CompareFragment: Fragment() {
                         img_compare_preview.setImageURI(uri)
                         //rest 사용해서 이미지 이름을 보내주고, 스토리지에 이미지를 저장, 이미지는 어떻게 저장?
 //                        img_name = realUri.lastPathSegment.toString() //보내줄 이미지 이름
-
+                        val outStream:OutputStream
                         var bitmap = ImageDecoder.decodeBitmap(ImageDecoder.createSource(mainActivity.contentResolver, uri))
+//                        bitmap.compress()
+//                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outStream)
+
                         Log.d("bitmap", bitmap.toString())
 
                         Log.d("tt", img_name)
-                        Log.d("api", realUri.toString())
+                        Log.d("uri print", realUri.toString())
                         Toast.makeText(context, img_name, Toast.LENGTH_LONG).show()
 
 
@@ -196,7 +202,7 @@ class CompareFragment: Fragment() {
         thread{
             //이미지 이름을 url 뒤에 붙여 전달해줌
             var jsonobj = JSONObject()
-            jsonobj.put("ImgName","https://closetimg103341-dev.s3.us-west-2.amazonaws.com/$name" )
+            jsonobj.put("ImgName","https://closetimg103341-dev.s3.us-west-2.amazonaws.com/$name.bmp" )
             val url = "http://192.168.200.107:8000/login"  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
 
             //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업

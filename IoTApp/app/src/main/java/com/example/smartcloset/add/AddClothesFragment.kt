@@ -396,7 +396,7 @@ class AddClothesFragment: Fragment() {
     private fun openCamera() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
 
-        createImageUri(newFileName(), "image/jpg")?.let { uri ->
+        createImageUri(newFileName(), "image/bmp")?.let { uri ->
             realUri = uri // var 맞나?
             // MediaStore.EXTRA_OUTPUT을 Key로 하여 Uri를 넘겨주면
             // 일반적인 Camera App은 이를 받아 내가 지정한 경로에 사진을 찍어서 저장시킨다.
@@ -408,7 +408,7 @@ class AddClothesFragment: Fragment() {
     private fun newFileName(): String {
         val sdf = SimpleDateFormat("yyyyMMdd_HHmmss")
         val filename = sdf.format(System.currentTimeMillis())
-        return "$filename.jpg"
+        return "$filename.bmp"
     }
 
     private fun createImageUri(filename: String, mimeType: String): Uri? {
