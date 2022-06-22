@@ -53,14 +53,14 @@ class Register: AppCompatActivity() {
 
         submit_register.setOnClickListener {
             thread {
-                var id = id_register.text.toString()
+                var email = id_register.text.toString()
                 var pw = pw_register.text.toString()
                 var pwcheck = pwcheck_register.text.toString()
                 var name = name_register.text.toString()
                 var birthday = birthday_register.text.toString()
 
                 // 유저가 항목을 다 채우지 않았을 경우
-                if (id.isEmpty() || pw.isEmpty() || pwcheck.isEmpty() || name.isEmpty() || birthday.isEmpty() || gen =="") {
+                if (email.isEmpty() || pw.isEmpty() || pwcheck.isEmpty() || name.isEmpty() || birthday.isEmpty() || gen =="") {
                     isExistBlank = true
                 } else {
                     isExistBlank = false
@@ -80,15 +80,41 @@ class Register: AppCompatActivity() {
 
                 if (!isExistBlank && isPWSame && isBirthdayright) {
                     //서버로 전송할 JSONObject 만들기 - 사용자가 입력한 id와 password를 담고 있음
-                        var jsonobj = JSONObject()
-                        jsonobj.put("id",id)
-                        jsonobj.put("pw",pw)
-                        jsonobj.put("name",name)
-                        jsonobj.put("birth",birthday)
-                    if(gen=="남자"){
-                        jsonobj.put("gender",1)
-                    } else if(gen=="여자") {
-                        jsonobj.put("gender",2)
+                  
+                            var jsonobj = JSONObject()
+                            jsonobj.put("email",email)
+                            jsonobj.put("pw",pw)
+                            jsonobj.put("pwcheck",pwcheck)
+                            jsonobj.put("name",name)
+                            jsonobj.put("birth","2022-06-22")                            
+                            if(gen=="남자"){
+                              jsonobj.put("gender",1)
+                            } else if(gen=="여자") {
+                              jsonobj.put("gender",2)
+                            }                      
+                            val url = "http://172.30.1.47:8000/register/" // 장고 로그인페이지 url - 나중에 수정
+
+                            //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
+                            val client = OkHttpClient()
+
+                            //json데이터를 이용해서 request 처리
+                            val jsondata = jsonobj.toString()
+                            //서버에 요청을 담당하는 객체
+                            val builder = Request.Builder()    // request객체를 만들어주는 객체 생성
+                            builder.url(url)                   //Builder객체에 request할 주소(네트워크상의 주소)셋팅
+                            builder.post(RequestBody.create(MediaType.parse("application/json"),jsondata)) // 요청메시지 만들고 요청메시지의 타입이 json이라고 설정
+                            val myrequest: Request = builder.build() //Builder객체를 이용해서 request객체 만들기
+                            //생성한 request 객체를 이용해서 웹에 request하기 - request결과로 response 객체가 리턴
+                            val response: Response = client.newCall(myrequest).execute()
+
+                            //response에서 메시지꺼내서 로그 출력하기
+                            val result:String? = response.body()?.string()
+                            Log.d("http",result!!)
+                            //로그인 성공여부가 메시지로 전달되면 그에 따라 다르게 작업할 수 있도록 코드변경하기
+
+                    // 회원가입 성공 토스트 메세지 띄우기
+                    runOnUiThread {
+                        Toast.makeText(this, "회원가입 성공", Toast.LENGTH_LONG).show()
                     }
 
                         // 장고 페이지 url - 나중에 수정

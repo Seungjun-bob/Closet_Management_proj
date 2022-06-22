@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>상의추천</h1>
+    {% for i in top_clothes %}
+        | {{i}} |
+    {% endfor %}
+    <br>
+    <br>
+    {% for j in top_img %}
+        | {{j}} |
+    {% endfor %}
+    <br>
+    <br>
+    <h1>하의추천</h1>
+    {% for k in bottom_clothes %}
+        | {{k}} |
+    {% endfor %}
+    <br>
+    <br>
+    {% for l in bottom_img %}
+        | {{l}} |
+    {% endfor %}<br>
+</body>
+</html>
