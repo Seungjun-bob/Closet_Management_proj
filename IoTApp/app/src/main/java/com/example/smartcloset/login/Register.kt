@@ -32,7 +32,7 @@ class Register: AppCompatActivity() {
     var isPWSame = false
     var isBirthdayright = false
     lateinit var gen: String
-
+    var t_stringBuilder = StringBuilder()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +51,7 @@ class Register: AppCompatActivity() {
             }
         }
 
+
         submit_register.setOnClickListener {
             thread {
                 var email = id_register.text.toString()
@@ -58,6 +59,11 @@ class Register: AppCompatActivity() {
                 var pwcheck = pwcheck_register.text.toString()
                 var name = name_register.text.toString()
                 var birthday = birthday_register.text.toString()
+                //db테이블에 맞게 입력 받은 생년월일 형식 변환
+                t_stringBuilder.append(birthday)
+                t_stringBuilder.insert(4,'-')
+                t_stringBuilder.insert(7,'-')
+                birthday = t_stringBuilder.toString()
 
                 // 유저가 항목을 다 채우지 않았을 경우
                 if (email.isEmpty() || pw.isEmpty() || pwcheck.isEmpty() || name.isEmpty() || birthday.isEmpty() || gen =="") {
@@ -71,7 +77,7 @@ class Register: AppCompatActivity() {
                 } else {
                     isPWSame = false
                 }
-                if (birthday.length == 8) { //생일이 8자리 맞게 입력되었는지
+                if (birthday.length == 10) { //생일이 8자리 맞게 입력되었는지 - '-'두개 포함해서 10
                     isBirthdayright = true
                 } else {
                     isBirthdayright = false

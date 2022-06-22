@@ -21,6 +21,8 @@ class FindPw: AppCompatActivity(), View.OnClickListener {
 
     var isExistBlank = false
     var isBirthdayright = false
+    var t_stringBuilder = StringBuilder()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,17 +64,22 @@ class FindPw: AppCompatActivity(), View.OnClickListener {
         when (v?.id) {
             R.id.submit_findpw -> {
                 thread {
-                    var id = id_findpw.text.toString()
+                    var email = id_findpw.text.toString()
                     var name = name_findpw.text.toString()
                     var birthday = birthday_findpw.text.toString()
+                    //db테이블에 맞게 입력 받은 생년월일 형식 변환
+                    t_stringBuilder.append(birthday)
+                    t_stringBuilder.insert(4,'-')
+                    t_stringBuilder.insert(7,'-')
+                    birthday = t_stringBuilder.toString()
 
                     // 유저가 항목을 다 채우지 않았을 경우
-                    if (id.isEmpty() || name.isEmpty() || birthday.isEmpty()) {
+                    if (email.isEmpty() || name.isEmpty() || birthday.isEmpty()) {
                         isExistBlank = true
                     } else {
                         isExistBlank = false
                     }
-                    if (birthday.length == 8) { //생일이 8자리 맞게 입력되었는지
+                    if (birthday.length == 10) { //생일이 8자리 맞게 입력되었는지
                         isBirthdayright = true
                     } else {
                         isBirthdayright = false
@@ -82,9 +89,9 @@ class FindPw: AppCompatActivity(), View.OnClickListener {
                     if (!isExistBlank && isBirthdayright) {
                         //서버로 전송할 JSONObject 만들기 - 사용자가 입력한 id와 password를 담고 있음
                         var jsonobj = JSONObject()
-                        jsonobj.put("ID",id)
-                        jsonobj.put("NAME",name)
-                        jsonobj.put("BIRTHDAY",birthday)
+                        jsonobj.put("email",email)
+                        jsonobj.put("name",name)
+                        jsonobj.put("birth",birthday)
 
                         // 장고 페이지 url - 나중에 수정
                         val url = "http://192.168.200.107:8000/findpw"
