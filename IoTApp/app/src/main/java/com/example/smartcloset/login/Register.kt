@@ -81,13 +81,18 @@ class Register: AppCompatActivity() {
                 if (!isExistBlank && isPWSame && isBirthdayright) {
                     //서버로 전송할 JSONObject 만들기 - 사용자가 입력한 id와 password를 담고 있음
                         var jsonobj = JSONObject()
-                        jsonobj.put("ID",id)
-                        jsonobj.put("PW",pw)
-                        jsonobj.put("NAME",name)
-                        jsonobj.put("BIRTHDAY",birthday)
-                        jsonobj.put("GENDER",gen)
+                        jsonobj.put("id",id)
+                        jsonobj.put("pw",pw)
+                        jsonobj.put("name",name)
+                        jsonobj.put("birth",birthday)
+                    if(gen=="남자"){
+                        jsonobj.put("gender",1)
+                    } else if(gen=="여자") {
+                        jsonobj.put("gender",2)
+                    }
+
                         // 장고 페이지 url - 나중에 수정
-                        val url = "http://192.168.200.107:8000/register" // 장고 로그인페이지 url - 나중에 수정
+                        val url = "http://192.168.200.107:8000/register" // 장고 로그인페이지 url - 수정필요
 
                         //Okhttp3라이브러리의 OkHttpClient객체를 이용해서 작업
                         val client = OkHttpClient()
