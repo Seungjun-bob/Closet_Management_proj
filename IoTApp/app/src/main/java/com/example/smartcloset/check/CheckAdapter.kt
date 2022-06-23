@@ -10,6 +10,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.smartcloset.MainActivity
 import com.example.smartcloset.R
+import com.example.smartcloset.compare.CompareDialog
 
 //class CheckAdapter(var context: Context, var itemlayout:Int, var ClothData: ArrayList<Int>):RecyclerView.Adapter<CheckAdapter.ViewHolder>(), Filterable {
 class CheckAdapter(val context: MainActivity, val clothList: Int, var ClothData: ArrayList<Int>) : RecyclerView.Adapter<CheckAdapter.Holder>() {
@@ -18,19 +19,30 @@ class CheckAdapter(val context: MainActivity, val clothList: Int, var ClothData:
 
     inner class Holder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
         val clothImg = itemView?.findViewById<ImageView>(R.id.img_cloth)
-//        val clothCategory = itemView?.findViewById<TextView>(R.id.dogBreedTv)
-//        val clothColor = itemView?.findViewById<TextView>(R.id.dogAgeTv)
 
-        fun bind (clothData: Int, context: Context) {
-            /* dogPhoto의 setImageResource에 들어갈 이미지의 id를 파일명(String)으로 찾고,
+        //        val clothCategory = itemView?.findViewById<TextView>(R.id.dogBreedTv)
+//        val clothColor = itemView?.findViewById<TextView>(R.id.dogAgeTv)
+        init {
+            var dialog = ClothDetailDialog(context)
+            //뷰 클릭 리스너 정의하기
+            itemView?.setOnClickListener {
+                //다이얼로그 띄우는 코드 작성
+                //나중에 수정 필요
+                var position = adapterPosition
+                var clothObject = "나중엔 옷 객체를 전달해 DB에서 갖고와 보여줄 예정$position"
+                dialog.showdetailDia(clothObject)
+            }
+        }
+            fun bind(clothData: Int, context: Context) {
+                /* dogPhoto의 setImageResource에 들어갈 이미지의 id를 파일명(String)으로 찾고,
             이미지가 없는 경우 안드로이드 기본 아이콘을 표시한다.*/
 //            if (clothData.img != "") {
 //                val resourceId = context.resources.getIdentifier(dog.photo, "drawable", context.packageName)
 //                dogPhoto?.setImageResource(resourceId)
 //            } else {
-            clothImg?.setImageResource(R.drawable.p1) //이미지명
+                clothImg?.setImageResource(R.drawable.p1) //이미지명
 //            }
-            /* 나머지 TextView와 String 데이터를 연결한다. */
+                /* 나머지 TextView와 String 데이터를 연결한다. */
 //            dogBreed?.text = dog.breed
 //            dogAge?.text = dog.age
 //            dogGender?.text = dog.gender
@@ -40,8 +52,9 @@ class CheckAdapter(val context: MainActivity, val clothList: Int, var ClothData:
 //                var clothObject = "나중엔 옷 객체를 전달해 DB에서 갖고와 보여줄 예정$position"
 //                dialog.showdetailDia(clothObject)
 //            }
+            }
         }
-    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater.from(context).inflate(R.layout.cloth_item, parent, false)
