@@ -59,6 +59,6 @@ def compare(request):
     context = {
         'result' : img_lst
     }
-
+    {"result": []}
     return JsonResponse(context, safe=False, json_dumps_params={'ensure_ascii': False})
 
