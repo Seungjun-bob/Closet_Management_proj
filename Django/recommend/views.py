@@ -2,7 +2,9 @@ from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse, JsonResponse
 import pandas as pd
-from .models import User, myclothes, clothes
+from .models import Account
+from .models import myClothes
+from .models import Clothes
 from django.http import JsonResponse
 
 
@@ -13,9 +15,9 @@ def recommend(request) :
 
 def rcmd(request):
     user_id = request.POST.get("id")
-    clothes = clothes.objects.get()
-    myclothes = myclothes.objects.get(id=user_id)
-    userdata = User.objects.get(id=user_id)
+    clothes = Clothes.objects.get()
+    myclothes = myClothes.objects.get(id=user_id)
+    userdata = Account.objects.get(id=user_id)
     df = pd.merge(userdata, myclothes, left_on='id', right_on='id', how='left')
     df['id'] = df['id'].apply(str)
     dummy = df[df['id'] == user_id]
@@ -41,8 +43,8 @@ def rcmd(request):
 
 def compare(request):
     userid = request.POST.get("id")
-    myclothes = myclothes.objects.get(id=user_id)
-    userdata = User.objects.get(id=user_id)
+    myclothes = myClothes.objects.get(id=user_id)
+    userdata = Account.objects.get(id=user_id)
     df = pd.merge(userdata, myclothes, left_on='id', right_on='id', how='left')
     category = request.POST.get("category")
     df['id'] = df['id'].apply(str)
