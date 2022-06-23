@@ -26,7 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("image.urls", namespace="image")),
     path('recommend/', include('recommend.urls')),
-    path('register/', views.register)
+    path('register/', include('register.urls'))
 ]
 
 

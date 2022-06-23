@@ -15,7 +15,7 @@ def register(request):
 
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return JsonResponse(serializer.data, safe=False, json_dumps_params={'ensure_ascii' : False})
+        return JsonResponse("okay", safe=False, json_dumps_params={'ensure_ascii' : False})
 
 def login(request):
     if request.method == 'POST':
@@ -27,11 +27,12 @@ def login(request):
         UserId = data["email"]
         print(UserId)
 
-        obj = User.objects.get(id=int(UserId))
-        print(obj)
+        obj = User.objects.get(email=UserId)
+        print(obj.id)
+        print(data['pw'], obj.pw)
 
-        if data['writer'] == obj.writer:
-            return JsonResponse("ok" + obj.id, safe=False, json_dumps_params={'ensure_ascii': False})
+        if data['pw'] == obj.pw:
+            return JsonResponse(":okay:" + str(obj.id) + ":", safe=False, json_dumps_params={'ensure_ascii': False})
         else:
-            return JsonResponse("fail", safe=False, json_dumps_params={'ensure_ascii': False})
+            return JsonResponse(":fail:", safe=False, json_dumps_params={'ensure_ascii': False})
 
