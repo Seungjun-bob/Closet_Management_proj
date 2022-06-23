@@ -230,7 +230,7 @@ class CompareFragment: Fragment() {
             var jsonobj = JSONObject()
             jsonobj.put("ImgName","https://closetimg103341-dev.s3.us-west-2.amazonaws.com/$name.bmp" )
             jsonobj.put("ImgName","test_img_name" )
-            val url = "http://172.30.1.22:8000/recommend/rcmd"  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
+            val url = "http://172.30.1.22:8000/recommend/compare/?id=" + userId +"/"  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
 
             //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
             val client = OkHttpClient()
