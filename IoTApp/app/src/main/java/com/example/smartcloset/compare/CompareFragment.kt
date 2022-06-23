@@ -1,10 +1,12 @@
 package com.example.smartcloset.compare
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
 import android.icu.text.SimpleDateFormat
@@ -31,6 +33,7 @@ import kotlinx.android.synthetic.main.compare.*
 import kotlinx.android.synthetic.main.compare.view.*
 import okhttp3.*
 import org.json.JSONObject
+import java.io.File
 import java.io.OutputStream
 import kotlin.concurrent.thread
 
@@ -56,6 +59,9 @@ class CompareFragment: Fragment() {
             //등록 버튼 클릭 이벤트 리스너
                 requirePermissions(arrayOf(Manifest.permission.CAMERA), PERMISSION_CAMERA)
 
+        }
+        view.btn_compare_save.setOnClickListener {
+            sendImgName(img_name)
         }
 
 
@@ -140,6 +146,19 @@ class CompareFragment: Fragment() {
         return mainActivity.contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
     }
 
+//    @SuppressLint("Range")
+//    fun getRealPathFromURI(contentUri:Uri): String? {
+//
+//         val proj= arrayOf<String>(MediaStore.Images.Media.DATA)
+//
+//        val cursor: Cursor? = mainActivity.getContentResolver().query(contentUri, proj, null, null, null);
+//        cursor?.moveToNext();
+//        val path = cursor?.getString(cursor.getColumnIndex(MediaStore.MediaColumns.DATA));
+//        val uri = Uri.fromFile(File(path));
+//
+//        cursor?.close();
+//        return path
+//    }
     //Launcher (ActivityResultLuncher로 변경해야함)
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -148,6 +167,7 @@ class CompareFragment: Fragment() {
         if (resultCode == AppCompatActivity.RESULT_OK) {
             when (requestCode) {
                 REQUEST_CAMERA -> {
+
                     realUri?.let { uri ->
                         //사진이 찍히면 이미지뷰에 띄워줌, DB로 전송도 해서 값을 받아와 밑의 RecyclerViewㅇ[ 보여줘야함
                         img_compare_preview.setImageURI(uri)
@@ -199,11 +219,14 @@ class CompareFragment: Fragment() {
     }
 
     fun sendImgName(name:String){
+//        Toast.makeText(mainActivity, "제대로 전송됨", Toast.LENGTH_LONG).show()
         thread{
+
             //이미지 이름을 url 뒤에 붙여 전달해줌
             var jsonobj = JSONObject()
             jsonobj.put("ImgName","https://closetimg103341-dev.s3.us-west-2.amazonaws.com/$name.bmp" )
-            val url = "http://192.168.200.107:8000/login"  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
+            jsonobj.put("ImgName","test_img_name" )
+            val url = "http://172.30.1.22:8000/recommend/rcmd"  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
 
             //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
             val client = OkHttpClient()
