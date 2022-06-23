@@ -4,7 +4,7 @@ from .models import User
 from .serializers import UserSerializer
 from django.http import JsonResponse
 from rest_framework.parsers import JSONParser
-
+print('test')
 def register(request):
     if request.method == 'POST':
         print("request_ok")
