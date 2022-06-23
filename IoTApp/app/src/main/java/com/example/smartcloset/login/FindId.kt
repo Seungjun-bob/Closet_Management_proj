@@ -108,15 +108,15 @@ class FindId: AppCompatActivity(), View.OnClickListener {
                         Log.d("http", result!!)
                         //로그인 성공여부가 메시지로 전달되면 그에 따라 다르게 작업할 수 있도록 코드
                         var login_result = result.split(':')
-                        if(login_result[0]=="okay") {
+                        if(login_result[1]=="okay") {
                             // 성공 토스트 메세지 띄우기
                             runOnUiThread {
                                 Toast.makeText(this, "ID찾기 성공", Toast.LENGTH_SHORT).show()
                             }
-                            show_id = login_result[1]
+                            show_id = login_result[2]
                             show = true
                         }
-                        else if(login_result[0]=="fail") {
+                        else if(login_result[1]=="fail") {
                             // 실패 토스트 메세지 띄우기
                             runOnUiThread {
                                 Toast.makeText(this, "ID찾기 실패", Toast.LENGTH_SHORT).show()

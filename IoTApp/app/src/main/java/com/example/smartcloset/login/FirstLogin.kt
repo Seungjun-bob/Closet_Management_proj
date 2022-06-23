@@ -22,6 +22,8 @@ lateinit var userId:String
 class FirstLogin: AppCompatActivity(), View.OnClickListener {
     val TAG: String = "Login"
     var isExistBlank = false
+    var t_stringBuilder = StringBuilder()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,18 +103,19 @@ class FirstLogin: AppCompatActivity(), View.OnClickListener {
                         val result: String? = response.body()?.string()
                         Log.d("http", result!!)
                         //로그인 성공여부가 메시지로 전달되면 그에 따라 다르게 작업할 수 있도록 코드
+
                         var login_result = result.split(':')
-                        if(login_result[0]=="okay"){
+                        if(login_result[1]=="okay"){
                             // 로그인 성공 토스트 메세지 띄우기
-                            userId = login_result[1]
+                            userId = login_result[2]
                             runOnUiThread {
-                                Toast.makeText(this, "로그인 성공+ $userId", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
                             }
                             //메인 액티비티로 이동
                             val intent = Intent(this, MainActivity::class.java).apply{
                             }
                             startActivity(intent)
-                        } else if(login_result[0]=="fail") {
+                        } else if(login_result[1]=="fail") {
                             // 로그인 성공 토스트 메세지 띄우기
                             runOnUiThread {
                                 Toast.makeText(this, "로그인 실패", Toast.LENGTH_SHORT).show()
