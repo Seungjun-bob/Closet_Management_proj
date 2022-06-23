@@ -10,5 +10,6 @@ app_name = "image"
 
 urlpatterns = [
     #path("", views.UploadImage.as_view(), name="upload_image_url"),
-    path("", views.doit, name = "modelRun"),
+    path("test/", views.doit, name = "test"),
+    path("print/", views.test, name="print"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
