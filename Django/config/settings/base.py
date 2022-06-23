@@ -71,6 +71,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'login',
     'register',
+    'knox',
+    'cloth',
 
     #### Project Apps ####
     'image',
@@ -109,36 +111,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/#databases
-
-
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql_psycopg2",
-#         "NAME": get_secret("DATABASE_NAME"),
-#         "USER": get_secret("DATABASE_USER"),
-#         "PASSWORD": get_secret("DATABASE_PASSWORD"),
-#         "HOST": "localhost",
-#         "PORT": "5432",
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':'test_db',
+        'NAME':'realtest',
         'USER':'root',
         'PASSWORD':'1111',
         'HOST':'localhost',
         'PORT':'3306'
     }
 }
-
-
-# Password validation
-# https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -159,9 +141,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/{{ docs_version }}/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 

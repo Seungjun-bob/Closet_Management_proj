@@ -69,6 +69,7 @@ class FindPw: AppCompatActivity(), View.OnClickListener {
                     var email = id_findpw.text.toString()
                     var name = name_findpw.text.toString()
                     var birthday = birthday_findpw.text.toString()
+
                     if(t_stringBuilder.isNotEmpty()) {
                         t_stringBuilder.delete(0, t_stringBuilder.toString().length)
                     }

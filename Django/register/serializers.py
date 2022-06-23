@@ -1,9 +1,9 @@
 from rest_framework import serializers
-from .models import User
+from .models import Account
 
 class UserSerializer(serializers.ModelSerializer):
     def insert(self, validated_data):
-        user = User.objects.insert_User(
+        account = Account.objects.insert_User(
             email = validated_data["email"],
             pw = validated_data["pw"],
             pwcheck = validated_data["pwcheck"],
@@ -11,8 +11,8 @@ class UserSerializer(serializers.ModelSerializer):
             birth = validated_data["birth"],
             gender = validated_data["gender"]
         )
-        return user
+        return account
 
     class Meta:
-        model = User
+        model = Account
         fields = ['email','pw','pwcheck','name','birth','gender']

@@ -19,6 +19,7 @@ from django.conf.urls.static import static
 from django.urls import path, include, re_path
 from login import views
 from register import views
+from cloth import views
 
 
 
@@ -26,7 +27,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("image.urls", namespace="image")),
     path('recommend/', include('recommend.urls')),
-    path('register/', include('register.urls'))
+    path('register/', include('register.urls')),
+    path('cloth/', include('cloth.urls'))
 ]
 
 

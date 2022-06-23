@@ -65,6 +65,7 @@ class FindId: AppCompatActivity(), View.OnClickListener {
                 thread {
                     var name = name_findid.text.toString()
                     var birthday = birthday_findid.text.toString()
+
                     if(t_stringBuilder.isNotEmpty()) {
                         t_stringBuilder.delete(0, t_stringBuilder.toString().length)
                     }
@@ -118,9 +119,12 @@ class FindId: AppCompatActivity(), View.OnClickListener {
                             }
                             show_id = login_result[2]
                             show = true
-                            if(show) {
-                                show_findid.text = show_id
+                            runOnUiThread {
+                                if(show) {
+                                    show_findid.text = show_id
+                                }
                             }
+
                         }
                         else if(login_result[1]=="fail") {
                             // 실패 토스트 메세지 띄우기

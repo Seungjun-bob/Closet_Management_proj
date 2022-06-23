@@ -1,4 +1,3 @@
-# YOLOv5 🚀 by Ultralytics, GPL-3.0 license
 """
 Common modules
 """
@@ -593,10 +592,10 @@ class Detections:
                 if show or save or render or crop:
                     annotator = Annotator(im, example=str(self.names))
                     for *box, conf, cls in reversed(pred):  # xyxy, confidence, class
-                        label = f'{self.names[int(cls)]} {conf:.2f}'
+                        label = f'{self.names[int(cls)]}'
                         if crop:
-                            file = save_dir / 'crops' / self.names[int(cls)] / self.files[i] if save else None
-                            crops.append({'box': box, 'conf': conf, 'cls': cls, 'label': label,
+                            file = save_dir / self.files[0] if save else None
+                            crops.append({'box': box, 'cls': cls, 'label': label,
                                           'im': save_one_box(box, im, file=file, save=save)})
                         else:  # all others
                             annotator.box_label(box, label, color=colors(cls))
@@ -629,12 +628,12 @@ class Detections:
     def show(self):
         self.display(show=True)  # show results
 
-    def save(self, save_dir='runs/detect/exp'):
-        save_dir = increment_path(save_dir, exist_ok=save_dir != 'runs/detect/exp', mkdir=True)  # increment save_dir
+    def save(self, save_dir='media/crops'):
+        save_dir = increment_path(save_dir,  mkdir=True)  # increment save_dir
         self.display(save=True, save_dir=save_dir)  # save results
 
-    def crop(self, save=True, save_dir='runs/detect/exp'):
-        save_dir = increment_path(save_dir, exist_ok=save_dir != 'runs/detect/exp', mkdir=True) if save else None
+    def crop(self, save=True, save_dir='media/crops'):
+        save_dir = increment_path(save_dir, mkdir=True) if save else None
         return self.display(crop=True, save=save, save_dir=save_dir)  # crop results
 
     def render(self):
