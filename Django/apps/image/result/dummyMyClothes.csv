@@ -1,4 +1,12 @@
 ,CODE,ID,myColor,myCategory,myImg,BuyDate
-0,my1,dummy30,red,sling_dress,img1,20181205
-0,my2,dummy1,white,short_sleeved_shirt,img1,20220510
-1,my3,dummy1,blue,trousers,img1,20220510
+0,my1,dummy30,red,sling_dress,img1,20181205.0
+0,my2,dummy1,white,short_sleeved_shirt,img1,20220510.0
+1,my3,dummy1,blue,trousers,img1,20220510.0
+0,my4,,white,short_sleeved_shirt,,
+1,my5,,blue,trousers,,
+0,my6,,white,short_sleeved_shirt,,
+1,my7,,blue,trousers,,
+0,my8,,white,short_sleeved_shirt,,
+1,my9,,blue,trousers,,
+0,my10,,white,short_sleeved_shirt,,
+1,my11,,blue,trousers,,
