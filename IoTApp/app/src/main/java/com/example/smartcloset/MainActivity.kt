@@ -119,4 +119,15 @@ class MainActivity : AppCompatActivity() {
         temp_status?.text = msg[5]
 
     }
+    open fun changeFragment(index: Int){
+        when(index){
+            1 -> {
+                supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.fl_con, HomeFragment())
+                        .commit()
+            }
+
+        }
+    }
 }
