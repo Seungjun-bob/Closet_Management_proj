@@ -72,6 +72,7 @@ INSTALLED_APPS = [
     'login',
     'register',
     'knox',
+    'cloth',
 
     #### Project Apps ####
     'image',
