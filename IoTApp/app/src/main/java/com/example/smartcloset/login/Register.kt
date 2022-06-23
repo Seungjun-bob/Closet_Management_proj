@@ -36,6 +36,7 @@ class Register: AppCompatActivity() {
     lateinit var gen: String
     var t_stringBuilder = StringBuilder()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.register)
@@ -107,6 +108,9 @@ class Register: AppCompatActivity() {
                 var pwcheck = pwcheck_register.text.toString()
                 var name = name_register.text.toString()
                 var birthday = birthday_register.text.toString()
+                if(t_stringBuilder.isNotEmpty()) {
+                    t_stringBuilder.delete(0, t_stringBuilder.toString().length)
+                }
                 //db테이블에 맞게 입력 받은 생년월일 형식 변환
                 t_stringBuilder.append(birthday)
                 t_stringBuilder.insert(4,'-')

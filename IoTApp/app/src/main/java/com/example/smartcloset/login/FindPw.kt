@@ -69,6 +69,9 @@ class FindPw: AppCompatActivity(), View.OnClickListener {
                     var email = id_findpw.text.toString()
                     var name = name_findpw.text.toString()
                     var birthday = birthday_findpw.text.toString()
+                    if(t_stringBuilder.isNotEmpty()) {
+                        t_stringBuilder.delete(0, t_stringBuilder.toString().length)
+                    }
                     //db테이블에 맞게 입력 받은 생년월일 형식 변환
                     t_stringBuilder.append(birthday)
                     t_stringBuilder.insert(4,'-')
@@ -123,11 +126,16 @@ class FindPw: AppCompatActivity(), View.OnClickListener {
                             }
                             show_pw = login_result[2]
                             show = true
+                            runOnUiThread {
+                                if(show) {
+                                    show_findpw.text = show_pw
+                                }
+                            }
                         }
                         else if(login_result[1]=="fail") {
                             // 실패 토스트 메세지 띄우기
                             runOnUiThread {
-                                Toast.makeText(this, "PW찾기 실패", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, "PW찾기 실패 \n 입력하신 정보를 확인하세요", Toast.LENGTH_SHORT).show()
                             }
                         }
 
@@ -144,9 +152,7 @@ class FindPw: AppCompatActivity(), View.OnClickListener {
                         }
                     }
                 }
-                if(show) {
-                    show_findpw.text = show_pw
-                }
+
             }
             R.id.back_findpw -> {
                 val intent = Intent(this, FirstLogin::class.java).apply {
