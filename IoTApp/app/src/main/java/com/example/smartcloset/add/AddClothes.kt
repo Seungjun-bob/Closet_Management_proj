@@ -58,7 +58,7 @@ open class AddClothes : AppCompatActivity() {
         save_addclothes.setOnClickListener{
             Toast.makeText(this,"저장 버튼입니다",Toast.LENGTH_SHORT).show()
         }
-        val myadapter = ArrayAdapter.createFromResource(this, R.array.tagdata1, android.R.layout.simple_spinner_item)
+        val myadapter = ArrayAdapter.createFromResource(this, R.array.tagnone, android.R.layout.simple_spinner_item)
 //        val autoAdapter = ArrayAdapter.createFromResource(this,R.array.tagdata1,android.R.layout.simple_spinner_item)
 
         myadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)

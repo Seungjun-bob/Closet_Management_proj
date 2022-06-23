@@ -50,8 +50,8 @@ class AddClothesFragment: Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val viewF = inflater.inflate(R.layout.addclothes, container, false)
-
-        val myadapter1 = ArrayAdapter.createFromResource(mainActivity, R.array.tagdata1, android.R.layout.simple_spinner_item)
+        // 1번 옷 종류 스피너
+        val myadapter1 = ArrayAdapter.createFromResource(mainActivity, R.array.type, android.R.layout.simple_spinner_item)
 
         myadapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         viewF.tag1.adapter = myadapter1
@@ -64,7 +64,7 @@ class AddClothesFragment: Fragment() {
                 viewF.tag3.setSelection(0)
                 when(viewF.tag1txt?.text){
                     "" -> {
-                        //두번째 태그 오픈
+                        //1번 스피너 공백일 때 -> 2번 스피너 선택지 없음
                         val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.tagnone, android.R.layout.simple_spinner_item)
                         myadapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                         viewF.tag2.adapter = myadapter2
@@ -91,9 +91,10 @@ class AddClothesFragment: Fragment() {
                             }
                         }
                     }
+                    // 1번 스피너 값이 상의인 경우
                     "상의" -> {
-                        //두번째 태그 오픈
-                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.tagdata1_1, android.R.layout.simple_spinner_item)
+                        //두번째 스피너 오픈 - 상의 스피너
+                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.top, android.R.layout.simple_spinner_item)
                         myadapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                         viewF.tag2.adapter = myadapter2
                         viewF.tag2.setSelection(0)
@@ -104,7 +105,7 @@ class AddClothesFragment: Fragment() {
 
                                     when (viewF.tag2txt.text) {
                                         "" -> {
-                                            // 세번째 태그 오픈
+                                            //2번 스피너 공백일 때 -> 3번 스피너 선택지 없음
                                             val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagnone, android.R.layout.simple_spinner_item)
                                             myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                                             viewF.tag3.adapter = myadapter3
@@ -119,8 +120,8 @@ class AddClothesFragment: Fragment() {
                                             }
                                         }
                                         else -> {
-                                            // 세번째 태그 오픈
-                                            val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagdata1_4, android.R.layout.simple_spinner_item)
+                                            // 세번째 태그 오픈 - 색상
+                                            val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.clothes_colors, android.R.layout.simple_spinner_item)
                                             myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                                             viewF.tag3.adapter = myadapter3
                                             viewF.tag3.setSelection(0)
@@ -139,8 +140,10 @@ class AddClothesFragment: Fragment() {
                                 }
                             }
                     }
+                    // 1번 스피너 값이 하의인 경우
                     "하의" -> {
-                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.tagdata1_2,android.R.layout.simple_spinner_item)
+                        //두번째 스피너 오픈 - 하의 스피너
+                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.bottom,android.R.layout.simple_spinner_item)
                         myadapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                         viewF.tag2.adapter = myadapter2
                         viewF.tag2.setSelection(0)
@@ -151,7 +154,7 @@ class AddClothesFragment: Fragment() {
 
                                     when (viewF.tag2txt.text) {
                                         "" -> {
-                                            // 세번째 태그 오픈
+                                            //2번 스피너 공백일 때 -> 3번 스피너 선택지 없음
                                             val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagnone, android.R.layout.simple_spinner_item)
                                             myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                                             viewF.tag3.adapter = myadapter3
@@ -165,9 +168,9 @@ class AddClothesFragment: Fragment() {
                                                 }
                                             }
                                         }
-                                        "슬랙스" -> {
+                                        else -> {
                                             // 세번째 태그 오픈
-                                            val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagdata1_5, android.R.layout.simple_spinner_item)
+                                            val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.clothes_colors, android.R.layout.simple_spinner_item)
                                             myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                                             viewF.tag3.adapter = myadapter3
                                             viewF.tag3.setSelection(0)
@@ -179,52 +182,6 @@ class AddClothesFragment: Fragment() {
                                                     override fun onNothingSelected(parent: AdapterView<*>?) {
                                                     }
                                                 }
-                                        }
-                                        "청바지" -> {
-
-                                            // 세번째 태그 오픈
-                                            val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagdata1_6, android.R.layout.simple_spinner_item)
-                                            myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                                            viewF.tag3.adapter = myadapter3
-                                            viewF.tag3.setSelection(0)
-
-                                            viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                                                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
-                                                        viewF.tag3txt?.text = (view as? TextView)?.text
-                                                    }
-                                                    override fun onNothingSelected(parent: AdapterView<*>?) {
-                                                    }
-                                                }
-                                        }
-                                        "반바지" -> {
-                                            // 세번째 태그 오픈
-                                            val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagdata1_5, android.R.layout.simple_spinner_item)
-                                            myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                                            viewF.tag3.adapter = myadapter3
-                                            viewF.tag3.setSelection(0)
-
-                                            viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                                                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
-                                                    viewF.tag3txt?.text = (view as? TextView)?.text
-                                                }
-                                                override fun onNothingSelected(parent: AdapterView<*>?) {
-                                                }
-                                            }
-                                        }
-                                        "츄리닝" -> {
-                                            // 세번째 태그 오픈
-                                            val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagdata1_5, android.R.layout.simple_spinner_item)
-                                            myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                                            viewF.tag3.adapter = myadapter3
-                                            viewF.tag3.setSelection(0)
-
-                                            viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                                                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
-                                                    viewF.tag3txt?.text = (view as? TextView)?.text
-                                                }
-                                                override fun onNothingSelected(parent: AdapterView<*>?) {
-                                                }
-                                            }
                                         }
                                     }
                                 }
@@ -232,9 +189,9 @@ class AddClothesFragment: Fragment() {
                                 }
                         }
                     }
-
-                    "아우터" -> {
-                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.tagdata1_3,android.R.layout.simple_spinner_item)
+                    // 1번 스피너 값이 원피스인 경우
+                    "원피스" -> {
+                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.dress,android.R.layout.simple_spinner_item)
                         myadapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                         viewF.tag2.adapter = myadapter2
                         viewF.tag2.setSelection(0)
@@ -244,7 +201,7 @@ class AddClothesFragment: Fragment() {
                                 viewF.tag2txt?.text = (view as? TextView)?.text
                                 when (viewF.tag2txt.text) {
                                     "" -> {
-                                        // 세번째 태그 오픈
+                                        //2번 스피너 공백일 때 -> 3번 스피너 선택지 없음
                                         val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagnone, android.R.layout.simple_spinner_item)
                                         myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                                         viewF.tag3.adapter = myadapter3
@@ -261,7 +218,7 @@ class AddClothesFragment: Fragment() {
                                     }
                                     else -> {
                                         // 세번째 태그 오픈
-                                        val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagdata1_4, android.R.layout.simple_spinner_item)
+                                        val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.clothes_colors, android.R.layout.simple_spinner_item)
                                         myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                                         viewF.tag3.adapter = myadapter3
                                         viewF.tag3.setSelection(0)
