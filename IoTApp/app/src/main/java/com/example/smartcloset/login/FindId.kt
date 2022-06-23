@@ -129,7 +129,7 @@ class FindId: AppCompatActivity(), View.OnClickListener {
                         else if(login_result[1]=="fail") {
                             // 실패 토스트 메세지 띄우기
                             runOnUiThread {
-                                Toast.makeText(this, "ID찾기 실패", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, "ID찾기 실패 \n 입력하신 정보를 확인하세요", Toast.LENGTH_SHORT).show()
                             }
                         }
                     } else {

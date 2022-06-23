@@ -12,7 +12,6 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,22 +19,17 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
-import com.amazonaws.mobile.auth.core.internal.util.ThreadUtils.runOnUiThread
 import com.example.smartcloset.R
 import com.example.smartcloset.MainActivity
 import com.example.smartcloset.home.HomeFragment
-import com.example.smartcloset.login.FirstLogin
 import com.example.smartcloset.login.userId
 
 import com.example.smartcloset.network.MyMqtt
 import kotlinx.android.synthetic.main.addclothes.*
 import kotlinx.android.synthetic.main.addclothes.view.*
-import okhttp3.*
-import org.json.JSONObject
-import kotlin.concurrent.thread
 
-class AddClothesFragment: Fragment() {
-    //카메라/앨범 관련 권한
+class AddClothesFragmentBackup: Fragment() {
+
     val PERMISSION_Album = 101 // 앨범 권한 처리
     val REQUEST_STORAGE = 1
 
@@ -43,13 +37,6 @@ class AddClothesFragment: Fragment() {
     val REQUEST_CAMERA = 2 //맞나?
 
     lateinit var realUri: Uri
-
-    //옷 저장 통신용 변수
-    //반환값(카테고리/색상)을 저장할 변수
-    lateinit var clothes_category:String
-    lateinit var clothes_color:String
-    var isExistBlank = true
-
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,8 +50,7 @@ class AddClothesFragment: Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val viewF = inflater.inflate(R.layout.addclothes, container, false)
-        // 카테고리/색상 수동 선택
-        // 1번 스피너 - 옷 종류
+        // 1번 옷 종류 스피너
         val myadapter1 = ArrayAdapter.createFromResource(mainActivity, R.array.type, android.R.layout.simple_spinner_item)
 
         myadapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -87,7 +73,6 @@ class AddClothesFragment: Fragment() {
                         viewF.tag2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                                 viewF.tag2txt?.text = (view as? TextView)?.text
-
                                 // 세번째 태그 오픈
                                 val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagnone, android.R.layout.simple_spinner_item)
                                 myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -97,8 +82,6 @@ class AddClothesFragment: Fragment() {
                                 viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                                     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                                         viewF.tag3txt?.text = (view as? TextView)?.text
-                                        clothes_color = ""
-                                        clothes_category = ""
                                     }
                                     override fun onNothingSelected(parent: AdapterView<*>?) {
                                     }
@@ -131,35 +114,12 @@ class AddClothesFragment: Fragment() {
                                             viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                                                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                                                     viewF.tag3txt?.text = (view as? TextView)?.text
-                                                    clothes_color = ""
-                                                    clothes_category = ""
                                                 }
                                                 override fun onNothingSelected(parent: AdapterView<*>?) {
                                                 }
                                             }
                                         }
                                         else -> {
-                                            when (viewF.tag2txt.text) {
-                                                "반팔 상의" -> {
-                                                    clothes_category = "short_sleeve_top"
-                                                }
-                                                "긴팔 상의" -> {
-                                                    clothes_category = "long_sleeve_top"
-                                                }
-                                                "반팔 아우터" -> {
-                                                    clothes_category = "short_sleeve_outer"
-                                                }
-                                                "긴팔 아우터" -> {
-                                                    clothes_category = "short_sleeve_outer"
-                                                }
-                                                "조끼(민소매)" -> {
-                                                    clothes_category = "vest"
-                                                }
-                                                "나시" -> {
-                                                    clothes_category = "sling"
-                                                }
-                                            }
-
                                             // 세번째 태그 오픈 - 색상
                                             val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.clothes_colors, android.R.layout.simple_spinner_item)
                                             myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -169,35 +129,6 @@ class AddClothesFragment: Fragment() {
                                             viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                                                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                                                     viewF.tag3txt?.text = (view as? TextView)?.text
-                                                    when(viewF.tag3txt?.text){
-                                                        "" -> {
-                                                            clothes_color = ""
-                                                        }
-                                                        "검정" -> {
-                                                            clothes_color = "black"
-                                                        }
-                                                        "블루" -> {
-                                                            clothes_color = "blue"
-                                                        }
-                                                        "레드" -> {
-                                                            clothes_color = "red"
-                                                        }
-                                                        "그린" -> {
-                                                            clothes_color = "green"
-                                                        }
-                                                        "화이트" -> {
-                                                            clothes_color = "white"
-                                                        }
-                                                        "그레이" -> {
-                                                            clothes_color = "gray"
-                                                        }
-                                                        "베이지" -> {
-                                                            clothes_color = "beige"
-                                                        }
-                                                        "패턴" -> {
-                                                            clothes_color = "pattern"
-                                                        }
-                                                    }
                                                 }
                                                 override fun onNothingSelected(parent: AdapterView<*>?) {
                                                 }
@@ -232,26 +163,12 @@ class AddClothesFragment: Fragment() {
                                             viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                                                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
                                                     viewF.tag3txt?.text = (view as? TextView)?.text
-                                                    clothes_color = ""
-                                                    clothes_category = ""
                                                 }
                                                 override fun onNothingSelected(parent: AdapterView<*>?) {
                                                 }
                                             }
                                         }
                                         else -> {
-                                            when (viewF.tag2txt.text) {
-                                                "반바지" -> {
-                                                    clothes_category = "shorts"
-                                                }
-                                                "긴바지" -> {
-                                                    clothes_category = "trousers"
-                                                }
-                                                "치마" -> {
-                                                    clothes_category = "skirt"
-                                                }
-
-                                            }
                                             // 세번째 태그 오픈
                                             val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.clothes_colors, android.R.layout.simple_spinner_item)
                                             myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -261,35 +178,6 @@ class AddClothesFragment: Fragment() {
                                             viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                                                     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
                                                         viewF.tag3txt?.text = (view as? TextView)?.text
-                                                        when(viewF.tag3txt?.text){
-                                                            "" -> {
-                                                                clothes_color = ""
-                                                            }
-                                                            "검정" -> {
-                                                                clothes_color = "black"
-                                                            }
-                                                            "블루" -> {
-                                                                clothes_color = "blue"
-                                                            }
-                                                            "레드" -> {
-                                                                clothes_color = "red"
-                                                            }
-                                                            "그린" -> {
-                                                                clothes_color = "green"
-                                                            }
-                                                            "화이트" -> {
-                                                                clothes_color = "white"
-                                                            }
-                                                            "그레이" -> {
-                                                                clothes_color = "gray"
-                                                            }
-                                                            "베이지" -> {
-                                                                clothes_color = "beige"
-                                                            }
-                                                            "패턴" -> {
-                                                                clothes_color = "pattern"
-                                                            }
-                                                        }
                                                     }
                                                     override fun onNothingSelected(parent: AdapterView<*>?) {
                                                     }
@@ -322,8 +210,6 @@ class AddClothesFragment: Fragment() {
                                         viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                                             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                                                 viewF.tag3txt?.text = (view as? TextView)?.text
-                                                clothes_color = ""
-                                                clothes_category = ""
                                             }
                                             override fun onNothingSelected(parent: AdapterView<*>?) {
                                             }
@@ -331,21 +217,6 @@ class AddClothesFragment: Fragment() {
 
                                     }
                                     else -> {
-                                        when (viewF.tag2txt.text) {
-                                            "반팔 원피스" -> {
-                                                clothes_category = "short_sleeve_dress"
-                                            }
-                                            "긴팔 원피스" -> {
-                                                clothes_category = "long_sleeve_dress"
-                                            }
-                                            "민소매 원피스" -> {
-                                                clothes_category = "vest_dress"
-                                            }
-                                            "나시 원피스" -> {
-                                                clothes_category = "sling_dress"
-                                            }
-
-                                        }
                                         // 세번째 태그 오픈
                                         val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.clothes_colors, android.R.layout.simple_spinner_item)
                                         myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -355,35 +226,6 @@ class AddClothesFragment: Fragment() {
                                         viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                                             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                                                 viewF.tag3txt?.text = (view as? TextView)?.text
-                                                when(viewF.tag3txt?.text){
-                                                    "" -> {
-                                                        clothes_color = ""
-                                                    }
-                                                    "검정" -> {
-                                                        clothes_color = "black"
-                                                    }
-                                                    "블루" -> {
-                                                        clothes_color = "blue"
-                                                    }
-                                                    "레드" -> {
-                                                        clothes_color = "red"
-                                                    }
-                                                    "그린" -> {
-                                                        clothes_color = "green"
-                                                    }
-                                                    "화이트" -> {
-                                                        clothes_color = "white"
-                                                    }
-                                                    "그레이" -> {
-                                                        clothes_color = "gray"
-                                                    }
-                                                    "베이지" -> {
-                                                        clothes_color = "beige"
-                                                    }
-                                                    "패턴" -> {
-                                                        clothes_color = "pattern"
-                                                    }
-                                                }
                                             }
                                             override fun onNothingSelected(parent: AdapterView<*>?) {
                                             }
@@ -423,67 +265,11 @@ class AddClothesFragment: Fragment() {
         viewF.cancel_addclothes.setOnClickListener{
             //취소 코드 추가
             mainActivity.changeFragment(1)
-            Toast.makeText(mainActivity,"등록이 취소되었습니다", Toast.LENGTH_SHORT).show()
+            Toast.makeText(mainActivity,"취소되었습니다", Toast.LENGTH_SHORT).show()
         }
-        // 등록 버튼 누르면 http 통신으로 서버에 전달-db저장
         viewF.save_addclothes.setOnClickListener{
-            thread {
-                //저장할 최종 카테고리/색상을 담을 변수
-                var final_category = clothes_category
-                var final_color = clothes_color
-                // 저장할 카테고리가 선택되어있는지
-                if(final_category.isEmpty() || final_color.isEmpty()){
-                    isExistBlank = true
-                } else {
-                    isExistBlank = false
-                }
-                if(!isExistBlank){
-                    //서버로 전송할 JSONObject 만들기 - 카테고리 정보를 담고 있음
-                    var jsonobj = JSONObject()
-                    jsonobj.put("id",userId) // 어떤 유저의 등록인지 유저id값 포함
-                    jsonobj.put("myColor",final_category)
-                    jsonobj.put("myCategory",final_color)
-
-                    // 장고 등록 페이지 url - 나중에 수정
-                    val url = "http://172.30.1.22:8000/register/"
-
-                    //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
-                    val client = OkHttpClient()
-
-                    //json데이터를 이용해서 request 처리
-                    val jsondata = jsonobj.toString()
-                    //서버에 요청을 담당하는 객체
-                    val builder = Request.Builder()    // request객체를 만들어주는 객체 생성
-                    builder.url(url)                   //Builder객체에 request할 주소(네트워크상의 주소)셋팅
-                    builder.post(RequestBody.create(MediaType.parse("application/json"),jsondata)) // 요청메시지 만들고 요청메시지의 타입이 json이라고 설정
-                    val myrequest: Request = builder.build() //Builder객체를 이용해서 request객체 만들기
-                    //생성한 request 객체를 이용해서 웹에 request하기 - request결과로 response 객체가 리턴
-                    val response: Response = client.newCall(myrequest).execute()
-
-                    //response에서 메시지꺼내서 로그 출력하기
-                    val result:String? = response.body()?.string()
-                    var save_result = result!!.split(':')
-                    Log.d("http",result!!)
-                    //로그인 성공여부가 메시지로 전달되면 그에 따라 다르게 작업할 수 있도록 코드변경하기
-                    if(save_result[1]=="okay"){
-                        // 회원가입 성공 토스트 메세지 띄우기
-                        runOnUiThread {
-                            Toast.makeText(mainActivity, "등록 성공", Toast.LENGTH_LONG).show()
-                        }
-
-                    } else if(save_result[1]=="fail") {
-                        // 로그인 성공 토스트 메세지 띄우기
-                        runOnUiThread {
-                            Toast.makeText(mainActivity, "등록 실패 \n 관리자에게 문의하세요", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                } else {
-
-                }
-            }
-            // 저장이 끝나면 홈화면으로 돌아가기
-            mainActivity.changeFragment(1)
-
+            //저장 코드 추가
+            Toast.makeText(mainActivity,"저장되었습니다", Toast.LENGTH_SHORT).show()
         }
         return viewF
     }
@@ -581,37 +367,6 @@ class AddClothesFragment: Fragment() {
             // 일반적인 Camera App은 이를 받아 내가 지정한 경로에 사진을 찍어서 저장시킨다.
             intent.putExtra(MediaStore.EXTRA_OUTPUT, realUri)
             startActivityForResult(intent, REQUEST_CAMERA)
-            // 찍은 사진을 AI모델에 보내서 1차 분석 카테고리/색상 받아오기
-            // 어떻게 보냄?
-            thread {
-                var ready = "ready"
-                var jsonobj = JSONObject()
-                jsonobj.put("ready",ready)
-
-                // 장고 AI모델 페이지 url? - 나중에 수정
-                val url = "http://172.30.1.22:8000/register/"
-
-                //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
-                val client = OkHttpClient()
-
-                //json데이터를 이용해서 request 처리
-                val jsondata = jsonobj.toString()
-                //서버에 요청을 담당하는 객체
-                val builder = Request.Builder()    // request객체를 만들어주는 객체 생성
-                builder.url(url)                   //Builder객체에 request할 주소(네트워크상의 주소)셋팅
-                builder.post(RequestBody.create(MediaType.parse("application/json"),jsondata)) // 요청메시지 만들고 요청메시지의 타입이 json이라고 설정
-                val myrequest: Request = builder.build() //Builder객체를 이용해서 request객체 만들기
-                //생성한 request 객체를 이용해서 웹에 request하기 - request결과로 response 객체가 리턴
-                val response: Response = client.newCall(myrequest).execute()
-
-                //response에서 메시지꺼내서 로그 출력하기
-                val result:String? = response.body()?.string()
-                var analyze_result = result!!.split('\"')
-                Log.d("http",result!!)
-                //로그인 성공여부가 메시지로 전달되면 그에 따라 다르게 작업할 수 있도록 코드변경하기
-                clothes_category = analyze_result[3]
-                clothes_color = analyze_result[7]
-            }
         }
     }
     @RequiresApi(Build.VERSION_CODES.N)
