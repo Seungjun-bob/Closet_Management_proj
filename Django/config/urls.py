@@ -17,22 +17,16 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include, re_path
-from rest_framework import routers
 from login import views
 from register import views
 
-router = routers.SimpleRouter()
-router.register(r'registers', views.UserDataViewSet)
-router.register(r'check', views.CheckAccountViewset)
-urlpatterns = router.urls
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("image.urls", namespace="image")),
     path('recommend/', include('recommend.urls')),
-    path('api/', include(router.urls)),
-    path('register/', include('register.urls'))
+    path('register/', views.register)
 ]
 
 

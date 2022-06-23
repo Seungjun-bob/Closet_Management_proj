@@ -30,6 +30,8 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:hint="abc@gmail.com"
+            android:singleLine = "true"
+            android:lines = "1"
             />
     </LinearLayout>
     <LinearLayout
@@ -50,6 +52,8 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
+            android:singleLine = "true"
+            android:lines = "1"
             />
     </LinearLayout>
     <Button

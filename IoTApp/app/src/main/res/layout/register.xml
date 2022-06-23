@@ -28,6 +28,8 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:textAlignment="center"
+            android:singleLine = "true"
+            android:lines = "1"
 
             />
     </LinearLayout>
@@ -50,6 +52,8 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:textAlignment="center"
+            android:singleLine = "true"
+            android:lines = "1"
 
             />
     </LinearLayout>
@@ -72,6 +76,8 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:textAlignment="center"
+            android:singleLine = "true"
+            android:lines = "1"
 
             />
     </LinearLayout>
@@ -93,6 +99,8 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:textAlignment="center"
+            android:singleLine = "true"
+            android:lines = "1"
 
             />
     </LinearLayout>
@@ -117,6 +125,8 @@
             android:inputType="number"
             android:maxLength="8"
             android:hint="ex. 19990101"
+            android:singleLine = "true"
+            android:lines = "1"
             />
     </LinearLayout>
     <LinearLayout
@@ -143,7 +153,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
-            android:visibility="invisible"
             />
     </LinearLayout>
 

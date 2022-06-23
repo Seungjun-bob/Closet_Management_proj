@@ -14,6 +14,7 @@ import com.example.smartcloset.compare.CompareFragment
 import com.example.smartcloset.login.FIRSTBUTTON
 import com.example.smartcloset.myPage.MyPage
 import com.example.smartcloset.home.HomeFragment
+import com.example.smartcloset.login.userId
 import com.example.smartcloset.network.MyMqtt
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -24,6 +25,7 @@ import java.nio.ByteBuffer
 import java.nio.channels.FileChannel
 
 class MainActivity : AppCompatActivity() {
+
     // mqtt
     val sub_topic = "iot/sensordata"
     val server_uri = "tcp://54.212.177.89:1883" //broker의 ip와 port 54.187.211.80

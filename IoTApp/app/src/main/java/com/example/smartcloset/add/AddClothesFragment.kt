@@ -1,6 +1,7 @@
 package com.example.smartcloset.add
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
@@ -20,6 +21,8 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.example.smartcloset.R
 import com.example.smartcloset.MainActivity
+import com.example.smartcloset.login.userId
+
 import com.example.smartcloset.network.MyMqtt
 import kotlinx.android.synthetic.main.addclothes.*
 import kotlinx.android.synthetic.main.addclothes.view.*
@@ -298,6 +301,7 @@ class AddClothesFragment: Fragment() {
         // 카메 라 버튼 클릭 리스너 구현
         viewF.camera_addclothes.setOnClickListener(View.OnClickListener {
             requirePermissions(arrayOf(Manifest.permission.CAMERA), PERMISSION_CAMERA)
+
         })
 
         viewF.cancel_addclothes.setOnClickListener{

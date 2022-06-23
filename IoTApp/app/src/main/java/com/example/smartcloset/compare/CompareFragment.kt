@@ -28,7 +28,11 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.example.smartcloset.MainActivity
 import com.example.smartcloset.R
+
 import kotlinx.android.synthetic.main.activity_login.*
+
+import com.example.smartcloset.login.userId
+
 import kotlinx.android.synthetic.main.compare.*
 import kotlinx.android.synthetic.main.compare.view.*
 import okhttp3.*

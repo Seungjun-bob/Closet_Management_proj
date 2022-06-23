@@ -21,6 +21,10 @@ class FindPw: AppCompatActivity(), View.OnClickListener {
 
     var isExistBlank = false
     var isBirthdayright = false
+    var t_stringBuilder = StringBuilder()
+    lateinit var show_pw:String
+    var show = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,17 +66,22 @@ class FindPw: AppCompatActivity(), View.OnClickListener {
         when (v?.id) {
             R.id.submit_findpw -> {
                 thread {
-                    var id = id_findpw.text.toString()
+                    var email = id_findpw.text.toString()
                     var name = name_findpw.text.toString()
                     var birthday = birthday_findpw.text.toString()
+                    //db테이블에 맞게 입력 받은 생년월일 형식 변환
+                    t_stringBuilder.append(birthday)
+                    t_stringBuilder.insert(4,'-')
+                    t_stringBuilder.insert(7,'-')
+                    birthday = t_stringBuilder.toString()
 
                     // 유저가 항목을 다 채우지 않았을 경우
-                    if (id.isEmpty() || name.isEmpty() || birthday.isEmpty()) {
+                    if (email.isEmpty() || name.isEmpty() || birthday.isEmpty()) {
                         isExistBlank = true
                     } else {
                         isExistBlank = false
                     }
-                    if (birthday.length == 8) { //생일이 8자리 맞게 입력되었는지
+                    if (birthday.length == 10) { //생일이 8자리 맞게 입력되었는지
                         isBirthdayright = true
                     } else {
                         isBirthdayright = false
@@ -82,14 +91,14 @@ class FindPw: AppCompatActivity(), View.OnClickListener {
                     if (!isExistBlank && isBirthdayright) {
                         //서버로 전송할 JSONObject 만들기 - 사용자가 입력한 id와 password를 담고 있음
                         var jsonobj = JSONObject()
-                        jsonobj.put("ID",id)
-                        jsonobj.put("NAME",name)
-                        jsonobj.put("BIRTHDAY",birthday)
+                        jsonobj.put("email",email)
+                        jsonobj.put("name",name)
+                        jsonobj.put("birth",birthday)
 
+                        // 장고 페이지 url - 나중에 수정
+                        val url = "http://192.168.200.107:8000/findpw"
 
-                        val url = "http://192.168.200.107:8000/findpw" // 장고 로그인페이지 url - 나중에 수정
-
-                        //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
+                        //Okhttp3라이브러리의 OkHttpClient객체를 이용해서 작업
                         val client = OkHttpClient()
 
                         //json데이터를 이용해서 request 처리
@@ -106,14 +115,23 @@ class FindPw: AppCompatActivity(), View.OnClickListener {
                         val result:String? = response.body()?.string()
                         Log.d("http",result!!)
                         //로그인 성공여부가 메시지로 전달되면 그에 따라 다르게 작업할 수 있도록 코드
-
-                        // 성공 토스트 메세지 띄우기**************테스트 완료후 삭제
-                        runOnUiThread {
-                            Toast.makeText(this, "PW찾기 성공", Toast.LENGTH_SHORT).show()
+                        var login_result = result.split(':')
+                        if(login_result[0]=="okay") {
+                            // 성공 토스트 메세지 띄우기
+                            runOnUiThread {
+                                Toast.makeText(this, "PW찾기 성공", Toast.LENGTH_SHORT).show()
+                            }
+                            show_pw = login_result[1]
+                            show = true
+                        }
+                        else if(login_result[0]=="fail") {
+                            // 실패 토스트 메세지 띄우기
+                            runOnUiThread {
+                                Toast.makeText(this, "PW찾기 실패", Toast.LENGTH_SHORT).show()
+                            }
                         }
 
                     } else {
-
                         // 상태에 따라 다른 다이얼로그 띄워주기
                         if (isExistBlank) {   // 작성 안한 항목이 있을 경우
                             runOnUiThread {
@@ -125,6 +143,9 @@ class FindPw: AppCompatActivity(), View.OnClickListener {
                             }
                         }
                     }
+                }
+                if(show) {
+                    show_findpw.text = show_pw
                 }
             }
             R.id.back_findpw -> {
