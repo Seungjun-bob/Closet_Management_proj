@@ -65,6 +65,10 @@ class FindId: AppCompatActivity(), View.OnClickListener {
                 thread {
                     var name = name_findid.text.toString()
                     var birthday = birthday_findid.text.toString()
+
+                    if(t_stringBuilder.isNotEmpty()) {
+                        t_stringBuilder.delete(0, t_stringBuilder.toString().length)
+                    }
                     //db테이블에 맞게 입력 받은 생년월일 형식 변환
                     t_stringBuilder.append(birthday)
                     t_stringBuilder.insert(4,'-')
@@ -115,6 +119,12 @@ class FindId: AppCompatActivity(), View.OnClickListener {
                             }
                             show_id = login_result[2]
                             show = true
+                            runOnUiThread {
+                                if(show) {
+                                    show_findid.text = show_id
+                                }
+                            }
+
                         }
                         else if(login_result[1]=="fail") {
                             // 실패 토스트 메세지 띄우기
@@ -136,9 +146,7 @@ class FindId: AppCompatActivity(), View.OnClickListener {
                         }
                     }
                 }
-                if(show) {
-                    show_findid.text = show_id
-                }
+
             }
 
 

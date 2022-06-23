@@ -64,7 +64,7 @@ class Register: AppCompatActivity() {
                     jsonobj.put("email",email)
 
                     // 장고 이메일체크 url - 나중에 수정
-                    val url = "http://172.30.1.22:8000/register/"
+                    val url = "http://172.30.1.22:8000/register/emailcheck"
 
                     //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
                     val client = OkHttpClient()
@@ -81,15 +81,17 @@ class Register: AppCompatActivity() {
 
                     //response에서 메시지꺼내서 로그 출력하기
                     val result:String? = response.body()?.string()
+                    var result2 = result!!.split(':')
+                    Log.d("http", result2[1])
                     Log.d("http",result!!)
                     //로그인 성공여부가 메시지로 전달되면 그에 따라 다르게 작업할 수 있도록 코드변경하기
-                    if(result=="okay"){
+                    if(result2[1]=="okay"){
                         isEmailChecked = true
                         // 사용 가능 이메일 토스트 메세지 띄우기
                         runOnUiThread {
                             Toast.makeText(this, "사용 가능한 이메일입니다.", Toast.LENGTH_LONG).show()
                         }
-                    } else if(result=="fail") {
+                    } else if(result2[1]=="fail") {
                         isEmailChecked = false
                         // 중복이메일 토스트 메세지 띄우기
                         runOnUiThread {
@@ -107,6 +109,10 @@ class Register: AppCompatActivity() {
                 var pwcheck = pwcheck_register.text.toString()
                 var name = name_register.text.toString()
                 var birthday = birthday_register.text.toString()
+
+                if(t_stringBuilder.isNotEmpty()) {
+                    t_stringBuilder.delete(0, t_stringBuilder.toString().length)
+                }
                 //db테이블에 맞게 입력 받은 생년월일 형식 변환
                 t_stringBuilder.append(birthday)
                 t_stringBuilder.insert(4,'-')
@@ -130,7 +136,7 @@ class Register: AppCompatActivity() {
                 } else {
                     isBirthdayright = false
                 }
-
+                Log.d("test", "$birthday, $isBirthdayright")
 
                 if (!isExistBlank && isPWSame && isBirthdayright && isEmailChecked) {
                     //서버로 전송할 JSONObject 만들기 - 사용자가 입력한 정보를 담고 있음
@@ -163,9 +169,10 @@ class Register: AppCompatActivity() {
 
                     //response에서 메시지꺼내서 로그 출력하기
                     val result:String? = response.body()?.string()
+                    var result3 = result!!.split(':')
                     Log.d("http",result!!)
                     //로그인 성공여부가 메시지로 전달되면 그에 따라 다르게 작업할 수 있도록 코드변경하기
-                    if(result=="okay"){
+                    if(result3[1]=="okay"){
                         // 회원가입 성공 토스트 메세지 띄우기
                         runOnUiThread {
                             Toast.makeText(this, "회원가입 성공", Toast.LENGTH_LONG).show()
@@ -173,7 +180,7 @@ class Register: AppCompatActivity() {
                         // 로그인 화면으로 이동
                         val intent = Intent(this, FirstLogin::class.java)
                         startActivity(intent)
-                    } else if(result=="fail") {
+                    } else if(result3[1]=="fail") {
                         // 로그인 성공 토스트 메세지 띄우기
                         runOnUiThread {
                             Toast.makeText(this, "회원가입 실패 \n 관리자에게 문의하세요요", Toast.LENGTH_SHORT).show()

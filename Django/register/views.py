@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 from rest_framework.response import Response
-from .models import User
+from .models import Account
 from .serializers import UserSerializer
 from django.http import JsonResponse
 from rest_framework.parsers import JSONParser
@@ -16,7 +16,7 @@ def register(request):
 
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return JsonResponse("okay", safe=False, json_dumps_params={'ensure_ascii': False})
+        return JsonResponse(":okay:", safe=False, json_dumps_params={'ensure_ascii': False})
 
 
 def login(request):
@@ -29,7 +29,7 @@ def login(request):
         UserId = data["email"]
         print(UserId)
         # 해당 이메일에 해당하는 유저 obj 찾아오기
-        obj = User.objects.get(email=UserId)
+        obj = Account.objects.get(email=UserId)
         print(obj.id)
         print(data['pw'], obj.pw)
 
@@ -51,13 +51,13 @@ def findid(request):
         UserBirth = data["birth"]
 
         # 해당 이름에 해당하는 유저 obj 찾아오기
-        obj = User.objects.get(name=UserName)
+        obj = Account.objects.filter(name=UserName)
         print(obj)
         # 그 중 해당 생일에 해당하는 유저 obj 찾아오기
-        obj2 = obj.objects.get(birth=UserBirth)
-        print(obj2)
+        obj2 = obj.get(birth=UserBirth)
+        print(obj2.email)
 
-        if obj2 is True: #obj2가 존재하면
+        if obj2 != None: #obj2가 존재하면
             return JsonResponse(":okay:" + str(obj2.email) + ":", safe=False, json_dumps_params={'ensure_ascii': False})
         else:
             return JsonResponse(":fail:", safe=False, json_dumps_params={'ensure_ascii': False})
@@ -73,7 +73,7 @@ def findpw(request):
         UserId = data["email"]
         print(UserId)
         # 해당 이메일에 해당하는 유저 obj 찾아오기
-        obj = User.objects.get(email=UserId)
+        obj = Account.objects.get(email=UserId)
 
         if data['name'] == obj.name and data['birth'] == obj.birth:
             return JsonResponse(":okay:" + str(obj.pw) + ":", safe=False, json_dumps_params={'ensure_ascii': False})
@@ -90,11 +90,15 @@ def emailcheck(request):
         UserId = data["email"]
         print(UserId)
         # 해당 이메일에 해당하는 유저 obj있는지 찾아오기
-        obj = User.objects.get(email=UserId)
+        try:
+            obj = Account.objects.get(email=UserId)
+            if obj.email is False:  # 해당 이메일을 가진 obj가 없으면
+                return JsonResponse(":okay:", safe=False, json_dumps_params={'ensure_ascii': False})
+            else:
+                return JsonResponse(":fail:", safe=False, json_dumps_params={'ensure_ascii': False})
+        except:
+            return JsonResponse(":okay:", safe=False, json_dumps_params={'ensure_ascii': False})
 
-        if obj.email is False: #해당 이메일을 가진 obj가 없으면
-            return JsonResponse("okay", safe=False, json_dumps_params={'ensure_ascii': False})
-        else:
-            return JsonResponse("fail", safe=False, json_dumps_params={'ensure_ascii': False})
+
 
 
