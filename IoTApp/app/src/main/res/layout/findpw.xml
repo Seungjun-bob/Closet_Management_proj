@@ -88,6 +88,16 @@
         android:layout_height="wrap_content"
         android:text="PW 찾기"
         android:layout_gravity="center"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="회원님의 비밀번호는"
+        android:textAlignment="center"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        />
 
     <TextView
         android:id="@+id/show_findpw"
@@ -96,6 +106,17 @@
         android:text=""
         android:textAlignment="center"
         android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="입니다."
+        android:textAlignment="center"
+        android:textSize="15sp"
         android:textColor="@color/black"
         android:layout_marginTop="20dp"
         android:layout_gravity="center"

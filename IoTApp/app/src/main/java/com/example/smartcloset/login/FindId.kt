@@ -20,6 +20,8 @@ class FindId: AppCompatActivity(), View.OnClickListener {
     var isExistBlank = false
     var isBirthdayright = false
     var t_stringBuilder = StringBuilder()
+    lateinit var show_id:String
+    var show = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -105,10 +107,20 @@ class FindId: AppCompatActivity(), View.OnClickListener {
                         val result: String? = response.body()?.string()
                         Log.d("http", result!!)
                         //로그인 성공여부가 메시지로 전달되면 그에 따라 다르게 작업할 수 있도록 코드
-
-                        // 성공 토스트 메세지 띄우기**************테스트 완료후 삭제
-                        runOnUiThread {
-                            Toast.makeText(this, "ID찾기 성공", Toast.LENGTH_SHORT).show()
+                        var login_result = result.split(':')
+                        if(login_result[0]=="okay") {
+                            // 성공 토스트 메세지 띄우기
+                            runOnUiThread {
+                                Toast.makeText(this, "ID찾기 성공", Toast.LENGTH_SHORT).show()
+                            }
+                            show_id = login_result[1]
+                            show = true
+                        }
+                        else if(login_result[0]=="fail") {
+                            // 실패 토스트 메세지 띄우기
+                            runOnUiThread {
+                                Toast.makeText(this, "ID찾기 실패", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     } else {
 
@@ -123,6 +135,9 @@ class FindId: AppCompatActivity(), View.OnClickListener {
                             }
                         }
                     }
+                }
+                if(show) {
+                    show_findid.text = show_id
                 }
             }
 
