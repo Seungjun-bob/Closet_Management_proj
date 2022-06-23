@@ -1,6 +1,7 @@
 from django.db import models
 
 class Account(models.Model):
+    accountid = models.IntegerField(primary_key=True)
     GENDER_CHOICES=(
         (1,'남성'),
         (2,'여성'),

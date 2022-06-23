@@ -3,7 +3,9 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from requests import Response
 
-from .models import MyClothes, User
+from .models import MyClothes
+from register.models import Account
+
 from rest_framework.decorators import api_view
 from rest_framework import serializers
 from rest_framework import viewsets
@@ -18,7 +20,7 @@ def check_data(request):
     print('test')
     Email = request.GET.get('email')
     print(Email)
-    user = User.objects.get(email=Email)
+    user = Account.objects.get(email=Email)
     # print(user)
     userID = user.id
     queryset = MyClothes.objects.filter(userid=userID).order_by('buydate')
@@ -31,7 +33,7 @@ def check_category(request, category):
     # print(request.GET.get('email'))
     # userID = request.GET.get('email')
     Email = request.GET.get('email')
-    user = User.objects.get(email=Email)
+    user = Account.objects.get(email=Email)
     userID = user.id
     queryset = MyClothes.objects.filter(userid=userID, category=category).order_by('buydate')
     serializer = MyClothesSerializer(queryset, many=True)
