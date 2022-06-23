@@ -1,10 +1,7 @@
-
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse, JsonResponse
 import pandas as pd
-import random
-import datetime
 
 def recommend(request) :
     name = request.GET.get('id', "")
@@ -33,8 +30,8 @@ def rcmd(request):
         rcmd_clothes = pd.concat([rcmd_clothes, rcmd_clothes_add])
         rcmd_img = pd.concat([rcmd_img, rcmd_img_add])
     context = {
-        'clothes' : rcmd_clothes['clothes'],
-        'img' : rcmd_img['img'],
+        'clothes': rcmd_clothes['clothes'],
+        'img': rcmd_img['img'],
     }
     return JsonResponse(context, safe=False, json_dumps_params={'ensure_ascii': False})
 
@@ -59,5 +56,6 @@ def compare(request):
     context = {
         'result' : img_lst
     }
-
+    {"result": []}
     return JsonResponse(context, safe=False, json_dumps_params={'ensure_ascii': False})
+

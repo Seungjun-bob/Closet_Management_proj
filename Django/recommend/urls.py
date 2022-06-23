@@ -5,5 +5,5 @@ app_name = 'recommend'
 urlpatterns = [
     path('', views.recommend),
     path('compare/', views.compare),
-    path('rcmd/', views.rcmd)
+    path('rcmd/', views.rcmd),
 ]
