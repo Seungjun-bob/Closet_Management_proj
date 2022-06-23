@@ -17,10 +17,10 @@ import org.json.JSONObject
 import kotlin.concurrent.thread
 
 const val FIRSTBUTTON = 10
+lateinit var userId:String
 
 class FirstLogin: AppCompatActivity(), View.OnClickListener {
     val TAG: String = "Login"
-
     var isExistBlank = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,11 +60,11 @@ class FirstLogin: AppCompatActivity(), View.OnClickListener {
         when(v?.id){
             R.id.login -> {
                 thread {
-                    var id = id_login.text.toString()
+                    var email = id_login.text.toString()
                     var pw = pw_login.text.toString()
 
                     // 유저가 항목을 다 채우지 않았을 경우
-                    if (id.isEmpty() || pw.isEmpty()) {
+                    if (email.isEmpty() || pw.isEmpty()) {
                         isExistBlank = true
                     } else {
                         isExistBlank = false
@@ -73,8 +73,8 @@ class FirstLogin: AppCompatActivity(), View.OnClickListener {
 
                         //서버로 전송할 JSONObject 만들기 - 사용자가 입력한 id와 password를 담고 있음
                         var jsonobj = JSONObject()
-                        jsonobj.put("ID", id)
-                        jsonobj.put("PW", pw)
+                        jsonobj.put("email", email)
+                        jsonobj.put("pw", pw)
 
                         // 장고 로그인페이지 url - 추후 수정
                         val url = "http://192.168.200.107:8000/login"
@@ -101,16 +101,30 @@ class FirstLogin: AppCompatActivity(), View.OnClickListener {
                         val result: String? = response.body()?.string()
                         Log.d("http", result!!)
                         //로그인 성공여부가 메시지로 전달되면 그에 따라 다르게 작업할 수 있도록 코드
+                        var login_result = result.split(':')
+                        if(login_result[0]=="okay"){
+                            // 로그인 성공 토스트 메세지 띄우기
+                            userId = login_result[1]
+                            runOnUiThread {
+                                Toast.makeText(this, "로그인 성공+ $userId", Toast.LENGTH_SHORT).show()
+                            }
+                            //메인 액티비티로 이동
+                            val intent = Intent(this, MainActivity::class.java).apply{
+                            }
+                            startActivity(intent)
+                        } else if(login_result[0]=="fail") {
+                            // 로그인 성공 토스트 메세지 띄우기
+                            runOnUiThread {
+                                Toast.makeText(this, "로그인 실패", Toast.LENGTH_SHORT).show()
+                            }
+                        }
 
                         // 로그인 성공 토스트 메세지 띄우기
                         runOnUiThread {
                             Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
                         }
 
-                        //메인 액티비티로 이동
-                        val intent = Intent(this, MainActivity::class.java).apply{
-                        }
-                        startActivity(intent)
+
 
 
                     } else {
