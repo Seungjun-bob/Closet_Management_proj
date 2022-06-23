@@ -13,7 +13,7 @@ def rcmd(request):
     myclothes = pd.read_csv('../Django/recommend/dummydata/dummyMyClothes.csv', encoding='Utf-8', index_col=0)
     userdata = pd.read_csv('../Django/recommend/dummydata/dummyUser.csv', encoding='Utf-8', index_col=0)
     df = pd.merge(userdata, myclothes, left_on='id', right_on='id', how='left')
-    user_id = request.GET.get("id")
+    user_id = request.POST.get("id")
     dummy = df[df['id'] == user_id]
     dummy['clothes'] = dummy['mycolor'] + ' - ' + dummy['mycategory']
     clothes['clothes'] = clothes['color'] + ' - ' + clothes['category']
@@ -39,8 +39,8 @@ def compare(request):
     myclothes = pd.read_csv('../Django/recommend/dummydata/dummyMyClothes.csv', encoding='Utf-8', index_col=0)
     userdata = pd.read_csv('../Django/recommend/dummydata/dummyUser.csv', encoding='Utf-8', index_col=0)
     df = pd.merge(userdata, myclothes, left_on='id', right_on='id', how='left')
-    userid = request.GET.get("id")
-    category = request.GET.get("category")
+    userid = request.POST.get("id")
+    category = request.POST.get("category")
     df['id'] = df['id'].apply(str)
     print(df.dtypes)
     dummy = df[df['id'] == userid]
