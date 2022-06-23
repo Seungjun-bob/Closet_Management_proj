@@ -21,6 +21,7 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.example.smartcloset.R
 import com.example.smartcloset.MainActivity
+import com.example.smartcloset.home.HomeFragment
 import com.example.smartcloset.login.userId
 
 import com.example.smartcloset.network.MyMqtt
@@ -305,10 +306,13 @@ class AddClothesFragment: Fragment() {
         })
 
         viewF.cancel_addclothes.setOnClickListener{
-//            Toast.makeText(this,"취소 버튼입니다", Toast.LENGTH_SHORT).show()
+            //취소 코드 추가
+            mainActivity.changeFragment(1)
+            Toast.makeText(mainActivity,"취소되었습니다", Toast.LENGTH_SHORT).show()
         }
         viewF.save_addclothes.setOnClickListener{
-//            Toast.makeText(this,"저장 버튼입니다", Toast.LENGTH_SHORT).show()
+            //저장 코드 추가
+            Toast.makeText(mainActivity,"저장되었습니다", Toast.LENGTH_SHORT).show()
         }
         return viewF
     }

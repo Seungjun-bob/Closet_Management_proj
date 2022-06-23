@@ -31,17 +31,16 @@
         android:usesCleartextTraffic="true">
         <!-- mypage graph -->
         <activity android:name=".login.FirstLogin" >
+
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-
-
         </activity>
         <activity android:name=".login.FindId" />
         <activity android:name=".login.FindPw" />
