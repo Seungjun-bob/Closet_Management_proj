@@ -3,6 +3,7 @@ package com.example.smartcloset.check
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
 import android.view.WindowManager
 import android.widget.Button
 import com.example.smartcloset.R
@@ -43,6 +44,27 @@ class ClothDetailDialog(context: Context) {
         close.setOnClickListener {
             //dialog가 닫혀야함
             dialog.dismiss()
+        }
+
+        edit.setOnClickListener {
+            val editDialog = ClothEditDialog(dialog.context)
+            editDialog.showeditDia("옷")
+        }
+
+        delete.setOnClickListener {
+            val builder = AlertDialog.Builder(dialog.context)
+            builder.setTitle("옷 삭제")
+                    .setMessage("이 옷을 정말 삭제할까요?")
+                    .setNegativeButton("취소",
+                            DialogInterface.OnClickListener { dialog, id ->
+                                //취소 버튼을 누르면
+                            })
+                    .setPositiveButton("삭제",
+                    DialogInterface.OnClickListener{ dialog, id ->
+                        //삭제 버튼을 눌렀을 때 할 동작
+                    })
+
+            builder.show()
         }
 
 //        edit.setOnClickListener{
