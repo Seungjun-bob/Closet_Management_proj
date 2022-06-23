@@ -46,6 +46,9 @@ class AddClothesFragment: Fragment() {
 
     //옷 저장 통신용 변수
     //반환값(카테고리/색상)을 저장할 변수
+    lateinit var analyze_category:String
+    lateinit var analyze_color:String
+    // 스피너 선택값을 저장한 변수
     lateinit var clothes_category:String
     lateinit var clothes_color:String
     var isExistBlank = true
@@ -403,6 +406,90 @@ class AddClothesFragment: Fragment() {
 //                result.text = "선택된 가수가 없습니다."
             }
         }
+        //************AI 모델 반환값을 기준으로 카테고리 대분류 선택************
+        when(analyze_category){
+            // 상의
+            "short_sleeve_top" -> {
+                viewF.tag1.setSelection(1)
+                viewF.tag2.setSelection(1)
+            }
+            "long_sleeve_top" -> {
+                viewF.tag1.setSelection(1)
+                viewF.tag2.setSelection(2)
+            }
+            "short_sleeve_outer" -> {
+                viewF.tag1.setSelection(1)
+                viewF.tag2.setSelection(3)
+            }
+            "long_sleeve_outer" -> {
+                viewF.tag1.setSelection(1)
+                viewF.tag2.setSelection(4)
+            }
+            "vest" -> {
+                viewF.tag1.setSelection(1)
+                viewF.tag2.setSelection(5)
+            }
+            "sling" -> {
+                viewF.tag1.setSelection(1)
+                viewF.tag2.setSelection(6)
+            }
+            // 하의
+            "shorts"-> {
+                viewF.tag1.setSelection(2)
+                viewF.tag2.setSelection(1)
+            }
+            "trousers"-> {
+                viewF.tag1.setSelection(2)
+                viewF.tag2.setSelection(2)
+            }
+            "skirt" -> {
+                viewF.tag1.setSelection(2)
+                viewF.tag2.setSelection(3)
+            }
+            // 원피스
+            "short_sleeve_dress"-> {
+                viewF.tag1.setSelection(3)
+                viewF.tag2.setSelection(1)
+            }
+            "long_sleeve_dress"-> {
+                viewF.tag1.setSelection(3)
+                viewF.tag2.setSelection(2)
+            }
+            "vest_dress"-> {
+                viewF.tag1.setSelection(3)
+                viewF.tag2.setSelection(3)
+            }
+            "sling_dress"-> {
+                viewF.tag1.setSelection(3)
+                viewF.tag2.setSelection(4)
+            }
+        }
+        when(analyze_color){
+            "black"-> {
+                viewF.tag3.setSelection(1)
+            }
+            "blue"-> {
+                viewF.tag3.setSelection(2)
+            }
+            "red"-> {
+                viewF.tag3.setSelection(3)
+            }
+            "green"-> {
+                viewF.tag3.setSelection(4)
+            }
+            "white"-> {
+                viewF.tag3.setSelection(5)
+            }
+            "gray"-> {
+                viewF.tag3.setSelection(6)
+            }
+            "beige"-> {
+                viewF.tag3.setSelection(7)
+            }
+            "pattern"-> {
+                viewF.tag3.setSelection(8)
+            }
+        }
 
 
 
@@ -581,6 +668,7 @@ class AddClothesFragment: Fragment() {
             // 일반적인 Camera App은 이를 받아 내가 지정한 경로에 사진을 찍어서 저장시킨다.
             intent.putExtra(MediaStore.EXTRA_OUTPUT, realUri)
             startActivityForResult(intent, REQUEST_CAMERA)
+//******************************************************************************************
             // 찍은 사진을 AI모델에 보내서 1차 분석 카테고리/색상 받아오기
             // 어떻게 보냄?
             thread {
@@ -609,8 +697,8 @@ class AddClothesFragment: Fragment() {
                 var analyze_result = result!!.split('\"')
                 Log.d("http",result!!)
                 //로그인 성공여부가 메시지로 전달되면 그에 따라 다르게 작업할 수 있도록 코드변경하기
-                clothes_category = analyze_result[3]
-                clothes_color = analyze_result[7]
+                analyze_category = analyze_result[3]
+                analyze_color = analyze_result[7]
             }
         }
     }
