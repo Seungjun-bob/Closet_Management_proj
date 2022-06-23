@@ -106,7 +106,7 @@ class FirstLogin: AppCompatActivity(), View.OnClickListener {
                             // 로그인 성공 토스트 메세지 띄우기
                             userId = login_result[1]
                             runOnUiThread {
-                                Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, "로그인 성공+ $userId", Toast.LENGTH_SHORT).show()
                             }
                             //메인 액티비티로 이동
                             val intent = Intent(this, MainActivity::class.java).apply{
