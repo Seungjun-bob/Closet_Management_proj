@@ -59,6 +59,7 @@ class AddClothesFragment: Fragment() {
     lateinit var clothes_color:String
     var isExistBlank = true
 
+    var save_success = false
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -575,6 +576,7 @@ class AddClothesFragment: Fragment() {
                         runOnUiThread {
                             Toast.makeText(mainActivity, "등록 성공", Toast.LENGTH_LONG).show()
                         }
+                        save_success = true
 
                     } else if(save_result[1]=="fail") {
                         // 등록 성공 토스트 메세지 띄우기
@@ -586,8 +588,10 @@ class AddClothesFragment: Fragment() {
 
                 }
             }
-            // 저장이 끝나면 홈화면으로 돌아가기
-            mainActivity.changeFragment(1)
+            if(save_success) {
+                // 저장이 끝나면 홈화면으로 돌아가기
+                mainActivity.changeFragment(1)
+            }
 
         }
         return viewF
