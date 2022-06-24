@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     // mqtt
     val sub_topic = "iot/sensordata"
-    val server_uri = "tcp://54.212.177.89:1883" //broker의 ip와 port 54.187.211.80
+    val server_uri = "tcp://35.89.7.144:1883" //broker의 ip와 port
     var mymqtt : MyMqtt? = null
 
 

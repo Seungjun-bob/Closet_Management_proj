@@ -30,6 +30,7 @@ import com.example.smartcloset.login.userId
 import com.example.smartcloset.network.MyMqtt
 import kotlinx.android.synthetic.main.addclothes.*
 import kotlinx.android.synthetic.main.addclothes.view.*
+import kotlinx.android.synthetic.main.register.*
 import okhttp3.*
 import org.json.JSONObject
 import kotlin.concurrent.thread
@@ -45,6 +46,8 @@ class AddClothesFragment: Fragment() {
     lateinit var realUri: Uri
 
     //옷 저장 통신용 변수
+    var t_stringBuilder = StringBuilder()
+
     //반환값(카테고리/색상)을 저장할 변수
     lateinit var analyze_category:String
     lateinit var analyze_color:String
@@ -515,11 +518,20 @@ class AddClothesFragment: Fragment() {
         // 등록 버튼 누르면 http 통신으로 서버에 전달-db저장
         viewF.save_addclothes.setOnClickListener{
             thread {
+                var buydate = buydate.text.toString()
+                if(t_stringBuilder.isNotEmpty()) {
+                    t_stringBuilder.delete(0, t_stringBuilder.toString().length)
+                }
+                //db테이블에 맞게 입력 받은 생년월일 형식 변환
+                t_stringBuilder.append(buydate)
+                t_stringBuilder.insert(4,'-')
+                t_stringBuilder.insert(7,'-')
+                buydate = t_stringBuilder.toString()
                 //저장할 최종 카테고리/색상을 담을 변수
                 var final_category = clothes_category
                 var final_color = clothes_color
                 // 저장할 카테고리가 선택되어있는지
-                if(final_category.isEmpty() || final_color.isEmpty()){
+                if(final_category.isEmpty() || final_color.isEmpty() || buydate.isEmpty()){
                     isExistBlank = true
                 } else {
                     isExistBlank = false
@@ -528,6 +540,7 @@ class AddClothesFragment: Fragment() {
                     //서버로 전송할 JSONObject 만들기 - 카테고리 정보를 담고 있음
                     var jsonobj = JSONObject()
                     jsonobj.put("id",userId) // 어떤 유저의 등록인지 유저id값 포함
+                    jsonobj.put("buydate",buydate)
                     jsonobj.put("myColor",final_category)
                     jsonobj.put("myCategory",final_color)
 
@@ -551,15 +564,15 @@ class AddClothesFragment: Fragment() {
                     val result:String? = response.body()?.string()
                     var save_result = result!!.split(':')
                     Log.d("http",result!!)
-                    //로그인 성공여부가 메시지로 전달되면 그에 따라 다르게 작업할 수 있도록 코드변경하기
+                    // 성공여부가 메시지로 전달되면 그에 따라 다르게 작업할 수 있도록 코드변경하기
                     if(save_result[1]=="okay"){
-                        // 회원가입 성공 토스트 메세지 띄우기
+                        // 등록 성공 토스트 메세지 띄우기
                         runOnUiThread {
                             Toast.makeText(mainActivity, "등록 성공", Toast.LENGTH_LONG).show()
                         }
 
                     } else if(save_result[1]=="fail") {
-                        // 로그인 성공 토스트 메세지 띄우기
+                        // 등록 성공 토스트 메세지 띄우기
                         runOnUiThread {
                             Toast.makeText(mainActivity, "등록 실패 \n 관리자에게 문의하세요", Toast.LENGTH_SHORT).show()
                         }
