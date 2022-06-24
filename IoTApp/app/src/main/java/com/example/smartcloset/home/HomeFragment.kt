@@ -19,6 +19,8 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.smartcloset.MainActivity
+
+
 import com.example.smartcloset.R
 import kotlinx.android.synthetic.main.home.*
 import kotlinx.android.synthetic.main.home.view.*
@@ -31,6 +33,7 @@ import retrofit2.Response
 import java.util.*
 import androidx.databinding.DataBindingUtil.setContentView
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.example.smartcloset.auth_cnt
 
 
 class HomeFragment : Fragment() {
@@ -51,6 +54,7 @@ class HomeFragment : Fragment() {
     private var base_time = "1400"      // 발표 시각
     private var nx = 55              // 예보지점 X 좌표
     private var ny = 127            // 예보지점 Y 좌표
+
 
 
 
@@ -267,7 +271,12 @@ class HomeFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.N)
     private fun permissionGranted(requestCode: Int) {
         when (requestCode) {
-            PERMISSION_LOCATION -> Toast.makeText(mainActivity, "승인", Toast.LENGTH_LONG).show()
+            PERMISSION_LOCATION -> {
+                if(auth_cnt == 0 ) { // 처음 실행 한번만 뜨도록
+                    Toast.makeText(mainActivity, "승인", Toast.LENGTH_LONG).show()
+                    auth_cnt = auth_cnt + 1
+                }
+            }
         }
     }
 

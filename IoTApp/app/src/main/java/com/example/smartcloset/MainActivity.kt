@@ -23,8 +23,9 @@ import org.eclipse.paho.client.mqttv3.MqttMessage
 import java.io.FileInputStream
 import java.nio.ByteBuffer
 import java.nio.channels.FileChannel
-
+var auth_cnt = 0
 class MainActivity : AppCompatActivity() {
+
 
     // mqtt
     val sub_topic = "iot/sensordata"

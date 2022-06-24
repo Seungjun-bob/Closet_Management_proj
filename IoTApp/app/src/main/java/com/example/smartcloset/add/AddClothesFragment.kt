@@ -44,13 +44,16 @@ class AddClothesFragment: Fragment() {
     val REQUEST_CAMERA = 2 //맞나?
 
     lateinit var realUri: Uri
+    lateinit var tag1data:String
+    lateinit var tag2data:String
+    lateinit var tag3data:String
 
     //옷 저장 통신용 변수
     var t_stringBuilder = StringBuilder()
 
     //반환값(카테고리/색상)을 저장할 변수
-    lateinit var analyze_category:String
-    lateinit var analyze_color:String
+    var analyze_category:String = ""
+    var analyze_color:String = ""
     // 스피너 선택값을 저장한 변수
     lateinit var clothes_category:String
     lateinit var clothes_color:String
@@ -79,10 +82,10 @@ class AddClothesFragment: Fragment() {
 
         viewF.tag1.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                viewF.tag1txt?.text = (view as? TextView)?.text
+                tag1data = (view as? TextView)?.text.toString()
                 viewF.tag2.setSelection(0)
                 viewF.tag3.setSelection(0)
-                when(viewF.tag1txt?.text){
+                when(tag1data){
                     "" -> {
                         //1번 스피너 공백일 때 -> 2번 스피너 선택지 없음
                         val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.tagnone, android.R.layout.simple_spinner_item)
@@ -92,7 +95,7 @@ class AddClothesFragment: Fragment() {
 
                         viewF.tag2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                                viewF.tag2txt?.text = (view as? TextView)?.text
+                                tag2data = (view as? TextView)?.text.toString()
 
                                 // 세번째 태그 오픈
                                 val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagnone, android.R.layout.simple_spinner_item)
@@ -102,7 +105,7 @@ class AddClothesFragment: Fragment() {
 
                                 viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                                     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                                        viewF.tag3txt?.text = (view as? TextView)?.text
+                                        tag3data = (view as? TextView)?.text.toString()
                                         clothes_color = ""
                                         clothes_category = ""
                                     }
@@ -124,9 +127,9 @@ class AddClothesFragment: Fragment() {
 
                         viewF.tag2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                                    viewF.tag2txt?.text = (view as? TextView)?.text
+                                    tag2data = (view as? TextView)?.text.toString()
 
-                                    when (viewF.tag2txt.text) {
+                                    when (tag2data) {
                                         "" -> {
                                             //2번 스피너 공백일 때 -> 3번 스피너 선택지 없음
                                             val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagnone, android.R.layout.simple_spinner_item)
@@ -136,7 +139,7 @@ class AddClothesFragment: Fragment() {
 
                                             viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                                                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                                                    viewF.tag3txt?.text = (view as? TextView)?.text
+                                                    tag3data = (view as? TextView)?.text.toString()
                                                     clothes_color = ""
                                                     clothes_category = ""
                                                 }
@@ -145,7 +148,7 @@ class AddClothesFragment: Fragment() {
                                             }
                                         }
                                         else -> {
-                                            when (viewF.tag2txt.text) {
+                                            when (tag2data) {
                                                 "반팔 상의" -> {
                                                     clothes_category = "short_sleeve_top"
                                                 }
@@ -174,8 +177,8 @@ class AddClothesFragment: Fragment() {
 
                                             viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                                                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                                                    viewF.tag3txt?.text = (view as? TextView)?.text
-                                                    when(viewF.tag3txt?.text){
+                                                    tag3data = (view as? TextView)?.text.toString()
+                                                    when(tag3data){
                                                         "" -> {
                                                             clothes_color = ""
                                                         }
@@ -225,9 +228,9 @@ class AddClothesFragment: Fragment() {
 
                         viewF.tag2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                                    viewF.tag2txt?.text = (view as? TextView)?.text
+                                    tag2data = (view as? TextView)?.text.toString()
 
-                                    when (viewF.tag2txt.text) {
+                                    when (tag2data) {
                                         "" -> {
                                             //2번 스피너 공백일 때 -> 3번 스피너 선택지 없음
                                             val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagnone, android.R.layout.simple_spinner_item)
@@ -237,7 +240,7 @@ class AddClothesFragment: Fragment() {
 
                                             viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                                                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
-                                                    viewF.tag3txt?.text = (view as? TextView)?.text
+                                                    tag3data = (view as? TextView)?.text.toString()
                                                     clothes_color = ""
                                                     clothes_category = ""
                                                 }
@@ -246,7 +249,7 @@ class AddClothesFragment: Fragment() {
                                             }
                                         }
                                         else -> {
-                                            when (viewF.tag2txt.text) {
+                                            when (tag2data) {
                                                 "반바지" -> {
                                                     clothes_category = "shorts"
                                                 }
@@ -266,8 +269,8 @@ class AddClothesFragment: Fragment() {
 
                                             viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                                                     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
-                                                        viewF.tag3txt?.text = (view as? TextView)?.text
-                                                        when(viewF.tag3txt?.text){
+                                                        tag3data = (view as? TextView)?.text.toString()
+                                                        when(tag3data){
                                                             "" -> {
                                                                 clothes_color = ""
                                                             }
@@ -316,8 +319,8 @@ class AddClothesFragment: Fragment() {
 
                         viewF.tag2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                                viewF.tag2txt?.text = (view as? TextView)?.text
-                                when (viewF.tag2txt.text) {
+                                tag2data = (view as? TextView)?.text.toString()
+                                when (tag2data) {
                                     "" -> {
                                         //2번 스피너 공백일 때 -> 3번 스피너 선택지 없음
                                         val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagnone, android.R.layout.simple_spinner_item)
@@ -327,7 +330,7 @@ class AddClothesFragment: Fragment() {
 
                                         viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                                             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                                                viewF.tag3txt?.text = (view as? TextView)?.text
+                                                tag3data = (view as? TextView)?.text.toString()
                                                 clothes_color = ""
                                                 clothes_category = ""
                                             }
@@ -337,7 +340,7 @@ class AddClothesFragment: Fragment() {
 
                                     }
                                     else -> {
-                                        when (viewF.tag2txt.text) {
+                                        when (tag2data) {
                                             "반팔 원피스" -> {
                                                 clothes_category = "short_sleeve_dress"
                                             }
@@ -360,8 +363,8 @@ class AddClothesFragment: Fragment() {
 
                                         viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                                             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                                                viewF.tag3txt?.text = (view as? TextView)?.text
-                                                when(viewF.tag3txt?.text){
+                                                tag3data = (view as? TextView)?.text.toString()
+                                                when(tag3data){
                                                     "" -> {
                                                         clothes_color = ""
                                                     }
@@ -524,9 +527,11 @@ class AddClothesFragment: Fragment() {
                 }
                 //db테이블에 맞게 입력 받은 생년월일 형식 변환
                 t_stringBuilder.append(buydate)
-                t_stringBuilder.insert(4,'-')
-                t_stringBuilder.insert(7,'-')
-                buydate = t_stringBuilder.toString()
+                if(t_stringBuilder.toString().length==8) {
+                    t_stringBuilder.insert(4, '-')
+                    t_stringBuilder.insert(7, '-')
+                    buydate = t_stringBuilder.toString()
+                }
                 //저장할 최종 카테고리/색상을 담을 변수
                 var final_category = clothes_category
                 var final_color = clothes_color
@@ -684,35 +689,35 @@ class AddClothesFragment: Fragment() {
 //******************************************************************************************
             // 찍은 사진을 AI모델에 보내서 1차 분석 카테고리/색상 받아오기
             // 어떻게 보냄?
-            thread {
-                var ready = "ready"
-                var jsonobj = JSONObject()
-                jsonobj.put("ready",ready)
-
-                // 장고 AI모델 페이지 url? - 나중에 수정
-                val url = "http://172.30.1.22:8000/register/"
-
-                //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
-                val client = OkHttpClient()
-
-                //json데이터를 이용해서 request 처리
-                val jsondata = jsonobj.toString()
-                //서버에 요청을 담당하는 객체
-                val builder = Request.Builder()    // request객체를 만들어주는 객체 생성
-                builder.url(url)                   //Builder객체에 request할 주소(네트워크상의 주소)셋팅
-                builder.post(RequestBody.create(MediaType.parse("application/json"),jsondata)) // 요청메시지 만들고 요청메시지의 타입이 json이라고 설정
-                val myrequest: Request = builder.build() //Builder객체를 이용해서 request객체 만들기
-                //생성한 request 객체를 이용해서 웹에 request하기 - request결과로 response 객체가 리턴
-                val response: Response = client.newCall(myrequest).execute()
-
-                //response에서 메시지꺼내서 로그 출력하기
-                val result:String? = response.body()?.string()
-                var analyze_result = result!!.split('\"')
-                Log.d("http",result!!)
-                //로그인 성공여부가 메시지로 전달되면 그에 따라 다르게 작업할 수 있도록 코드변경하기
-                analyze_category = analyze_result[3]
-                analyze_color = analyze_result[7]
-            }
+//            thread {
+//                var ready = "ready"
+//                var jsonobj = JSONObject()
+//                jsonobj.put("ready",ready)
+//
+//                // 장고 AI모델 페이지 url? - 나중에 수정
+//                val url = "http://172.30.1.22:8000/register/"
+//
+//                //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
+//                val client = OkHttpClient()
+//
+//                //json데이터를 이용해서 request 처리
+//                val jsondata = jsonobj.toString()
+//                //서버에 요청을 담당하는 객체
+//                val builder = Request.Builder()    // request객체를 만들어주는 객체 생성
+//                builder.url(url)                   //Builder객체에 request할 주소(네트워크상의 주소)셋팅
+//                builder.post(RequestBody.create(MediaType.parse("application/json"),jsondata)) // 요청메시지 만들고 요청메시지의 타입이 json이라고 설정
+//                val myrequest: Request = builder.build() //Builder객체를 이용해서 request객체 만들기
+//                //생성한 request 객체를 이용해서 웹에 request하기 - request결과로 response 객체가 리턴
+//                val response: Response = client.newCall(myrequest).execute()
+//
+//                //response에서 메시지꺼내서 로그 출력하기
+//                val result:String? = response.body()?.string()
+//                var analyze_result = result!!.split('\"')
+//                Log.d("http",result!!)
+//                //로그인 성공여부가 메시지로 전달되면 그에 따라 다르게 작업할 수 있도록 코드변경하기
+//                analyze_category = analyze_result[3]
+//                analyze_color = analyze_result[7]
+//            }
         }
     }
     @RequiresApi(Build.VERSION_CODES.N)
