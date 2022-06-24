@@ -6,4 +6,5 @@ urlpatterns = [
     path('', views.recommend),
     path('compare/', views.compare),
     path('rcmd/', views.rcmd),
+    path('mypiecategory/', views.mypiecategory)
 ]
