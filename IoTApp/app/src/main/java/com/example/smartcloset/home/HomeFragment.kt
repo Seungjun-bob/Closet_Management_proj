@@ -52,7 +52,6 @@ class HomeFragment : Fragment() {
     }
 
     lateinit var weatherRecyclerView : RecyclerView
-    lateinit var weatherClothRecyclerView : RecyclerView
     lateinit var rcmdClothRecyclerView : RecyclerView
 
     private var base_date = "20210510"  // 발표 일자
@@ -77,12 +76,10 @@ class HomeFragment : Fragment() {
         sendImgName()
 
         weatherRecyclerView = view.weatherRecyclerView
-        weatherClothRecyclerView = view.weather_recommendRecyclerView
         rcmdClothRecyclerView = view.recommendation_recyclerView
 
         // 리사이클러 뷰 매니저 설정
         weatherRecyclerView.layoutManager = LinearLayoutManager(mainActivity).also { it.orientation = LinearLayoutManager.HORIZONTAL }
-        weatherClothRecyclerView.layoutManager = LinearLayoutManager(mainActivity).also { it.orientation = LinearLayoutManager.HORIZONTAL }
         rcmdClothRecyclerView.layoutManager = LinearLayoutManager(mainActivity).also { it.orientation = LinearLayoutManager.HORIZONTAL }
 
         //RecyclerView 선언
@@ -93,12 +90,10 @@ class HomeFragment : Fragment() {
             datalist.add(R.drawable.p1)
         }
 
-        val weatherClothAdapter = ClothAdapter(mainActivity, R.layout.home_item, datalist)
         val rcmdClothAdapter = ClothAdapter(mainActivity, R.layout.home_item, datalist)
 
-        weatherRecyclerView.adapter = weatherClothAdapter
+
         rcmdClothRecyclerView.adapter = rcmdClothAdapter
-        weatherClothRecyclerView.adapter = weatherClothAdapter
 
 
         // 내 위치 위경도 가져와서 날씨 정보 설정하기
@@ -305,7 +300,7 @@ class HomeFragment : Fragment() {
             //이미지 이름을 url 뒤에 붙여 전달해줌
             var jsonobj = JSONObject()
             Log.d("bit_img_img", "이미지 이름 전송함")
-            val url = "http://172.30.1.22:8000/recommend/compare/?id=" + userId +"/"  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
+            val url = "http://172.30.1.22:8000/recommend/rcmd/?id=" + "1" +"/"  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
 
             //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
             val client = OkHttpClient()

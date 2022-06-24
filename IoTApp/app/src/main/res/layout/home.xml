@@ -130,30 +130,6 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/weather_recommendation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="날씨에 맞는 옷 추천"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            />
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/weather_recommendRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="horizontal"
-            tools:ignore="DuplicateIds" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
