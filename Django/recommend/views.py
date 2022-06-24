@@ -66,10 +66,10 @@ def compare(request):
     return JsonResponse(context, safe=False, json_dumps_params={'ensure_ascii': False})
 
 def mypiecategory(request):
-    # userid = request.POST.get("id")
-    # myclothes = MyClothes.objects.get(id=userid)
-    userid = '77'
-    myclothes = pd.read_csv('C:/Users/Seungjun/Desktop/BIGDATA_edu/Closet_Management_proj/Django/recommend/dummydata/MyClothes.csv', encoding='Utf-8', index_col=0)
+    userid = request.POST.get("id")
+    myclothes = MyClothes.objects.get(id=userid)
+    # userid = '77'
+    # myclothes = pd.read_csv('C:/Users/Seungjun/Desktop/BIGDATA_edu/Closet_Management_proj/Django/recommend/dummydata/MyClothes.csv', encoding='Utf-8', index_col=0)
 
     myclothes['userid'] = myclothes['userid'].apply(str)
     myclothes['myclothesid'] = myclothes['myclothesid'].apply(str)
