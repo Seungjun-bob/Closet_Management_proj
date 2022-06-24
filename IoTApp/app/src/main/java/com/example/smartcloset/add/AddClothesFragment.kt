@@ -648,10 +648,12 @@ class AddClothesFragment: Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
+        // 사진을 찍거나 앨범에서 선택하면
         if (resultCode == AppCompatActivity.RESULT_OK) {
             when (requestCode) {
                 REQUEST_CAMERA -> {
                     realUri?.let { uri ->
+                        //미리보기에 띄우기
                         imagePreview.setImageURI(uri)
                         //rest 사용해서 이미지 이름을 보내주고, 스토리지에 이미지를 저장, 이미지는 어떻게 저장?
                         val outStream: OutputStream
@@ -704,6 +706,7 @@ class AddClothesFragment: Fragment() {
                 }
                 REQUEST_STORAGE -> {
                     data?.data?.let { uri ->
+                        //미리보기에 띄우기
                         imagePreview.setImageURI(uri)
                         // 앨범에서 사진 선택했을때도 위와 동일하게
                         //rest 사용해서 이미지 이름을 보내주고, 스토리지에 이미지를 저장, 이미지는 어떻게 저장?
