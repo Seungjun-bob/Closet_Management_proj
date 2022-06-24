@@ -2,6 +2,11 @@ from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse, JsonResponse
 import pandas as pd
+from .models import Account
+from .models import myClothes
+from .models import Clothes
+from django.http import JsonResponse
+
 
 def recommend(request) :
     name = request.GET.get('id', "")
@@ -9,11 +14,12 @@ def recommend(request) :
     return render(request, 'test.html', context)
 
 def rcmd(request):
-    clothes = pd.read_csv('../Django/recommend/dummydata/dummyClothes.csv', encoding='Utf-8', index_col=0)
-    myclothes = pd.read_csv('../Django/recommend/dummydata/dummyMyClothes.csv', encoding='Utf-8', index_col=0)
-    userdata = pd.read_csv('../Django/recommend/dummydata/dummyUser.csv', encoding='Utf-8', index_col=0)
-    df = pd.merge(userdata, myclothes, left_on='id', right_on='id', how='left')
     user_id = request.POST.get("id")
+    clothes = Clothes.objects.get()
+    myclothes = myClothes.objects.get(id=user_id)
+    userdata = Account.objects.get(id=user_id)
+    df = pd.merge(userdata, myclothes, left_on='id', right_on='id', how='left')
+    df['id'] = df['id'].apply(str)
     dummy = df[df['id'] == user_id]
     dummy['clothes'] = dummy['mycolor'] + ' - ' + dummy['mycategory']
     clothes['clothes'] = clothes['color'] + ' - ' + clothes['category']
@@ -36,10 +42,10 @@ def rcmd(request):
     return JsonResponse(context, safe=False, json_dumps_params={'ensure_ascii': False})
 
 def compare(request):
-    myclothes = pd.read_csv('../Django/recommend/dummydata/dummyMyClothes.csv', encoding='Utf-8', index_col=0)
-    userdata = pd.read_csv('../Django/recommend/dummydata/dummyUser.csv', encoding='Utf-8', index_col=0)
-    df = pd.merge(userdata, myclothes, left_on='id', right_on='id', how='left')
     userid = request.POST.get("id")
+    myclothes = myClothes.objects.get(id=user_id)
+    userdata = Account.objects.get(id=user_id)
+    df = pd.merge(userdata, myclothes, left_on='id', right_on='id', how='left')
     category = request.POST.get("category")
     df['id'] = df['id'].apply(str)
     print(df.dtypes)
