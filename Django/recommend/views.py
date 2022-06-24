@@ -2,11 +2,10 @@ from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse, JsonResponse
 import pandas as pd
-from .models import Account
-from .models import myClothes
-from .models import Clothes
+from register.models import Account
+from cloth.models import MyClothes
+from .models import MusinsaClothes
 from django.http import JsonResponse
-
 
 def recommend(request) :
     name = request.GET.get('id', "")
@@ -15,7 +14,7 @@ def recommend(request) :
 
 def rcmd(request):
     user_id = request.POST.get("id")
-    clothes = Clothes.objects.get()
+    clothes = MusinsaClothes.objects.get()
     myclothes = myClothes.objects.get(id=user_id)
     userdata = Account.objects.get(id=user_id)
     df = pd.merge(userdata, myclothes, left_on='id', right_on='id', how='left')
