@@ -23,13 +23,13 @@ import org.eclipse.paho.client.mqttv3.MqttMessage
 import java.io.FileInputStream
 import java.nio.ByteBuffer
 import java.nio.channels.FileChannel
-
+var auth_cnt = 0
 class MainActivity : AppCompatActivity() {
+
 
     // mqtt
     val sub_topic = "iot/sensordata"
-//    val server_uri = "tcp://54.212.177.89:1883" //broker의 ip와 port 54.187.211.80
-    val server_uri = "tcp://192.168.35.5:1883"
+    val server_uri = "tcp://35.89.7.144:1883" //broker의 ip와 port
     var mymqtt : MyMqtt? = null
 
 

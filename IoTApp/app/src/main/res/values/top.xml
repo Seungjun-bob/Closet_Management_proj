@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--상의 종류 배열-->
+<resources>
+    <string-array name="top">
+        <item></item>
+        <item>반팔 상의</item>
+        <item>긴팔 상의</item>
+        <item>반팔 아우터</item>
+        <item>긴팔 아우터</item>
+        <item>조끼(민소매)</item>
+        <item>나시</item>
+    </string-array>
+
+</resources>
