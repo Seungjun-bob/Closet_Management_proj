@@ -37,7 +37,6 @@
         <activity android:name=".login.FindPw" />
         <activity android:name=".login.Register" />
         <activity android:name=".myPage.MyPage" />
-        <activity android:name=".add.AddClothes" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -48,6 +47,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/external" />
         </provider>
+
         <!--MQTT 서비스 활성화-->
         <service android:name="org.eclipse.paho.android.service.MqttService" />
 

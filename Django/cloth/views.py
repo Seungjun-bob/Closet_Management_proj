@@ -1,49 +1,33 @@
-import base64
-from django.shortcuts import render, get_object_or_404
+
 from django.http import HttpResponse, JsonResponse
-from requests import Response
 
 from .models import MyClothes
-from register.models import Account
-
 from rest_framework.decorators import api_view
-from rest_framework import serializers
-from rest_framework import viewsets
 from rest_framework.parsers import JSONParser
-from rest_framework.viewsets import ModelViewSet
 from .serializers import MyClothesSerializer
 
 # Create your views here.
 
 @api_view(['GET'])
-def check_data(request):
-    print('test')
-    Email = request.GET.get('email')
-    print(Email)
-    user = Account.objects.get(email=Email)
-    # print(user)
-    userID = user.id
-    queryset = MyClothes.objects.filter(userid=userID).order_by('buydate')
+def check_data(request, accountid):
+    queryset = MyClothes.objects.filter(accountid=accountid).order_by('-buydate')
     serializer = MyClothesSerializer(queryset, many=True)
     return JsonResponse(serializer.data, safe=False)
 
 
 @api_view(['GET'])
-def check_category(request, category):
-    # print(request.GET.get('email'))
-    # userID = request.GET.get('email')
-    Email = request.GET.get('email')
-    user = Account.objects.get(email=Email)
-    userID = user.id
-    queryset = MyClothes.objects.filter(userid=userID, category=category).order_by('buydate')
+def check_category(request, accountid, category):
+    queryset = MyClothes.objects.filter(accountid=accountid, mycategory=category).order_by('-buydate')
+
     serializer = MyClothesSerializer(queryset, many=True)
     return JsonResponse(serializer.data, safe=False)
 
 
 @api_view(['GET'])
-def check_cloth(request, pk):
-    object = MyClothes.objects.filter(pk=pk)
-    serializer = MyClothesSerializer(object)
+def check_cloth(request, myclothid):
+    object = MyClothes.objects.filter(id=myclothid)
+    serializer = MyClothesSerializer(object, many=True)
+
     return JsonResponse(serializer.data, safe=False)
 
 
