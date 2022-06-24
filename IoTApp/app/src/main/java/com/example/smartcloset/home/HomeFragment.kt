@@ -74,6 +74,7 @@ class HomeFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sendImgName()
 
         weatherRecyclerView = view.weatherRecyclerView
         weatherClothRecyclerView = view.weather_recommendRecyclerView
@@ -297,16 +298,14 @@ class HomeFragment : Fragment() {
             ).show()
         }
     }
-    fun sendImgName(name:String){
+    fun sendImgName(){
 //        Toast.makeText(mainActivity, "제대로 전송됨", Toast.LENGTH_LONG).show()
         thread{
 
             //이미지 이름을 url 뒤에 붙여 전달해줌
             var jsonobj = JSONObject()
-//            jsonobj.put("ImgName","https://closetimg103341-dev.s3.us-west-2.amazonaws.com/$name.bmp" )
-            jsonobj.put("ImgName","test_img_name" )
             Log.d("bit_img_img", "이미지 이름 전송함")
-            val url = "http://172.30.1.22:8000/recommend/recommend/?id=" + userId +"/"  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
+            val url = "http://172.30.1.22:8000/recommend/compare/?id=" + userId +"/"  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
 
             //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
             val client = OkHttpClient()
