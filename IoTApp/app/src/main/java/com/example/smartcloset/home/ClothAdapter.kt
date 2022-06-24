@@ -14,16 +14,11 @@ import com.example.smartcloset.compare.CompareDialog
 
 class ClothAdapter(var context: Context, var itemlayout:Int, var clothData:ArrayList<Int>):RecyclerView.Adapter<ClothAdapter.ViewHolder>() {
     inner class ViewHolder(view:View) : RecyclerView.ViewHolder(view){
-
+        lateinit var clothImage: ImageView
         init {
-            var dialog = CompareDialog(context)
             //뷰 클릭 리스너 정의하기
+            clothImage = view.findViewById(R.id.home_recycler)
             view.setOnClickListener{
-                //다이얼로그 띄우는 코드 작성
-                //나중에 수정 필요
-                var position = adapterPosition
-                var clothObject = "나중엔 옷 객체를 전달해 DB에서 갖고와 보여줄 예정$position"
-                dialog.showDialog(clothObject)
             }
         }
     }
@@ -34,7 +29,7 @@ class ClothAdapter(var context: Context, var itemlayout:Int, var clothData:Array
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-
+        viewHolder.clothImage.setImageResource(clothData[position])
     }
 
     override fun getItemCount()= clothData.size

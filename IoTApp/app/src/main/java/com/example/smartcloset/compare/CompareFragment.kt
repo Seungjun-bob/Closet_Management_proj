@@ -1,20 +1,19 @@
 package com.example.smartcloset.compare
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.database.Cursor
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.ImageDecoder
 import android.icu.text.SimpleDateFormat
-import android.media.Image
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -29,20 +28,27 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.smartcloset.MainActivity
 import com.example.smartcloset.R
 
-import kotlinx.android.synthetic.main.activity_login.*
-
 import com.example.smartcloset.login.userId
+import com.example.smartcloset.network.MyMqtt
 
 import kotlinx.android.synthetic.main.compare.*
 import kotlinx.android.synthetic.main.compare.view.*
 import okhttp3.*
+import org.eclipse.paho.client.mqttv3.MqttMessage
 import org.json.JSONObject
-import java.io.File
+import java.io.ByteArrayOutputStream
 import java.io.OutputStream
+import java.net.HttpURLConnection
+import java.net.URL
 import kotlin.concurrent.thread
 
 
 class CompareFragment: Fragment() {
+    var datalist =ArrayList<Int>()
+    lateinit var mainActivity: MainActivity
+    val sub_topic = "iot/#"
+    val server_uri = "tcp://192.168.35.5:1883" //broker의 ip와 port
+    var mymqtt: MyMqtt? = null
     var uri : Uri? = null
     lateinit var mContext : Context
     val PERMISSION_CAMERA = 1001 //맞나?
@@ -50,12 +56,23 @@ class CompareFragment: Fragment() {
     lateinit var realUri:Uri
     var img_name = ""
     override fun onCreate(savedInstanceState: Bundle?) {
+        mymqtt = MyMqtt(mainActivity, server_uri)
+        //브로커에서 메세지 전달되면 호출될 메소드를 넘기기
+        mymqtt?.mysetCallback(::onReceived) //바이트코드를 아예 참조할 수 있게 사용 ( :: )
+        //브로커연결
+        mymqtt?.connect(arrayOf<String>(sub_topic))
+
         super.onCreate(savedInstanceState)
 
 
     }
-    var datalist =ArrayList<Int>()
-    lateinit var mainActivity: MainActivity
+
+    fun onReceived(topic:String, message: MqttMessage){
+        val msg = String(message.payload)
+        val msgdata = msg.split(':')
+
+        Log.d("mymqtt", msg)
+    }
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.compare, container, false)
@@ -65,7 +82,12 @@ class CompareFragment: Fragment() {
 
         }
         view.btn_compare_save.setOnClickListener {
-            sendImgName(img_name)
+//            sendImgName(img_name)
+            loadImage("https://closetimg103341-dev.s3.us-west-2.amazonaws.com/test5.png")
+        }
+
+        view.btn_compare_exit.setOnClickListener {
+
         }
 
 
@@ -123,7 +145,7 @@ class CompareFragment: Fragment() {
     private fun openCamera() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
 
-        createImageUri(newFileName(), "image/bmp")?.let { uri -> //드디어. . . 이부분이랑
+        createImageUri(newFileName(), "image/jpg")?.let { uri -> //드디어. . . 이부분이랑
             realUri = uri // var 맞나?
             // MediaStore.EXTRA_OUTPUT을 Key로 하여 Uri를 넘겨주면
             // 일반적인 Camera App은 이를 받아 내가 지정한 경로에 사진을 찍어서 저장시킨다.
@@ -140,7 +162,7 @@ class CompareFragment: Fragment() {
         //여기서 이미지 이름을 http로 보내줘야 할 거 같음
         img_name = filename
 //        sendImgName(img_name)
-        return "$filename.bmp"   // 이 부분 바꿨고..
+        return "$filename.jpg"   // 이 부분 바꿨고..
     }
 
     private fun createImageUri(filename: String, mimeType: String): Uri? {
@@ -150,19 +172,7 @@ class CompareFragment: Fragment() {
         return mainActivity.contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
     }
 
-//    @SuppressLint("Range")
-//    fun getRealPathFromURI(contentUri:Uri): String? {
-//
-//         val proj= arrayOf<String>(MediaStore.Images.Media.DATA)
-//
-//        val cursor: Cursor? = mainActivity.getContentResolver().query(contentUri, proj, null, null, null);
-//        cursor?.moveToNext();
-//        val path = cursor?.getString(cursor.getColumnIndex(MediaStore.MediaColumns.DATA));
-//        val uri = Uri.fromFile(File(path));
-//
-//        cursor?.close();
-//        return path
-//    }
+
     //Launcher (ActivityResultLuncher로 변경해야함)
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -176,17 +186,20 @@ class CompareFragment: Fragment() {
                         //사진이 찍히면 이미지뷰에 띄워줌, DB로 전송도 해서 값을 받아와 밑의 RecyclerViewㅇ[ 보여줘야함
                         img_compare_preview.setImageURI(uri)
                         //rest 사용해서 이미지 이름을 보내주고, 스토리지에 이미지를 저장, 이미지는 어떻게 저장?
-//                        img_name = realUri.lastPathSegment.toString() //보내줄 이미지 이름
                         val outStream:OutputStream
                         var bitmap = ImageDecoder.decodeBitmap(ImageDecoder.createSource(mainActivity.contentResolver, uri))
-//                        bitmap.compress()
-//                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outStream)
+                        val byteArrayOutputStream :ByteArrayOutputStream = ByteArrayOutputStream()
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 40, byteArrayOutputStream)
+                        val byteArray = byteArrayOutputStream.toByteArray()
+                        val encoded = Base64.encodeToString(byteArray, Base64.DEFAULT)
 
-                        Log.d("bitmap", bitmap.toString())
+//                        Log.d("encode_img", encoded)
+                        imgPub(encoded)
 
-                        Log.d("tt", img_name)
-                        Log.d("uri print", realUri.toString())
-                        Toast.makeText(context, img_name, Toast.LENGTH_LONG).show()
+//                        Log.d("bitmap", bitmap.toString())
+//                        Log.d("tt", img_name)
+//                        Log.d("uri print", realUri.toString())
+//                        Toast.makeText(context, img_name, Toast.LENGTH_LONG).show()
 
 
                     }
@@ -195,6 +208,9 @@ class CompareFragment: Fragment() {
         }
     }
 
+    fun imgPub(img:String){
+        mymqtt?.publish("iot/image", img+":"+img_name)
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -222,6 +238,25 @@ class CompareFragment: Fragment() {
 
     }
 
+
+    fun loadImage(imageUrl:String){
+        thread{
+            val url = URL(imageUrl)
+            val con = url.openConnection() as HttpURLConnection
+            var image = con.inputStream
+            var imagedata = image.readBytes()
+            var bitmap = BitmapFactory.decodeByteArray(imagedata,0,imagedata.size)
+
+            mainActivity.runOnUiThread{
+                img_compare_preview.setImageBitmap(bitmap)
+            }
+
+        }
+
+    }
+
+
+
     fun sendImgName(name:String){
 //        Toast.makeText(mainActivity, "제대로 전송됨", Toast.LENGTH_LONG).show()
         thread{
@@ -230,6 +265,7 @@ class CompareFragment: Fragment() {
             var jsonobj = JSONObject()
             jsonobj.put("ImgName","https://closetimg103341-dev.s3.us-west-2.amazonaws.com/$name.bmp" )
             jsonobj.put("ImgName","test_img_name" )
+            Log.d("bit_img_img", "이미지 이름 전송함")
             val url = "http://172.30.1.22:8000/recommend/compare/?id=" + userId +"/"  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
 
             //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
@@ -255,9 +291,12 @@ class CompareFragment: Fragment() {
             //여기서 데이터 파싱 후 옷 모델 만들어주기? 해야함
 
             //옷 모델을 만들어서 리사이클러뷰에 넣어줘야함 (= 배열로 만들어서?)
-
+//            loadImage("https://closetimg103341-dev.s3.us-west-2.amazonaws.com/test5.png")
+            Log.d("bit_img_img", "여기까지 넘어옴")
             mainActivity.runOnUiThread {
                 //여기서 리사이클러뷰를 바꿔줘야 하나?
+                Log.d("bit_img_img", "여기까지 넘어옴")
+
             }
 
         }
