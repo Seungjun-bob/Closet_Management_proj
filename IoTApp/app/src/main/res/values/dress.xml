@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--원피스 배열-->
+<resources>
+    <string-array name="dress">
+        <item></item>
+        <item>반팔 원피스</item>
+        <item>긴팔 원피스</item>
+        <item>민소매 원피스</item>
+        <item>나시 원피스</item>
+    </string-array>
+
+</resources>

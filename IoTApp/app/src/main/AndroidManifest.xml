@@ -21,18 +21,15 @@
         android:theme="@style/Theme.SmartCloset"
         android:usesCleartextTraffic="true">       
 
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
+        <activity android:name=".MainActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
         </activity>
         <activity android:name=".login.FirstLogin" >
-
 
 
         </activity>
@@ -40,7 +37,6 @@
         <activity android:name=".login.FindPw" />
         <activity android:name=".login.Register" />
         <activity android:name=".myPage.MyPage" />
-        <activity android:name=".add.AddClothes" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

@@ -183,7 +183,7 @@ class Register: AppCompatActivity() {
                     } else if(result3[1]=="fail") {
                         // 로그인 성공 토스트 메세지 띄우기
                         runOnUiThread {
-                            Toast.makeText(this, "회원가입 실패 \n 관리자에게 문의하세요요", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "회원가입 실패 \n 관리자에게 문의하세요", Toast.LENGTH_SHORT).show()
                         }
                     }
 

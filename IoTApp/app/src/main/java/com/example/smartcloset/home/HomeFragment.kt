@@ -31,6 +31,7 @@ import retrofit2.Response
 import java.util.*
 import androidx.databinding.DataBindingUtil.setContentView
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.example.smartcloset.auth_cnt
 import com.example.smartcloset.login.userId
 import okhttp3.MediaType
 import okhttp3.OkHttpClient
@@ -280,7 +281,12 @@ class HomeFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.N)
     private fun permissionGranted(requestCode: Int) {
         when (requestCode) {
-            PERMISSION_LOCATION -> Toast.makeText(mainActivity, "승인", Toast.LENGTH_LONG).show()
+            PERMISSION_LOCATION -> {
+                if(auth_cnt == 0 ) { // 처음 실행 한번만 뜨도록
+                    Toast.makeText(mainActivity, "승인", Toast.LENGTH_LONG).show()
+                    auth_cnt = auth_cnt + 1
+                }
+            }
         }
     }
 
