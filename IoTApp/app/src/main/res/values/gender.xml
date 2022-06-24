@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--청바지 색상 배열-->
+<resources>
+    <string-array name="gender">
+        <item></item>
+        <item>남자</item>
+        <item>여자</item>
+
+
+    </string-array>
+
+</resources>

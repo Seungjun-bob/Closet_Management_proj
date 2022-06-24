@@ -1,3 +1,4 @@
+
 from django.http import HttpResponse, JsonResponse
 
 from .models import MyClothes
@@ -17,6 +18,7 @@ def check_data(request, accountid):
 @api_view(['GET'])
 def check_category(request, accountid, category):
     queryset = MyClothes.objects.filter(accountid=accountid, mycategory=category).order_by('-buydate')
+
     serializer = MyClothesSerializer(queryset, many=True)
     return JsonResponse(serializer.data, safe=False)
 
@@ -25,6 +27,7 @@ def check_category(request, accountid, category):
 def check_cloth(request, myclothid):
     object = MyClothes.objects.filter(id=myclothid)
     serializer = MyClothesSerializer(object, many=True)
+
     return JsonResponse(serializer.data, safe=False)
 
 

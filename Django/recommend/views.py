@@ -9,86 +9,53 @@ def recommend(request) :
     return render(request, 'test.html', context)
 
 def rcmd(request):
-    Clothes = pd.read_csv('../Django/recommend/dummydata/dummyClothes.csv', encoding='Utf-8', index_col=0)
-    MyClothes = pd.read_csv('../Django/recommend/dummydata/dummyMyClothes.csv', encoding='Utf-8', index_col=0)
-    UserData = pd.read_csv('../Django/recommend/dummydata/dummyUser.csv', encoding='Utf-8', index_col=0)
-    df = pd.merge(UserData, MyClothes, left_on='ID', right_on='ID', how='left')
-    user_id = request.GET.get("id")
-    dummy = df[df['ID'] == user_id]
-    Clothes['MainCategory'] = ['bottom'
-                               if s == 'jean'
-                                  or s == 'cotton'
-                                  or s == 'jogger'
-                                  or s == 'slacks'
-                                  or s == 'skirt'
-                                  or s == 'longPants'
-                                  or s == 'shortPants'
-                               else 'top'
-                               for s in Clothes['category']]
-    dummy['MainCategory'] = ['bottom'
-                             if s == 'jean'
-                                or s == 'cotton'
-                                or s == 'jogger'
-                                or s == 'slacks'
-                                or s == 'skirt'
-                                or s == 'longPants'
-                                or s == 'shortPants'
-                             else 'top'
-                             for s in dummy['myCategory']]
-    top_clothes = Clothes[Clothes['MainCategory'] == 'top']
-    top_clothes['clothes'] = top_clothes['color'] + ' - ' + top_clothes['category']
-    top_dummy = dummy[dummy['MainCategory'] == 'top']
-    top_dummy['clothes'] = top_dummy['myColor'] + ' - ' + top_dummy['myCategory']
-    have = pd.merge(top_clothes, top_dummy, left_on='clothes', right_on='clothes', how='left')
-    my_max_category1 = have['myCategory'].value_counts()[have['myCategory'].value_counts() ==
-                                                        max((have['myCategory'].value_counts()))].head(1)
-    my_max_category1 = pd.DataFrame(my_max_category1)
-    my_max_category1 = my_max_category1.reset_index().values.tolist()
-    my_max_category1 = sum(my_max_category1, [])
-    top_rcmd_clothes = top_clothes[top_clothes['category'] == my_max_category1[0]].loc[:, ['clothes']]
-    top_rcmd_img = top_clothes[top_clothes['category'] == my_max_category1[0]].loc[:, ['img']]
-    bottom_clothes = Clothes[Clothes['MainCategory'] == 'bottom']
-    bottom_clothes['clothes'] = bottom_clothes['color'] + ' - ' + bottom_clothes['category']
-    bottom_dummy = dummy[dummy['MainCategory'] == 'bottom']
-    bottom_dummy['clothes'] = bottom_dummy['myColor'] + ' - ' + bottom_dummy['myCategory']
-    have = pd.merge(bottom_clothes, bottom_dummy, left_on='clothes', right_on='clothes', how='left')
-    my_max_category2 = have['myCategory'].value_counts()[have['myCategory'].value_counts() ==
-                                                        max((have['myCategory'].value_counts()))].head(1)
-    my_max_category2 = pd.DataFrame(my_max_category2)
-    my_max_category2 = my_max_category2.reset_index().values.tolist()
-    my_max_category2 = sum(my_max_category2, [])
-    bottom_rcmd_clothes = bottom_clothes[bottom_clothes['category'] == my_max_category2[0]].loc[:, ['clothes']]
-    bottom_rcmd_img = bottom_clothes[bottom_clothes['category'] == my_max_category2[0]].loc[:, ['img']]
+    clothes = pd.read_csv('../Django/recommend/dummydata/dummyClothes.csv', encoding='Utf-8', index_col=0)
+    myclothes = pd.read_csv('../Django/recommend/dummydata/dummyMyClothes.csv', encoding='Utf-8', index_col=0)
+    userdata = pd.read_csv('../Django/recommend/dummydata/dummyUser.csv', encoding='Utf-8', index_col=0)
+    df = pd.merge(userdata, myclothes, left_on='id', right_on='id', how='left')
+    user_id = request.POST.get("id")
+    dummy = df[df['id'] == user_id]
+    dummy['clothes'] = dummy['mycolor'] + ' - ' + dummy['mycategory']
+    clothes['clothes'] = clothes['color'] + ' - ' + clothes['category']
+    have = pd.merge(clothes, dummy, left_on='clothes', right_on='clothes', how='left')
+    my_max_category = have['myCategory'].value_counts().head(3)
+    my_max_category = pd.DataFrame(my_max_category)
+    my_max_category = my_max_category.reset_index().values.tolist()
+    my_max_category = sum(my_max_category, [])
+    rcmd_clothes = clothes[clothes['category'] == my_max_category[0]].loc[:, ['clothes']].head(5)
+    rcmd_img = clothes[clothes['category'] == my_max_category[0]].loc[:, ['img']].head(5)
+    for i in range(1, 3):
+        rcmd_clothes_add = clothes[clothes['category'] == my_max_category[2*i]].loc[:, ['clothes']].head(5)
+        rcmd_img_add = clothes[clothes['category'] == my_max_category[2*i]].loc[:, ['img']].head(5)
+        rcmd_clothes = pd.concat([rcmd_clothes, rcmd_clothes_add])
+        rcmd_img = pd.concat([rcmd_img, rcmd_img_add])
     context = {
-        'top_clothes' : top_rcmd_clothes['clothes'],
-        'top_img' : top_rcmd_img['img'],
-        'bottom_clothes': bottom_rcmd_clothes['clothes'],
-        'bottom_img': bottom_rcmd_img['img']
+        'clothes': rcmd_clothes['clothes'],
+        'img': rcmd_img['img'],
     }
-    return render(request, 'test1.html', context)
+    return JsonResponse(context, safe=False, json_dumps_params={'ensure_ascii': False})
 
 def compare(request):
-    MyClothes = pd.read_csv('../Django/recommend/dummydata/dummyMyClothes.csv', encoding='Utf-8', index_col=0)
-    UserData = pd.read_csv('../Django/recommend/dummydata/dummyUser.csv', encoding='Utf-8', index_col=0)
-    df = pd.merge(UserData, MyClothes, left_on='ID', right_on='ID', how='left')
-    userid = request.GET.get("id")
-    category = request.GET.get("category")
-    color = request.GET.get("color")
-    dummy = df[df['ID'] == userid]
-    compare_category = dummy[(dummy['myCategory'] == category) & (dummy['myColor'] == color)].loc[:, ['myCategory']]
-    compare_color = dummy[(dummy['myCategory'] == category) & (dummy['myColor'] == color)].loc[:, ['myColor']]
-    compare_img = dummy[(dummy['myCategory'] == category)].loc[:, ['myImg']]
+    myclothes = pd.read_csv('../Django/recommend/dummydata/dummyMyClothes.csv', encoding='Utf-8', index_col=0)
+    userdata = pd.read_csv('../Django/recommend/dummydata/dummyUser.csv', encoding='Utf-8', index_col=0)
+    df = pd.merge(userdata, myclothes, left_on='id', right_on='id', how='left')
+    userid = request.POST.get("id")
+    category = request.POST.get("category")
+    df['id'] = df['id'].apply(str)
+    print(df.dtypes)
+    dummy = df[df['id'] == userid]
+    compare_img = dummy[(dummy['mycategory'] == category)].loc[:, ['myimg']]
 
     # 결과값 리스트에 저장
     img_lst = []
 
-    for img_name in compare_img['myImg']:
+    for img_name in compare_img['myimg']:
         img_lst.append(img_name)
 
     # 결과값 Json 형식으로 변환
     context = {
         'result' : img_lst
     }
-
-    return render(request, 'test2.html', context)
+    {"result": []}
+    return JsonResponse(context, safe=False, json_dumps_params={'ensure_ascii': False})
 

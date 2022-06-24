@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block leftbar %}
+    <div class="col-sm-3">
+
+    </div>
+{% endblock leftbar %}
+
+
+{% block content %}
+        <div class="mt-4">
+          <img src="/media/yolo_out/result0.jpg" class="img-fluid"/>
+        </div>
+        <textarea id="result_txt" , rows="20" , cols="150">
+            json형식 :  {{cloths_type}}
+        </textarea>
+        <textarea id="crop" , rows="20" , cols="150">
+            라벨링 된 옷 크롭 기능 (나중에 이미지 전환 목표)
+            crop :  {{test_01}}
+        </textarea>
+        <textarea id="crop02" , rows="20" , cols="150">
+            라벨링 된 옷 크롭 기능 (나중에 이미지 전환 목표 )
+            crop2 :  {{test_02}}
+        </textarea>
+
+    </div>
+{% endblock content %}
+

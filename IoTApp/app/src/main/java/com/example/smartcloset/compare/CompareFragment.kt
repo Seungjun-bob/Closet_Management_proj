@@ -1,15 +1,21 @@
 package com.example.smartcloset.compare
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.database.Cursor
+import android.graphics.Bitmap
+import android.graphics.ImageDecoder
 import android.icu.text.SimpleDateFormat
+import android.media.Image
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,8 +28,18 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.example.smartcloset.MainActivity
 import com.example.smartcloset.R
+
+import kotlinx.android.synthetic.main.activity_login.*
+
+import com.example.smartcloset.login.userId
+
 import kotlinx.android.synthetic.main.compare.*
 import kotlinx.android.synthetic.main.compare.view.*
+import okhttp3.*
+import org.json.JSONObject
+import java.io.File
+import java.io.OutputStream
+import kotlin.concurrent.thread
 
 
 class CompareFragment: Fragment() {
@@ -32,6 +48,7 @@ class CompareFragment: Fragment() {
     val PERMISSION_CAMERA = 1001 //맞나?
     val REQUEST_CAMERA = 2 //맞나?
     lateinit var realUri:Uri
+    var img_name = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -46,6 +63,9 @@ class CompareFragment: Fragment() {
             //등록 버튼 클릭 이벤트 리스너
                 requirePermissions(arrayOf(Manifest.permission.CAMERA), PERMISSION_CAMERA)
 
+        }
+        view.btn_compare_save.setOnClickListener {
+            sendImgName(img_name)
         }
 
 
@@ -103,7 +123,7 @@ class CompareFragment: Fragment() {
     private fun openCamera() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
 
-        createImageUri(newFileName(), "image/jpg")?.let { uri ->
+        createImageUri(newFileName(), "image/bmp")?.let { uri -> //드디어. . . 이부분이랑
             realUri = uri // var 맞나?
             // MediaStore.EXTRA_OUTPUT을 Key로 하여 Uri를 넘겨주면
             // 일반적인 Camera App은 이를 받아 내가 지정한 경로에 사진을 찍어서 저장시킨다.
@@ -116,7 +136,11 @@ class CompareFragment: Fragment() {
     private fun newFileName(): String {
         val sdf = SimpleDateFormat("yyyyMMdd_HHmmss")
         val filename = sdf.format(System.currentTimeMillis())
-        return "$filename.jpg"
+        Log.d("img_name", filename)
+        //여기서 이미지 이름을 http로 보내줘야 할 거 같음
+        img_name = filename
+//        sendImgName(img_name)
+        return "$filename.bmp"   // 이 부분 바꿨고..
     }
 
     private fun createImageUri(filename: String, mimeType: String): Uri? {
@@ -126,16 +150,44 @@ class CompareFragment: Fragment() {
         return mainActivity.contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
     }
 
+//    @SuppressLint("Range")
+//    fun getRealPathFromURI(contentUri:Uri): String? {
+//
+//         val proj= arrayOf<String>(MediaStore.Images.Media.DATA)
+//
+//        val cursor: Cursor? = mainActivity.getContentResolver().query(contentUri, proj, null, null, null);
+//        cursor?.moveToNext();
+//        val path = cursor?.getString(cursor.getColumnIndex(MediaStore.MediaColumns.DATA));
+//        val uri = Uri.fromFile(File(path));
+//
+//        cursor?.close();
+//        return path
+//    }
     //Launcher (ActivityResultLuncher로 변경해야함)
+    @RequiresApi(Build.VERSION_CODES.P)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == AppCompatActivity.RESULT_OK) {
             when (requestCode) {
                 REQUEST_CAMERA -> {
+
                     realUri?.let { uri ->
                         //사진이 찍히면 이미지뷰에 띄워줌, DB로 전송도 해서 값을 받아와 밑의 RecyclerViewㅇ[ 보여줘야함
                         img_compare_preview.setImageURI(uri)
+                        //rest 사용해서 이미지 이름을 보내주고, 스토리지에 이미지를 저장, 이미지는 어떻게 저장?
+//                        img_name = realUri.lastPathSegment.toString() //보내줄 이미지 이름
+                        val outStream:OutputStream
+                        var bitmap = ImageDecoder.decodeBitmap(ImageDecoder.createSource(mainActivity.contentResolver, uri))
+//                        bitmap.compress()
+//                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outStream)
+
+                        Log.d("bitmap", bitmap.toString())
+
+                        Log.d("tt", img_name)
+                        Log.d("uri print", realUri.toString())
+                        Toast.makeText(context, img_name, Toast.LENGTH_LONG).show()
+
 
                     }
                 }
@@ -169,5 +221,47 @@ class CompareFragment: Fragment() {
 
 
     }
+
+    fun sendImgName(name:String){
+//        Toast.makeText(mainActivity, "제대로 전송됨", Toast.LENGTH_LONG).show()
+        thread{
+
+            //이미지 이름을 url 뒤에 붙여 전달해줌
+            var jsonobj = JSONObject()
+            jsonobj.put("ImgName","https://closetimg103341-dev.s3.us-west-2.amazonaws.com/$name.bmp" )
+            jsonobj.put("ImgName","test_img_name" )
+            val url = "http://172.30.1.22:8000/recommend/compare/?id=" + userId +"/"  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
+
+            //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
+            val client = OkHttpClient()
+
+            //json데이터를 이용해서 request 처리
+            val jsondata = jsonobj.toString()
+            //서버에 요청을 담당하는 객체
+            val builder = Request.Builder()    // request객체를 만들어주는 객체 생성
+            builder.url(url)                   //Builder객체에 request할 주소(네트워크상의 주소)셋팅
+            builder.post(RequestBody.create(MediaType.parse("application/json"),jsondata)) // 요청메시지 만들고 요청메시지의 타입이 json이라고 설정
+            val myrequest: Request = builder.build() //Builder객체를 이용해서 request객체 만들기
+            //생성한 request 객체를 이용해서 웹에 request하기 - request결과로 response 객체가 리턴
+            // ==> Response가 서버에서 돌려준 josn 객체인가??
+            val response: Response = client.newCall(myrequest).execute()
+
+            //response에서 메시지꺼내서 로그 출력하기 -> 결과가 뭘로 오는지, 이미지 이름과 카테고리 분류된 결과가 오면 DB에 저장하는 코드 작성
+            //결과를 받아와서 모델 객체를.. 만들어서? recycler View에 반영해줘야 함
+            val result:String? = response.body()?.string()
+
+            Log.d("http",result!!) //로그 찍어본 후에 파싱해서 옷 객체로 만들고, 리사이클러뷰에 띄우기
+
+            //여기서 데이터 파싱 후 옷 모델 만들어주기? 해야함
+
+            //옷 모델을 만들어서 리사이클러뷰에 넣어줘야함 (= 배열로 만들어서?)
+
+            mainActivity.runOnUiThread {
+                //여기서 리사이클러뷰를 바꿔줘야 하나?
+            }
+
+        }
+    }
+
 
 }

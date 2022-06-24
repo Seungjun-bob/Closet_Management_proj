@@ -1,6 +1,7 @@
 package com.example.smartcloset.add
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
@@ -20,6 +21,9 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.example.smartcloset.R
 import com.example.smartcloset.MainActivity
+import com.example.smartcloset.home.HomeFragment
+import com.example.smartcloset.login.userId
+
 import com.example.smartcloset.network.MyMqtt
 import kotlinx.android.synthetic.main.addclothes.*
 import kotlinx.android.synthetic.main.addclothes.view.*
@@ -298,13 +302,17 @@ class AddClothesFragment: Fragment() {
         // 카메 라 버튼 클릭 리스너 구현
         viewF.camera_addclothes.setOnClickListener(View.OnClickListener {
             requirePermissions(arrayOf(Manifest.permission.CAMERA), PERMISSION_CAMERA)
+
         })
 
         viewF.cancel_addclothes.setOnClickListener{
-//            Toast.makeText(this,"취소 버튼입니다", Toast.LENGTH_SHORT).show()
+            //취소 코드 추가
+            mainActivity.changeFragment(1)
+            Toast.makeText(mainActivity,"취소되었습니다", Toast.LENGTH_SHORT).show()
         }
         viewF.save_addclothes.setOnClickListener{
-//            Toast.makeText(this,"저장 버튼입니다", Toast.LENGTH_SHORT).show()
+            //저장 코드 추가
+            Toast.makeText(mainActivity,"저장되었습니다", Toast.LENGTH_SHORT).show()
         }
         return viewF
     }
@@ -396,7 +404,7 @@ class AddClothesFragment: Fragment() {
     private fun openCamera() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
 
-        createImageUri(newFileName(), "image/jpg")?.let { uri ->
+        createImageUri(newFileName(), "image/bmp")?.let { uri ->
             realUri = uri // var 맞나?
             // MediaStore.EXTRA_OUTPUT을 Key로 하여 Uri를 넘겨주면
             // 일반적인 Camera App은 이를 받아 내가 지정한 경로에 사진을 찍어서 저장시킨다.
@@ -408,7 +416,7 @@ class AddClothesFragment: Fragment() {
     private fun newFileName(): String {
         val sdf = SimpleDateFormat("yyyyMMdd_HHmmss")
         val filename = sdf.format(System.currentTimeMillis())
-        return "$filename.jpg"
+        return "$filename.bmp"
     }
 
     private fun createImageUri(filename: String, mimeType: String): Uri? {
