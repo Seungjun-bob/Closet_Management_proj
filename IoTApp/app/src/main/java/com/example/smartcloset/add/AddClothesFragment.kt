@@ -6,12 +6,15 @@ import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.ImageDecoder
 import android.icu.text.SimpleDateFormat
 import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -32,18 +35,29 @@ import kotlinx.android.synthetic.main.addclothes.*
 import kotlinx.android.synthetic.main.addclothes.view.*
 import kotlinx.android.synthetic.main.register.*
 import okhttp3.*
+import org.eclipse.paho.client.mqttv3.MqttMessage
 import org.json.JSONObject
+import java.io.ByteArrayOutputStream
+import java.io.OutputStream
 import kotlin.concurrent.thread
 
 class AddClothesFragment: Fragment() {
+    var datalist =ArrayList<Int>()
+    lateinit var mainActivity: MainActivity
     //카메라/앨범 관련 권한
     val PERMISSION_Album = 101 // 앨범 권한 처리
     val REQUEST_STORAGE = 1
 
     val PERMISSION_CAMERA = 1001 //맞나?
     val REQUEST_CAMERA = 2 //맞나?
+    //mqtt용
+    val sub_topic = "iot/addpic"
+    val server_uri = "tcp://35.89.7.144:1883" //broker의 ip와 port
+    var mymqtt: MyMqtt? = null
+    var img_name = ""
 
     lateinit var realUri: Uri
+
     lateinit var tag1data:String
     lateinit var tag2data:String
     lateinit var tag3data:String
@@ -64,10 +78,20 @@ class AddClothesFragment: Fragment() {
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mymqtt = MyMqtt(mainActivity, server_uri)
+        //브로커에서 메세지 전달되면 호출될 메소드를 넘기기
+        mymqtt?.mysetCallback(::onReceived) //바이트코드를 아예 참조할 수 있게 사용 ( :: )
+        //브로커연결
+        mymqtt?.connect(arrayOf<String>(sub_topic))
 
     }
-    var datalist =ArrayList<Int>()
-    lateinit var mainActivity: MainActivity
+    fun onReceived(topic:String, message: MqttMessage){
+        val msg = String(message.payload)
+        val msgdata = msg.split(':')
+
+        Log.d("mymqtt", msg)
+    }
+
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -545,13 +569,13 @@ class AddClothesFragment: Fragment() {
                 if(!isExistBlank){
                     //서버로 전송할 JSONObject 만들기 - 카테고리 정보를 담고 있음
                     var jsonobj = JSONObject()
-                    jsonobj.put("id",userId) // 어떤 유저의 등록인지 유저id값 포함
+                    jsonobj.put("accountid",userId) // 어떤 유저의 등록인지 유저id값 포함
                     jsonobj.put("buydate",buydate)
-                    jsonobj.put("myColor",final_category)
-                    jsonobj.put("myCategory",final_color)
+                    jsonobj.put("mycolor",final_category)
+                    jsonobj.put("mycategory",final_color)
 
                     // 장고 등록 페이지 url - 나중에 수정
-                    val url = "http://172.30.1.22:8000/register/"
+                    val url = "http://34.222.151.105:8000/save/"
 
                     //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
                     val client = OkHttpClient()
@@ -701,7 +725,7 @@ class AddClothesFragment: Fragment() {
 //                jsonobj.put("ready",ready)
 //
 //                // 장고 AI모델 페이지 url? - 나중에 수정
-//                val url = "http://172.30.1.22:8000/register/"
+//                val url = "http://34.222.151.105:8000/register/"
 //
 //                //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
 //                val client = OkHttpClient()
@@ -752,6 +776,21 @@ class AddClothesFragment: Fragment() {
                 REQUEST_CAMERA -> {
                     realUri?.let { uri ->
                         imagePreview.setImageURI(uri)
+                        //rest 사용해서 이미지 이름을 보내주고, 스토리지에 이미지를 저장, 이미지는 어떻게 저장?
+                        val outStream: OutputStream
+                        var bitmap = ImageDecoder.decodeBitmap(ImageDecoder.createSource(mainActivity.contentResolver, uri))
+                        val byteArrayOutputStream : ByteArrayOutputStream = ByteArrayOutputStream()
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 40, byteArrayOutputStream)
+                        val byteArray = byteArrayOutputStream.toByteArray()
+                        val encoded = Base64.encodeToString(byteArray, Base64.DEFAULT)
+
+//                        Log.d("encode_img", encoded)
+                        imgPub(encoded)
+
+//                        Log.d("bitmap", bitmap.toString())
+//                        Log.d("tt", img_name)
+//                        Log.d("uri print", realUri.toString())
+//                        Toast.makeText(context, img_name, Toast.LENGTH_LONG).show()
                     }
                 }
                 REQUEST_STORAGE -> {
@@ -761,6 +800,9 @@ class AddClothesFragment: Fragment() {
                 }
             }
         }
+    }
+    fun imgPub(img:String){
+        mymqtt?.publish("iot/image", img+":"+img_name)
     }
 
     override fun onAttach(context: Context) {
