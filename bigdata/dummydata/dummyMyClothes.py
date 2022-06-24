@@ -13,7 +13,7 @@ categorylist = ['short_sleeve_top', 'long_sleeve_top', 'short_sleeve_outer', 'lo
                 'vest_dress', 'sling_dress']
 mycategory = [random.choice(categorylist) for i in range(1, 2001)]
 myimg = ['img'+str(i) for i in range(1, 2001)]
-
+print(type(myimg))
 
 MyClothes = pd.DataFrame(
     {'code': code,

@@ -81,9 +81,9 @@ def real(request, url):
     MyClothes = pd.read_csv('D:/lee/study/cluster project/Closet_Management_proj/Django/apps/image/result/dummyMyClothes.csv',  encoding='Utf-8', index_col=0)
     color_type = ['white', 'blue']
     CODE = ['my' + str(len(MyClothes['CODE']) + 1 + i) for i in range(len(clothes))]
-    ID = request.GET.get("id")
-    BuyDate = request.GET.get("buyDate")
-    myImg = [request.GET.get("imgName") for i in range(len(clothes))]
+    ID = request.POST.get("id")
+    BuyDate = request.POST.get("buyDate")
+    myImg = [request.POST.get("imgName") for i in range(len(clothes))]
 
     MyClothes_add = pd.DataFrame(
         {'CODE': CODE,
