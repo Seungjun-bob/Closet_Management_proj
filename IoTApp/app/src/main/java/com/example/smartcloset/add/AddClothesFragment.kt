@@ -585,7 +585,9 @@ class AddClothesFragment: Fragment() {
                         }
                     }
                 } else {
-
+                    runOnUiThread {
+                        Toast.makeText(mainActivity, "입력되지 않은 칸이 있습니다", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
             if(save_success) {
