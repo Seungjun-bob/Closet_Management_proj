@@ -10,6 +10,8 @@ import com.anychart.chart.common.dataentry.ValueDataEntry
 import com.anychart.charts.Pie
 import com.example.smartcloset.R
 import kotlinx.android.synthetic.main.mypage.*
+import com.example.smartcloset.login.userId //로그인 하면서 받아온 userId전역변수
+
 
 class MyPage : AppCompatActivity() {
     private var chart: AnyChartView? = null

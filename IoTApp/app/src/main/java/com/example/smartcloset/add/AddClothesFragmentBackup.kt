@@ -59,10 +59,10 @@ package com.example.smartcloset.add
 //
 //        viewF.tag1.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
 //            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-//                viewF.tag1txt?.text = (view as? TextView)?.text
+//                tag1data = (view as? TextView)?.text
 //                viewF.tag2.setSelection(0)
 //                viewF.tag3.setSelection(0)
-//                when(viewF.tag1txt?.text){
+//                when(tag1data){
 //                    "" -> {
 //                        //1번 스피너 공백일 때 -> 2번 스피너 선택지 없음
 //                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.tagnone, android.R.layout.simple_spinner_item)
@@ -72,7 +72,7 @@ package com.example.smartcloset.add
 //
 //                        viewF.tag2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 //                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-//                                viewF.tag2txt?.text = (view as? TextView)?.text
+//                                tag2data = (view as? TextView)?.text
 //                                // 세번째 태그 오픈
 //                                val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagnone, android.R.layout.simple_spinner_item)
 //                                myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -81,7 +81,7 @@ package com.example.smartcloset.add
 //
 //                                viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 //                                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-//                                        viewF.tag3txt?.text = (view as? TextView)?.text
+//                                        tag3data = (view as? TextView)?.text
 //                                    }
 //                                    override fun onNothingSelected(parent: AdapterView<*>?) {
 //                                    }
@@ -101,9 +101,9 @@ package com.example.smartcloset.add
 //
 //                        viewF.tag2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 //                                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-//                                    viewF.tag2txt?.text = (view as? TextView)?.text
+//                                    tag2data = (view as? TextView)?.text
 //
-//                                    when (viewF.tag2txt.text) {
+//                                    when (tag2data) {
 //                                        "" -> {
 //                                            //2번 스피너 공백일 때 -> 3번 스피너 선택지 없음
 //                                            val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagnone, android.R.layout.simple_spinner_item)
@@ -113,7 +113,7 @@ package com.example.smartcloset.add
 //
 //                                            viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 //                                                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-//                                                    viewF.tag3txt?.text = (view as? TextView)?.text
+//                                                    tag3data = (view as? TextView)?.text
 //                                                }
 //                                                override fun onNothingSelected(parent: AdapterView<*>?) {
 //                                                }
@@ -128,7 +128,7 @@ package com.example.smartcloset.add
 //
 //                                            viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 //                                                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-//                                                    viewF.tag3txt?.text = (view as? TextView)?.text
+//                                                    tag3data = (view as? TextView)?.text
 //                                                }
 //                                                override fun onNothingSelected(parent: AdapterView<*>?) {
 //                                                }
@@ -150,9 +150,9 @@ package com.example.smartcloset.add
 //
 //                        viewF.tag2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 //                                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-//                                    viewF.tag2txt?.text = (view as? TextView)?.text
+//                                    tag2data = (view as? TextView)?.text
 //
-//                                    when (viewF.tag2txt.text) {
+//                                    when (tag2data) {
 //                                        "" -> {
 //                                            //2번 스피너 공백일 때 -> 3번 스피너 선택지 없음
 //                                            val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagnone, android.R.layout.simple_spinner_item)
@@ -162,7 +162,7 @@ package com.example.smartcloset.add
 //
 //                                            viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 //                                                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
-//                                                    viewF.tag3txt?.text = (view as? TextView)?.text
+//                                                    tag3data = (view as? TextView)?.text
 //                                                }
 //                                                override fun onNothingSelected(parent: AdapterView<*>?) {
 //                                                }
@@ -177,7 +177,7 @@ package com.example.smartcloset.add
 //
 //                                            viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 //                                                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
-//                                                        viewF.tag3txt?.text = (view as? TextView)?.text
+//                                                        tag3data = (view as? TextView)?.text
 //                                                    }
 //                                                    override fun onNothingSelected(parent: AdapterView<*>?) {
 //                                                    }
@@ -198,8 +198,8 @@ package com.example.smartcloset.add
 //
 //                        viewF.tag2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 //                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-//                                viewF.tag2txt?.text = (view as? TextView)?.text
-//                                when (viewF.tag2txt.text) {
+//                                tag2data = (view as? TextView)?.text
+//                                when (tag2data) {
 //                                    "" -> {
 //                                        //2번 스피너 공백일 때 -> 3번 스피너 선택지 없음
 //                                        val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagnone, android.R.layout.simple_spinner_item)
@@ -209,7 +209,7 @@ package com.example.smartcloset.add
 //
 //                                        viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 //                                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-//                                                viewF.tag3txt?.text = (view as? TextView)?.text
+//                                                tag3data = (view as? TextView)?.text
 //                                            }
 //                                            override fun onNothingSelected(parent: AdapterView<*>?) {
 //                                            }
@@ -225,7 +225,7 @@ package com.example.smartcloset.add
 //
 //                                        viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 //                                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-//                                                viewF.tag3txt?.text = (view as? TextView)?.text
+//                                                tag3data = (view as? TextView)?.text
 //                                            }
 //                                            override fun onNothingSelected(parent: AdapterView<*>?) {
 //                                            }
