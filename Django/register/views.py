@@ -30,11 +30,11 @@ def login(request):
         print(UserId)
         # 해당 이메일에 해당하는 유저 obj 찾아오기
         obj = Account.objects.get(email=UserId)
-        print(obj.id)
+        print(obj.accountid)
         print(data['pw'], obj.pw)
 
         if data['pw'] == obj.pw:
-            return JsonResponse(":okay:" + str(obj.id) + ":", safe=False, json_dumps_params={'ensure_ascii': False})
+            return JsonResponse(":okay:" + str(obj.accountid) + ":", safe=False, json_dumps_params={'ensure_ascii': False})
         else:
             return JsonResponse(":fail:", safe=False, json_dumps_params={'ensure_ascii': False})
 
