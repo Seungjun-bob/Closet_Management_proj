@@ -1,4 +1,4 @@
-,code,id,mycolor,mycategory,myimg,buydate
+,myclothesid,userid,mycolor,mycategory,myimg,buydate
 0,my1,65,white,short_sleeve_outer,img1,2021-12-08 00:00:00
 1,my2,16,red,skirt,img2,2018-10-09 00:00:00
 2,my3,18,red,vest_dress,img3,2018-09-07 00:00:00
