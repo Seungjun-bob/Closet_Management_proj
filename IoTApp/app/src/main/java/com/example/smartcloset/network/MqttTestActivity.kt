@@ -4,9 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import com.example.smartcloset.R
-import kotlinx.android.synthetic.main.activity_main.*
 import org.eclipse.paho.client.mqttv3.MqttMessage
 
 //화면디자인 - 화면에 있는 위젯들의 이벤트에 반응하는 처리만 구현
