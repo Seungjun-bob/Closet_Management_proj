@@ -103,7 +103,6 @@ class FirstLogin: AppCompatActivity(), View.OnClickListener {
                         val result: String? = response.body()?.string()
                         Log.d("http", result!!)
                         //로그인 성공여부가 메시지로 전달되면 그에 따라 다르게 작업할 수 있도록 코드
-
                         var login_result = result.split(':')
 
                         if(login_result[1]=="okay"){
@@ -122,14 +121,6 @@ class FirstLogin: AppCompatActivity(), View.OnClickListener {
                                 Toast.makeText(this, "로그인 실패", Toast.LENGTH_SHORT).show()
                             }
                         }
-
-                        // 로그인 성공 토스트 메세지 띄우기
-                        runOnUiThread {
-                            Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
-                        }
-
-
-
 
                     } else {
                         // 상태에 따라 다른 다이얼로그 띄워주기
