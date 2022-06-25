@@ -1,6 +1,7 @@
 from django.db import models
 
-class User(models.Model):
+class Account(models.Model):
+    accountid = models.IntegerField(primary_key=True)
     GENDER_CHOICES=(
         (1,'남성'),
         (2,'여성'),
@@ -38,7 +39,7 @@ class User(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'register_user'
+        db_table = 'account'
 
     def __str__(self):
         return "이름 : " + self.name

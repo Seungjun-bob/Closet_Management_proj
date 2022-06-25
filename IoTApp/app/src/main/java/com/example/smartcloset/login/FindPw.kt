@@ -69,6 +69,10 @@ class FindPw: AppCompatActivity(), View.OnClickListener {
                     var email = id_findpw.text.toString()
                     var name = name_findpw.text.toString()
                     var birthday = birthday_findpw.text.toString()
+
+                    if(t_stringBuilder.isNotEmpty()) {
+                        t_stringBuilder.delete(0, t_stringBuilder.toString().length)
+                    }
                     //db테이블에 맞게 입력 받은 생년월일 형식 변환
                     t_stringBuilder.append(birthday)
                     t_stringBuilder.insert(4,'-')
@@ -96,7 +100,7 @@ class FindPw: AppCompatActivity(), View.OnClickListener {
                         jsonobj.put("birth",birthday)
 
                         // 장고 페이지 url - 나중에 수정
-                        val url = "http://192.168.200.107:8000/findpw"
+                        val url = "http://172.30.1.22:8000/register/findpw"
 
                         //Okhttp3라이브러리의 OkHttpClient객체를 이용해서 작업
                         val client = OkHttpClient()
