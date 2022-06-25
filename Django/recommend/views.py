@@ -62,6 +62,11 @@ def mypiecategory(request):
     n = []
     k = 1
 
+    # 유저 정보
+    user_account = Account.objects.filter(accountid=userid).values()
+
+    # username = user_account.name
+    # useremail = user_account.email
     for i in df:
         for j in i:
             if k % 2 == 0:
@@ -70,9 +75,13 @@ def mypiecategory(request):
             else:
                 category.append(j)
                 k += 1
+
+
     context = {
         'category': category,
-        'n': n
+        'n': n,
+        'username' : user_account[0]['email'],
+        'useremail' : user_account[0]['name'],
     }
     print(context)
     return JsonResponse(context, safe=False, json_dumps_params={'ensure_ascii': False})
