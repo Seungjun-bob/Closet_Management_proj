@@ -322,7 +322,6 @@ class CompareFragment: Fragment() {
             //결과를 받아와서 모델 객체를.. 만들어서? recycler View에 반영해줘야 함
             val result:String? = response.body()?.string()
             Log.d("http",result!!)
-
             //로그 찍어본 후에 파싱해서 스플릿으로 나눈다음, 배열의 길이만큼 loadImage를 포문으로 돌리기
 
             //기존 리사이클러뷰에 들어갔던 데이터를 비우고
