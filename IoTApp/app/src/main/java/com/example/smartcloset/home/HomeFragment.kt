@@ -3,6 +3,7 @@ package com.example.smartcloset.home
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
 import android.graphics.Point
 import android.icu.text.SimpleDateFormat
 import android.location.Location
@@ -33,11 +34,14 @@ import androidx.databinding.DataBindingUtil.setContentView
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.smartcloset.auth_cnt
 import com.example.smartcloset.login.userId
+import kotlinx.android.synthetic.main.compare.*
 import okhttp3.MediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
 import org.json.JSONObject
+import java.net.HttpURLConnection
+import java.net.URL
 import kotlin.concurrent.thread
 
 
@@ -71,10 +75,11 @@ class HomeFragment : Fragment() {
 
         return view
     }
+    //
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sendImgName()
+//        sendImgName()
 
         weatherRecyclerView = view.weatherRecyclerView
         rcmdClothRecyclerView = view.recommendation_recyclerView
@@ -340,6 +345,21 @@ class HomeFragment : Fragment() {
             }
 
         }
+    }
+    fun loadImage(imageUrl:String){
+        thread{
+            val url = URL(imageUrl)
+            val con = url.openConnection() as HttpURLConnection
+            var image = con.inputStream
+            var imagedata = image.readBytes()
+            var bitmap = BitmapFactory.decodeByteArray(imagedata,0,imagedata.size)
+
+            mainActivity.runOnUiThread{
+                img_compare_preview.setImageBitmap(bitmap)
+            }
+
+        }
+
     }
     override fun onAttach(context: Context) {
         super.onAttach(context)

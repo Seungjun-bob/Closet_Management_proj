@@ -35,6 +35,13 @@
                 android:text="사진 등록"
                 android:layout_gravity="center"
                 android:layout_marginRight="3dp"/>
+            <Button
+                android:id="@+id/btn_compare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="비교"
+                android:layout_gravity="center"
+                android:layout_marginRight="3dp"/>
 
             </LinearLayout>
 
