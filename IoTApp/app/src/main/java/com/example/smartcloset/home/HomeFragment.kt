@@ -43,6 +43,7 @@ import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
 import kotlin.concurrent.thread
+import com.example.smartcloset.login.userId
 
 
 class HomeFragment : Fragment() {
@@ -311,7 +312,7 @@ class HomeFragment : Fragment() {
             //이미지 이름을 url 뒤에 붙여 전달해줌
             var jsonobj = JSONObject()
             Log.d("bit_img_img", "이미지 이름 전송함")
-            val url = "http://172.30.1.22:8000/recommend/rcmd/?id=" + "1" +"/"  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
+            val url = "http://172.30.1.53:8000/recommend/rcmd/?id=" + userId +"/"  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
 
             //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
             val client = OkHttpClient()

@@ -38,6 +38,7 @@ import org.json.JSONObject
 import java.io.ByteArrayOutputStream
 import java.net.HttpURLConnection
 import java.net.URL
+import java.util.concurrent.TimeUnit
 import kotlin.concurrent.thread
 
 
@@ -153,7 +154,7 @@ class CompareFragment: Fragment() {
         Log.d("img_name", filename)
         //여기서 이미지 이름을 http로 보내줘야 할 거 같음
         img_name = filename
-        sendImgName(img_name)
+
 //        여기서 호출 해서 이미지 이름을 넘겨줘야 할 거 같음
         return "$filename.jpg"   // 이 부분 바꿨고..
     }
@@ -188,7 +189,7 @@ class CompareFragment: Fragment() {
 //                        Log.d("encode_img", encoded)
                         //이미지를 서버로 보내기. 서버에서는 받은 데이터를 비트맵으로 변환해 저장
                         imgPub(encoded)
-
+                        sendImgName(img_name)
 
 
 //                        Log.d("bitmap", bitmap.toString())
@@ -286,26 +287,35 @@ class CompareFragment: Fragment() {
         thread{
 
             //이미지 이름을 url 뒤에 붙여 전달해줌
-            var jsonobj = JSONObject()
-            jsonobj.put("ImgName","https://closetimg103341-dev.s3.us-west-2.amazonaws.com/$name.bmp" )
-            jsonobj.put("ImgName","test_img_name" )
-            Log.d("bit_img_img", "이미지 이름 전송함")
+//            var jsonobj = JSONObject()
+//            jsonobj.put("img","https://closetimg103341-dev.s3.us-west-2.amazonaws.com/rank1.jpg" )//            jsonobj.put("ImgName","test_img_name" )
 
-//            val url = "http://52.37.148.146:8000/recommend/compare/?id=" + userId +"/"  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
-            val url = "http://52.37.148.146:8000/recommend/compare/?id=" + "ok" +"/"  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
+            Log.d("bit_img_img", "이미지 이름 전송함")
+            Log.d("test", userId)
+//            val url = "http://172.30.1.53:8000/recommend/compare/?id=" + userId  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
+            val url = "http://172.30.1.53:8000/test/?img=test4&id=" + userId  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
 
             //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
-            val client = OkHttpClient()
+//            val client = OkHttpClient()
 
             //json데이터를 이용해서 request 처리
-            val jsondata = jsonobj.toString()
+//            val jsondata = jsonobj.toString()
+//            Log.d("test", jsondata)
             //서버에 요청을 담당하는 객체
             val builder = Request.Builder()    // request객체를 만들어주는 객체 생성
             builder.url(url)                   //Builder객체에 request할 주소(네트워크상의 주소)셋팅
-            builder.post(RequestBody.create(MediaType.parse("application/json"),jsondata)) // 요청메시지 만들고 요청메시지의 타입이 json이라고 설정
+//            builder.post(RequestBody.create(MediaType.parse("application/json"),jsondata)) // 요청메시지 만들고 요청메시지의 타입이 json이라고 설정
             val myrequest: Request = builder.build() //Builder객체를 이용해서 request객체 만들기
             //생성한 request 객체를 이용해서 웹에 request하기 - request결과로 response 객체가 리턴
             // ==> Response가 서버에서 돌려준 josn 객체인가??
+            val client = OkHttpClient.Builder()
+                //.addInterceptor(interceptor)
+                .connectTimeout(100, TimeUnit.SECONDS)
+                .readTimeout(100, TimeUnit.SECONDS)
+                .writeTimeout(100, TimeUnit.SECONDS)
+                .build()
+
+
             val response: Response = client.newCall(myrequest).execute()
 
             //response에서 메시지꺼내서 로그 출력하기 -> 결과가 뭘로 오는지, 이미지 이름과 카테고리 분류된 결과가 오면 DB에 저장하는 코드 작성
