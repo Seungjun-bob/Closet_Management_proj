@@ -2,9 +2,9 @@ from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse, JsonResponse
 import pandas as pd
-from .models import Account
-from .models import myClothes
-from .models import Clothes
+from register.models import Account
+from cloth.models import MyClothes
+from .models import MusinsaClothes
 from django.http import JsonResponse
 
 
@@ -14,25 +14,25 @@ def recommend(request) :
     return render(request, 'test.html', context)
 
 def rcmd(request):
-    user_id = request.POST.get("id")
-    clothes = Clothes.objects.get()
-    myclothes = myClothes.objects.get(id=user_id)
-    userdata = Account.objects.get(id=user_id)
+    userid = request.POST.get("id")
+    musinsaclothes = MusinsaClothes.objects.get()
+    myclothes = MyClothes.objects.get(id=userid)
+    userdata = Account.objects.get(id=userid)
     df = pd.merge(userdata, myclothes, left_on='id', right_on='id', how='left')
     df['id'] = df['id'].apply(str)
-    dummy = df[df['id'] == user_id]
+    dummy = df[df['id'] == userid]
     dummy['clothes'] = dummy['mycolor'] + ' - ' + dummy['mycategory']
-    clothes['clothes'] = clothes['color'] + ' - ' + clothes['category']
-    have = pd.merge(clothes, dummy, left_on='clothes', right_on='clothes', how='left')
+    musinsaclothes['clothes'] = musinsaclothes['color'] + ' - ' + musinsaclothes['category']
+    have = pd.merge(musinsaclothes, dummy, left_on='clothes', right_on='clothes', how='left')
     my_max_category = have['myCategory'].value_counts().head(3)
     my_max_category = pd.DataFrame(my_max_category)
     my_max_category = my_max_category.reset_index().values.tolist()
     my_max_category = sum(my_max_category, [])
-    rcmd_clothes = clothes[clothes['category'] == my_max_category[0]].loc[:, ['clothes']].head(5)
-    rcmd_img = clothes[clothes['category'] == my_max_category[0]].loc[:, ['img']].head(5)
+    rcmd_clothes = musinsaclothes[musinsaclothes['category'] == my_max_category[0]].loc[:, ['clothes']].head(5)
+    rcmd_img = musinsaclothes[musinsaclothes['category'] == my_max_category[0]].loc[:, ['img']].head(5)
     for i in range(1, 3):
-        rcmd_clothes_add = clothes[clothes['category'] == my_max_category[2*i]].loc[:, ['clothes']].head(5)
-        rcmd_img_add = clothes[clothes['category'] == my_max_category[2*i]].loc[:, ['img']].head(5)
+        rcmd_clothes_add = musinsaclothes[musinsaclothes['category'] == my_max_category[2*i]].loc[:, ['clothes']].head(5)
+        rcmd_img_add = musinsaclothes[musinsaclothes['category'] == my_max_category[2*i]].loc[:, ['img']].head(5)
         rcmd_clothes = pd.concat([rcmd_clothes, rcmd_clothes_add])
         rcmd_img = pd.concat([rcmd_img, rcmd_img_add])
     context = {
@@ -43,8 +43,8 @@ def rcmd(request):
 
 def compare(request):
     userid = request.POST.get("id")
-    myclothes = myClothes.objects.get(id=user_id)
-    userdata = Account.objects.get(id=user_id)
+    myclothes = MyClothes.objects.get(id=userid)
+    userdata = Account.objects.get(id=userid)
     df = pd.merge(userdata, myclothes, left_on='id', right_on='id', how='left')
     category = request.POST.get("category")
     df['id'] = df['id'].apply(str)
@@ -65,3 +65,74 @@ def compare(request):
     {"result": []}
     return JsonResponse(context, safe=False, json_dumps_params={'ensure_ascii': False})
 
+def mypiecategory(request):
+    userid = request.POST.get("id")
+    myclothes = MyClothes.objects.get(id=userid)
+    # userid = '77'
+    # myclothes = pd.read_csv('C:/Users/Seungjun/Desktop/BIGDATA_edu/Closet_Management_proj/Django/recommend/dummydata/MyClothes.csv', encoding='Utf-8', index_col=0)
+
+    myclothes['userid'] = myclothes['userid'].apply(str)
+    myclothes['myclothesid'] = myclothes['myclothesid'].apply(str)
+    df = myclothes[myclothes['userid'] == userid]
+    df = df.groupby('mycategory').count().loc[:, 'userid']
+    df = df.to_frame()
+    form = pd.DataFrame(
+        {"count": (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)},
+        index={'long_sleeve_dress', 'long_sleeve_outer', 'long_sleeve_top', 'short_sleeve_dress', 'short_sleeve_outer',
+               'short_sleeve_top', 'shorts', 'skirt', 'sling', 'sling_dress', 'trousers', 'vest', 'vest_dress'})
+    df = pd.merge(form, df, left_index=True, right_index=True, how='left')
+    df = df.loc[:, 'userid'].sort_index()
+    df = df.fillna(0)
+    df = df.astype('int')
+    df = df.reset_index().values.tolist()
+    category = []
+    n = []
+    k = 1
+
+    for i in df:
+        for j in i:
+            if k % 2 == 0:
+                n.append(j)
+                k += 1
+            else:
+                category.append(j)
+                k += 1
+    context = {
+        'category': category,
+        'n': n
+    }
+    print(context)
+    return JsonResponse(context, safe=False, json_dumps_params={'ensure_ascii': False})
+
+def mypiecolor(request):
+    userid = request.POST.get("id")
+    myclothes = MyClothes.objects.get(id=userid)
+    myclothes['userid'] = myclothes['userid'].apply(str)
+    myclothes['myclothesid'] = myclothes['myclothesid'].apply(str)
+    df = myclothes[myclothes['userid'] == userid]
+    df = df.groupby('mycolor').count().loc[:, 'userid']
+    df = df.to_frame()
+    form = pd.DataFrame(
+        {"count": (0, 0, 0, 0, 0, 0, 0, 0)},
+        index={'black', 'blue', 'red', 'green', 'white', 'pattern', 'gray', 'beige'})
+    df = pd.merge(form, df, left_index=True, right_index=True, how='left')
+    df = df.loc[:, 'userid'].sort_index()
+    df = df.fillna(0)
+    df = df.astype('int')
+    df = df.reset_index().values.tolist()
+    color = []
+    n = []
+    k = 1
+    for i in df:
+        for j in i:
+            if k % 2 == 0:
+                n.append(j)
+                k += 1
+            else:
+                color.append(j)
+                k += 1
+    context = {
+        'color': color,
+        'n': n
+    }
+    return JsonResponse(context, safe=False, json_dumps_params={'ensure_ascii': False})

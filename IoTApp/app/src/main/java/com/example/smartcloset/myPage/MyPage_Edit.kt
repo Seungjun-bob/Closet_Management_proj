@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import com.example.smartcloset.MainActivity
 import com.example.smartcloset.R
 import kotlinx.android.synthetic.main.mypage.*
+import com.example.smartcloset.login.userId //로그인 하면서 받아온 userId전역변수
+
 
 // btn save 하면 다시 홈으로 돌아오기 추가해야 함.
 

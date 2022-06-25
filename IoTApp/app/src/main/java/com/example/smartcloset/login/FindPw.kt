@@ -100,7 +100,7 @@ class FindPw: AppCompatActivity(), View.OnClickListener {
                         jsonobj.put("birth",birthday)
 
                         // 장고 페이지 url - 나중에 수정
-                        val url = "http://172.30.1.22:8000/register/findpw"
+                        val url = "http://34.222.151.105:8000/register/findpw"
 
                         //Okhttp3라이브러리의 OkHttpClient객체를 이용해서 작업
                         val client = OkHttpClient()
@@ -127,11 +127,16 @@ class FindPw: AppCompatActivity(), View.OnClickListener {
                             }
                             show_pw = login_result[2]
                             show = true
+                            runOnUiThread {
+                                if(show) {
+                                    show_findpw.text = show_pw
+                                }
+                            }
                         }
                         else if(login_result[1]=="fail") {
                             // 실패 토스트 메세지 띄우기
                             runOnUiThread {
-                                Toast.makeText(this, "PW찾기 실패", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, "PW찾기 실패 \n 입력하신 정보를 확인하세요", Toast.LENGTH_SHORT).show()
                             }
                         }
 
@@ -148,9 +153,7 @@ class FindPw: AppCompatActivity(), View.OnClickListener {
                         }
                     }
                 }
-                if(show) {
-                    show_findpw.text = show_pw
-                }
+
             }
             R.id.back_findpw -> {
                 val intent = Intent(this, FirstLogin::class.java).apply {

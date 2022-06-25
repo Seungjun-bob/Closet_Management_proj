@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--하의 종류 배열-->
 <resources>
-    <string-array name="tagdata1_2">
+    <string-array name="bottom">
         <item></item>
-        <item>청바지</item>
-        <item>슬랙스</item>
         <item>반바지</item>
-        <item>츄리닝</item>
+        <item>긴바지</item>
+        <item>치마</item>
     </string-array>
 
 </resources>
