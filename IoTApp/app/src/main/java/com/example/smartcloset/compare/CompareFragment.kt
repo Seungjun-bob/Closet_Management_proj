@@ -153,7 +153,7 @@ class CompareFragment: Fragment() {
         Log.d("img_name", filename)
         //여기서 이미지 이름을 http로 보내줘야 할 거 같음
         img_name = filename
-//        sendImgName(img_name)
+//        sendImgName(img_name) 여기서 호출 해서 이미지 이름을 넘겨줘야 할 거 같음
         return "$filename.jpg"   // 이 부분 바꿨고..
     }
 
@@ -187,6 +187,7 @@ class CompareFragment: Fragment() {
 //                        Log.d("encode_img", encoded)
                         //이미지를 서버로 보내기. 서버에서는 받은 데이터를 비트맵으로 변환해 저장
                         imgPub(encoded)
+
 
 
 //                        Log.d("bitmap", bitmap.toString())
