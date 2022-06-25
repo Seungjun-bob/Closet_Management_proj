@@ -40,6 +40,7 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.util.concurrent.TimeUnit
 import kotlin.concurrent.thread
+import kotlin.reflect.typeOf
 
 
 class CompareFragment: Fragment() {
@@ -221,37 +222,28 @@ class CompareFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //RecyclerView 선언
        // var compareRecyclerView:RecyclerView? = getView()?.findViewById(R.id.compare_recycler)
-        compare_recycler.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL))
+//        compare_recycler.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL))
 
         adapter =RecyclerAdapter(mainActivity, R.layout.compare_item, datalist, img_names)
         compare_recycler.adapter = adapter
-        view.btn_compare_save.setOnClickListener {
-//            sendImgName(img_name)
 
-           // Thread.sleep(3)
-            //Adapter 생성하고 연결해주기
-
-
-            Log.d("klimtest","end=====")
-        }
-
-        view.btn_compare_exit.setOnClickListener {
-
-        }
-
-        for(i in 0..7){
-            //비교할 옷 사진 데이터들을 받아와 표시할 곳
-
-        }
+//        view.btn_compare_exit.setOnClickListener {
+//
+//        }
+//
+//        for(i in 0..7){
+//            //비교할 옷 사진 데이터들을 받아와 표시할 곳
+//
+//        }
 
 
 
-        view.btn_compare.setOnClickListener {
-//            adapter.notifyDataSetChanged()
-            loadImage("https://group8img.s3.us-west-2.amazonaws.com/test3.png")
-            loadImage("https://group8img.s3.us-west-2.amazonaws.com/test4.png")
-            loadImage("https://group8img.s3.us-west-2.amazonaws.com/test5.png")
-        }
+//        view.btn_compare.setOnClickListener {
+////            adapter.notifyDataSetChanged()
+//            loadImage("https://group8img.s3.us-west-2.amazonaws.com/test3.png")
+//            loadImage("https://group8img.s3.us-west-2.amazonaws.com/test4.png")
+//            loadImage("https://group8img.s3.us-west-2.amazonaws.com/test5.png")
+//        }
 
 
 
@@ -323,11 +315,28 @@ class CompareFragment: Fragment() {
             val result:String? = response.body()?.string()
             Log.d("http",result!!)
 
+
+            val jsonObject = JSONObject(result.trimIndent())
+            val catObject = jsonObject.getString("category")
+            val colorObject = jsonObject.getString("color")
+
+
+            datalist.clear()
+            img_names.clear()
+
+            val compare_img = jsonObject.getString("result")
+            var compare_img_list = compare_img.substringAfter("[\"")
+                .substringBeforeLast("\"]").split("\",\"")
+
+            for ( i in 0 .. (compare_img_list.size - 1) ) {
+                loadImage("https://group8img.s3.us-west-2.amazonaws.com/"+ compare_img_list[i] +".png")
+            }
+
+
             //로그 찍어본 후에 파싱해서 스플릿으로 나눈다음, 배열의 길이만큼 loadImage를 포문으로 돌리기
 
             //기존 리사이클러뷰에 들어갔던 데이터를 비우고
-            datalist.clear()
-            img_names.clear()
+
             // 받아온 결과값 이미지 url 리스트들을 for문으로 돌려 리사이클러뷰에 추가함, for 문 돌릴 때 이미지 이름도 추가
 //            loadImage()
 
@@ -338,6 +347,8 @@ class CompareFragment: Fragment() {
 //            loadImage("https://closetimg103341-dev.s3.us-west-2.amazonaws.com/test5.png")
             mainActivity.runOnUiThread {
                 //여기서 리사이클러뷰를 바꿔줘야 하나?
+                compare_category_tag.setText(catObject.toString())
+                compare_color_tag.setText(colorObject.toString())
                 Log.d("bit_img_img", "여기까지 넘어옴")
 
 

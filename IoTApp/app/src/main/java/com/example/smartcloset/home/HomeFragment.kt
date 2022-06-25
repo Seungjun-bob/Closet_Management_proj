@@ -3,6 +3,7 @@ package com.example.smartcloset.home
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Point
 import android.icu.text.SimpleDateFormat
@@ -50,8 +51,9 @@ class HomeFragment : Fragment() {
 
     val PERMISSION_LOCATION = 10
     lateinit var mainActivity: MainActivity
+    lateinit var rcmdClothAdapter:ClothAdapter
     private var curPoint : Point? = null
-    var datalist =ArrayList<Int>()
+    var datalist =ArrayList<Bitmap>()
 
     companion object {
         fun newInstance() = HomeFragment()
@@ -80,7 +82,7 @@ class HomeFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        sendImgName()
+        sendImgName()
 
         weatherRecyclerView = view.weatherRecyclerView
         rcmdClothRecyclerView = view.recommendation_recyclerView
@@ -92,12 +94,12 @@ class HomeFragment : Fragment() {
         //RecyclerView 선언
 //        var clothRecyclerView:RecyclerView? = getView()?.findViewById(R.id.home_recycler)
 
-        for(i in 0..7){
-            //비교할 옷 사진 데이터들을 받아와 표시할 곳
-            datalist.add(R.drawable.p1)
-        }
+//        for(i in 0..7){
+//            //비교할 옷 사진 데이터들을 받아와 표시할 곳
+//            datalist.add(R.drawable.p1)
+//        }
 
-        val rcmdClothAdapter = ClothAdapter(mainActivity, R.layout.home_item, datalist)
+        rcmdClothAdapter = ClothAdapter(mainActivity, R.layout.home_item, datalist)
 
 
         rcmdClothRecyclerView.adapter = rcmdClothAdapter
@@ -312,7 +314,7 @@ class HomeFragment : Fragment() {
             //이미지 이름을 url 뒤에 붙여 전달해줌
             var jsonobj = JSONObject()
             Log.d("bit_img_img", "이미지 이름 전송함")
-            val url = "http://172.30.1.53:8000/recommend/rcmd/?id=" + userId +"/"  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
+            val url = "http://172.30.1.53:8000/recommend/rcmd/?id=" + userId  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
 
             //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
             val client = OkHttpClient()
@@ -334,16 +336,19 @@ class HomeFragment : Fragment() {
 
             Log.d("http",result!!) //로그 찍어본 후에 파싱해서 옷 객체로 만들고, 리사이클러뷰에 띄우기
 
-            //여기서 데이터 파싱 후 옷 모델 만들어주기? 해야함
 
-            //옷 모델을 만들어서 리사이클러뷰에 넣어줘야함 (= 배열로 만들어서?)
-//            loadImage("https://closetimg103341-dev.s3.us-west-2.amazonaws.com/test5.png")
-            Log.d("bit_img_img", "여기까지 넘어옴")
-            mainActivity.runOnUiThread {
-                //여기서 리사이클러뷰를 바꿔줘야 하나?
-                Log.d("bit_img_img", "여기까지 넘어옴")
+            val jsonObject = JSONObject(result.trimIndent())
 
+            datalist.clear()
+
+            val compare_img = jsonObject.getString("result")
+            var compare_img_list = compare_img.substringAfter("[\"")
+                .substringBeforeLast("\"]").split("\",\"")
+            Log.d("test", compare_img_list.toString() )
+            for ( i in 0 .. (compare_img_list.size - 1) ) {
+                loadImage("https://group8img.s3.us-west-2.amazonaws.com/"+ compare_img_list[i] +".jpg")
             }
+
 
         }
     }
@@ -355,12 +360,16 @@ class HomeFragment : Fragment() {
             var imagedata = image.readBytes()
             var bitmap = BitmapFactory.decodeByteArray(imagedata,0,imagedata.size)
 
+            datalist.add(bitmap)
+
             mainActivity.runOnUiThread{
-                img_compare_preview.setImageBitmap(bitmap)
+//                img_compare_preview.setImageBitmap(bitmap)
+                rcmdClothAdapter.notifyDataSetChanged()
             }
+            Log.d("klimtest","${datalist.size}")
 
         }
-
+        Log.d("klimtest","end")
     }
     override fun onAttach(context: Context) {
         super.onAttach(context)
