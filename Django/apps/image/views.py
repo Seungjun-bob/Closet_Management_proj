@@ -48,8 +48,8 @@ def color_classfication(numpy_value):
     img_src = 'media/crop/crop0.jpg'
     test_img = image.load_img(img_src, target_size=(200, 200))
     x = image.img_to_array(test_img)
-    x = np.expanddims(x, axis=0)
-    image = np.vstack([x])
+    x = np.expand_dims(x, axis=0)
+    image_ = np.vstack([x])
     classes = model.predict(image_, batch_size=10)
     print('##### cloths image result ####')
     print()
@@ -69,7 +69,7 @@ def color_classfication(numpy_value):
     elif color_result == 4:
         color_result = 'green'
     elif color_result == 5:
-        color_result = 'pattern'
+        color_result = 'pattren'
     elif color_result == 6:
         color_result = 'red'
     else:
@@ -130,8 +130,7 @@ def real(url):
 
     # 딕셔너리를 json으로 변환
 
-    cloths_data = {'category': cloths_label,
-                   'color': color_result}
+    cloths_data = [cloths_label, color_result]
 
     # 모델의 라벨과 컬러를 담은 json 파일은 cloths_json으로 저장됨
     cloths_json = json.dumps(cloths_data)
@@ -170,7 +169,9 @@ def doit(request):
 
     # 카테고리 분석
     compare_cat = real(url)
-    category = compare_cat['category']
+
+    category = compare_cat[0]
+    color = compare_cat[1]
     ## compare################################################
 
     userid = int(userid)
@@ -195,9 +196,11 @@ def doit(request):
 
     # 결과값 Json 형식으로 변환
 
-    context = { 'category': [real(url)],
+    context = { 'category': category,
+                'color' : color,
                 'result' : img_lst}
     print(context)
+
     {"result": []}
     return JsonResponse(context, safe=False, json_dumps_params={'ensure_ascii': False})
 
