@@ -138,6 +138,7 @@ class CompareFragment: Fragment() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
 
         createImageUri(newFileName(), "image/jpg")?.let { uri -> //드디어. . . 이부분이랑
+            Log.d("httptest",newFileName())
             realUri = uri // var 맞나?
             // MediaStore.EXTRA_OUTPUT을 Key로 하여 Uri를 넘겨주면
             // 일반적인 Camera App은 이를 받아 내가 지정한 경로에 사진을 찍어서 저장시킨다.
@@ -153,7 +154,7 @@ class CompareFragment: Fragment() {
         Log.d("img_name", filename)
         //여기서 이미지 이름을 http로 보내줘야 할 거 같음
         img_name = filename
-        sendImgName(img_name)
+
 //        여기서 호출 해서 이미지 이름을 넘겨줘야 할 거 같음
         return "$filename.jpg"   // 이 부분 바꿨고..
     }
@@ -189,7 +190,7 @@ class CompareFragment: Fragment() {
                         //이미지를 서버로 보내기. 서버에서는 받은 데이터를 비트맵으로 변환해 저장
                         imgPub(encoded)
 
-
+                        sendImgName(img_name)
 
 //                        Log.d("bitmap", bitmap.toString())
 //                        Log.d("tt", img_name)
@@ -287,8 +288,9 @@ class CompareFragment: Fragment() {
 
             //이미지 이름을 url 뒤에 붙여 전달해줌
             var jsonobj = JSONObject()
-            jsonobj.put("ImgName","https://closetimg103341-dev.s3.us-west-2.amazonaws.com/$name.bmp" )
-            jsonobj.put("ImgName","test_img_name" )
+//            jsonobj.put("ImgName","https://closetimg103341-dev.s3.us-west-2.amazonaws.com/$name.bmp" )
+            jsonobj.put("ImgName","https://closetimg103341-dev.s3.us-west-2.amazonaws.com/rank1.jpg" )
+//            jsonobj.put("ImgName","test_img_name" )
             Log.d("bit_img_img", "이미지 이름 전송함")
 
 //            val url = "http://52.37.148.146:8000/recommend/compare/?id=" + userId +"/"  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
@@ -306,12 +308,13 @@ class CompareFragment: Fragment() {
             val myrequest: Request = builder.build() //Builder객체를 이용해서 request객체 만들기
             //생성한 request 객체를 이용해서 웹에 request하기 - request결과로 response 객체가 리턴
             // ==> Response가 서버에서 돌려준 josn 객체인가??
+            Log.d("httptest", "잘 전송됨, "+name)
             val response: Response = client.newCall(myrequest).execute()
 
             //response에서 메시지꺼내서 로그 출력하기 -> 결과가 뭘로 오는지, 이미지 이름과 카테고리 분류된 결과가 오면 DB에 저장하는 코드 작성
             //결과를 받아와서 모델 객체를.. 만들어서? recycler View에 반영해줘야 함
             val result:String? = response.body()?.string()
-            Log.d("http",result!!)
+            Log.d("httptest",result!!)
 
             //로그 찍어본 후에 파싱해서 스플릿으로 나눈다음, 배열의 길이만큼 loadImage를 포문으로 돌리기
 

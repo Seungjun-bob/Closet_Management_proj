@@ -1,6 +1,7 @@
 package com.example.smartcloset.home
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +13,7 @@ import com.example.smartcloset.home.ModelWeather
 import com.example.smartcloset.R
 import com.example.smartcloset.compare.CompareDialog
 
-class ClothAdapter(var context: Context, var itemlayout:Int, var clothData:ArrayList<Int>):RecyclerView.Adapter<ClothAdapter.ViewHolder>() {
+class ClothAdapter(var context: Context, var itemlayout:Int, var clothData:ArrayList<Bitmap>):RecyclerView.Adapter<ClothAdapter.ViewHolder>() {
     inner class ViewHolder(view:View) : RecyclerView.ViewHolder(view){
         lateinit var clothImage: ImageView
         init {
@@ -29,7 +30,7 @@ class ClothAdapter(var context: Context, var itemlayout:Int, var clothData:Array
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.clothImage.setImageResource(clothData[position])
+        viewHolder.clothImage.setImageBitmap(clothData[position])
     }
 
     override fun getItemCount()= clothData.size

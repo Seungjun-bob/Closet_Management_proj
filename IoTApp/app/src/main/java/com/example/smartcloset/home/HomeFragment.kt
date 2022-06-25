@@ -3,6 +3,7 @@ package com.example.smartcloset.home
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Point
 import android.icu.text.SimpleDateFormat
@@ -42,6 +43,7 @@ import okhttp3.RequestBody
 import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
+import java.sql.Time
 import kotlin.concurrent.thread
 
 
@@ -50,8 +52,8 @@ class HomeFragment : Fragment() {
     val PERMISSION_LOCATION = 10
     lateinit var mainActivity: MainActivity
     private var curPoint : Point? = null
-    var datalist =ArrayList<Int>()
-
+    var datalist =ArrayList<Bitmap>()
+    lateinit var rcmdClothAdapter:ClothAdapter
     companion object {
         fun newInstance() = HomeFragment()
     }
@@ -79,7 +81,7 @@ class HomeFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        sendImgName()
+//        recommendCloth()
 
         weatherRecyclerView = view.weatherRecyclerView
         rcmdClothRecyclerView = view.recommendation_recyclerView
@@ -88,13 +90,7 @@ class HomeFragment : Fragment() {
         weatherRecyclerView.layoutManager = LinearLayoutManager(mainActivity).also { it.orientation = LinearLayoutManager.HORIZONTAL }
         rcmdClothRecyclerView.layoutManager = LinearLayoutManager(mainActivity).also { it.orientation = LinearLayoutManager.HORIZONTAL }
 
-        //RecyclerView 선언
-//        var clothRecyclerView:RecyclerView? = getView()?.findViewById(R.id.home_recycler)
 
-        for(i in 0..7){
-            //비교할 옷 사진 데이터들을 받아와 표시할 곳
-            datalist.add(R.drawable.p1)
-        }
 
         val rcmdClothAdapter = ClothAdapter(mainActivity, R.layout.home_item, datalist)
 
@@ -102,8 +98,11 @@ class HomeFragment : Fragment() {
         rcmdClothRecyclerView.adapter = rcmdClothAdapter
 
 
+
         // 내 위치 위경도 가져와서 날씨 정보 설정하기
         requestLocation()
+        //recommendCloth()
+
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -304,14 +303,21 @@ class HomeFragment : Fragment() {
             ).show()
         }
     }
-    fun sendImgName(){
+
+
+    fun recommendCloth(){
+        var imgs:Array<String>
+        var tags:Array<String>
 //        Toast.makeText(mainActivity, "제대로 전송됨", Toast.LENGTH_LONG).show()
         thread{
 
             //이미지 이름을 url 뒤에 붙여 전달해줌
             var jsonobj = JSONObject()
+
             Log.d("bit_img_img", "이미지 이름 전송함")
-            val url = "http://172.30.1.22:8000/recommend/rcmd/?id=" + "1" +"/"  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
+
+//            val url = "http://52.37.148.146:8000/recommend/compare/?id=" + userId +"/"  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
+            val url = "http://52.37.148.146:8000/recommend/recommend/?id=" + "ok" +"/"  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
 
             //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
             val client = OkHttpClient()
@@ -325,22 +331,31 @@ class HomeFragment : Fragment() {
             val myrequest: Request = builder.build() //Builder객체를 이용해서 request객체 만들기
             //생성한 request 객체를 이용해서 웹에 request하기 - request결과로 response 객체가 리턴
             // ==> Response가 서버에서 돌려준 josn 객체인가??
+            Log.d("httptest", "잘 전송됨")
             val response: okhttp3.Response = client.newCall(myrequest).execute()
 
             //response에서 메시지꺼내서 로그 출력하기 -> 결과가 뭘로 오는지, 이미지 이름과 카테고리 분류된 결과가 오면 DB에 저장하는 코드 작성
             //결과를 받아와서 모델 객체를.. 만들어서? recycler View에 반영해줘야 함
             val result:String? = response.body()?.string()
+            Log.d("http",result!!)
 
-            Log.d("http",result!!) //로그 찍어본 후에 파싱해서 옷 객체로 만들고, 리사이클러뷰에 띄우기
+            //로그 찍어본 후에 파싱해서 스플릿으로 나눈다음, 배열의 길이만큼 loadImage를 포문으로 돌리기
+
+            //기존 리사이클러뷰에 들어갔던 데이터를 비우고
+            datalist.clear()
+
+            // 받아온 결과값 이미지 url 리스트들을 for문으로 돌려 리사이클러뷰에 추가함, for 문 돌릴 때 이미지 이름도 추가
+//            loadImage()
+
 
             //여기서 데이터 파싱 후 옷 모델 만들어주기? 해야함
 
             //옷 모델을 만들어서 리사이클러뷰에 넣어줘야함 (= 배열로 만들어서?)
 //            loadImage("https://closetimg103341-dev.s3.us-west-2.amazonaws.com/test5.png")
-            Log.d("bit_img_img", "여기까지 넘어옴")
             mainActivity.runOnUiThread {
                 //여기서 리사이클러뷰를 바꿔줘야 하나?
                 Log.d("bit_img_img", "여기까지 넘어옴")
+
 
             }
 
@@ -354,12 +369,16 @@ class HomeFragment : Fragment() {
             var imagedata = image.readBytes()
             var bitmap = BitmapFactory.decodeByteArray(imagedata,0,imagedata.size)
 
+            datalist.add(bitmap)
+
             mainActivity.runOnUiThread{
-                img_compare_preview.setImageBitmap(bitmap)
+//                img_compare_preview.setImageBitmap(bitmap)
+                rcmdClothAdapter.notifyDataSetChanged()
             }
+            Log.d("klimtest","${datalist.size}")
 
         }
-
+        Log.d("klimtest","end")
     }
     override fun onAttach(context: Context) {
         super.onAttach(context)
