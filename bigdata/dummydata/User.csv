@@ -1,4 +1,4 @@
-,id,pw,pwcheck,name,birth,email,gender
+,userid,pw,pwcheck,name,birth,email,gender
 0,1,dummy1,dummy1,dummy1,2008-11-22,dummy1@gmail.com,F
 1,2,dummy2,dummy2,dummy2,1991-11-10,dummy2@gmail.com,M
 2,3,dummy3,dummy3,dummy3,2008-06-27,dummy3@gmail.com,M
