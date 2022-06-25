@@ -32,7 +32,7 @@ import numpy as np
 
 
 #  0) 절대경로 path 설정
-abs_path = 'C:/Users/seungjun/Desktop/BIGDATA_edu/Closet_Management_proj/Django/'
+abs_path = 'D:/lee/study/cluster project/Closet_Management_proj/Django/'
 
 # 2) 처음 서버 작동시 로드됨
 model = load_model(abs_path + 'yolov5_code/train_file/color.h5')
