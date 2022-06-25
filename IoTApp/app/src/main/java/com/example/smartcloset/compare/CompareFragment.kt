@@ -153,7 +153,8 @@ class CompareFragment: Fragment() {
         Log.d("img_name", filename)
         //여기서 이미지 이름을 http로 보내줘야 할 거 같음
         img_name = filename
-//        sendImgName(img_name) 여기서 호출 해서 이미지 이름을 넘겨줘야 할 거 같음
+        sendImgName(img_name)
+//        여기서 호출 해서 이미지 이름을 넘겨줘야 할 거 같음
         return "$filename.jpg"   // 이 부분 바꿨고..
     }
 
@@ -289,7 +290,9 @@ class CompareFragment: Fragment() {
             jsonobj.put("ImgName","https://closetimg103341-dev.s3.us-west-2.amazonaws.com/$name.bmp" )
             jsonobj.put("ImgName","test_img_name" )
             Log.d("bit_img_img", "이미지 이름 전송함")
-            val url = "http://52.37.148.146:8000/recommend/compare/?id=" + userId +"/"  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
+
+//            val url = "http://52.37.148.146:8000/recommend/compare/?id=" + userId +"/"  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
+            val url = "http://52.37.148.146:8000/recommend/compare/?id=" + "ok" +"/"  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
 
             //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
             val client = OkHttpClient()
