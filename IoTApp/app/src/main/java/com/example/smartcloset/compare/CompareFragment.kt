@@ -225,9 +225,7 @@ class CompareFragment: Fragment() {
         compare_recycler.adapter = adapter
         view.btn_compare_save.setOnClickListener {
 //            sendImgName(img_name)
-            loadImage("https://group8img.s3.us-west-2.amazonaws.com/test3.png")
-            loadImage("https://group8img.s3.us-west-2.amazonaws.com/test4.png")
-            loadImage("https://group8img.s3.us-west-2.amazonaws.com/test5.png")
+
            // Thread.sleep(3)
             //Adapter 생성하고 연결해주기
 
@@ -248,7 +246,9 @@ class CompareFragment: Fragment() {
 
         view.btn_compare.setOnClickListener {
 //            adapter.notifyDataSetChanged()
-            Toast.makeText(mainActivity, "비교 버튼 클릭", Toast.LENGTH_LONG).show()
+            loadImage("https://group8img.s3.us-west-2.amazonaws.com/test3.png")
+            loadImage("https://group8img.s3.us-west-2.amazonaws.com/test4.png")
+            loadImage("https://group8img.s3.us-west-2.amazonaws.com/test5.png")
         }
 
 
@@ -267,7 +267,7 @@ class CompareFragment: Fragment() {
             datalist.add(bitmap)
 
             mainActivity.runOnUiThread{
-                img_compare_preview.setImageBitmap(bitmap)
+//                img_compare_preview.setImageBitmap(bitmap)
                 adapter.notifyDataSetChanged()
             }
             Log.d("klimtest","${datalist.size}")
