@@ -75,6 +75,7 @@ class HomeFragment : Fragment() {
 
         return view
     }
+    //
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
