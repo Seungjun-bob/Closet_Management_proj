@@ -195,7 +195,7 @@ def doit(request):
 
     # 결과값 Json 형식으로 변환
 
-    context = { 'category': [real(url)],
+    context = { 'category': real(url),
                 'result' : img_lst}
     print(context)
     {"result": []}
