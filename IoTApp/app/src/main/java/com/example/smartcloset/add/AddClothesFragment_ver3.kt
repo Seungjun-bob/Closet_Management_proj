@@ -53,7 +53,7 @@ class AddClothesFragment_ver3: Fragment() {
     val REQUEST_CAMERA = 2 //맞나?
     //mqtt용
     val sub_topic = "iot/#"
-    val server_uri = "tcp://35.89.7.144:1883" //broker의 ip와 port
+    val server_uri = "tcp://35.84.212.137:1883" //broker의 ip와 port
     var mymqtt: MyMqtt? = null
     var img_name = ""
 
@@ -94,7 +94,6 @@ class AddClothesFragment_ver3: Fragment() {
         val msg = String(message.payload)
         val msgdata = msg.split(':')
 
-        Log.d("mymqtt", msg)
     }
 
 
@@ -766,8 +765,6 @@ class AddClothesFragment_ver3: Fragment() {
             }
             //************AI 모델 반환값을 기준으로 카테고리 대분류 선택************
 
-            ai_result.text = "AI가 추천하는 옵션은\n상의-반팔"
-
             when(analyze_category){
                 // 상의
                 "short_sleeve_top" -> {
@@ -851,7 +848,7 @@ class AddClothesFragment_ver3: Fragment() {
                     ai_color = "패턴"
                 }
             }
-            ai_result.text = "AI가 추천하는 옵션은\n${ai_category1}, ${ai_category2}, ${ai_color}입니다"
+            ai_result.text = "AI가 분석한 옵션은\n${ai_category1}, ${ai_category2}, ${ai_color}입니다"
 
         }
     }
