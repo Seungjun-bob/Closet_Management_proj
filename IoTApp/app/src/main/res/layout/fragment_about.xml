@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".about.AboutFragment" >
+    tools:context=".about.AboutFragment"
+    android:background="@color/white">
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager_about"
@@ -16,6 +17,7 @@
         app:layout_constraintTop_toBottomOf="@+id/About" />
 
     <TextView
+        style="@style/title_font_style"
         android:id="@+id/About"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,23 +27,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <Button
+        style="@style/content_font_style"
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="105dp" />
+        tools:layout_editor_absoluteX="105dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
+        style="@style/content_font_style"
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="219dp" />
+        tools:layout_editor_absoluteX="219dp"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

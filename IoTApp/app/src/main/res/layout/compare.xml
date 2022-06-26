@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -11,6 +12,8 @@
         android:orientation="vertical">
 
         <TextView
+            style="@style/title_font_style"
+
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -19,7 +22,10 @@
             android:textStyle="bold"
             android:textSize="30dp"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"/>
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/nanumbarunpenr"
+
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -48,12 +54,16 @@
                 android:gravity="center">
 
                 <Button
+                    style="@style/content_font_style"
+                    android:textColor="#fff"
+                    android:background="@drawable/custom_btn"
                     android:id="@+id/btn_add_comparePic"
-                    android:layout_width="151dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
                     android:layout_gravity="center"
                     android:layout_marginRight="3dp"
-                    android:text="사진 등록" />
+
+                    android:text="사진 등록"/>
 
             </LinearLayout>
 
@@ -72,11 +82,13 @@
                     android:gravity="center|center_vertical"
                     android:layout_weight="1">
                 <TextView
+                    style="@style/content_font_style"
                     android:id="@+id/compare_category_tag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="태그1"/>
                 <TextView
+                    style="@style/content_font_style"
                     android:id="@+id/compare_color_tag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -98,6 +110,7 @@
         android:orientation="vertical"
         android:layout_weight="1">
     <TextView
+        style="@style/content_font_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
