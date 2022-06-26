@@ -1,13 +1,19 @@
 package com.example.smartcloset
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
+import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.smartcloset.about.AboutFragment
 import com.example.smartcloset.add.AddClothesFragment
+import com.example.smartcloset.add.AddClothesFragment_ver3
 import com.example.smartcloset.check.Check
 import com.example.smartcloset.compare.CompareFragment
 
@@ -31,8 +37,9 @@ class MainActivity : AppCompatActivity() {
 
 
     // mqtt
-    val sub_topic = "iot/sensordata"
-    val server_uri = "tcp://35.89.7.144:1883" //broker의 ip와 port
+    val sub_topic = "iot/#"
+
+    val server_uri = "tcp://35.84.212.137:1883" //broker의 ip와 port
     var mymqtt : MyMqtt? = null
 
 
@@ -49,6 +56,7 @@ class MainActivity : AppCompatActivity() {
         mymqtt?.mysetCallback(::onReceived)
         //브로커연결
         mymqtt?.connect(arrayOf<String>(sub_topic)) //
+
 
         val bnv_main = findViewById<BottomNavigationView>(R.id.bnv_main)
 
@@ -117,11 +125,41 @@ class MainActivity : AppCompatActivity() {
     }
     fun onReceived(topic:String,message: MqttMessage){
         //토픽의 수신을 처리
-        var msg = String(message.payload).split(':')
-        dust_status?.text = msg[1]
-        hum_status?.text = msg[3]
-        temp_status?.text = msg[5]
+        var msg = String(message.payload)
+        // 메시지가 sensorerror면
+        if(msg=="sensorerror"){
+            var noti_builder = NotificationCompat.Builder(this, "MY_channel")
+                    .setSmallIcon(R.drawable.ic_launcher_background)
+                    .setContentTitle("센서 이상 감지")
+                    .setContentText("센서 데이터에 이상이 있습니다.")
 
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { // 오레오 버전 이후에는 알림을 받을 때 채널이 필요
+                val channel_id = "MY_channel" // 알림을 받을 채널 id 설정
+                val channel_name = "채널이름" // 채널 이름 설정
+                val descriptionText = "설명글" // 채널 설명글 설정
+                val importance = NotificationManager.IMPORTANCE_DEFAULT // 알림 우선순위 설정
+                val channel = NotificationChannel(channel_id, channel_name, importance).apply {
+                    description = descriptionText
+                }
+
+                // 만든 채널 정보를 시스템에 등록
+                val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+                notificationManager.createNotificationChannel(channel)
+
+                // 알림 표시: 알림의 고유 ID(ex: 1002), 알림 결과
+                notificationManager.notify(1002, noti_builder.build())
+            }
+
+        }else {
+            var data = msg.split(':')
+            if(data[0] == "Dust Density [ug/m3]") {
+                dust_status?.text = data[1]
+                hum_status?.text = data[3]
+                temp_status?.text = data[5]
+            }else{
+
+            }
+        }
     }
     open fun changeFragment(index: Int){
         when(index){
