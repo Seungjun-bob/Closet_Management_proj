@@ -489,7 +489,7 @@ class AddClothesFragment: Fragment() {
                     jsonobj.put("myimg","$img_name.bmp")
 
                     // 장고 등록 페이지 url
-                    val url = "http://34.222.151.105:8000/save/"
+                    val url = "http://52.37.48.195:8000/save/"
 
                     //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
                     val client = OkHttpClient()
