@@ -329,7 +329,7 @@ class CompareFragment: Fragment() {
                 .substringBeforeLast("\"]").split("\",\"")
 
             for ( i in 0 .. (compare_img_list.size - 1) ) {
-                loadImage("https://group8img.s3.us-west-2.amazonaws.com/"+ compare_img_list[i] +".png")
+                loadImage("https://group8img.s3.us-west-2.amazonaws.com/"+ compare_img_list[i] +".jpg")
             }
 
 
