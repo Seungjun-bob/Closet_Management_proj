@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
                     R.id.second -> {
 //                        bnv_main.itemIconTintList = ContextCompat.getColorStateList(this, R.color.color_bnv2)
 //                        bnv_main.itemTextColor = ContextCompat.getColorStateList(this, R.color.color_bnv2)
-                        AddClothesFragment_ver3()
+                        AddClothesFragment()
                         // Respond to navigation item 2 click
                     }
                     R.id.third -> {
