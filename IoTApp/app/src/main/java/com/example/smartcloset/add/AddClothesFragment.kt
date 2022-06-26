@@ -23,6 +23,7 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import com.amazonaws.mobile.auth.core.internal.util.ThreadUtils
 import com.amazonaws.mobile.auth.core.internal.util.ThreadUtils.runOnUiThread
 import com.example.smartcloset.R
 import com.example.smartcloset.MainActivity
@@ -96,8 +97,1045 @@ class AddClothesFragment: Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
         viewF = inflater.inflate(R.layout.addclothes, container, false)
+
+        //************AI 모델 반환값을 기준으로 카테고리 대분류 선택************
+        when(analyze_category){
+            // 상의
+            "short_sleeve_top" -> {
+                // 1번 스피너 - 옷 종류
+                val myadapter1 = ArrayAdapter.createFromResource(mainActivity, R.array.type, android.R.layout.simple_spinner_item)
+
+                myadapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                viewF.tag1.adapter = myadapter1
+                viewF.tag1.setSelection(1)
+
+                viewF.tag1.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                        tag1data = (view as? TextView)?.text.toString()
+                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.top, android.R.layout.simple_spinner_item)
+
+                        myadapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                        viewF.tag2.adapter = myadapter2
+                        viewF.tag2.setSelection(1)
+
+                        viewF.tag2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                                clothes_category = "short_sleeve_top"
+                                // 세번째 태그 오픈
+                                val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.clothes_colors, android.R.layout.simple_spinner_item)
+                                myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                                viewF.tag3.adapter = myadapter3
+                                when(analyze_color){
+                                    "" -> {
+                                        clothes_color = ""
+                                    }
+                                    "black" -> {
+                                        viewF.tag3.setSelection(1)
+                                        clothes_color = "black"
+                                    }
+                                    "blue" -> {
+                                        viewF.tag3.setSelection(2)
+                                        clothes_color = "blue"
+                                    }
+                                    "red" -> {
+                                        viewF.tag3.setSelection(3)
+                                        clothes_color = "red"
+                                    }
+                                    "green" -> {
+                                        viewF.tag3.setSelection(4)
+                                        clothes_color = "green"
+                                    }
+                                    "white" -> {
+                                        viewF.tag3.setSelection(5)
+                                        clothes_color = "white"
+                                    }
+                                    "gray" -> {
+                                        viewF.tag3.setSelection(6)
+                                        clothes_color = "gray"
+                                    }
+                                    "beige" -> {
+                                        viewF.tag3.setSelection(7)
+                                        clothes_color = "beige"
+                                    }
+                                    "pattern" -> {
+                                        viewF.tag3.setSelection(8)
+                                        clothes_color = "pattern"
+                                    }
+                                    else -> {
+                                        viewF.tag3.setSelection(0)
+                                    }
+                                }
+                                viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
+                                    }
+
+                                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                                    }
+                                }
+                            }
+
+                            override fun onNothingSelected(parent: AdapterView<*>?) {
+                            }
+                        }
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                    }
+                }
+            }
+            "long_sleeve_top" -> {
+                // 1번 스피너 - 옷 종류
+                val myadapter1 = ArrayAdapter.createFromResource(mainActivity, R.array.type, android.R.layout.simple_spinner_item)
+
+                myadapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                viewF.tag1.adapter = myadapter1
+                viewF.tag1.setSelection(1)
+
+                viewF.tag1.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                        tag1data = (view as? TextView)?.text.toString()
+                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.top, android.R.layout.simple_spinner_item)
+
+                        myadapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                        viewF.tag2.adapter = myadapter2
+                        viewF.tag2.setSelection(2)
+
+                        viewF.tag2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                                clothes_category = "long_sleeve_top"
+                                // 세번째 태그 오픈
+                                val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.clothes_colors, android.R.layout.simple_spinner_item)
+                                myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                                viewF.tag3.adapter = myadapter3
+                                when(analyze_color){
+                                    "" -> {
+                                        clothes_color = ""
+                                    }
+                                    "black" -> {
+                                        viewF.tag3.setSelection(1)
+                                        clothes_color = "black"
+                                    }
+                                    "blue" -> {
+                                        viewF.tag3.setSelection(2)
+                                        clothes_color = "blue"
+                                    }
+                                    "red" -> {
+                                        viewF.tag3.setSelection(3)
+                                        clothes_color = "red"
+                                    }
+                                    "green" -> {
+                                        viewF.tag3.setSelection(4)
+                                        clothes_color = "green"
+                                    }
+                                    "white" -> {
+                                        viewF.tag3.setSelection(5)
+                                        clothes_color = "white"
+                                    }
+                                    "gray" -> {
+                                        viewF.tag3.setSelection(6)
+                                        clothes_color = "gray"
+                                    }
+                                    "beige" -> {
+                                        viewF.tag3.setSelection(7)
+                                        clothes_color = "beige"
+                                    }
+                                    "pattern" -> {
+                                        viewF.tag3.setSelection(8)
+                                        clothes_color = "pattern"
+                                    }
+                                }
+                                viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
+                                    }
+
+                                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                                    }
+                                }
+                            }
+
+                            override fun onNothingSelected(parent: AdapterView<*>?) {
+                            }
+                        }
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                    }
+                }
+            }
+            "short_sleeve_outer" -> {
+                // 1번 스피너 - 옷 종류
+                val myadapter1 = ArrayAdapter.createFromResource(mainActivity, R.array.type, android.R.layout.simple_spinner_item)
+
+                myadapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                viewF.tag1.adapter = myadapter1
+                viewF.tag1.setSelection(1)
+
+                viewF.tag1.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                        tag1data = (view as? TextView)?.text.toString()
+                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.top, android.R.layout.simple_spinner_item)
+
+                        myadapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                        viewF.tag2.adapter = myadapter2
+                        viewF.tag2.setSelection(3)
+
+                        viewF.tag2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                                clothes_category = "short_sleeve_outer"
+                                // 세번째 태그 오픈
+                                val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.clothes_colors, android.R.layout.simple_spinner_item)
+                                myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                                viewF.tag3.adapter = myadapter3
+                                when(analyze_color){
+                                    "" -> {
+                                        clothes_color = ""
+                                    }
+                                    "black" -> {
+                                        viewF.tag3.setSelection(1)
+                                        clothes_color = "black"
+                                    }
+                                    "blue" -> {
+                                        viewF.tag3.setSelection(2)
+                                        clothes_color = "blue"
+                                    }
+                                    "red" -> {
+                                        viewF.tag3.setSelection(3)
+                                        clothes_color = "red"
+                                    }
+                                    "green" -> {
+                                        viewF.tag3.setSelection(4)
+                                        clothes_color = "green"
+                                    }
+                                    "white" -> {
+                                        viewF.tag3.setSelection(5)
+                                        clothes_color = "white"
+                                    }
+                                    "gray" -> {
+                                        viewF.tag3.setSelection(6)
+                                        clothes_color = "gray"
+                                    }
+                                    "beige" -> {
+                                        viewF.tag3.setSelection(7)
+                                        clothes_color = "beige"
+                                    }
+                                    "pattern" -> {
+                                        viewF.tag3.setSelection(8)
+                                        clothes_color = "pattern"
+                                    }
+                                }
+                                viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
+                                    }
+
+                                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                                    }
+                                }
+                            }
+
+                            override fun onNothingSelected(parent: AdapterView<*>?) {
+                            }
+                        }
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                    }
+                }
+            }
+            "long_sleeve_outer" -> {
+                // 1번 스피너 - 옷 종류
+                val myadapter1 = ArrayAdapter.createFromResource(mainActivity, R.array.type, android.R.layout.simple_spinner_item)
+
+                myadapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                viewF.tag1.adapter = myadapter1
+                viewF.tag1.setSelection(1)
+
+                viewF.tag1.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                        tag1data = (view as? TextView)?.text.toString()
+                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.top, android.R.layout.simple_spinner_item)
+
+                        myadapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                        viewF.tag2.adapter = myadapter2
+                        viewF.tag2.setSelection(4)
+
+                        viewF.tag2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                                clothes_category = "long_sleeve_outer"
+                                // 세번째 태그 오픈
+                                val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.clothes_colors, android.R.layout.simple_spinner_item)
+                                myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                                viewF.tag3.adapter = myadapter3
+                                when(analyze_color){
+                                    "" -> {
+                                        clothes_color = ""
+                                    }
+                                    "black" -> {
+                                        viewF.tag3.setSelection(1)
+                                        clothes_color = "black"
+                                    }
+                                    "blue" -> {
+                                        viewF.tag3.setSelection(2)
+                                        clothes_color = "blue"
+                                    }
+                                    "red" -> {
+                                        viewF.tag3.setSelection(3)
+                                        clothes_color = "red"
+                                    }
+                                    "green" -> {
+                                        viewF.tag3.setSelection(4)
+                                        clothes_color = "green"
+                                    }
+                                    "white" -> {
+                                        viewF.tag3.setSelection(5)
+                                        clothes_color = "white"
+                                    }
+                                    "gray" -> {
+                                        viewF.tag3.setSelection(6)
+                                        clothes_color = "gray"
+                                    }
+                                    "beige" -> {
+                                        viewF.tag3.setSelection(7)
+                                        clothes_color = "beige"
+                                    }
+                                    "pattern" -> {
+                                        viewF.tag3.setSelection(8)
+                                        clothes_color = "pattern"
+                                    }
+                                }
+                                viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
+                                    }
+
+                                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                                    }
+                                }
+                            }
+
+                            override fun onNothingSelected(parent: AdapterView<*>?) {
+                            }
+                        }
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                    }
+                }
+            }
+            "vest" -> {
+                // 1번 스피너 - 옷 종류
+                val myadapter1 = ArrayAdapter.createFromResource(mainActivity, R.array.type, android.R.layout.simple_spinner_item)
+
+                myadapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                viewF.tag1.adapter = myadapter1
+                viewF.tag1.setSelection(1)
+
+                viewF.tag1.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                        tag1data = (view as? TextView)?.text.toString()
+                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.top, android.R.layout.simple_spinner_item)
+
+                        myadapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                        viewF.tag2.adapter = myadapter2
+                        viewF.tag2.setSelection(5)
+
+                        viewF.tag2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                                clothes_category = "vest"
+                                // 세번째 태그 오픈
+                                val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.clothes_colors, android.R.layout.simple_spinner_item)
+                                myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                                viewF.tag3.adapter = myadapter3
+                                when(analyze_color){
+                                    "" -> {
+                                        clothes_color = ""
+                                    }
+                                    "black" -> {
+                                        viewF.tag3.setSelection(1)
+                                        clothes_color = "black"
+                                    }
+                                    "blue" -> {
+                                        viewF.tag3.setSelection(2)
+                                        clothes_color = "blue"
+                                    }
+                                    "red" -> {
+                                        viewF.tag3.setSelection(3)
+                                        clothes_color = "red"
+                                    }
+                                    "green" -> {
+                                        viewF.tag3.setSelection(4)
+                                        clothes_color = "green"
+                                    }
+                                    "white" -> {
+                                        viewF.tag3.setSelection(5)
+                                        clothes_color = "white"
+                                    }
+                                    "gray" -> {
+                                        viewF.tag3.setSelection(6)
+                                        clothes_color = "gray"
+                                    }
+                                    "beige" -> {
+                                        viewF.tag3.setSelection(7)
+                                        clothes_color = "beige"
+                                    }
+                                    "pattern" -> {
+                                        viewF.tag3.setSelection(8)
+                                        clothes_color = "pattern"
+                                    }
+                                }
+                                viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
+                                    }
+
+                                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                                    }
+                                }
+                            }
+
+                            override fun onNothingSelected(parent: AdapterView<*>?) {
+                            }
+                        }
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                    }
+                }
+            }
+            "sling" -> {
+                // 1번 스피너 - 옷 종류
+                val myadapter1 = ArrayAdapter.createFromResource(mainActivity, R.array.type, android.R.layout.simple_spinner_item)
+
+                myadapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                viewF.tag1.adapter = myadapter1
+                viewF.tag1.setSelection(1)
+
+                viewF.tag1.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                        tag1data = (view as? TextView)?.text.toString()
+                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.top, android.R.layout.simple_spinner_item)
+
+                        myadapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                        viewF.tag2.adapter = myadapter2
+                        viewF.tag2.setSelection(6)
+
+                        viewF.tag2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                                clothes_category = "sling"
+                                // 세번째 태그 오픈
+                                val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.clothes_colors, android.R.layout.simple_spinner_item)
+                                myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                                viewF.tag3.adapter = myadapter3
+                                when(analyze_color){
+                                    "" -> {
+                                        clothes_color = ""
+                                    }
+                                    "black" -> {
+                                        viewF.tag3.setSelection(1)
+                                        clothes_color = "black"
+                                    }
+                                    "blue" -> {
+                                        viewF.tag3.setSelection(2)
+                                        clothes_color = "blue"
+                                    }
+                                    "red" -> {
+                                        viewF.tag3.setSelection(3)
+                                        clothes_color = "red"
+                                    }
+                                    "green" -> {
+                                        viewF.tag3.setSelection(4)
+                                        clothes_color = "green"
+                                    }
+                                    "white" -> {
+                                        viewF.tag3.setSelection(5)
+                                        clothes_color = "white"
+                                    }
+                                    "gray" -> {
+                                        viewF.tag3.setSelection(6)
+                                        clothes_color = "gray"
+                                    }
+                                    "beige" -> {
+                                        viewF.tag3.setSelection(7)
+                                        clothes_color = "beige"
+                                    }
+                                    "pattern" -> {
+                                        viewF.tag3.setSelection(8)
+                                        clothes_color = "pattern"
+                                    }
+                                }
+                                viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
+                                    }
+
+                                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                                    }
+                                }
+                            }
+
+                            override fun onNothingSelected(parent: AdapterView<*>?) {
+                            }
+                        }
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                    }
+                }
+            }
+            // 하의
+            "shorts"-> {
+                // 1번 스피너 - 옷 종류
+                val myadapter1 = ArrayAdapter.createFromResource(mainActivity, R.array.type, android.R.layout.simple_spinner_item)
+
+                myadapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                viewF.tag1.adapter = myadapter1
+                viewF.tag1.setSelection(2)
+
+                viewF.tag1.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                        tag1data = (view as? TextView)?.text.toString()
+                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.bottom, android.R.layout.simple_spinner_item)
+
+                        myadapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                        viewF.tag2.adapter = myadapter2
+                        viewF.tag2.setSelection(1)
+
+                        viewF.tag2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                                clothes_category = "shorts"
+                                // 세번째 태그 오픈
+                                val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.clothes_colors, android.R.layout.simple_spinner_item)
+                                myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                                viewF.tag3.adapter = myadapter3
+                                when(analyze_color){
+                                    "" -> {
+                                        clothes_color = ""
+                                    }
+                                    "black" -> {
+                                        viewF.tag3.setSelection(1)
+                                        clothes_color = "black"
+                                    }
+                                    "blue" -> {
+                                        viewF.tag3.setSelection(2)
+                                        clothes_color = "blue"
+                                    }
+                                    "red" -> {
+                                        viewF.tag3.setSelection(3)
+                                        clothes_color = "red"
+                                    }
+                                    "green" -> {
+                                        viewF.tag3.setSelection(4)
+                                        clothes_color = "green"
+                                    }
+                                    "white" -> {
+                                        viewF.tag3.setSelection(5)
+                                        clothes_color = "white"
+                                    }
+                                    "gray" -> {
+                                        viewF.tag3.setSelection(6)
+                                        clothes_color = "gray"
+                                    }
+                                    "beige" -> {
+                                        viewF.tag3.setSelection(7)
+                                        clothes_color = "beige"
+                                    }
+                                    "pattern" -> {
+                                        viewF.tag3.setSelection(8)
+                                        clothes_color = "pattern"
+                                    }
+                                }
+                                viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
+                                    }
+
+                                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                                    }
+                                }
+                            }
+
+                            override fun onNothingSelected(parent: AdapterView<*>?) {
+                            }
+                        }
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                    }
+                }
+            }
+            "trousers"-> {
+                // 1번 스피너 - 옷 종류
+                val myadapter1 = ArrayAdapter.createFromResource(mainActivity, R.array.type, android.R.layout.simple_spinner_item)
+
+                myadapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                viewF.tag1.adapter = myadapter1
+                viewF.tag1.setSelection(2)
+
+                viewF.tag1.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                        tag1data = (view as? TextView)?.text.toString()
+                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.bottom, android.R.layout.simple_spinner_item)
+
+                        myadapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                        viewF.tag2.adapter = myadapter2
+                        viewF.tag2.setSelection(2)
+
+                        viewF.tag2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                                clothes_category = "trousers"
+                                // 세번째 태그 오픈
+                                val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.clothes_colors, android.R.layout.simple_spinner_item)
+                                myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                                viewF.tag3.adapter = myadapter3
+                                when(analyze_color){
+                                    "" -> {
+                                        clothes_color = ""
+                                    }
+                                    "black" -> {
+                                        viewF.tag3.setSelection(1)
+                                        clothes_color = "black"
+                                    }
+                                    "blue" -> {
+                                        viewF.tag3.setSelection(2)
+                                        clothes_color = "blue"
+                                    }
+                                    "red" -> {
+                                        viewF.tag3.setSelection(3)
+                                        clothes_color = "red"
+                                    }
+                                    "green" -> {
+                                        viewF.tag3.setSelection(4)
+                                        clothes_color = "green"
+                                    }
+                                    "white" -> {
+                                        viewF.tag3.setSelection(5)
+                                        clothes_color = "white"
+                                    }
+                                    "gray" -> {
+                                        viewF.tag3.setSelection(6)
+                                        clothes_color = "gray"
+                                    }
+                                    "beige" -> {
+                                        viewF.tag3.setSelection(7)
+                                        clothes_color = "beige"
+                                    }
+                                    "pattern" -> {
+                                        viewF.tag3.setSelection(8)
+                                        clothes_color = "pattern"
+                                    }
+                                }
+                                viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
+                                    }
+
+                                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                                    }
+                                }
+                            }
+
+                            override fun onNothingSelected(parent: AdapterView<*>?) {
+                            }
+                        }
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                    }
+                }
+            }
+            "skirt" -> {
+                // 1번 스피너 - 옷 종류
+                val myadapter1 = ArrayAdapter.createFromResource(mainActivity, R.array.type, android.R.layout.simple_spinner_item)
+
+                myadapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                viewF.tag1.adapter = myadapter1
+                viewF.tag1.setSelection(2)
+
+                viewF.tag1.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                        tag1data = (view as? TextView)?.text.toString()
+                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.bottom, android.R.layout.simple_spinner_item)
+
+                        myadapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                        viewF.tag2.adapter = myadapter2
+                        viewF.tag2.setSelection(3)
+
+                        viewF.tag2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                                clothes_category = "skirt"
+                                // 세번째 태그 오픈
+                                val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.clothes_colors, android.R.layout.simple_spinner_item)
+                                myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                                viewF.tag3.adapter = myadapter3
+                                when(analyze_color){
+                                    "" -> {
+                                        clothes_color = ""
+                                    }
+                                    "black" -> {
+                                        viewF.tag3.setSelection(1)
+                                        clothes_color = "black"
+                                    }
+                                    "blue" -> {
+                                        viewF.tag3.setSelection(2)
+                                        clothes_color = "blue"
+                                    }
+                                    "red" -> {
+                                        viewF.tag3.setSelection(3)
+                                        clothes_color = "red"
+                                    }
+                                    "green" -> {
+                                        viewF.tag3.setSelection(4)
+                                        clothes_color = "green"
+                                    }
+                                    "white" -> {
+                                        viewF.tag3.setSelection(5)
+                                        clothes_color = "white"
+                                    }
+                                    "gray" -> {
+                                        viewF.tag3.setSelection(6)
+                                        clothes_color = "gray"
+                                    }
+                                    "beige" -> {
+                                        viewF.tag3.setSelection(7)
+                                        clothes_color = "beige"
+                                    }
+                                    "pattern" -> {
+                                        viewF.tag3.setSelection(8)
+                                        clothes_color = "pattern"
+                                    }
+                                }
+                                viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
+                                    }
+
+                                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                                    }
+                                }
+                            }
+
+                            override fun onNothingSelected(parent: AdapterView<*>?) {
+                            }
+                        }
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                    }
+                }
+            }
+            // 원피스
+            "short_sleeve_dress"-> {
+                // 1번 스피너 - 옷 종류
+                val myadapter1 = ArrayAdapter.createFromResource(mainActivity, R.array.type, android.R.layout.simple_spinner_item)
+
+                myadapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                viewF.tag1.adapter = myadapter1
+                viewF.tag1.setSelection(3)
+
+                viewF.tag1.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                        tag1data = (view as? TextView)?.text.toString()
+                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.bottom, android.R.layout.simple_spinner_item)
+
+                        myadapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                        viewF.tag2.adapter = myadapter2
+                        viewF.tag2.setSelection(1)
+
+                        viewF.tag2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                                clothes_category = "short_sleeve_dress"
+                                // 세번째 태그 오픈
+                                val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.clothes_colors, android.R.layout.simple_spinner_item)
+                                myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                                viewF.tag3.adapter = myadapter3
+                                when(analyze_color){
+                                    "" -> {
+                                        clothes_color = ""
+                                    }
+                                    "black" -> {
+                                        viewF.tag3.setSelection(1)
+                                        clothes_color = "black"
+                                    }
+                                    "blue" -> {
+                                        viewF.tag3.setSelection(2)
+                                        clothes_color = "blue"
+                                    }
+                                    "red" -> {
+                                        viewF.tag3.setSelection(3)
+                                        clothes_color = "red"
+                                    }
+                                    "green" -> {
+                                        viewF.tag3.setSelection(4)
+                                        clothes_color = "green"
+                                    }
+                                    "white" -> {
+                                        viewF.tag3.setSelection(5)
+                                        clothes_color = "white"
+                                    }
+                                    "gray" -> {
+                                        viewF.tag3.setSelection(6)
+                                        clothes_color = "gray"
+                                    }
+                                    "beige" -> {
+                                        viewF.tag3.setSelection(7)
+                                        clothes_color = "beige"
+                                    }
+                                    "pattern" -> {
+                                        viewF.tag3.setSelection(8)
+                                        clothes_color = "pattern"
+                                    }
+                                }
+                                viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
+                                    }
+
+                                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                                    }
+                                }
+                            }
+
+                            override fun onNothingSelected(parent: AdapterView<*>?) {
+                            }
+                        }
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                    }
+                }
+            }
+            "long_sleeve_dress"-> {
+                // 1번 스피너 - 옷 종류
+                val myadapter1 = ArrayAdapter.createFromResource(mainActivity, R.array.type, android.R.layout.simple_spinner_item)
+
+                myadapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                viewF.tag1.adapter = myadapter1
+                viewF.tag1.setSelection(3)
+
+                viewF.tag1.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                        tag1data = (view as? TextView)?.text.toString()
+                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.bottom, android.R.layout.simple_spinner_item)
+
+                        myadapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                        viewF.tag2.adapter = myadapter2
+                        viewF.tag2.setSelection(2)
+
+                        viewF.tag2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                                clothes_category = "long_sleeve_dress"
+                                // 세번째 태그 오픈
+                                val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.clothes_colors, android.R.layout.simple_spinner_item)
+                                myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                                viewF.tag3.adapter = myadapter3
+                                when(analyze_color){
+                                    "" -> {
+                                        clothes_color = ""
+                                    }
+                                    "black" -> {
+                                        viewF.tag3.setSelection(1)
+                                        clothes_color = "black"
+                                    }
+                                    "blue" -> {
+                                        viewF.tag3.setSelection(2)
+                                        clothes_color = "blue"
+                                    }
+                                    "red" -> {
+                                        viewF.tag3.setSelection(3)
+                                        clothes_color = "red"
+                                    }
+                                    "green" -> {
+                                        viewF.tag3.setSelection(4)
+                                        clothes_color = "green"
+                                    }
+                                    "white" -> {
+                                        viewF.tag3.setSelection(5)
+                                        clothes_color = "white"
+                                    }
+                                    "gray" -> {
+                                        viewF.tag3.setSelection(6)
+                                        clothes_color = "gray"
+                                    }
+                                    "beige" -> {
+                                        viewF.tag3.setSelection(7)
+                                        clothes_color = "beige"
+                                    }
+                                    "pattern" -> {
+                                        viewF.tag3.setSelection(8)
+                                        clothes_color = "pattern"
+                                    }
+                                }
+                                viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
+                                    }
+
+                                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                                    }
+                                }
+                            }
+
+                            override fun onNothingSelected(parent: AdapterView<*>?) {
+                            }
+                        }
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                    }
+                }
+            }
+            "vest_dress"-> {
+                // 1번 스피너 - 옷 종류
+                val myadapter1 = ArrayAdapter.createFromResource(mainActivity, R.array.type, android.R.layout.simple_spinner_item)
+
+                myadapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                viewF.tag1.adapter = myadapter1
+                viewF.tag1.setSelection(3)
+
+                viewF.tag1.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                        tag1data = (view as? TextView)?.text.toString()
+                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.bottom, android.R.layout.simple_spinner_item)
+
+                        myadapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                        viewF.tag2.adapter = myadapter2
+                        viewF.tag2.setSelection(3)
+
+                        viewF.tag2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                                clothes_category = "vest_dress"
+                                // 세번째 태그 오픈
+                                val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.clothes_colors, android.R.layout.simple_spinner_item)
+                                myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                                viewF.tag3.adapter = myadapter3
+                                when(analyze_color){
+                                    "" -> {
+                                        clothes_color = ""
+                                    }
+                                    "black" -> {
+                                        viewF.tag3.setSelection(1)
+                                        clothes_color = "black"
+                                    }
+                                    "blue" -> {
+                                        viewF.tag3.setSelection(2)
+                                        clothes_color = "blue"
+                                    }
+                                    "red" -> {
+                                        viewF.tag3.setSelection(3)
+                                        clothes_color = "red"
+                                    }
+                                    "green" -> {
+                                        viewF.tag3.setSelection(4)
+                                        clothes_color = "green"
+                                    }
+                                    "white" -> {
+                                        viewF.tag3.setSelection(5)
+                                        clothes_color = "white"
+                                    }
+                                    "gray" -> {
+                                        viewF.tag3.setSelection(6)
+                                        clothes_color = "gray"
+                                    }
+                                    "beige" -> {
+                                        viewF.tag3.setSelection(7)
+                                        clothes_color = "beige"
+                                    }
+                                    "pattern" -> {
+                                        viewF.tag3.setSelection(8)
+                                        clothes_color = "pattern"
+                                    }
+                                }
+                                viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
+                                    }
+
+                                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                                    }
+                                }
+                            }
+
+                            override fun onNothingSelected(parent: AdapterView<*>?) {
+                            }
+                        }
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                    }
+                }
+            }
+            "sling_dress"-> {
+                // 1번 스피너 - 옷 종류
+                val myadapter1 = ArrayAdapter.createFromResource(mainActivity, R.array.type, android.R.layout.simple_spinner_item)
+
+                myadapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                viewF.tag1.adapter = myadapter1
+                viewF.tag1.setSelection(3)
+
+                viewF.tag1.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                        tag1data = (view as? TextView)?.text.toString()
+                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.bottom, android.R.layout.simple_spinner_item)
+
+                        myadapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                        viewF.tag2.adapter = myadapter2
+                        viewF.tag2.setSelection(4)
+
+                        viewF.tag2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                                clothes_category = "sling_dress"
+                                // 세번째 태그 오픈
+                                val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.clothes_colors, android.R.layout.simple_spinner_item)
+                                myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                                viewF.tag3.adapter = myadapter3
+                                when(analyze_color){
+                                    "" -> {
+                                        clothes_color = ""
+                                    }
+                                    "black" -> {
+                                        viewF.tag3.setSelection(1)
+                                        clothes_color = "black"
+                                    }
+                                    "blue" -> {
+                                        viewF.tag3.setSelection(2)
+                                        clothes_color = "blue"
+                                    }
+                                    "red" -> {
+                                        viewF.tag3.setSelection(3)
+                                        clothes_color = "red"
+                                    }
+                                    "green" -> {
+                                        viewF.tag3.setSelection(4)
+                                        clothes_color = "green"
+                                    }
+                                    "white" -> {
+                                        viewF.tag3.setSelection(5)
+                                        clothes_color = "white"
+                                    }
+                                    "gray" -> {
+                                        viewF.tag3.setSelection(6)
+                                        clothes_color = "gray"
+                                    }
+                                    "beige" -> {
+                                        viewF.tag3.setSelection(7)
+                                        clothes_color = "beige"
+                                    }
+                                    "pattern" -> {
+                                        viewF.tag3.setSelection(8)
+                                        clothes_color = "pattern"
+                                    }
+                                }
+                                viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
+                                    }
+
+                                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                                    }
+                                }
+                            }
+
+                            override fun onNothingSelected(parent: AdapterView<*>?) {
+                            }
+                        }
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                    }
+                }
+            }
+        }
+
         // 카테고리/색상 수동 선택
         // 1번 스피너 - 옷 종류
         val myadapter1 = ArrayAdapter.createFromResource(mainActivity, R.array.type, android.R.layout.simple_spinner_item)
@@ -152,97 +1190,97 @@ class AddClothesFragment: Fragment() {
                         viewF.tag2.setSelection(0)
 
                         viewF.tag2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                                    tag2data = (view as? TextView)?.text.toString()
+                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                                tag2data = (view as? TextView)?.text.toString()
 
-                                    when (tag2data) {
-                                        "" -> {
-                                            //2번 스피너 공백일 때 -> 3번 스피너 선택지 없음
-                                            val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagnone, android.R.layout.simple_spinner_item)
-                                            myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                                            viewF.tag3.adapter = myadapter3
-                                            viewF.tag3.setSelection(0)
+                                when (tag2data) {
+                                    "" -> {
+                                        //2번 스피너 공백일 때 -> 3번 스피너 선택지 없음
+                                        val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagnone, android.R.layout.simple_spinner_item)
+                                        myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                                        viewF.tag3.adapter = myadapter3
+                                        viewF.tag3.setSelection(0)
 
-                                            viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                                                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                                                    tag3data = (view as? TextView)?.text.toString()
-                                                    clothes_color = ""
-                                                    clothes_category = ""
-                                                }
-                                                override fun onNothingSelected(parent: AdapterView<*>?) {
-                                                }
+                                        viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                                                tag3data = (view as? TextView)?.text.toString()
+                                                clothes_color = ""
+                                                clothes_category = ""
+                                            }
+                                            override fun onNothingSelected(parent: AdapterView<*>?) {
                                             }
                                         }
-                                        else -> {
-                                            when (tag2data) {
-                                                "반팔 상의" -> {
-                                                    clothes_category = "short_sleeve_top"
-                                                }
-                                                "긴팔 상의" -> {
-                                                    clothes_category = "long_sleeve_top"
-                                                }
-                                                "반팔 아우터" -> {
-                                                    clothes_category = "short_sleeve_outer"
-                                                }
-                                                "긴팔 아우터" -> {
-                                                    clothes_category = "short_sleeve_outer"
-                                                }
-                                                "조끼(민소매)" -> {
-                                                    clothes_category = "vest"
-                                                }
-                                                "나시" -> {
-                                                    clothes_category = "sling"
-                                                }
+                                    }
+                                    else -> {
+                                        when (tag2data) {
+                                            "반팔 상의" -> {
+                                                clothes_category = "short_sleeve_top"
                                             }
+                                            "긴팔 상의" -> {
+                                                clothes_category = "long_sleeve_top"
+                                            }
+                                            "반팔 아우터" -> {
+                                                clothes_category = "short_sleeve_outer"
+                                            }
+                                            "긴팔 아우터" -> {
+                                                clothes_category = "short_sleeve_outer"
+                                            }
+                                            "조끼(민소매)" -> {
+                                                clothes_category = "vest"
+                                            }
+                                            "나시" -> {
+                                                clothes_category = "sling"
+                                            }
+                                        }
 
-                                            // 세번째 태그 오픈 - 색상
-                                            val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.clothes_colors, android.R.layout.simple_spinner_item)
-                                            myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                                            viewF.tag3.adapter = myadapter3
-                                            viewF.tag3.setSelection(0)
+                                        // 세번째 태그 오픈 - 색상
+                                        val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.clothes_colors, android.R.layout.simple_spinner_item)
+                                        myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                                        viewF.tag3.adapter = myadapter3
+                                        viewF.tag3.setSelection(0)
 
-                                            viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                                                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                                                    tag3data = (view as? TextView)?.text.toString()
-                                                    when(tag3data){
-                                                        "" -> {
-                                                            clothes_color = ""
-                                                        }
-                                                        "검정" -> {
-                                                            clothes_color = "black"
-                                                        }
-                                                        "블루" -> {
-                                                            clothes_color = "blue"
-                                                        }
-                                                        "레드" -> {
-                                                            clothes_color = "red"
-                                                        }
-                                                        "그린" -> {
-                                                            clothes_color = "green"
-                                                        }
-                                                        "화이트" -> {
-                                                            clothes_color = "white"
-                                                        }
-                                                        "그레이" -> {
-                                                            clothes_color = "gray"
-                                                        }
-                                                        "베이지" -> {
-                                                            clothes_color = "beige"
-                                                        }
-                                                        "패턴" -> {
-                                                            clothes_color = "pattern"
-                                                        }
+                                        viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                                                tag3data = (view as? TextView)?.text.toString()
+                                                when(tag3data){
+                                                    "" -> {
+                                                        clothes_color = ""
+                                                    }
+                                                    "검정" -> {
+                                                        clothes_color = "black"
+                                                    }
+                                                    "블루" -> {
+                                                        clothes_color = "blue"
+                                                    }
+                                                    "레드" -> {
+                                                        clothes_color = "red"
+                                                    }
+                                                    "그린" -> {
+                                                        clothes_color = "green"
+                                                    }
+                                                    "화이트" -> {
+                                                        clothes_color = "white"
+                                                    }
+                                                    "그레이" -> {
+                                                        clothes_color = "gray"
+                                                    }
+                                                    "베이지" -> {
+                                                        clothes_color = "beige"
+                                                    }
+                                                    "패턴" -> {
+                                                        clothes_color = "pattern"
                                                     }
                                                 }
-                                                override fun onNothingSelected(parent: AdapterView<*>?) {
-                                                }
+                                            }
+                                            override fun onNothingSelected(parent: AdapterView<*>?) {
                                             }
                                         }
                                     }
                                 }
-                                override fun onNothingSelected(parent: AdapterView<*>?) {
-                                }
                             }
+                            override fun onNothingSelected(parent: AdapterView<*>?) {
+                            }
+                        }
                     }
                     // 1번 스피너 값이 하의인 경우
                     "하의" -> {
@@ -253,87 +1291,87 @@ class AddClothesFragment: Fragment() {
                         viewF.tag2.setSelection(0)
 
                         viewF.tag2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                                    tag2data = (view as? TextView)?.text.toString()
+                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                                tag2data = (view as? TextView)?.text.toString()
 
-                                    when (tag2data) {
-                                        "" -> {
-                                            //2번 스피너 공백일 때 -> 3번 스피너 선택지 없음
-                                            val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagnone, android.R.layout.simple_spinner_item)
-                                            myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                                            viewF.tag3.adapter = myadapter3
-                                            viewF.tag3.setSelection(0)
+                                when (tag2data) {
+                                    "" -> {
+                                        //2번 스피너 공백일 때 -> 3번 스피너 선택지 없음
+                                        val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagnone, android.R.layout.simple_spinner_item)
+                                        myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                                        viewF.tag3.adapter = myadapter3
+                                        viewF.tag3.setSelection(0)
 
-                                            viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                                                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
-                                                    tag3data = (view as? TextView)?.text.toString()
-                                                    clothes_color = ""
-                                                    clothes_category = ""
-                                                }
-                                                override fun onNothingSelected(parent: AdapterView<*>?) {
-                                                }
+                                        viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
+                                                tag3data = (view as? TextView)?.text.toString()
+                                                clothes_color = ""
+                                                clothes_category = ""
+                                            }
+                                            override fun onNothingSelected(parent: AdapterView<*>?) {
                                             }
                                         }
-                                        else -> {
-                                            when (tag2data) {
-                                                "반바지" -> {
-                                                    clothes_category = "shorts"
-                                                }
-                                                "긴바지" -> {
-                                                    clothes_category = "trousers"
-                                                }
-                                                "치마" -> {
-                                                    clothes_category = "skirt"
-                                                }
-
+                                    }
+                                    else -> {
+                                        when (tag2data) {
+                                            "반바지" -> {
+                                                clothes_category = "shorts"
                                             }
-                                            // 세번째 태그 오픈
-                                            val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.clothes_colors, android.R.layout.simple_spinner_item)
-                                            myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                                            viewF.tag3.adapter = myadapter3
-                                            viewF.tag3.setSelection(0)
+                                            "긴바지" -> {
+                                                clothes_category = "trousers"
+                                            }
+                                            "치마" -> {
+                                                clothes_category = "skirt"
+                                            }
 
-                                            viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                                                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
-                                                        tag3data = (view as? TextView)?.text.toString()
-                                                        when(tag3data){
-                                                            "" -> {
-                                                                clothes_color = ""
-                                                            }
-                                                            "검정" -> {
-                                                                clothes_color = "black"
-                                                            }
-                                                            "블루" -> {
-                                                                clothes_color = "blue"
-                                                            }
-                                                            "레드" -> {
-                                                                clothes_color = "red"
-                                                            }
-                                                            "그린" -> {
-                                                                clothes_color = "green"
-                                                            }
-                                                            "화이트" -> {
-                                                                clothes_color = "white"
-                                                            }
-                                                            "그레이" -> {
-                                                                clothes_color = "gray"
-                                                            }
-                                                            "베이지" -> {
-                                                                clothes_color = "beige"
-                                                            }
-                                                            "패턴" -> {
-                                                                clothes_color = "pattern"
-                                                            }
-                                                        }
+                                        }
+                                        // 세번째 태그 오픈
+                                        val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.clothes_colors, android.R.layout.simple_spinner_item)
+                                        myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                                        viewF.tag3.adapter = myadapter3
+                                        viewF.tag3.setSelection(0)
+
+                                        viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
+                                                tag3data = (view as? TextView)?.text.toString()
+                                                when(tag3data){
+                                                    "" -> {
+                                                        clothes_color = ""
                                                     }
-                                                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                                                    "검정" -> {
+                                                        clothes_color = "black"
+                                                    }
+                                                    "블루" -> {
+                                                        clothes_color = "blue"
+                                                    }
+                                                    "레드" -> {
+                                                        clothes_color = "red"
+                                                    }
+                                                    "그린" -> {
+                                                        clothes_color = "green"
+                                                    }
+                                                    "화이트" -> {
+                                                        clothes_color = "white"
+                                                    }
+                                                    "그레이" -> {
+                                                        clothes_color = "gray"
+                                                    }
+                                                    "베이지" -> {
+                                                        clothes_color = "beige"
+                                                    }
+                                                    "패턴" -> {
+                                                        clothes_color = "pattern"
                                                     }
                                                 }
+                                            }
+                                            override fun onNothingSelected(parent: AdapterView<*>?) {
+                                            }
                                         }
                                     }
                                 }
-                                override fun onNothingSelected(parent: AdapterView<*>?) {
-                                }
+                            }
+                            override fun onNothingSelected(parent: AdapterView<*>?) {
+                            }
                         }
                     }
                     // 1번 스피너 값이 원피스인 경우
@@ -482,14 +1520,14 @@ class AddClothesFragment: Fragment() {
                 if(!isExistBlank){
                     //서버로 전송할 JSONObject 만들기 - 카테고리 정보를 담고 있음
                     var jsonobj = JSONObject()
-                    jsonobj.put("accountid",userId) // 어떤 유저의 등록인지 유저id값 포함
+                    jsonobj.put("accountid", userId) // 어떤 유저의 등록인지 유저id값 포함
                     jsonobj.put("buydate",buydate)
                     jsonobj.put("mycolor",final_category)
                     jsonobj.put("mycategory",final_color)
                     jsonobj.put("myimg","$img_name.bmp")
 
                     // 장고 등록 페이지 url
-                    val url = "http://34.222.151.105:8000/save/"
+                    val url = "http://172.30.1.44:8000/cloth/save/"
 
                     //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
                     val client = OkHttpClient()
@@ -511,19 +1549,20 @@ class AddClothesFragment: Fragment() {
                     // 성공여부가 메시지로 전달되면 그에 따라 다르게 작업할 수 있도록 코드변경하기
                     if(save_result[1]=="okay"){
                         // 등록 성공 토스트 메세지 띄우기
-                        runOnUiThread {
+                        ThreadUtils.runOnUiThread {
                             Toast.makeText(mainActivity, "등록 성공", Toast.LENGTH_LONG).show()
                         }
                         save_success = true
 
                     } else if(save_result[1]=="fail") {
                         // 등록 성공 토스트 메세지 띄우기
-                        runOnUiThread {
+                        ThreadUtils.runOnUiThread {
                             Toast.makeText(mainActivity, "등록 실패 \n 관리자에게 문의하세요", Toast.LENGTH_SHORT).show()
                         }
                     }
                 } else {
-                    runOnUiThread {
+                    // 빈칸있음 토스트 메세지 띄우기
+                    ThreadUtils.runOnUiThread {
                         Toast.makeText(mainActivity, "입력되지 않은 칸이 있습니다", Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -679,7 +1718,7 @@ class AddClothesFragment: Fragment() {
                             jsonobj.put("img",imgName)
 
                             // 장고 AI모델 페이지 url? - 나중에 수정
-                            val url = "http://34.222.151.105:8000/register/"
+                            val url = "http://172.30.1.44:8000/test2/?img=test4"
 
                             //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
                             val client = OkHttpClient()
@@ -701,6 +1740,8 @@ class AddClothesFragment: Fragment() {
                             //로그인 성공여부가 메시지로 전달되면 그에 따라 다르게 작업할 수 있도록 코드변경하기
                             analyze_category = analyze_result[3]
                             analyze_color = analyze_result[7]
+                            Log.d("test", analyze_category)
+                            Log.d("test", analyze_color)
                         }
                     }
                 }
@@ -732,7 +1773,7 @@ class AddClothesFragment: Fragment() {
                             jsonobj.put("img",imgName)
 
                             // 장고 AI모델 페이지 url? - 나중에 수정
-                            val url = "http://34.222.151.105:8000/register/"
+                            val url = "http://172.30.1.44:8000/test2/"
 
                             //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
                             val client = OkHttpClient()
