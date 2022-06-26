@@ -438,6 +438,90 @@ class AddClothesFragment: Fragment() {
 //                result.text = "선택된 가수가 없습니다."
             }
         }
+        //************AI 모델 반환값을 기준으로 카테고리 대분류 선택************
+        when(analyze_category){
+            // 상의
+            "short_sleeve_top" -> {
+                viewF.tag1.setSelection(1)
+                viewF.tag2.setSelection(1)
+            }
+            "long_sleeve_top" -> {
+                viewF.tag1.setSelection(1)
+                viewF.tag2.setSelection(2)
+            }
+            "short_sleeve_outer" -> {
+                viewF.tag1.setSelection(1)
+                viewF.tag2.setSelection(3)
+            }
+            "long_sleeve_outer" -> {
+                viewF.tag1.setSelection(1)
+                viewF.tag2.setSelection(4)
+            }
+            "vest" -> {
+                viewF.tag1.setSelection(1)
+                viewF.tag2.setSelection(5)
+            }
+            "sling" -> {
+                viewF.tag1.setSelection(1)
+                viewF.tag2.setSelection(6)
+            }
+            // 하의
+            "shorts"-> {
+                viewF.tag1.setSelection(2)
+                viewF.tag2.setSelection(1)
+            }
+            "trousers"-> {
+                viewF.tag1.setSelection(2)
+                viewF.tag2.setSelection(2)
+            }
+            "skirt" -> {
+                viewF.tag1.setSelection(2)
+                viewF.tag2.setSelection(3)
+            }
+            // 원피스
+            "short_sleeve_dress"-> {
+                viewF.tag1.setSelection(3)
+                viewF.tag2.setSelection(1)
+            }
+            "long_sleeve_dress"-> {
+                viewF.tag1.setSelection(3)
+                viewF.tag2.setSelection(2)
+            }
+            "vest_dress"-> {
+                viewF.tag1.setSelection(3)
+                viewF.tag2.setSelection(3)
+            }
+            "sling_dress"-> {
+                viewF.tag1.setSelection(3)
+                viewF.tag2.setSelection(4)
+            }
+        }
+        when(analyze_color){
+            "black"-> {
+                viewF.tag3.setSelection(1)
+            }
+            "blue"-> {
+                viewF.tag3.setSelection(2)
+            }
+            "red"-> {
+                viewF.tag3.setSelection(3)
+            }
+            "green"-> {
+                viewF.tag3.setSelection(4)
+            }
+            "white"-> {
+                viewF.tag3.setSelection(5)
+            }
+            "gray"-> {
+                viewF.tag3.setSelection(6)
+            }
+            "beige"-> {
+                viewF.tag3.setSelection(7)
+            }
+            "pattern"-> {
+                viewF.tag3.setSelection(8)
+            }
+        }
 
 
         // 앨범 버튼 클릭 리스너 구현
@@ -489,7 +573,7 @@ class AddClothesFragment: Fragment() {
                     jsonobj.put("myimg","$img_name.bmp")
 
                     // 장고 등록 페이지 url
-                    val url = "http://52.37.48.195:8000/save/"
+                    val url = "http://52.37.48.195:8000/cloth/save/"
 
                     //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
                     val client = OkHttpClient()
@@ -523,6 +607,7 @@ class AddClothesFragment: Fragment() {
                         }
                     }
                 } else {
+                    // 빈칸있음 토스트 메세지 띄우기
                     runOnUiThread {
                         Toast.makeText(mainActivity, "입력되지 않은 칸이 있습니다", Toast.LENGTH_SHORT).show()
                     }
@@ -679,7 +764,7 @@ class AddClothesFragment: Fragment() {
                             jsonobj.put("img",imgName)
 
                             // 장고 AI모델 페이지 url? - 나중에 수정
-                            val url = "http://34.222.151.105:8000/register/"
+                            val url = "http://52.37.48.195:8000/test/?img=$imgName&id=" + userId
 
                             //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
                             val client = OkHttpClient()
@@ -758,90 +843,7 @@ class AddClothesFragment: Fragment() {
                     }
                 }
             }
-            //************AI 모델 반환값을 기준으로 카테고리 대분류 선택************
-            when(analyze_category){
-                // 상의
-                "short_sleeve_top" -> {
-                    viewF.tag1.setSelection(1)
-                    viewF.tag2.setSelection(1)
-                }
-                "long_sleeve_top" -> {
-                    viewF.tag1.setSelection(1)
-                    viewF.tag2.setSelection(2)
-                }
-                "short_sleeve_outer" -> {
-                    viewF.tag1.setSelection(1)
-                    viewF.tag2.setSelection(3)
-                }
-                "long_sleeve_outer" -> {
-                    viewF.tag1.setSelection(1)
-                    viewF.tag2.setSelection(4)
-                }
-                "vest" -> {
-                    viewF.tag1.setSelection(1)
-                    viewF.tag2.setSelection(5)
-                }
-                "sling" -> {
-                    viewF.tag1.setSelection(1)
-                    viewF.tag2.setSelection(6)
-                }
-                // 하의
-                "shorts"-> {
-                    viewF.tag1.setSelection(2)
-                    viewF.tag2.setSelection(1)
-                }
-                "trousers"-> {
-                    viewF.tag1.setSelection(2)
-                    viewF.tag2.setSelection(2)
-                }
-                "skirt" -> {
-                    viewF.tag1.setSelection(2)
-                    viewF.tag2.setSelection(3)
-                }
-                // 원피스
-                "short_sleeve_dress"-> {
-                    viewF.tag1.setSelection(3)
-                    viewF.tag2.setSelection(1)
-                }
-                "long_sleeve_dress"-> {
-                    viewF.tag1.setSelection(3)
-                    viewF.tag2.setSelection(2)
-                }
-                "vest_dress"-> {
-                    viewF.tag1.setSelection(3)
-                    viewF.tag2.setSelection(3)
-                }
-                "sling_dress"-> {
-                    viewF.tag1.setSelection(3)
-                    viewF.tag2.setSelection(4)
-                }
-            }
-            when(analyze_color){
-                "black"-> {
-                    viewF.tag3.setSelection(1)
-                }
-                "blue"-> {
-                    viewF.tag3.setSelection(2)
-                }
-                "red"-> {
-                    viewF.tag3.setSelection(3)
-                }
-                "green"-> {
-                    viewF.tag3.setSelection(4)
-                }
-                "white"-> {
-                    viewF.tag3.setSelection(5)
-                }
-                "gray"-> {
-                    viewF.tag3.setSelection(6)
-                }
-                "beige"-> {
-                    viewF.tag3.setSelection(7)
-                }
-                "pattern"-> {
-                    viewF.tag3.setSelection(8)
-                }
-            }
+
         }
     }
     // base64로 변환된 이미지를 저장할 수 있게 서버에 mqtt전송
