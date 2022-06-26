@@ -3,6 +3,8 @@ package com.example.smartcloset.home
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Point
 import android.icu.text.SimpleDateFormat
 import android.location.Location
@@ -33,20 +35,25 @@ import androidx.databinding.DataBindingUtil.setContentView
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.smartcloset.auth_cnt
 import com.example.smartcloset.login.userId
+import kotlinx.android.synthetic.main.compare.*
 import okhttp3.MediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
 import org.json.JSONObject
+import java.net.HttpURLConnection
+import java.net.URL
 import kotlin.concurrent.thread
+import com.example.smartcloset.login.userId
 
 
 class HomeFragment : Fragment() {
 
     val PERMISSION_LOCATION = 10
     lateinit var mainActivity: MainActivity
+    lateinit var rcmdClothAdapter:ClothAdapter
     private var curPoint : Point? = null
-    var datalist =ArrayList<Int>()
+    var datalist =ArrayList<Bitmap>()
 
     companion object {
         fun newInstance() = HomeFragment()
@@ -71,6 +78,7 @@ class HomeFragment : Fragment() {
 
         return view
     }
+    //
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -328,18 +336,40 @@ class HomeFragment : Fragment() {
 
             Log.d("http",result!!) //로그 찍어본 후에 파싱해서 옷 객체로 만들고, 리사이클러뷰에 띄우기
 
-            //여기서 데이터 파싱 후 옷 모델 만들어주기? 해야함
 
-            //옷 모델을 만들어서 리사이클러뷰에 넣어줘야함 (= 배열로 만들어서?)
-//            loadImage("https://closetimg103341-dev.s3.us-west-2.amazonaws.com/test5.png")
-            Log.d("bit_img_img", "여기까지 넘어옴")
-            mainActivity.runOnUiThread {
-                //여기서 리사이클러뷰를 바꿔줘야 하나?
-                Log.d("bit_img_img", "여기까지 넘어옴")
+            val jsonObject = JSONObject(result.trimIndent())
 
+            datalist.clear()
+
+            val compare_img = jsonObject.getString("result")
+            var compare_img_list = compare_img.substringAfter("[\"")
+                .substringBeforeLast("\"]").split("\",\"")
+            Log.d("test", compare_img_list.toString() )
+            for ( i in 0 .. (compare_img_list.size - 1) ) {
+                loadImage("https://group8img.s3.us-west-2.amazonaws.com/"+ compare_img_list[i] +".jpg")
             }
 
+
         }
+    }
+    fun loadImage(imageUrl:String){
+        thread{
+            val url = URL(imageUrl)
+            val con = url.openConnection() as HttpURLConnection
+            var image = con.inputStream
+            var imagedata = image.readBytes()
+            var bitmap = BitmapFactory.decodeByteArray(imagedata,0,imagedata.size)
+
+            datalist.add(bitmap)
+
+            mainActivity.runOnUiThread{
+//                img_compare_preview.setImageBitmap(bitmap)
+                rcmdClothAdapter.notifyDataSetChanged()
+            }
+            Log.d("klimtest","${datalist.size}")
+
+        }
+        Log.d("klimtest","end")
     }
     override fun onAttach(context: Context) {
         super.onAttach(context)

@@ -24,7 +24,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.RecyclerView
 import com.example.smartcloset.MainActivity
 import com.example.smartcloset.R
 
@@ -37,22 +36,25 @@ import okhttp3.*
 import org.eclipse.paho.client.mqttv3.MqttMessage
 import org.json.JSONObject
 import java.io.ByteArrayOutputStream
-import java.io.OutputStream
 import java.net.HttpURLConnection
 import java.net.URL
+import java.util.concurrent.TimeUnit
 import kotlin.concurrent.thread
+import kotlin.reflect.typeOf
 
 
 class CompareFragment: Fragment() {
-    var datalist =ArrayList<Int>()
+    lateinit var adapter:RecyclerAdapter
+    var datalist =ArrayList<Bitmap>()
     lateinit var mainActivity: MainActivity
-    val sub_topic = "iot/#"
-    val server_uri = "tcp://192.168.35.5:1883" //broker의 ip와 port
+    val sub_topic = "iot/compare"
+    val server_uri = "tcp://52.37.148.146:1883" //broker의 ip와 port
     var mymqtt: MyMqtt? = null
     var uri : Uri? = null
     lateinit var mContext : Context
     val PERMISSION_CAMERA = 1001 //맞나?
     val REQUEST_CAMERA = 2 //맞나?
+    var img_names = ArrayList<String>()
     lateinit var realUri:Uri
     var img_name = ""
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,15 +80,7 @@ class CompareFragment: Fragment() {
         val view = inflater.inflate(R.layout.compare, container, false)
         view.btn_add_comparePic.setOnClickListener {
             //등록 버튼 클릭 이벤트 리스너
-                requirePermissions(arrayOf(Manifest.permission.CAMERA), PERMISSION_CAMERA)
-
-        }
-        view.btn_compare_save.setOnClickListener {
-//            sendImgName(img_name)
-            loadImage("https://closetimg103341-dev.s3.us-west-2.amazonaws.com/test5.png")
-        }
-
-        view.btn_compare_exit.setOnClickListener {
+            requirePermissions(arrayOf(Manifest.permission.CAMERA), PERMISSION_CAMERA)
 
         }
 
@@ -161,7 +155,8 @@ class CompareFragment: Fragment() {
         Log.d("img_name", filename)
         //여기서 이미지 이름을 http로 보내줘야 할 거 같음
         img_name = filename
-//        sendImgName(img_name)
+
+//        여기서 호출 해서 이미지 이름을 넘겨줘야 할 거 같음
         return "$filename.jpg"   // 이 부분 바꿨고..
     }
 
@@ -186,7 +181,6 @@ class CompareFragment: Fragment() {
                         //사진이 찍히면 이미지뷰에 띄워줌, DB로 전송도 해서 값을 받아와 밑의 RecyclerViewㅇ[ 보여줘야함
                         img_compare_preview.setImageURI(uri)
                         //rest 사용해서 이미지 이름을 보내주고, 스토리지에 이미지를 저장, 이미지는 어떻게 저장?
-                        val outStream:OutputStream
                         var bitmap = ImageDecoder.decodeBitmap(ImageDecoder.createSource(mainActivity.contentResolver, uri))
                         val byteArrayOutputStream :ByteArrayOutputStream = ByteArrayOutputStream()
                         bitmap.compress(Bitmap.CompressFormat.JPEG, 40, byteArrayOutputStream)
@@ -194,7 +188,10 @@ class CompareFragment: Fragment() {
                         val encoded = Base64.encodeToString(byteArray, Base64.DEFAULT)
 
 //                        Log.d("encode_img", encoded)
+                        //이미지를 서버로 보내기. 서버에서는 받은 데이터를 비트맵으로 변환해 저장
                         imgPub(encoded)
+                        sendImgName(img_name)
+
 
 //                        Log.d("bitmap", bitmap.toString())
 //                        Log.d("tt", img_name)
@@ -224,16 +221,30 @@ class CompareFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //RecyclerView 선언
-        var compareRecyclerView:RecyclerView? = getView()?.findViewById(R.id.compare_recycler)
-        compareRecyclerView!!.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL))
-        for(i in 0..7){
-            //비교할 옷 사진 데이터들을 받아와 표시할 곳
-            datalist.add(R.drawable.p1)
-        }
+       // var compareRecyclerView:RecyclerView? = getView()?.findViewById(R.id.compare_recycler)
+//        compare_recycler.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL))
 
-        //Adapter 생성하고 연결해주기
-        val adapter =RecyclerAdapter(mainActivity, R.layout.compare_item,datalist)
-        compareRecyclerView?.adapter = adapter
+        adapter =RecyclerAdapter(mainActivity, R.layout.compare_item, datalist, img_names)
+        compare_recycler.adapter = adapter
+
+//        view.btn_compare_exit.setOnClickListener {
+//
+//        }
+//
+//        for(i in 0..7){
+//            //비교할 옷 사진 데이터들을 받아와 표시할 곳
+//
+//        }
+
+
+
+//        view.btn_compare.setOnClickListener {
+////            adapter.notifyDataSetChanged()
+//            loadImage("https://group8img.s3.us-west-2.amazonaws.com/test3.png")
+//            loadImage("https://group8img.s3.us-west-2.amazonaws.com/test4.png")
+//            loadImage("https://group8img.s3.us-west-2.amazonaws.com/test5.png")
+//        }
+
 
 
     }
@@ -247,55 +258,99 @@ class CompareFragment: Fragment() {
             var imagedata = image.readBytes()
             var bitmap = BitmapFactory.decodeByteArray(imagedata,0,imagedata.size)
 
+            datalist.add(bitmap)
+
             mainActivity.runOnUiThread{
-                img_compare_preview.setImageBitmap(bitmap)
+//                img_compare_preview.setImageBitmap(bitmap)
+                adapter.notifyDataSetChanged()
             }
+            Log.d("klimtest","${datalist.size}")
 
         }
-
+        Log.d("klimtest","end")
     }
 
 
 
     fun sendImgName(name:String){
+        var imgs:Array<String>
+        var tags:Array<String>
 //        Toast.makeText(mainActivity, "제대로 전송됨", Toast.LENGTH_LONG).show()
         thread{
 
             //이미지 이름을 url 뒤에 붙여 전달해줌
-            var jsonobj = JSONObject()
-            jsonobj.put("ImgName","https://closetimg103341-dev.s3.us-west-2.amazonaws.com/$name.bmp" )
-            jsonobj.put("ImgName","test_img_name" )
+//            var jsonobj = JSONObject()
+//            jsonobj.put("img","https://closetimg103341-dev.s3.us-west-2.amazonaws.com/rank1.jpg" )//            jsonobj.put("ImgName","test_img_name" )
+
             Log.d("bit_img_img", "이미지 이름 전송함")
-            val url = "http://34.222.151.105:8000/recommend/compare/?id=" + userId +"/"  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
+            Log.d("test", userId)
+//            val url = "http://172.30.1.53:8000/recommend/compare/?id=" + userId  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
+            val url = "http://172.30.1.53:8000/test/?img=test4&id=" + userId  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
 
             //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
-            val client = OkHttpClient()
+//            val client = OkHttpClient()
 
             //json데이터를 이용해서 request 처리
-            val jsondata = jsonobj.toString()
+//            val jsondata = jsonobj.toString()
+//            Log.d("test", jsondata)
             //서버에 요청을 담당하는 객체
             val builder = Request.Builder()    // request객체를 만들어주는 객체 생성
             builder.url(url)                   //Builder객체에 request할 주소(네트워크상의 주소)셋팅
-            builder.post(RequestBody.create(MediaType.parse("application/json"),jsondata)) // 요청메시지 만들고 요청메시지의 타입이 json이라고 설정
+//            builder.post(RequestBody.create(MediaType.parse("application/json"),jsondata)) // 요청메시지 만들고 요청메시지의 타입이 json이라고 설정
             val myrequest: Request = builder.build() //Builder객체를 이용해서 request객체 만들기
             //생성한 request 객체를 이용해서 웹에 request하기 - request결과로 response 객체가 리턴
             // ==> Response가 서버에서 돌려준 josn 객체인가??
+            val client = OkHttpClient.Builder()
+                //.addInterceptor(interceptor)
+                .connectTimeout(100, TimeUnit.SECONDS)
+                .readTimeout(100, TimeUnit.SECONDS)
+                .writeTimeout(100, TimeUnit.SECONDS)
+                .build()
+
+
             val response: Response = client.newCall(myrequest).execute()
 
             //response에서 메시지꺼내서 로그 출력하기 -> 결과가 뭘로 오는지, 이미지 이름과 카테고리 분류된 결과가 오면 DB에 저장하는 코드 작성
             //결과를 받아와서 모델 객체를.. 만들어서? recycler View에 반영해줘야 함
             val result:String? = response.body()?.string()
+            Log.d("http",result!!)
 
-            Log.d("http",result!!) //로그 찍어본 후에 파싱해서 옷 객체로 만들고, 리사이클러뷰에 띄우기
+
+            val jsonObject = JSONObject(result.trimIndent())
+            val catObject = jsonObject.getString("category")
+            val colorObject = jsonObject.getString("color")
+
+
+            datalist.clear()
+            img_names.clear()
+
+            val compare_img = jsonObject.getString("result")
+            var compare_img_list = compare_img.substringAfter("[\"")
+                .substringBeforeLast("\"]").split("\",\"")
+
+            for ( i in 0 .. (compare_img_list.size - 1) ) {
+                loadImage("https://group8img.s3.us-west-2.amazonaws.com/"+ compare_img_list[i] +".png")
+            }
+
+
+            //로그 찍어본 후에 파싱해서 스플릿으로 나눈다음, 배열의 길이만큼 loadImage를 포문으로 돌리기
+
+            //기존 리사이클러뷰에 들어갔던 데이터를 비우고
+
+            // 받아온 결과값 이미지 url 리스트들을 for문으로 돌려 리사이클러뷰에 추가함, for 문 돌릴 때 이미지 이름도 추가
+//            loadImage()
+
 
             //여기서 데이터 파싱 후 옷 모델 만들어주기? 해야함
 
             //옷 모델을 만들어서 리사이클러뷰에 넣어줘야함 (= 배열로 만들어서?)
 //            loadImage("https://closetimg103341-dev.s3.us-west-2.amazonaws.com/test5.png")
-            Log.d("bit_img_img", "여기까지 넘어옴")
             mainActivity.runOnUiThread {
                 //여기서 리사이클러뷰를 바꿔줘야 하나?
+                compare_category_tag.setText(catObject.toString())
+                compare_color_tag.setText(colorObject.toString())
                 Log.d("bit_img_img", "여기까지 넘어옴")
+
 
             }
 

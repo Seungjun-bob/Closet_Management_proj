@@ -114,10 +114,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':'group8db',
+        'NAME':'realtest',
         'USER':'root',
-        'PASSWORD':'smartcloset',
-        'HOST':'group8db.cna4att8xqsv.us-west-2.rds.amazonaws.com',
+        'PASSWORD':'1111',
+        'HOST':'localhost',
         'PORT':'3306',
         'OPTIONS':{
             'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"'
