@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -62,6 +63,8 @@
                     tools:layout_editor_absoluteY="4dp" />
 
                 <EditText
+                    android:theme="@style/edit_text_theme"
+                    android:textColor="@color/black"
                     android:id="@+id/editTextTextPersonName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -84,6 +87,8 @@
                     tools:layout_editor_absoluteY="102dp" />
 
                 <EditText
+                    android:theme="@style/edit_text_theme"
+                    android:textColor="@color/black"
                     android:id="@+id/editTextTextEmailAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -106,6 +111,8 @@
                     tools:layout_editor_absoluteY="190dp" />
 
                 <EditText
+                    android:theme="@style/edit_text_theme"
+                    android:textColor="@color/black"
                     android:id="@+id/editTextDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -128,6 +135,8 @@
                     tools:layout_editor_absoluteY="275dp" />
 
                 <EditText
+                    android:theme="@style/edit_text_theme"
+                    android:textColor="@color/black"
                     android:id="@+id/editTextTextPassword"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

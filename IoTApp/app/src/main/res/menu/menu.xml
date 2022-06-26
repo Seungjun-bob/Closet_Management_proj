@@ -7,14 +7,14 @@
     <item android:title="Favorites"
         android:enabled="true"
         android:id="@+id/second"
-        android:icon="@drawable/ic_baseline_favorite_24" />
+        android:icon="@drawable/ic_baseline_add_to_photos_24" />
     <item android:title="Email"
         android:enabled="true"
         android:id="@+id/third"
-        android:icon="@drawable/ic_baseline_email_24" />
+        android:icon="@drawable/ic_baseline_checkroom_24" />
     <item android:title="Email"
         android:enabled="true"
         android:id="@+id/forth"
-        android:icon="@drawable/ic_baseline_person_24" />
+        android:icon="@drawable/ic_baseline_compare_arrows_24" />
 
 </menu>

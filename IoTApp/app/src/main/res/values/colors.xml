@@ -8,4 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="bnv_select">#8ECDFF</color>
+    <color name="themes_color">#D9B796</color>
 </resources>
