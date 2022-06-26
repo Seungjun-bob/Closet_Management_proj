@@ -76,9 +76,9 @@ def color_classfication(numpy_value):
         color_result = 'white'
 
 def real(url):
-    path = abs_path + "media/images/" + "test3.png"
+    path = abs_path + "media/images/" + "test3.jpg"
     urllib.request.urlretrieve(url, path)
-    img = abs_path + 'media/images/test3.png'
+    img = abs_path + 'media/images/test3.jpg'
     img_instance = ImageModel(
         image=img
     )
@@ -125,8 +125,8 @@ def real(url):
     for img in results.imgs:
         img_base64 = im.fromarray(img)
         # 결과 저장 및 폴더지정
-        img_base64.save("media/yolo_out/result.png", format="JPEG")
-    inference_img = "/media/yolo_out/result.png"
+        img_base64.save("media/yolo_out/result.jpg", format="JPEG")
+    inference_img = "/media/yolo_out/result.jpg"
 
     # 딕셔너리를 json으로 변환
 
@@ -147,7 +147,7 @@ def real(url):
     return cloths_data
 
 def test(request):
-    url = "https://closetimg103341-dev.s3.us-west-2.amazonaws.com/test5.png"
+    url = "https://closetimg103341-dev.s3.us-west-2.amazonaws.com/test5.jpg"
     context = real(url)
     print('##########################')
     print(context)
@@ -158,9 +158,9 @@ def test(request):
 def doit(request):
     img = request.GET.get("img")
     userid = request.GET.get("id")
-    url = "https://group8img.s3.us-west-2.amazonaws.com/" + img + ".png"
+    url = "https://group8img.s3.us-west-2.amazonaws.com/" + img + ".jpg"
     print(url)
-    # url = "https://closetimg103341-dev.s3.us-west-2.amazonaws.com/test5.png"
+    # url = "https://closetimg103341-dev.s3.us-west-2.amazonaws.com/test5.jpg"
 
     # context_serialized = serializers.serialize('json', context)
     # return render(request, 'image/test01.html', returnReal)
@@ -199,6 +199,33 @@ def doit(request):
     context = { 'category': category,
                 'color' : color,
                 'result' : img_lst}
+    print(context)
+
+    {"result": []}
+    return JsonResponse(context, safe=False, json_dumps_params={'ensure_ascii': False})
+
+@api_view(['POST'])
+def doit2(request):
+    img = request.GET.get("img")
+    url = "https://group8img.s3.us-west-2.amazonaws.com/" + img + ".jpg"
+    print(url)
+    # url = "https://closetimg103341-dev.s3.us-west-2.amazonaws.com/test5.jpg"
+
+    # context_serialized = serializers.serialize('json', context)
+    # return render(request, 'image/test01.html', returnReal)
+    # return JsonResponse(context_serialized, safe=False)
+    print(url)
+
+    # 카테고리 분석
+    compare_cat = real(url)
+
+    category = compare_cat[0]
+    color = compare_cat[1]
+
+
+    context = { 'category': category,
+                'color' : color,
+                }
     print(context)
 
     {"result": []}

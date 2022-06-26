@@ -75,7 +75,14 @@ def findpw(request):
         # 해당 이메일에 해당하는 유저 obj 찾아오기
         obj = Account.objects.get(email=UserId)
 
-        if data['name'] == obj.name and data['birth'] == obj.birth:
+        user_birth = obj.birth.strftime('%Y-%m-%d')
+        print(user_birth)
+        print(data['birth'])
+        print(obj.birth)
+        print(data['name'])
+        print(obj.name)
+
+        if data['name'] == obj.name and data['birth'] == user_birth:
             return JsonResponse(":okay:" + str(obj.pw) + ":", safe=False, json_dumps_params={'ensure_ascii': False})
         else:
             return JsonResponse(":fail:", safe=False, json_dumps_params={'ensure_ascii': False})
@@ -98,7 +105,4 @@ def emailcheck(request):
                 return JsonResponse(":fail:", safe=False, json_dumps_params={'ensure_ascii': False})
         except:
             return JsonResponse(":okay:", safe=False, json_dumps_params={'ensure_ascii': False})
-
-
-
 
