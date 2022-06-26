@@ -11,6 +11,7 @@
     >
 
     <Button
+        style="@style/content_font_style"
         android:id="@+id/close_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,18 +28,21 @@
         android:layout_marginTop="30dp"/>
 
     <TextView
+        style="@style/content_font_style"
         android:id="@+id/txt_dialog_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="구매일 : "/>
     <TextView
+        style="@style/content_font_style"
         android:id="@+id/txt_dialog_tag1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="태그1 : "/>
     <TextView
+        style="@style/content_font_style"
         android:id="@+id/txt_dialog_tag2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,12 +55,14 @@
         android:orientation="horizontal">
 
         <Button
+            style="@style/content_font_style"
             android:id="@+id/edit_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="옷 정보 수정" />
 
         <Button
+            style="@style/content_font_style"
             android:id="@+id/delete_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -6,9 +6,11 @@
     android:orientation="vertical"
     android:background="@drawable/weather_background"
     android:adjustViewBounds="true"
-    android:scaleType="fitCenter">
+    android:scaleType="fitCenter"
+    >
 
     <TextView
+        style="@style/title_font_style"
         android:id="@+id/tvTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,6 +27,7 @@
         <TableRow>
 
             <TextView
+                style="@style/content_font_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="30dp"
@@ -32,6 +35,7 @@
                 android:textSize="20dp" />
 
             <TextView
+                style="@style/content_font_style"
                 android:id="@+id/tvRainType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -42,6 +46,7 @@
         <TableRow>
 
             <TextView
+                style="@style/content_font_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="30dp"
@@ -49,6 +54,7 @@
                 android:textSize="20dp" />
 
             <TextView
+                style="@style/content_font_style"
                 android:id="@+id/tvHumidity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,6 +65,7 @@
         <TableRow>
 
             <TextView
+                style="@style/content_font_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="30dp"
@@ -66,6 +73,7 @@
                 android:textSize="20dp" />
 
             <TextView
+                style="@style/content_font_style"
                 android:id="@+id/tvSky"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -76,6 +84,7 @@
         <TableRow>
 
             <TextView
+                style="@style/content_font_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="30dp"
@@ -83,6 +92,7 @@
                 android:textSize="20dp" />
 
             <TextView
+                style="@style/content_font_style"
                 android:id="@+id/tvTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

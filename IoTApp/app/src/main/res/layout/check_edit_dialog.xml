@@ -25,6 +25,7 @@
         android:orientation="horizontal">
 
         <TextView
+            style="@style/content_font_style"
             android:id="@+id/txt_dialog_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -32,6 +33,7 @@
             android:text="구매일 : " />
 
         <EditText
+            android:theme="@style/edit_text_theme"
             android:id="@+id/edit_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -46,12 +48,15 @@
         android:orientation="horizontal">
 
         <TextView
+            style="@style/content_font_style"
             android:id="@+id/txt_dialog_tag1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="태그1 : "/>
         <EditText
+            android:theme="@style/edit_text_theme"
+            android:textColor="@color/black"
             android:id="@+id/edit_tag1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -67,12 +72,15 @@
         android:orientation="horizontal">
 
         <TextView
+            style="@style/content_font_style"
             android:id="@+id/txt_dialog_tag2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="태그2 : "/>
         <EditText
+            android:theme="@style/edit_text_theme"
+            android:textColor="@color/black"
             android:id="@+id/edit_tag2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -89,12 +97,15 @@
         android:layout_gravity="center">
 
         <Button
+            style="@style/content_font_style"
             android:id="@+id/editcancle_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="취소" />
 
         <Button
+
+            style="@style/content_font_style"
             android:id="@+id/confirm_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

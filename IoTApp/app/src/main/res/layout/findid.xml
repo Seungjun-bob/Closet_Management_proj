@@ -2,15 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <TextView
+        style="@style/title_font_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ID찾기"
         android:textAlignment="center"
         android:textSize="40sp"
-        android:layout_marginBottom="100dp"/>
+        android:layout_marginBottom="100dp"
+        android:layout_marginTop="20dp"
+
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,6 +30,8 @@
             android:textColor="@color/black"
             />
         <EditText
+            android:theme="@style/edit_text_theme"
+            android:textColor="@color/black"
             android:id="@+id/name_findid"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
@@ -47,6 +54,8 @@
             android:textColor="@color/black"
             />
         <EditText
+            android:theme="@style/edit_text_theme"
+            android:textColor="@color/black"
             android:id="@+id/birthday_findid"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
@@ -60,6 +69,7 @@
     </LinearLayout>
 
     <Button
+        style="@style/content_font_style"
         android:id="@+id/submit_findid"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
@@ -99,6 +109,9 @@
         />
 
     <Button
+        style="@style/content_font_style"
+        android:background="@drawable/custom_btn"
+        android:textColor="@color/white"
         android:id="@+id/back_findid"
         android:layout_width="200dp"
         android:layout_height="wrap_content"

@@ -2,20 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
+            style="@style/title_font_style"
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:text="조회"
+            android:text="등록"
             android:textSize="30dp"
             android:textStyle="bold"
             android:textColor="#000000"/>
@@ -27,6 +29,9 @@
         android:orientation="horizontal"
         android:gravity="center">
         <Button
+            style="@style/content_font_style"
+            android:background="@drawable/custom_btn"
+            android:textColor="@color/white"
             android:id="@+id/album_addclothes"
             android:layout_width="85dp"
             android:layout_height="wrap_content"
@@ -36,6 +41,9 @@
             android:textSize="24sp"
             />
         <Button
+            style="@style/content_font_style"
+            android:background="@drawable/custom_btn"
+            android:textColor="@color/white"
             android:id="@+id/camera_addclothes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,6 +61,7 @@
         android:layout_gravity="center"
         />
     <TextView
+        style="@style/content_font_style"
         android:id="@+id/uritext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
@@ -62,13 +71,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
+            style="@style/content_font_style"
             android:layout_width="53dp"
             android:layout_height="wrap_content"
             android:text="구입날짜"
             android:textAlignment="center"
             android:layout_marginLeft="70dp"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="20dp"
+            android:textSize="16dp"/>
         <EditText
+            android:theme="@style/edit_text_theme"
             android:id="@+id/buydate"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
@@ -89,13 +101,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
+            style="@style/content_font_style"
             android:layout_width="53dp"
             android:layout_height="wrap_content"
             android:text="카테고리"
             android:textAlignment="center"
             android:layout_marginLeft="70dp"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="20dp"
+            android:textSize="16dp"/>
         <Spinner
+            style="@style/content_font_style"
             android:id="@+id/tag1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -107,6 +122,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
+            style="@style/content_font_style"
             android:layout_width="53dp"
             android:layout_height="wrap_content"
             android:text="종류"
@@ -114,6 +130,7 @@
             android:layout_marginLeft="70dp"
             android:layout_marginRight="20dp"/>
         <Spinner
+            style="@style/content_font_style"
             android:id="@+id/tag2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -125,6 +142,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
+            style="@style/content_font_style"
             android:layout_width="53dp"
             android:layout_height="wrap_content"
             android:text="색상"
@@ -132,6 +150,7 @@
             android:layout_marginLeft="70dp"
             android:layout_marginRight="20dp"/>
         <Spinner
+            style="@style/content_font_style"
             android:id="@+id/tag3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -140,11 +159,15 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center">
         <Button
+            android:background="@drawable/custom_btn"
+            android:textColor="@color/white"
+            style="@style/content_font_style"
             android:id="@+id/cancel_addclothes"
             android:layout_width="85dp"
             android:layout_height="wrap_content"
@@ -154,6 +177,9 @@
             android:textSize="24sp"
             />
         <Button
+            style="@style/content_font_style"
+            android:background="@drawable/custom_btn"
+            android:textColor="@color/white"
             android:id="@+id/save_addclothes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

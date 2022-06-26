@@ -19,7 +19,7 @@ class LoginActivity : AppCompatActivity() {
                 var jsonobj = JSONObject()
                 jsonobj.put("boardNo",id.text)
                 jsonobj.put("writer",pass.text)
-                val url = "http://192.168.200.107:8000/login"
+                val url = "http://52.37.48.195:8000/login"
 
                 //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
                 val client = OkHttpClient()
