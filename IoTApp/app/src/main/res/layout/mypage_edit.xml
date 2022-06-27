@@ -147,6 +147,8 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
                 <Button
+                    style="@style/content_font_style"
+                    android:background="@drawable/stroke_custom_btn"
                     android:id="@+id/save_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
