@@ -1,6 +1,7 @@
 package com.example.smartcloset.add
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
@@ -51,7 +52,7 @@ class AddClothesFragment: Fragment() {
     val REQUEST_CAMERA = 2 //맞나?
     //mqtt용
     val sub_topic = "iot/#"
-    val server_uri = "tcp://35.84.212.137:1883" //broker의 ip와 port
+    val server_uri = "tcp://52.37.48.195:1883" //broker의 ip와 port
     var mymqtt: MyMqtt? = null
     var img_name = ""
 
@@ -88,7 +89,7 @@ class AddClothesFragment: Fragment() {
         mymqtt?.connect(arrayOf<String>(sub_topic))
 
     }
-    fun onReceived(topic: String, message: MqttMessage){
+    fun onReceived(topic:String, message: MqttMessage){
         val msg = String(message.payload)
         val msgdata = msg.split(':')
 
@@ -136,12 +137,10 @@ class AddClothesFragment: Fragment() {
                                         clothes_color = ""
                                         clothes_category = ""
                                     }
-
                                     override fun onNothingSelected(parent: AdapterView<*>?) {
                                     }
                                 }
                             }
-
                             override fun onNothingSelected(parent: AdapterView<*>?) {
                             }
                         }
@@ -172,7 +171,6 @@ class AddClothesFragment: Fragment() {
                                                 clothes_color = ""
                                                 clothes_category = ""
                                             }
-
                                             override fun onNothingSelected(parent: AdapterView<*>?) {
                                             }
                                         }
@@ -238,14 +236,12 @@ class AddClothesFragment: Fragment() {
                                                     }
                                                 }
                                             }
-
                                             override fun onNothingSelected(parent: AdapterView<*>?) {
                                             }
                                         }
                                     }
                                 }
                             }
-
                             override fun onNothingSelected(parent: AdapterView<*>?) {
                             }
                         }
@@ -276,7 +272,6 @@ class AddClothesFragment: Fragment() {
                                                 clothes_color = ""
                                                 clothes_category = ""
                                             }
-
                                             override fun onNothingSelected(parent: AdapterView<*>?) {
                                             }
                                         }
@@ -301,7 +296,7 @@ class AddClothesFragment: Fragment() {
                                         viewF.tag3.setSelection(0)
 
                                         viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
                                                 tag3data = (view as? TextView)?.text.toString()
                                                 when (tag3data) {
                                                     "색상을 선택하세요" -> {
@@ -333,14 +328,12 @@ class AddClothesFragment: Fragment() {
                                                     }
                                                 }
                                             }
-
                                             override fun onNothingSelected(parent: AdapterView<*>?) {
                                             }
                                         }
                                     }
                                 }
                             }
-
                             override fun onNothingSelected(parent: AdapterView<*>?) {
                             }
                         }
@@ -369,7 +362,6 @@ class AddClothesFragment: Fragment() {
                                                 clothes_color = ""
                                                 clothes_category = ""
                                             }
-
                                             override fun onNothingSelected(parent: AdapterView<*>?) {
                                             }
                                         }
@@ -430,14 +422,12 @@ class AddClothesFragment: Fragment() {
                                                     }
                                                 }
                                             }
-
                                             override fun onNothingSelected(parent: AdapterView<*>?) {
                                             }
                                         }
                                     }
                                 }
                             }
-
                             override fun onNothingSelected(parent: AdapterView<*>?) {
                             }
                         }
@@ -450,7 +440,7 @@ class AddClothesFragment: Fragment() {
 //                result.text = "선택된 가수가 없습니다."
             }
         }
-        ai_result?.text = "test"
+
 
 
         // 앨범 버튼 클릭 리스너 구현
@@ -499,7 +489,7 @@ class AddClothesFragment: Fragment() {
                     jsonobj.put("buydate", buydate)
                     jsonobj.put("mycolor", final_category)
                     jsonobj.put("mycategory", final_color)
-                    jsonobj.put("myimg", "$img_name.bmp")
+                    jsonobj.put("myimg", "$img_name")
 
                     // 장고 등록 페이지 url
                     val url = "http://52.37.48.195:8000/cloth/save/"
@@ -658,6 +648,7 @@ class AddClothesFragment: Fragment() {
 
 
     //******************실행
+    @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -688,7 +679,7 @@ class AddClothesFragment: Fragment() {
                         // 찍은 사진을 AI모델에 보내서 1차 분석 카테고리/색상 받아오기
                         // 어떻게 보냄?
                         thread {
-                            var imgName = "${img_name}.bmp"
+                            var imgName = "${img_name}"
                             var jsonobj = JSONObject()
                             jsonobj.put("img", imgName)
 
@@ -709,12 +700,101 @@ class AddClothesFragment: Fragment() {
                             val response: Response = client.newCall(myrequest).execute()
 
                             //response에서 메시지꺼내서 로그 출력하기
-                            val result: String? = response.body()?.string()
-                            var analyze_result = result!!.split('\"')
-                            Log.d("http", result!!)
+                            val result:String? = response.body()?.string()
+                            var analyze_result = result!!.split('\'')
+                            Log.d("http",result!!)
                             //로그인 성공여부가 메시지로 전달되면 그에 따라 다르게 작업할 수 있도록 코드변경하기
                             analyze_category = analyze_result[3]
                             analyze_color = analyze_result[7]
+
+                            //************AI 모델 반환값을 기준으로 카테고리 대분류 선택************
+
+                            when(analyze_category){
+                                // 상의
+                                "short_sleeved_shirt" -> {
+                                    ai_category1 = "상의"
+                                    ai_category2 = "반팔"
+                                }
+                                "long_sleeved_shirt" -> {
+                                    ai_category1 = "상의"
+                                    ai_category2 = "긴팔"
+                                }
+                                "short_sleeved_outwear" -> {
+                                    ai_category1 = "상의"
+                                    ai_category2 = "반팔 아우터"
+                                }
+                                "long_sleeved_outwear" -> {
+                                    ai_category1 = "상의"
+                                    ai_category2 = "긴팔 아우터"
+                                }
+                                "vest" -> {
+                                    ai_category1 = "상의"
+                                    ai_category2 = "조끼(민소매)"
+                                }
+                                "sling" -> {
+                                    ai_category1 = "상의"
+                                    ai_category2 = "나시"
+                                }
+                                // 하의
+                                "shorts"-> {
+                                    ai_category1 = "하의"
+                                    ai_category2 = "반바지"
+                                }
+                                "trousers"-> {
+                                    ai_category1 = "하의"
+                                    ai_category2 = "긴바지"
+                                }
+                                "skirt" -> {
+                                    ai_category1 = "하의"
+                                    ai_category2 = "치마"
+                                }
+                                // 원피스
+                                "short_sleeved_dress"-> {
+                                    ai_category1 = "원피스"
+                                    ai_category2 = "반팔 원피스"
+                                }
+                                "long_sleeved_dress"-> {
+                                    ai_category1 = "원피스"
+                                    ai_category2 = "긴팔 원피스"
+                                }
+                                "vest_dress"-> {
+                                    ai_category1 = "원피스"
+                                    ai_category2 = "민소매 원피스"
+                                }
+                                "sling_dress"-> {
+                                    ai_category1 = "원피스"
+                                    ai_category2 = "나시 원피스"
+                                }
+                            }
+                            when(analyze_color){
+                                "black"-> {
+                                    ai_color = "검정"
+                                }
+                                "blue"-> {
+                                    ai_color = "블루"
+                                }
+                                "red"-> {
+                                    ai_color = "레드"
+                                }
+                                "green"-> {
+                                    ai_color = "그린"
+                                }
+                                "white"-> {
+                                    ai_color = "화이트"
+                                }
+                                "gray"-> {
+                                    ai_color = "그레이"
+                                }
+                                "beige"-> {
+                                    ai_color = "베이지"
+                                }
+                                "pattern"-> {
+                                    ai_color = "패턴"
+                                }
+                            }
+                            runOnUiThread {
+                                ai_result.text = "AI가 분석한 옵션은\n${ai_category1}, ${ai_category2}, ${ai_color}입니다"
+                            }
                         }
                     }
                 }
@@ -743,7 +823,7 @@ class AddClothesFragment: Fragment() {
                         // 찍은 사진을 AI모델에 보내서 1차 분석 카테고리/색상 받아오기
                         // 어떻게 보냄?
                         thread {
-                            var imgName = "${filename}.bmp"
+                            var imgName = "${filename}"
                             var jsonobj = JSONObject()
                             jsonobj.put("img", imgName)
 
@@ -764,103 +844,107 @@ class AddClothesFragment: Fragment() {
                             val response: Response = client.newCall(myrequest).execute()
 
                             //response에서 메시지꺼내서 로그 출력하기
-                            val result: String? = response.body()?.string()
-                            var analyze_result = result!!.split('\"')
-                            Log.d("http", result!!)
+                            val result:String? = response.body()?.string()
+                            var analyze_result = result!!.split('\'')
+                            Log.d("http",result!!)
                             //로그인 성공여부가 메시지로 전달되면 그에 따라 다르게 작업할 수 있도록 코드변경하기
                             analyze_category = analyze_result[3]
                             analyze_color = analyze_result[7]
+
+                            //************AI 모델 반환값을 기준으로 카테고리 대분류 선택************
+
+                            when(analyze_category){
+                                // 상의
+                                "short_sleeved_shirt" -> {
+                                    ai_category1 = "상의"
+                                    ai_category2 = "반팔"
+                                }
+                                "long_sleeved_shirt" -> {
+                                    ai_category1 = "상의"
+                                    ai_category2 = "긴팔"
+                                }
+                                "short_sleeved_outwear" -> {
+                                    ai_category1 = "상의"
+                                    ai_category2 = "반팔 아우터"
+                                }
+                                "long_sleeved_outwear" -> {
+                                    ai_category1 = "상의"
+                                    ai_category2 = "긴팔 아우터"
+                                }
+                                "vest" -> {
+                                    ai_category1 = "상의"
+                                    ai_category2 = "조끼(민소매)"
+                                }
+                                "sling" -> {
+                                    ai_category1 = "상의"
+                                    ai_category2 = "나시"
+                                }
+                                // 하의
+                                "shorts"-> {
+                                    ai_category1 = "하의"
+                                    ai_category2 = "반바지"
+                                }
+                                "trousers"-> {
+                                    ai_category1 = "하의"
+                                    ai_category2 = "긴바지"
+                                }
+                                "skirt" -> {
+                                    ai_category1 = "하의"
+                                    ai_category2 = "치마"
+                                }
+                                // 원피스
+                                "short_sleeved_dress"-> {
+                                    ai_category1 = "원피스"
+                                    ai_category2 = "반팔 원피스"
+                                }
+                                "long_sleeved_dress"-> {
+                                    ai_category1 = "원피스"
+                                    ai_category2 = "긴팔 원피스"
+                                }
+                                "vest_dress"-> {
+                                    ai_category1 = "원피스"
+                                    ai_category2 = "민소매 원피스"
+                                }
+                                "sling_dress"-> {
+                                    ai_category1 = "원피스"
+                                    ai_category2 = "나시 원피스"
+                                }
+                            }
+                            when(analyze_color){
+                                "black"-> {
+                                    ai_color = "검정"
+                                }
+                                "blue"-> {
+                                    ai_color = "블루"
+                                }
+                                "red"-> {
+                                    ai_color = "레드"
+                                }
+                                "green"-> {
+                                    ai_color = "그린"
+                                }
+                                "white"-> {
+                                    ai_color = "화이트"
+                                }
+                                "gray"-> {
+                                    ai_color = "그레이"
+                                }
+                                "beige"-> {
+                                    ai_color = "베이지"
+                                }
+                                "pattern"-> {
+                                    ai_color = "패턴"
+                                }
+                            }
+                            runOnUiThread {
+                                ai_result.text = "AI가 분석한 옵션은\n${ai_category1}, ${ai_category2}, ${ai_color}입니다"
+                            }
                         }
                     }
                 }
             }
-            //************AI 모델 반환값을 기준으로 카테고리 대분류 선택************
 
-            when(analyze_category){
-                // 상의
-                "short_sleeve_top" -> {
-                    ai_category1 = "상의"
-                    ai_category2 = "반팔"
-                }
-                "long_sleeve_top" -> {
-                    ai_category1 = "상의"
-                    ai_category2 = "긴팔"
-                }
-                "short_sleeve_outer" -> {
-                    ai_category1 = "상의"
-                    ai_category2 = "반팔 아우터"
-                }
-                "long_sleeve_outer" -> {
-                    ai_category1 = "상의"
-                    ai_category2 = "긴팔 아우터"
-                }
-                "vest" -> {
-                    ai_category1 = "상의"
-                    ai_category2 = "조끼(민소매)"
-                }
-                "sling" -> {
-                    ai_category1 = "상의"
-                    ai_category2 = "나시"
-                }
-                // 하의
-                "shorts" -> {
-                    ai_category1 = "하의"
-                    ai_category2 = "반바지"
-                }
-                "trousers" -> {
-                    ai_category1 = "하의"
-                    ai_category2 = "긴바지"
-                }
-                "skirt" -> {
-                    ai_category1 = "하의"
-                    ai_category2 = "치마"
-                }
-                // 원피스
-                "short_sleeve_dress" -> {
-                    ai_category1 = "원피스"
-                    ai_category2 = "반팔 원피스"
-                }
-                "long_sleeve_dress" -> {
-                    ai_category1 = "원피스"
-                    ai_category2 = "긴팔 원피스"
-                }
-                "vest_dress" -> {
-                    ai_category1 = "원피스"
-                    ai_category2 = "민소매 원피스"
-                }
-                "sling_dress" -> {
-                    ai_category1 = "원피스"
-                    ai_category2 = "나시 원피스"
-                }
-            }
-            when(analyze_color){
-                "black" -> {
-                    ai_color = "검정"
-                }
-                "blue" -> {
-                    ai_color = "블루"
-                }
-                "red" -> {
-                    ai_color = "레드"
-                }
-                "green" -> {
-                    ai_color = "그린"
-                }
-                "white" -> {
-                    ai_color = "화이트"
-                }
-                "gray" -> {
-                    ai_color = "그레이"
-                }
-                "beige" -> {
-                    ai_color = "베이지"
-                }
-                "pattern" -> {
-                    ai_color = "패턴"
-                }
-            }
-            Log.d("airesult", "$ai_category1, $ai_category2, $ai_color")
-            ai_result.text = "AI가 분석한 옵션은\n${ai_category1}, ${ai_category2}, ${ai_color}입니다"
+
         }
     }
     // base64로 변환된 이미지를 저장할 수 있게 서버에 mqtt전송

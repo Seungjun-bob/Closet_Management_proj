@@ -4,6 +4,7 @@ from .models import Account
 from .serializers import UserSerializer
 from django.http import JsonResponse
 from rest_framework.parsers import JSONParser
+from rest_framework.decorators import api_view
 
 
 def register(request):
@@ -18,7 +19,7 @@ def register(request):
         serializer.save()
         return JsonResponse(":okay:", safe=False, json_dumps_params={'ensure_ascii': False})
 
-
+@api_view(['POST'])
 def login(request):
     if request.method == 'POST':
         print("login_request_ok")
