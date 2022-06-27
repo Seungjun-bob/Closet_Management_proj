@@ -1,7 +1,6 @@
 package com.example.smartcloset.add
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
@@ -11,7 +10,6 @@ import android.graphics.ImageDecoder
 import android.icu.text.SimpleDateFormat
 import android.net.Uri
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Base64
@@ -19,22 +17,21 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.Fragment
 import com.amazonaws.mobile.auth.core.internal.util.ThreadUtils.runOnUiThread
-import com.example.smartcloset.R
 import com.example.smartcloset.MainActivity
-import com.example.smartcloset.home.HomeFragment
-import com.example.smartcloset.login.FirstLogin
+import com.example.smartcloset.R
 import com.example.smartcloset.login.userId
-
 import com.example.smartcloset.network.MyMqtt
 import kotlinx.android.synthetic.main.addclothes.*
 import kotlinx.android.synthetic.main.addclothes.view.*
-import kotlinx.android.synthetic.main.register.*
 import okhttp3.*
 import org.eclipse.paho.client.mqttv3.MqttMessage
 import org.json.JSONObject
@@ -91,7 +88,7 @@ class AddClothesFragment: Fragment() {
         mymqtt?.connect(arrayOf<String>(sub_topic))
 
     }
-    fun onReceived(topic:String, message: MqttMessage){
+    fun onReceived(topic: String, message: MqttMessage){
         val msg = String(message.payload)
         val msgdata = msg.split(':')
 
@@ -139,10 +136,12 @@ class AddClothesFragment: Fragment() {
                                         clothes_color = ""
                                         clothes_category = ""
                                     }
+
                                     override fun onNothingSelected(parent: AdapterView<*>?) {
                                     }
                                 }
                             }
+
                             override fun onNothingSelected(parent: AdapterView<*>?) {
                             }
                         }
@@ -173,6 +172,7 @@ class AddClothesFragment: Fragment() {
                                                 clothes_color = ""
                                                 clothes_category = ""
                                             }
+
                                             override fun onNothingSelected(parent: AdapterView<*>?) {
                                             }
                                         }
@@ -208,7 +208,7 @@ class AddClothesFragment: Fragment() {
                                         viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                                             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                                                 tag3data = (view as? TextView)?.text.toString()
-                                                when(tag3data){
+                                                when (tag3data) {
                                                     "색상을 선택하세요" -> {
                                                         clothes_color = ""
                                                     }
@@ -238,12 +238,14 @@ class AddClothesFragment: Fragment() {
                                                     }
                                                 }
                                             }
+
                                             override fun onNothingSelected(parent: AdapterView<*>?) {
                                             }
                                         }
                                     }
                                 }
                             }
+
                             override fun onNothingSelected(parent: AdapterView<*>?) {
                             }
                         }
@@ -251,7 +253,7 @@ class AddClothesFragment: Fragment() {
                     // 1번 스피너 값이 하의인 경우
                     "하의" -> {
                         //두번째 스피너 오픈 - 하의 스피너
-                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.bottom,android.R.layout.simple_spinner_item)
+                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.bottom, android.R.layout.simple_spinner_item)
                         myadapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                         viewF.tag2.adapter = myadapter2
                         viewF.tag2.setSelection(0)
@@ -269,11 +271,12 @@ class AddClothesFragment: Fragment() {
                                         viewF.tag3.setSelection(0)
 
                                         viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
+                                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                                                 tag3data = (view as? TextView)?.text.toString()
                                                 clothes_color = ""
                                                 clothes_category = ""
                                             }
+
                                             override fun onNothingSelected(parent: AdapterView<*>?) {
                                             }
                                         }
@@ -298,9 +301,9 @@ class AddClothesFragment: Fragment() {
                                         viewF.tag3.setSelection(0)
 
                                         viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
+                                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                                                 tag3data = (view as? TextView)?.text.toString()
-                                                when(tag3data){
+                                                when (tag3data) {
                                                     "색상을 선택하세요" -> {
                                                         clothes_color = ""
                                                     }
@@ -330,19 +333,21 @@ class AddClothesFragment: Fragment() {
                                                     }
                                                 }
                                             }
+
                                             override fun onNothingSelected(parent: AdapterView<*>?) {
                                             }
                                         }
                                     }
                                 }
                             }
+
                             override fun onNothingSelected(parent: AdapterView<*>?) {
                             }
                         }
                     }
                     // 1번 스피너 값이 원피스인 경우
                     "원피스" -> {
-                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.dress,android.R.layout.simple_spinner_item)
+                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.dress, android.R.layout.simple_spinner_item)
                         myadapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                         viewF.tag2.adapter = myadapter2
                         viewF.tag2.setSelection(0)
@@ -364,6 +369,7 @@ class AddClothesFragment: Fragment() {
                                                 clothes_color = ""
                                                 clothes_category = ""
                                             }
+
                                             override fun onNothingSelected(parent: AdapterView<*>?) {
                                             }
                                         }
@@ -394,7 +400,7 @@ class AddClothesFragment: Fragment() {
                                         viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                                             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                                                 tag3data = (view as? TextView)?.text.toString()
-                                                when(tag3data){
+                                                when (tag3data) {
                                                     "색상을 선택하세요" -> {
                                                         clothes_color = ""
                                                     }
@@ -424,12 +430,14 @@ class AddClothesFragment: Fragment() {
                                                     }
                                                 }
                                             }
+
                                             override fun onNothingSelected(parent: AdapterView<*>?) {
                                             }
                                         }
                                     }
                                 }
                             }
+
                             override fun onNothingSelected(parent: AdapterView<*>?) {
                             }
                         }
@@ -459,7 +467,7 @@ class AddClothesFragment: Fragment() {
         viewF.cancel_addclothes.setOnClickListener{
             //취소 코드 추가
             mainActivity.changeFragment(1)
-            Toast.makeText(mainActivity,"등록이 취소되었습니다", Toast.LENGTH_SHORT).show()
+            Toast.makeText(mainActivity, "등록이 취소되었습니다", Toast.LENGTH_SHORT).show()
         }
         // 등록 버튼 누르면 http 통신으로 서버에 전달-db저장
         viewF.save_addclothes.setOnClickListener{
@@ -487,11 +495,11 @@ class AddClothesFragment: Fragment() {
                 if(!isExistBlank){
                     //서버로 전송할 JSONObject 만들기 - 카테고리 정보를 담고 있음
                     var jsonobj = JSONObject()
-                    jsonobj.put("accountid",userId) // 어떤 유저의 등록인지 유저id값 포함
-                    jsonobj.put("buydate",buydate)
-                    jsonobj.put("mycolor",final_category)
-                    jsonobj.put("mycategory",final_color)
-                    jsonobj.put("myimg","$img_name.bmp")
+                    jsonobj.put("accountid", userId) // 어떤 유저의 등록인지 유저id값 포함
+                    jsonobj.put("buydate", buydate)
+                    jsonobj.put("mycolor", final_category)
+                    jsonobj.put("mycategory", final_color)
+                    jsonobj.put("myimg", "$img_name.bmp")
 
                     // 장고 등록 페이지 url
                     val url = "http://52.37.48.195:8000/cloth/save/"
@@ -504,7 +512,7 @@ class AddClothesFragment: Fragment() {
                     //서버에 요청을 담당하는 객체
                     val builder = Request.Builder()    // request객체를 만들어주는 객체 생성
                     builder.url(url)                   //Builder객체에 request할 주소(네트워크상의 주소)셋팅
-                    builder.post(RequestBody.create(MediaType.parse("application/json"),jsondata)) // 요청메시지 만들고 요청메시지의 타입이 json이라고 설정
+                    builder.post(RequestBody.create(MediaType.parse("application/json"), jsondata)) // 요청메시지 만들고 요청메시지의 타입이 json이라고 설정
                     val myrequest: Request = builder.build() //Builder객체를 이용해서 request객체 만들기
                     //생성한 request 객체를 이용해서 웹에 request하기 - request결과로 response 객체가 리턴
                     val response: Response = client.newCall(myrequest).execute()
@@ -512,7 +520,7 @@ class AddClothesFragment: Fragment() {
                     //response에서 메시지꺼내서 로그 출력하기
                     val result:String? = response.body()?.string()
                     var save_result = result!!.split(':')
-                    Log.d("http",result!!)
+                    Log.d("http", result!!)
                     // 성공여부가 메시지로 전달되면 그에 따라 다르게 작업할 수 있도록 코드변경하기
                     if(save_result[1]=="okay"){
                         // 등록 성공 토스트 메세지 띄우기
@@ -559,7 +567,7 @@ class AddClothesFragment: Fragment() {
             // isAllPermissionsGranted : 권한이 모두 승인 되었는지 여부 저장
             // all 메서드를 사용하면 배열 속에 들어 있는 모든 값을 체크할 수 있다.
             val isAllPermissionsGranted =
-                    permissions.all { ActivityCompat.checkSelfPermission(mainActivity,it) == PackageManager.PERMISSION_GRANTED }
+                    permissions.all { ActivityCompat.checkSelfPermission(mainActivity, it) == PackageManager.PERMISSION_GRANTED }
             if (isAllPermissionsGranted) {
                 permissionGranted(requestCode)
             } else {
@@ -664,7 +672,7 @@ class AddClothesFragment: Fragment() {
                         //rest 사용해서 이미지 이름을 보내주고, 스토리지에 이미지를 저장, 이미지는 어떻게 저장?
                         val outStream: OutputStream
                         var bitmap = ImageDecoder.decodeBitmap(ImageDecoder.createSource(mainActivity.contentResolver, uri))
-                        val byteArrayOutputStream : ByteArrayOutputStream = ByteArrayOutputStream()
+                        val byteArrayOutputStream: ByteArrayOutputStream = ByteArrayOutputStream()
                         bitmap.compress(Bitmap.CompressFormat.JPEG, 40, byteArrayOutputStream)
                         val byteArray = byteArrayOutputStream.toByteArray()
                         val encoded = Base64.encodeToString(byteArray, Base64.DEFAULT)
@@ -682,7 +690,7 @@ class AddClothesFragment: Fragment() {
                         thread {
                             var imgName = "${img_name}.bmp"
                             var jsonobj = JSONObject()
-                            jsonobj.put("img",imgName)
+                            jsonobj.put("img", imgName)
 
                             // 장고 AI모델 페이지 url? - 나중에 수정
                             val url = "http://52.37.48.195:8000/test/?img=$imgName&id=" + userId
@@ -695,15 +703,15 @@ class AddClothesFragment: Fragment() {
                             //서버에 요청을 담당하는 객체
                             val builder = Request.Builder()    // request객체를 만들어주는 객체 생성
                             builder.url(url)                   //Builder객체에 request할 주소(네트워크상의 주소)셋팅
-                            builder.post(RequestBody.create(MediaType.parse("application/json"),jsondata)) // 요청메시지 만들고 요청메시지의 타입이 json이라고 설정
+                            builder.post(RequestBody.create(MediaType.parse("application/json"), jsondata)) // 요청메시지 만들고 요청메시지의 타입이 json이라고 설정
                             val myrequest: Request = builder.build() //Builder객체를 이용해서 request객체 만들기
                             //생성한 request 객체를 이용해서 웹에 request하기 - request결과로 response 객체가 리턴
                             val response: Response = client.newCall(myrequest).execute()
 
                             //response에서 메시지꺼내서 로그 출력하기
-                            val result:String? = response.body()?.string()
+                            val result: String? = response.body()?.string()
                             var analyze_result = result!!.split('\"')
-                            Log.d("http",result!!)
+                            Log.d("http", result!!)
                             //로그인 성공여부가 메시지로 전달되면 그에 따라 다르게 작업할 수 있도록 코드변경하기
                             analyze_category = analyze_result[3]
                             analyze_color = analyze_result[7]
@@ -714,11 +722,13 @@ class AddClothesFragment: Fragment() {
                     data?.data?.let { uri ->
                         //미리보기에 띄우기
                         imagePreview.setImageURI(uri)
+                        // 파일 이름 가져오기
+                        val filename = uri.lastPathSegment
                         // 앨범에서 사진 선택했을때도 위와 동일하게
                         //rest 사용해서 이미지 이름을 보내주고, 스토리지에 이미지를 저장, 이미지는 어떻게 저장?
                         val outStream: OutputStream
                         var bitmap = ImageDecoder.decodeBitmap(ImageDecoder.createSource(mainActivity.contentResolver, uri))
-                        val byteArrayOutputStream : ByteArrayOutputStream = ByteArrayOutputStream()
+                        val byteArrayOutputStream: ByteArrayOutputStream = ByteArrayOutputStream()
                         bitmap.compress(Bitmap.CompressFormat.JPEG, 40, byteArrayOutputStream)
                         val byteArray = byteArrayOutputStream.toByteArray()
                         val encoded = Base64.encodeToString(byteArray, Base64.DEFAULT)
@@ -733,9 +743,9 @@ class AddClothesFragment: Fragment() {
                         // 찍은 사진을 AI모델에 보내서 1차 분석 카테고리/색상 받아오기
                         // 어떻게 보냄?
                         thread {
-                            var imgName = "${img_name}.bmp"
+                            var imgName = "${filename}.bmp"
                             var jsonobj = JSONObject()
-                            jsonobj.put("img",imgName)
+                            jsonobj.put("img", imgName)
 
                             // 장고 AI모델 페이지 url? - 나중에 수정
                             val url = "http://34.222.151.105:8000/register/"
@@ -748,15 +758,15 @@ class AddClothesFragment: Fragment() {
                             //서버에 요청을 담당하는 객체
                             val builder = Request.Builder()    // request객체를 만들어주는 객체 생성
                             builder.url(url)                   //Builder객체에 request할 주소(네트워크상의 주소)셋팅
-                            builder.post(RequestBody.create(MediaType.parse("application/json"),jsondata)) // 요청메시지 만들고 요청메시지의 타입이 json이라고 설정
+                            builder.post(RequestBody.create(MediaType.parse("application/json"), jsondata)) // 요청메시지 만들고 요청메시지의 타입이 json이라고 설정
                             val myrequest: Request = builder.build() //Builder객체를 이용해서 request객체 만들기
                             //생성한 request 객체를 이용해서 웹에 request하기 - request결과로 response 객체가 리턴
                             val response: Response = client.newCall(myrequest).execute()
 
                             //response에서 메시지꺼내서 로그 출력하기
-                            val result:String? = response.body()?.string()
+                            val result: String? = response.body()?.string()
                             var analyze_result = result!!.split('\"')
-                            Log.d("http",result!!)
+                            Log.d("http", result!!)
                             //로그인 성공여부가 메시지로 전달되면 그에 따라 다르게 작업할 수 있도록 코드변경하기
                             analyze_category = analyze_result[3]
                             analyze_color = analyze_result[7]
@@ -793,11 +803,11 @@ class AddClothesFragment: Fragment() {
                     ai_category2 = "나시"
                 }
                 // 하의
-                "shorts"-> {
+                "shorts" -> {
                     ai_category1 = "하의"
                     ai_category2 = "반바지"
                 }
-                "trousers"-> {
+                "trousers" -> {
                     ai_category1 = "하의"
                     ai_category2 = "긴바지"
                 }
@@ -806,56 +816,56 @@ class AddClothesFragment: Fragment() {
                     ai_category2 = "치마"
                 }
                 // 원피스
-                "short_sleeve_dress"-> {
+                "short_sleeve_dress" -> {
                     ai_category1 = "원피스"
                     ai_category2 = "반팔 원피스"
                 }
-                "long_sleeve_dress"-> {
+                "long_sleeve_dress" -> {
                     ai_category1 = "원피스"
                     ai_category2 = "긴팔 원피스"
                 }
-                "vest_dress"-> {
+                "vest_dress" -> {
                     ai_category1 = "원피스"
                     ai_category2 = "민소매 원피스"
                 }
-                "sling_dress"-> {
+                "sling_dress" -> {
                     ai_category1 = "원피스"
                     ai_category2 = "나시 원피스"
                 }
             }
             when(analyze_color){
-                "black"-> {
+                "black" -> {
                     ai_color = "검정"
                 }
-                "blue"-> {
+                "blue" -> {
                     ai_color = "블루"
                 }
-                "red"-> {
+                "red" -> {
                     ai_color = "레드"
                 }
-                "green"-> {
+                "green" -> {
                     ai_color = "그린"
                 }
-                "white"-> {
+                "white" -> {
                     ai_color = "화이트"
                 }
-                "gray"-> {
+                "gray" -> {
                     ai_color = "그레이"
                 }
-                "beige"-> {
+                "beige" -> {
                     ai_color = "베이지"
                 }
-                "pattern"-> {
+                "pattern" -> {
                     ai_color = "패턴"
                 }
             }
-            Log.d("airesult","$ai_category1, $ai_category2, $ai_color")
+            Log.d("airesult", "$ai_category1, $ai_category2, $ai_color")
             ai_result.text = "AI가 분석한 옵션은\n${ai_category1}, ${ai_category2}, ${ai_color}입니다"
         }
     }
     // base64로 변환된 이미지를 저장할 수 있게 서버에 mqtt전송
-    fun imgPub(img:String){
-        mymqtt?.publish("iot/image", img+":"+img_name)
+    fun imgPub(img: String){
+        mymqtt?.publish("iot/image", img + ":" + img_name)
     }
 
     override fun onAttach(context: Context) {
