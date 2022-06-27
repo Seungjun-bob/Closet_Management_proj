@@ -178,16 +178,16 @@ class AddClothesFragment: Fragment() {
                                     else -> {
                                         when (tag2data) {
                                             "반팔 상의" -> {
-                                                clothes_category = "short_sleeve_top"
+                                                clothes_category = "short_sleeved_shirt"
                                             }
                                             "긴팔 상의" -> {
-                                                clothes_category = "long_sleeve_top"
+                                                clothes_category = "long_sleeved_shirt"
                                             }
                                             "반팔 아우터" -> {
-                                                clothes_category = "short_sleeve_outer"
+                                                clothes_category = "short_sleeve_outwear"
                                             }
                                             "긴팔 아우터" -> {
-                                                clothes_category = "short_sleeve_outer"
+                                                clothes_category = "short_sleeve_outwear"
                                             }
                                             "조끼(민소매)" -> {
                                                 clothes_category = "vest"
@@ -370,10 +370,10 @@ class AddClothesFragment: Fragment() {
                                     else -> {
                                         when (tag2data) {
                                             "반팔 원피스" -> {
-                                                clothes_category = "short_sleeve_dress"
+                                                clothes_category = "short_sleeved_dress"
                                             }
                                             "긴팔 원피스" -> {
-                                                clothes_category = "long_sleeve_dress"
+                                                clothes_category = "long_sleeved_dress"
                                             }
                                             "민소매 원피스" -> {
                                                 clothes_category = "vest_dress"
