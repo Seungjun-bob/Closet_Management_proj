@@ -11,7 +11,6 @@ import android.graphics.ImageDecoder
 import android.icu.text.SimpleDateFormat
 import android.net.Uri
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Base64
@@ -19,21 +18,21 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.amazonaws.mobile.auth.core.internal.util.ThreadUtils.runOnUiThread
-import com.example.smartcloset.R
 import com.example.smartcloset.MainActivity
-import com.example.smartcloset.home.HomeFragment
-import com.example.smartcloset.login.FirstLogin
+import com.example.smartcloset.R
 import com.example.smartcloset.login.userId
-
 import com.example.smartcloset.network.MyMqtt
 import kotlinx.android.synthetic.main.addclothes.*
 import kotlinx.android.synthetic.main.addclothes.view.*
-import kotlinx.android.synthetic.main.register.*
 import okhttp3.*
 import org.eclipse.paho.client.mqttv3.MqttMessage
 import org.json.JSONObject
@@ -115,7 +114,7 @@ class AddClothesFragment: Fragment() {
                 viewF.tag2.setSelection(0)
                 viewF.tag3.setSelection(0)
                 when(tag1data){
-                    "" -> {
+                    "카테고리를 선택하세요" -> {
                         //1번 스피너 공백일 때 -> 2번 스피너 선택지 없음
                         val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.tagnone, android.R.layout.simple_spinner_item)
                         myadapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -159,7 +158,7 @@ class AddClothesFragment: Fragment() {
                                 tag2data = (view as? TextView)?.text.toString()
 
                                 when (tag2data) {
-                                    "" -> {
+                                    "종류를 선택하세요" -> {
                                         //2번 스피너 공백일 때 -> 3번 스피너 선택지 없음
                                         val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagnone, android.R.layout.simple_spinner_item)
                                         myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -179,16 +178,16 @@ class AddClothesFragment: Fragment() {
                                     else -> {
                                         when (tag2data) {
                                             "반팔 상의" -> {
-                                                clothes_category = "short_sleeve_top"
+                                                clothes_category = "short_sleeved_shirt"
                                             }
                                             "긴팔 상의" -> {
-                                                clothes_category = "long_sleeve_top"
+                                                clothes_category = "long_sleeved_shirt"
                                             }
                                             "반팔 아우터" -> {
-                                                clothes_category = "short_sleeve_outer"
+                                                clothes_category = "short_sleeve_outwear"
                                             }
                                             "긴팔 아우터" -> {
-                                                clothes_category = "short_sleeve_outer"
+                                                clothes_category = "short_sleeve_outwear"
                                             }
                                             "조끼(민소매)" -> {
                                                 clothes_category = "vest"
@@ -207,8 +206,8 @@ class AddClothesFragment: Fragment() {
                                         viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                                             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                                                 tag3data = (view as? TextView)?.text.toString()
-                                                when(tag3data){
-                                                    "" -> {
+                                                when (tag3data) {
+                                                    "색상을 선택하세요" -> {
                                                         clothes_color = ""
                                                     }
                                                     "검정" -> {
@@ -250,7 +249,7 @@ class AddClothesFragment: Fragment() {
                     // 1번 스피너 값이 하의인 경우
                     "하의" -> {
                         //두번째 스피너 오픈 - 하의 스피너
-                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.bottom,android.R.layout.simple_spinner_item)
+                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.bottom, android.R.layout.simple_spinner_item)
                         myadapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                         viewF.tag2.adapter = myadapter2
                         viewF.tag2.setSelection(0)
@@ -260,7 +259,7 @@ class AddClothesFragment: Fragment() {
                                 tag2data = (view as? TextView)?.text.toString()
 
                                 when (tag2data) {
-                                    "" -> {
+                                    "종류를 선택하세요" -> {
                                         //2번 스피너 공백일 때 -> 3번 스피너 선택지 없음
                                         val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagnone, android.R.layout.simple_spinner_item)
                                         myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -268,7 +267,7 @@ class AddClothesFragment: Fragment() {
                                         viewF.tag3.setSelection(0)
 
                                         viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
+                                            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                                                 tag3data = (view as? TextView)?.text.toString()
                                                 clothes_color = ""
                                                 clothes_category = ""
@@ -299,8 +298,8 @@ class AddClothesFragment: Fragment() {
                                         viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                                             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
                                                 tag3data = (view as? TextView)?.text.toString()
-                                                when(tag3data){
-                                                    "" -> {
+                                                when (tag3data) {
+                                                    "색상을 선택하세요" -> {
                                                         clothes_color = ""
                                                     }
                                                     "검정" -> {
@@ -341,7 +340,7 @@ class AddClothesFragment: Fragment() {
                     }
                     // 1번 스피너 값이 원피스인 경우
                     "원피스" -> {
-                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.dress,android.R.layout.simple_spinner_item)
+                        val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.dress, android.R.layout.simple_spinner_item)
                         myadapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                         viewF.tag2.adapter = myadapter2
                         viewF.tag2.setSelection(0)
@@ -350,7 +349,7 @@ class AddClothesFragment: Fragment() {
                             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                                 tag2data = (view as? TextView)?.text.toString()
                                 when (tag2data) {
-                                    "" -> {
+                                    "종류를 선택하세요" -> {
                                         //2번 스피너 공백일 때 -> 3번 스피너 선택지 없음
                                         val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagnone, android.R.layout.simple_spinner_item)
                                         myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -371,10 +370,10 @@ class AddClothesFragment: Fragment() {
                                     else -> {
                                         when (tag2data) {
                                             "반팔 원피스" -> {
-                                                clothes_category = "short_sleeve_dress"
+                                                clothes_category = "short_sleeved_dress"
                                             }
                                             "긴팔 원피스" -> {
-                                                clothes_category = "long_sleeve_dress"
+                                                clothes_category = "long_sleeved_dress"
                                             }
                                             "민소매 원피스" -> {
                                                 clothes_category = "vest_dress"
@@ -393,8 +392,8 @@ class AddClothesFragment: Fragment() {
                                         viewF.tag3.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                                             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                                                 tag3data = (view as? TextView)?.text.toString()
-                                                when(tag3data){
-                                                    "" -> {
+                                                when (tag3data) {
+                                                    "색상을 선택하세요" -> {
                                                         clothes_color = ""
                                                     }
                                                     "검정" -> {
@@ -458,7 +457,7 @@ class AddClothesFragment: Fragment() {
         viewF.cancel_addclothes.setOnClickListener{
             //취소 코드 추가
             mainActivity.changeFragment(1)
-            Toast.makeText(mainActivity,"등록이 취소되었습니다", Toast.LENGTH_SHORT).show()
+            Toast.makeText(mainActivity, "등록이 취소되었습니다", Toast.LENGTH_SHORT).show()
         }
         // 등록 버튼 누르면 http 통신으로 서버에 전달-db저장
         viewF.save_addclothes.setOnClickListener{
@@ -486,14 +485,14 @@ class AddClothesFragment: Fragment() {
                 if(!isExistBlank){
                     //서버로 전송할 JSONObject 만들기 - 카테고리 정보를 담고 있음
                     var jsonobj = JSONObject()
-                    jsonobj.put("accountid",userId) // 어떤 유저의 등록인지 유저id값 포함
-                    jsonobj.put("buydate",buydate)
-                    jsonobj.put("mycolor",final_category)
-                    jsonobj.put("mycategory",final_color)
-                    jsonobj.put("myimg","$img_name")
+                    jsonobj.put("accountid", userId) // 어떤 유저의 등록인지 유저id값 포함
+                    jsonobj.put("buydate", buydate)
+                    jsonobj.put("mycolor", final_category)
+                    jsonobj.put("mycategory", final_color)
+                    jsonobj.put("myimg", "$img_name")
 
                     // 장고 등록 페이지 url
-                    val url = "http://192.168.0.10:8000/cloth/save/"
+                    val url = "http://52.37.48.195:8000/cloth/save/"
 
                     //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
                     val client = OkHttpClient()
@@ -503,7 +502,7 @@ class AddClothesFragment: Fragment() {
                     //서버에 요청을 담당하는 객체
                     val builder = Request.Builder()    // request객체를 만들어주는 객체 생성
                     builder.url(url)                   //Builder객체에 request할 주소(네트워크상의 주소)셋팅
-                    builder.post(RequestBody.create(MediaType.parse("application/json"),jsondata)) // 요청메시지 만들고 요청메시지의 타입이 json이라고 설정
+                    builder.post(RequestBody.create(MediaType.parse("application/json"), jsondata)) // 요청메시지 만들고 요청메시지의 타입이 json이라고 설정
                     val myrequest: Request = builder.build() //Builder객체를 이용해서 request객체 만들기
                     //생성한 request 객체를 이용해서 웹에 request하기 - request결과로 response 객체가 리턴
                     val response: Response = client.newCall(myrequest).execute()
@@ -511,7 +510,7 @@ class AddClothesFragment: Fragment() {
                     //response에서 메시지꺼내서 로그 출력하기
                     val result:String? = response.body()?.string()
                     var save_result = result!!.split(':')
-                    Log.d("http",result!!)
+                    Log.d("http", result!!)
                     // 성공여부가 메시지로 전달되면 그에 따라 다르게 작업할 수 있도록 코드변경하기
                     if(save_result[1]=="okay"){
                         // 등록 성공 토스트 메세지 띄우기
@@ -558,7 +557,7 @@ class AddClothesFragment: Fragment() {
             // isAllPermissionsGranted : 권한이 모두 승인 되었는지 여부 저장
             // all 메서드를 사용하면 배열 속에 들어 있는 모든 값을 체크할 수 있다.
             val isAllPermissionsGranted =
-                    permissions.all { ActivityCompat.checkSelfPermission(mainActivity,it) == PackageManager.PERMISSION_GRANTED }
+                    permissions.all { ActivityCompat.checkSelfPermission(mainActivity, it) == PackageManager.PERMISSION_GRANTED }
             if (isAllPermissionsGranted) {
                 permissionGranted(requestCode)
             } else {
@@ -664,7 +663,7 @@ class AddClothesFragment: Fragment() {
                         //rest 사용해서 이미지 이름을 보내주고, 스토리지에 이미지를 저장, 이미지는 어떻게 저장?
                         val outStream: OutputStream
                         var bitmap = ImageDecoder.decodeBitmap(ImageDecoder.createSource(mainActivity.contentResolver, uri))
-                        val byteArrayOutputStream : ByteArrayOutputStream = ByteArrayOutputStream()
+                        val byteArrayOutputStream: ByteArrayOutputStream = ByteArrayOutputStream()
                         bitmap.compress(Bitmap.CompressFormat.JPEG, 40, byteArrayOutputStream)
                         val byteArray = byteArrayOutputStream.toByteArray()
                         val encoded = Base64.encodeToString(byteArray, Base64.DEFAULT)
@@ -682,10 +681,10 @@ class AddClothesFragment: Fragment() {
                         thread {
                             var imgName = "${img_name}"
                             var jsonobj = JSONObject()
-                            jsonobj.put("img",imgName)
+                            jsonobj.put("img", imgName)
 
                             // 장고 AI모델 페이지 url? - 나중에 수정
-                            val url = "http://192.168.0.10:8000/test2/?img=rank1&id=" + userId
+                            val url = "http://52.37.48.195:8000/test/?img=$imgName&id=" + userId
 
                             //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
                             val client = OkHttpClient()
@@ -695,7 +694,7 @@ class AddClothesFragment: Fragment() {
                             //서버에 요청을 담당하는 객체
                             val builder = Request.Builder()    // request객체를 만들어주는 객체 생성
                             builder.url(url)                   //Builder객체에 request할 주소(네트워크상의 주소)셋팅
-                            builder.post(RequestBody.create(MediaType.parse("application/json"),jsondata)) // 요청메시지 만들고 요청메시지의 타입이 json이라고 설정
+                            builder.post(RequestBody.create(MediaType.parse("application/json"), jsondata)) // 요청메시지 만들고 요청메시지의 타입이 json이라고 설정
                             val myrequest: Request = builder.build() //Builder객체를 이용해서 request객체 만들기
                             //생성한 request 객체를 이용해서 웹에 request하기 - request결과로 response 객체가 리턴
                             val response: Response = client.newCall(myrequest).execute()
@@ -803,13 +802,13 @@ class AddClothesFragment: Fragment() {
                     data?.data?.let { uri ->
                         //미리보기에 띄우기
                         imagePreview.setImageURI(uri)
-                        var filename = uri.lastPathSegment
+                        // 파일 이름 가져오기
+                        val filename = uri.lastPathSegment
                         // 앨범에서 사진 선택했을때도 위와 동일하게
-
                         //rest 사용해서 이미지 이름을 보내주고, 스토리지에 이미지를 저장, 이미지는 어떻게 저장?
                         val outStream: OutputStream
                         var bitmap = ImageDecoder.decodeBitmap(ImageDecoder.createSource(mainActivity.contentResolver, uri))
-                        val byteArrayOutputStream : ByteArrayOutputStream = ByteArrayOutputStream()
+                        val byteArrayOutputStream: ByteArrayOutputStream = ByteArrayOutputStream()
                         bitmap.compress(Bitmap.CompressFormat.JPEG, 40, byteArrayOutputStream)
                         val byteArray = byteArrayOutputStream.toByteArray()
                         val encoded = Base64.encodeToString(byteArray, Base64.DEFAULT)
@@ -826,10 +825,10 @@ class AddClothesFragment: Fragment() {
                         thread {
                             var imgName = "${filename}"
                             var jsonobj = JSONObject()
-                            jsonobj.put("img",imgName)
+                            jsonobj.put("img", imgName)
 
                             // 장고 AI모델 페이지 url? - 나중에 수정
-                            val url = "http://192.168.0.10:8000/test2/"
+                            val url = "http://34.222.151.105:8000/register/"
 
                             //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
                             val client = OkHttpClient()
@@ -839,7 +838,7 @@ class AddClothesFragment: Fragment() {
                             //서버에 요청을 담당하는 객체
                             val builder = Request.Builder()    // request객체를 만들어주는 객체 생성
                             builder.url(url)                   //Builder객체에 request할 주소(네트워크상의 주소)셋팅
-                            builder.post(RequestBody.create(MediaType.parse("application/json"),jsondata)) // 요청메시지 만들고 요청메시지의 타입이 json이라고 설정
+                            builder.post(RequestBody.create(MediaType.parse("application/json"), jsondata)) // 요청메시지 만들고 요청메시지의 타입이 json이라고 설정
                             val myrequest: Request = builder.build() //Builder객체를 이용해서 request객체 만들기
                             //생성한 request 객체를 이용해서 웹에 request하기 - request결과로 response 객체가 리턴
                             val response: Response = client.newCall(myrequest).execute()
@@ -949,8 +948,8 @@ class AddClothesFragment: Fragment() {
         }
     }
     // base64로 변환된 이미지를 저장할 수 있게 서버에 mqtt전송
-    fun imgPub(img:String){
-        mymqtt?.publish("iot/image", img+":"+img_name)
+    fun imgPub(img: String){
+        mymqtt?.publish("iot/image", img + ":" + img_name)
     }
 
     override fun onAttach(context: Context) {

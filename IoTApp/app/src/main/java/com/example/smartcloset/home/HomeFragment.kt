@@ -44,6 +44,7 @@ import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
 import kotlin.concurrent.thread
+import com.example.smartcloset.login.userId
 
 
 class HomeFragment : Fragment() {

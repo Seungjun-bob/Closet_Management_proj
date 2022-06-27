@@ -2,7 +2,7 @@
 <!--색상 배열-->
 <resources>
     <string-array name="clothes_colors">
-        <item></item>
+        <item>색상을 선택하세요</item>
         <item>검정</item>
         <item>블루</item>
         <item>레드</item>

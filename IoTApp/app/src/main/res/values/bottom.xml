@@ -2,7 +2,7 @@
 <!--하의 종류 배열-->
 <resources>
     <string-array name="bottom">
-        <item></item>
+        <item>종류를 선택하세요</item>
         <item>반바지</item>
         <item>긴바지</item>
         <item>치마</item>

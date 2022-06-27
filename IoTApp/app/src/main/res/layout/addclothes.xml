@@ -34,9 +34,9 @@
             android:textColor="@color/white"
             android:id="@+id/album_addclothes"
             android:layout_width="85dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:layout_margin="20dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="14dp"
+            android:layout_margin="15dp"
             android:text="앨범"
             android:textSize="24sp"
             />
@@ -46,9 +46,9 @@
             android:textColor="@color/white"
             android:id="@+id/camera_addclothes"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:layout_margin="20dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="14dp"
+            android:layout_margin="15dp"
             android:text="카메라"
             android:textSize="24sp"
             />
@@ -57,7 +57,7 @@
     <ImageView
         android:id="@+id/imagePreview"
         android:layout_width="200dp"
-        android:layout_height="250dp"
+        android:layout_height="230dp"
         android:layout_gravity="center"
         />
     <TextView
@@ -108,13 +108,14 @@
             android:textAlignment="center"
             android:layout_marginLeft="70dp"
             android:layout_marginRight="20dp"
-            android:textSize="16dp"/>
+            android:textSize="16sp"/>
         <Spinner
-            style="@style/content_font_style"
+            style="@style/SpinnerItem"
             android:id="@+id/tag1"
-            android:layout_width="wrap_content"
+            android:layout_width="180dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="20dp"
+            android:popupBackground="@color/white"
             />
     </LinearLayout>
     <LinearLayout
@@ -128,13 +129,16 @@
             android:text="종류"
             android:textAlignment="center"
             android:layout_marginLeft="70dp"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="20dp"
+            android:textSize="16sp"/>
         <Spinner
-            style="@style/content_font_style"
+            style="@style/SpinnerItem"
             android:id="@+id/tag2"
-            android:layout_width="wrap_content"
+            android:layout_width="180dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="20dp"
+            android:popupBackground="@color/white"
+
             />
     </LinearLayout>
     <LinearLayout
@@ -148,13 +152,16 @@
             android:text="색상"
             android:textAlignment="center"
             android:layout_marginLeft="70dp"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="20dp"
+            android:textSize="16sp"/>
         <Spinner
-            style="@style/content_font_style"
+            style="@style/SpinnerItem"
             android:id="@+id/tag3"
-            android:layout_width="wrap_content"
+            android:layout_width="180dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="20dp"
+            android:popupBackground="@color/white"
+
             />
     </LinearLayout>
     <TextView
@@ -162,6 +169,7 @@
         android:id="@+id/ai_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text=""
         android:textAlignment="center"
         android:layout_gravity="center"
         android:textSize="16dp"/>
@@ -177,7 +185,7 @@
             style="@style/content_font_style"
             android:id="@+id/cancel_addclothes"
             android:layout_width="85dp"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_marginBottom="24dp"
             android:layout_margin="20dp"
             android:text="취소"
@@ -188,8 +196,8 @@
             android:background="@drawable/custom_btn"
             android:textColor="@color/white"
             android:id="@+id/save_addclothes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="85dp"
+            android:layout_height="30dp"
             android:layout_marginBottom="24dp"
             android:layout_margin="20dp"
             android:text="저장"

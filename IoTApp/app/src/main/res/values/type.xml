@@ -2,7 +2,7 @@
 <!--기본 의류 카테고리-->
 <resources>
     <string-array name="type">
-        <item></item>
+        <item>카테고리를 선택하세요</item>
         <item>상의</item>
         <item>하의</item>
         <item>원피스</item>
