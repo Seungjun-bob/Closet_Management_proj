@@ -2,7 +2,7 @@
 <!--원피스 배열-->
 <resources>
     <string-array name="dress">
-        <item></item>
+        <item>종류를 선택하세요</item>
         <item>반팔 원피스</item>
         <item>긴팔 원피스</item>
         <item>민소매 원피스</item>

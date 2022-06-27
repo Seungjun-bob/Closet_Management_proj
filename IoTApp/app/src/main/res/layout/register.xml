@@ -167,6 +167,8 @@
             android:textColor="@color/black"
             />
         <Spinner
+            style="@style/SpinnerItem"
+            android:popupBackground="@color/white"
             android:id="@+id/gender_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

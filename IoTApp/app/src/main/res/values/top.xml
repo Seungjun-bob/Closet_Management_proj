@@ -2,7 +2,7 @@
 <!--상의 종류 배열-->
 <resources>
     <string-array name="top">
-        <item></item>
+        <item>종류를 선택하세요</item>
         <item>반팔 상의</item>
         <item>긴팔 상의</item>
         <item>반팔 아우터</item>

@@ -44,6 +44,7 @@ class Register: AppCompatActivity() {
 
         myadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         gender_spinner.adapter = myadapter
+
         gender_spinner.setSelection(0)
         gender_spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {

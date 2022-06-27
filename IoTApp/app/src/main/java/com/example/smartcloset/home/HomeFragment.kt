@@ -311,45 +311,45 @@ class HomeFragment : Fragment() {
 //        Toast.makeText(mainActivity, "제대로 전송됨", Toast.LENGTH_LONG).show()
         thread{
 
-            //이미지 이름을 url 뒤에 붙여 전달해줌
-            var jsonobj = JSONObject()
-            Log.d("bit_img_img", "이미지 이름 전송함")
-
-            val url = "http://172.30.1.44:8000/recommend/rcmd/?id=" + userId  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
-
-
-            //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
-            val client = OkHttpClient()
-
-            //json데이터를 이용해서 request 처리
-            val jsondata = jsonobj.toString()
-            //서버에 요청을 담당하는 객체
-            val builder = Request.Builder()    // request객체를 만들어주는 객체 생성
-            builder.url(url)                   //Builder객체에 request할 주소(네트워크상의 주소)셋팅
-            builder.post(RequestBody.create(MediaType.parse("application/json"),jsondata)) // 요청메시지 만들고 요청메시지의 타입이 json이라고 설정
-            val myrequest: Request = builder.build() //Builder객체를 이용해서 request객체 만들기
-            //생성한 request 객체를 이용해서 웹에 request하기 - request결과로 response 객체가 리턴
-            // ==> Response가 서버에서 돌려준 josn 객체인가??
-            val response: okhttp3.Response = client.newCall(myrequest).execute()
-
-            //response에서 메시지꺼내서 로그 출력하기 -> 결과가 뭘로 오는지, 이미지 이름과 카테고리 분류된 결과가 오면 DB에 저장하는 코드 작성
-            //결과를 받아와서 모델 객체를.. 만들어서? recycler View에 반영해줘야 함
-            val result:String? = response.body()?.string()
-
-            Log.d("http",result!!) //로그 찍어본 후에 파싱해서 옷 객체로 만들고, 리사이클러뷰에 띄우기
-
-
-            val jsonObject = JSONObject(result.trimIndent())
-
-            datalist.clear()
-
-            val compare_img = jsonObject.getString("result")
-            var compare_img_list = compare_img.substringAfter("[\"")
-                .substringBeforeLast("\"]").split("\",\"")
-            Log.d("test", compare_img_list.toString() )
-            for ( i in 0 .. (compare_img_list.size - 1) ) {
-                loadImage("https://group8img.s3.us-west-2.amazonaws.com/"+ compare_img_list[i] +".jpg")
-            }
+//            //이미지 이름을 url 뒤에 붙여 전달해줌
+//            var jsonobj = JSONObject()
+//            Log.d("bit_img_img", "이미지 이름 전송함")
+//
+//            val url = "http://172.30.1.44:8000/recommend/rcmd/?id=" + userId  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
+//
+//
+//            //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
+//            val client = OkHttpClient()
+//
+//            //json데이터를 이용해서 request 처리
+//            val jsondata = jsonobj.toString()
+//            //서버에 요청을 담당하는 객체
+//            val builder = Request.Builder()    // request객체를 만들어주는 객체 생성
+//            builder.url(url)                   //Builder객체에 request할 주소(네트워크상의 주소)셋팅
+//            builder.post(RequestBody.create(MediaType.parse("application/json"),jsondata)) // 요청메시지 만들고 요청메시지의 타입이 json이라고 설정
+//            val myrequest: Request = builder.build() //Builder객체를 이용해서 request객체 만들기
+//            //생성한 request 객체를 이용해서 웹에 request하기 - request결과로 response 객체가 리턴
+//            // ==> Response가 서버에서 돌려준 josn 객체인가??
+//            val response: okhttp3.Response = client.newCall(myrequest).execute()
+//
+//            //response에서 메시지꺼내서 로그 출력하기 -> 결과가 뭘로 오는지, 이미지 이름과 카테고리 분류된 결과가 오면 DB에 저장하는 코드 작성
+//            //결과를 받아와서 모델 객체를.. 만들어서? recycler View에 반영해줘야 함
+//            val result:String? = response.body()?.string()
+//
+//            Log.d("http",result!!) //로그 찍어본 후에 파싱해서 옷 객체로 만들고, 리사이클러뷰에 띄우기
+//
+//
+//            val jsonObject = JSONObject(result.trimIndent())
+//
+//            datalist.clear()
+//
+//            val compare_img = jsonObject.getString("result")
+//            var compare_img_list = compare_img.substringAfter("[\"")
+//                .substringBeforeLast("\"]").split("\",\"")
+//            Log.d("test", compare_img_list.toString() )
+//            for ( i in 0 .. (compare_img_list.size - 1) ) {
+//                loadImage("https://group8img.s3.us-west-2.amazonaws.com/"+ compare_img_list[i] +".jpg")
+//            }
 
 
         }

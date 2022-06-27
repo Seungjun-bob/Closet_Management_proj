@@ -22,6 +22,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.Fragment
 import com.amazonaws.mobile.auth.core.internal.util.ThreadUtils.runOnUiThread
 import com.example.smartcloset.R
@@ -115,7 +116,7 @@ class AddClothesFragment: Fragment() {
                 viewF.tag2.setSelection(0)
                 viewF.tag3.setSelection(0)
                 when(tag1data){
-                    "" -> {
+                    "카테고리를 선택하세요" -> {
                         //1번 스피너 공백일 때 -> 2번 스피너 선택지 없음
                         val myadapter2 = ArrayAdapter.createFromResource(mainActivity, R.array.tagnone, android.R.layout.simple_spinner_item)
                         myadapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -159,7 +160,7 @@ class AddClothesFragment: Fragment() {
                                 tag2data = (view as? TextView)?.text.toString()
 
                                 when (tag2data) {
-                                    "" -> {
+                                    "종류를 선택하세요" -> {
                                         //2번 스피너 공백일 때 -> 3번 스피너 선택지 없음
                                         val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagnone, android.R.layout.simple_spinner_item)
                                         myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -208,7 +209,7 @@ class AddClothesFragment: Fragment() {
                                             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                                                 tag3data = (view as? TextView)?.text.toString()
                                                 when(tag3data){
-                                                    "" -> {
+                                                    "색상을 선택하세요" -> {
                                                         clothes_color = ""
                                                     }
                                                     "검정" -> {
@@ -260,7 +261,7 @@ class AddClothesFragment: Fragment() {
                                 tag2data = (view as? TextView)?.text.toString()
 
                                 when (tag2data) {
-                                    "" -> {
+                                    "종류를 선택하세요" -> {
                                         //2번 스피너 공백일 때 -> 3번 스피너 선택지 없음
                                         val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagnone, android.R.layout.simple_spinner_item)
                                         myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -300,7 +301,7 @@ class AddClothesFragment: Fragment() {
                                             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
                                                 tag3data = (view as? TextView)?.text.toString()
                                                 when(tag3data){
-                                                    "" -> {
+                                                    "색상을 선택하세요" -> {
                                                         clothes_color = ""
                                                     }
                                                     "검정" -> {
@@ -350,7 +351,7 @@ class AddClothesFragment: Fragment() {
                             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                                 tag2data = (view as? TextView)?.text.toString()
                                 when (tag2data) {
-                                    "" -> {
+                                    "종류를 선택하세요" -> {
                                         //2번 스피너 공백일 때 -> 3번 스피너 선택지 없음
                                         val myadapter3 = ArrayAdapter.createFromResource(mainActivity, R.array.tagnone, android.R.layout.simple_spinner_item)
                                         myadapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -394,7 +395,7 @@ class AddClothesFragment: Fragment() {
                                             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                                                 tag3data = (view as? TextView)?.text.toString()
                                                 when(tag3data){
-                                                    "" -> {
+                                                    "색상을 선택하세요" -> {
                                                         clothes_color = ""
                                                     }
                                                     "검정" -> {
@@ -441,7 +442,7 @@ class AddClothesFragment: Fragment() {
 //                result.text = "선택된 가수가 없습니다."
             }
         }
-
+        ai_result?.text = "test"
 
 
         // 앨범 버튼 클릭 리스너 구현
@@ -848,8 +849,8 @@ class AddClothesFragment: Fragment() {
                     ai_color = "패턴"
                 }
             }
+            Log.d("airesult","$ai_category1, $ai_category2, $ai_color")
             ai_result.text = "AI가 분석한 옵션은\n${ai_category1}, ${ai_category2}, ${ai_color}입니다"
-
         }
     }
     // base64로 변환된 이미지를 저장할 수 있게 서버에 mqtt전송
