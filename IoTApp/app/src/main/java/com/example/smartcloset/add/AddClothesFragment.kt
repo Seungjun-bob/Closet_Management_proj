@@ -184,10 +184,10 @@ class AddClothesFragment: Fragment() {
                                                 clothes_category = "long_sleeved_shirt"
                                             }
                                             "반팔 아우터" -> {
-                                                clothes_category = "short_sleeve_outwear"
+                                                clothes_category = "short_sleeved_outwear"
                                             }
                                             "긴팔 아우터" -> {
-                                                clothes_category = "short_sleeve_outwear"
+                                                clothes_category = "short_sleeved_outwear"
                                             }
                                             "조끼(민소매)" -> {
                                                 clothes_category = "vest"

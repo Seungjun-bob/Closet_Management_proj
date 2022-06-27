@@ -58,6 +58,8 @@ class CompareFragment: Fragment() {
     var img_names = ArrayList<String>()
     lateinit var realUri:Uri
     var img_name = ""
+    var category_show = ""
+    var color_show = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         mymqtt = MyMqtt(mainActivity, server_uri)
         //브로커에서 메세지 전달되면 호출될 메소드를 넘기기
@@ -350,8 +352,79 @@ class CompareFragment: Fragment() {
 //            loadImage("https://closetimg103341-dev.s3.us-west-2.amazonaws.com/test5.png")
             mainActivity.runOnUiThread {
                 //여기서 리사이클러뷰를 바꿔줘야 하나?
-                compare_category_tag.setText(catObject.toString())
-                compare_color_tag.setText(colorObject.toString())
+
+                when(catObject.toString()){
+                    // 상의
+                    "short_sleeved_shirt" -> {
+                        category_show = "반팔"
+                    }
+                    "long_sleeved_shirt" -> {
+                        category_show= "긴팔"
+                    }
+                    "short_sleeved_outwear" -> {
+                        category_show= "반팔 아우터"
+                    }
+                    "long_sleeved_outwear" -> {
+                        category_show= "긴팔 아우터"
+                    }
+                    "vest" -> {
+                        category_show= "조끼(민소매)"
+                    }
+                    "sling" -> {
+                        category_show= "나시"
+                    }
+                    // 하의
+                    "shorts"-> {
+                        category_show = "반바지"
+                    }
+                    "trousers"-> {
+                        category_show = "긴바지"
+                    }
+                    "skirt" -> {
+                        category_show = "치마"
+                    }
+                    // 원피스
+                    "short_sleeved_dress"-> {
+                        category_show = "반팔 원피스"
+                    }
+                    "long_sleeved_dress"-> {
+                        category_show = "긴팔 원피스"
+                    }
+                    "vest_dress"-> {
+                        category_show = "민소매 원피스"
+                    }
+                    "sling_dress"-> {
+                        category_show = "나시 원피스"
+                    }
+                }
+                when(colorObject.toString()){
+                    "black"-> {
+                        color_show = "검정"
+                    }
+                    "blue"-> {
+                        color_show = "블루"
+                    }
+                    "red"-> {
+                        color_show = "레드"
+                    }
+                    "green"-> {
+                        color_show = "그린"
+                    }
+                    "white"-> {
+                        color_show = "화이트"
+                    }
+                    "gray"-> {
+                        color_show = "그레이"
+                    }
+                    "beige"-> {
+                        color_show = "베이지"
+                    }
+                    "pattern"-> {
+                        color_show = "패턴"
+                    }
+                }
+
+                compare_category_tag.setText("옷 종류: ${category_show}\n옷 색상: ${color_show}")
                 Log.d("bit_img_img", "여기까지 넘어옴")
 
 

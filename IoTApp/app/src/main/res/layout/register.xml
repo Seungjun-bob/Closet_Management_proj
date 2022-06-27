@@ -40,6 +40,9 @@
             />
 
         <Button
+            style="@style/content_font_style"
+            android:textColor="@color/white"
+            android:background="@drawable/custom_btn"
             android:id="@+id/check_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
