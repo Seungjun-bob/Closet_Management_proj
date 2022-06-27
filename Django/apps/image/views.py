@@ -157,6 +157,7 @@ def test(request):
 @api_view(['GET'])
 def doit(request):
     img = request.GET.get("img")
+
     userid = request.GET.get("id")
     url = "https://group8img.s3.us-west-2.amazonaws.com/" + img + ".jpg"
     print(url)
@@ -207,6 +208,8 @@ def doit(request):
 @api_view(['POST'])
 def doit2(request):
     img = request.GET.get("img")
+    print(img)
+    print(type(img))
     url = "https://group8img.s3.us-west-2.amazonaws.com/" + img + ".jpg"
     print(url)
     # url = "https://closetimg103341-dev.s3.us-west-2.amazonaws.com/test5.jpg"

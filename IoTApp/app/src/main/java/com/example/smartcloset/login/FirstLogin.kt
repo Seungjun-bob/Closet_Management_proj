@@ -79,7 +79,7 @@ class FirstLogin: AppCompatActivity(), View.OnClickListener {
                         jsonobj.put("pw", pw)
 
                         // 장고 로그인페이지 url - 추후 수정
-                        val url = "http://52.37.48.195:8000/register/login"
+                        val url = "http://192.168.0.10:8000/register/login"
 
                         //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
                         val client = OkHttpClient()
@@ -107,7 +107,9 @@ class FirstLogin: AppCompatActivity(), View.OnClickListener {
 
                         if(login_result[1]=="okay"){
                             // 로그인 성공 토스트 메세지 띄우기
+
                             userId = login_result[2]
+                            Log.d("test", userId)
                             runOnUiThread {
                                 Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
                             }

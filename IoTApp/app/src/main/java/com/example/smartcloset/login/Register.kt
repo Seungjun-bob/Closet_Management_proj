@@ -64,7 +64,7 @@ class Register: AppCompatActivity() {
                     jsonobj.put("email",email)
 
                     // 장고 이메일체크 url - 나중에 수정
-                    val url = "http://52.37.48.195:8000/register/emailcheck"
+                    val url = "http://192.168.0.10:8000/register/emailcheck"
 
                     //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
                     val client = OkHttpClient()
@@ -152,7 +152,7 @@ class Register: AppCompatActivity() {
                       jsonobj.put("gender",2)
                     }
                     // 장고 회원가입 페이지 url
-                    val url = "http://52.37.48.195:8000/register/"
+                    val url = "http://192.168.0.21:8000/register/"
 
                     //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
                     val client = OkHttpClient()

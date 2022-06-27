@@ -11,9 +11,7 @@ import android.widget.FrameLayout
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.example.smartcloset.about.AboutFragment
 import com.example.smartcloset.add.AddClothesFragment
-import com.example.smartcloset.add.AddClothesFragment_ver3
 import com.example.smartcloset.check.Check
 import com.example.smartcloset.compare.CompareFragment
 
@@ -28,8 +26,6 @@ import org.eclipse.paho.client.mqttv3.MqttMessage
 import java.io.FileInputStream
 import java.nio.ByteBuffer
 import java.nio.channels.FileChannel
-import com.example.smartcloset.login.userId //로그인 하면서 받아온 userId전역변수
-
 
 
 var auth_cnt = 0

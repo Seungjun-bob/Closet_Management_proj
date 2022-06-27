@@ -73,7 +73,7 @@ class MyPage : AppCompatActivity() {
             var jsonobj = JSONObject()
             Log.d("bit_img_img", "이미지 이름 전송함")
             val url =
-                "http://172.30.1.44:8000/recommend/mypiecategory/?id=" + userId  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
+                "http://192.168.0.10:8000/recommend/mypiecategory/?id=" + userId  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
 
             //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
             val client = OkHttpClient()
