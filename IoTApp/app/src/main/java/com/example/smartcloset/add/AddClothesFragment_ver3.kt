@@ -737,7 +737,7 @@ class AddClothesFragment_ver3: Fragment() {
                             jsonobj.put("img",imgName)
 
                             // 장고 AI모델 페이지 url? - 나중에 수정
-                            val url = "http://34.222.151.105:8000/register/"
+                            val url = "http://52.37.48.195:8000/test/?img=$imgName&id=" + userId
 
                             //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업
                             val client = OkHttpClient()
