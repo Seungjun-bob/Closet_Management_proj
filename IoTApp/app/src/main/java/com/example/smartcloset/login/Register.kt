@@ -44,6 +44,8 @@ class Register: AppCompatActivity() {
 
         myadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         gender_spinner.adapter = myadapter
+
+        gender_spinner.setBackgroundColor(getColor(R.color.themes_color))
         gender_spinner.setSelection(0)
         gender_spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -65,7 +67,7 @@ class Register: AppCompatActivity() {
 
                     // 장고 이메일체크 url - 나중에 수정
 
-                    val url = "http://172.30.1.44:8000/register/emailcheck"
+                    val url = "http://52.37.48.195:8000/register/emailcheck"
 
 
                     //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업

@@ -1,11 +1,9 @@
 package com.example.smartcloset.check
 
-import android.text.Html
+import android.graphics.Bitmap
 
-//data class ClothData(val image: String){
-//    var ClothDataList = arrayListOf<ClothData>()
-//}
-
-class ClothData (val category: String, val Color: String, val img: String){
-
+class ClothData (val mycategory: String, val mycolor: String, val buydate: String, val myimg: Bitmap){
+    override fun toString(): String {
+        return "$mycategory, $mycolor, $buydate, $myimg"
+    }
 }

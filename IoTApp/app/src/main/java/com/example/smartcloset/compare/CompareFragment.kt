@@ -49,7 +49,7 @@ class CompareFragment: Fragment() {
     lateinit var mainActivity: MainActivity
     val sub_topic = "iot/compare"
     //val server_uri = "tcp://52.37.48.195:1883" //broker의 ip와 port
-    val server_uri = "tcp://192.168.35.5:1883" //broker의 ip와 port
+    val server_uri = "tcp://52.37.48.195:1883" //broker의 ip와 port
     var mymqtt: MyMqtt? = null
     var uri : Uri? = null
     lateinit var mContext : Context
@@ -287,7 +287,7 @@ class CompareFragment: Fragment() {
             Log.d("test", userId)
 //            val url = "http://172.30.1.53:8000/recommend/compare/?id=" + userId  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
 
-            val url = "http://172.30.1.44:8000/test/?img=test4&id=" + userId  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
+            val url = "http://52.37.48.195:8000/test/?img=test4&id=" + userId  //장고 서버 주소..? 랑 뭘 넣어야하지? view 함수에 들어갈 ~
 
 
             //Okhttp3라이브러리의 OkHttpClient객체를 이요해서 작업

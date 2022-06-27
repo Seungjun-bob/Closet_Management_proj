@@ -20,7 +20,7 @@ class HttpTestActivity : AppCompatActivity() {
             //http 요청은 네트워크 작업이므로 쓰레드로 작성한다.
             thread{
                 //접속할 주소를 내부에서 인식할 수 있는 URL객체로 생성
-                val site = "http://192.168.200.107:8000/list"
+                val site = "http://52.37.48.195:8000/list"
                 val url = URL(site)
 
                 //http 요청 - http요청할 수 있는 객체를 생성하기

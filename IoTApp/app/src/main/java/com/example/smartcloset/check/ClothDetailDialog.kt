@@ -3,14 +3,18 @@ package com.example.smartcloset.check
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
-import android.content.DialogInterface
+import android.util.Log
 import android.view.WindowManager
 import android.widget.Button
+import com.example.smartcloset.MainActivity
 import com.example.smartcloset.R
+import com.example.smartcloset.compare.Cloth
 import kotlinx.android.synthetic.main.check_detail_dialog.*
-import kotlinx.android.synthetic.main.check_edit_dialog.*
 import kotlinx.android.synthetic.main.cloth_detail_dialog.*
+import kotlinx.android.synthetic.main.cloth_detail_dialog.img_detail
 import kotlinx.android.synthetic.main.cloth_detail_dialog.txt_dialog_date
+import kotlinx.android.synthetic.main.cloth_detail_dialog.txt_dialog_tag1
+import kotlinx.android.synthetic.main.cloth_detail_dialog.txt_dialog_tag2
 
 class ClothDetailDialog(context: Context) {
     private val dialog = Dialog(context)
@@ -24,97 +28,25 @@ class ClothDetailDialog(context: Context) {
         onClickListener = listener
     }
 
-    fun showdetailDia(cloth: String) {//임시로 String 타입으로 해뒀지만 나중엔 옷 객체로 받아서 보여줘야 함
+    fun showdetailDia(cloth: ClothData) {//임시로 String 타입으로 해뒀지만 나중엔 옷 객체로 받아서 보여줘야 함
         dialog.setContentView(R.layout.check_detail_dialog)
         dialog.window!!.setLayout(
-            WindowManager.LayoutParams.WRAP_CONTENT,
-            WindowManager.LayoutParams.WRAP_CONTENT
+                WindowManager.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.WRAP_CONTENT
         )
         dialog.setCanceledOnTouchOutside(true)
         dialog.setCancelable(true)
-        dialog.txt_dialog_date.text = cloth
-//        dialog.txt_dialog_tag1.text = cloth
-//        dialog.txt_dialog_tag2.text = cloth
+        dialog.img_detail.setImageBitmap(cloth.myimg)
+        dialog.txt_dialog_date.text = "구매일 : "+ cloth.buydate
+        dialog.txt_dialog_tag1.text = "분류 : "+cloth.mycategory
+        dialog.txt_dialog_tag2.text = "색상 : "+cloth.mycolor
         dialog.show()
 
         val close = dialog.findViewById<Button>(R.id.close_button)
-        val edit = dialog.findViewById<Button>(R.id.edit_button)
-        val delete = dialog.findViewById<Button>(R.id.delete_button)
 
         close.setOnClickListener {
-            //dialog가 닫혀야함
-            dialog.dismiss()
+            dialog.dismiss() //dialog 닫힘
         }
-
-        edit.setOnClickListener {
-            val editDialog = ClothEditDialog(dialog.context)
-            editDialog.showeditDia("옷")
-        }
-
-        delete.setOnClickListener {
-            val builder = AlertDialog.Builder(dialog.context)
-            builder.setTitle("옷 삭제")
-                    .setMessage("이 옷을 정말 삭제할까요?")
-                    .setNegativeButton("취소",
-                            DialogInterface.OnClickListener { dialog, id ->
-                                //취소 버튼을 누르면
-                            })
-                    .setPositiveButton("삭제",
-                    DialogInterface.OnClickListener{ dialog, id ->
-                        //삭제 버튼을 눌렀을 때 할 동작
-                    })
-
-            builder.show()
-        }
-
-//        edit.setOnClickListener{
-//            //edit dialog가 열려야함
-//            val dialog = ClothEditDialog(this)
-//            dialog.showeditDia()
-//            //edit dialog 에서 정의된 데이터 받아옴
-////            dialog.setOnCloickedListener(object : ClothEditDialog<Any?>.OnDialogClickListener {
-////                override fun onClicked(date: String, tag1: String, tag2: String)
-////            })
-//        }
-//
-//        delete.setOnClickListener{
-//            //delete dialog가 열려야함
-//            val dialog: AlertDialog = this@ClothDetailDialog.let {
-//                val builder: AlertDialog.Builder = AlertDialog.Builder()
-//                builder.apply {
-//                    this.setMessage("해당 옷을 삭제하시겠습니까?")
-//                    this.setCancelable(false)
-//                    this.setPositiveButton("삭제") { dialog, _ ->
-//                        CheckAdapter.ClothDataDelete(position)
-//                        dialog.dismiss()
-//                    }
-//                    this.setNegativeButton("취소") { dialog, _ ->
-//                        dialog.cancel()
-//                    }
-//                }
-//                builder.create()
-//            }
-//            dialog.show()
-//        }
-//    }
-
-        //    private fun deleteDialog(position: Int) {
-//        val dialog: AlertDialog = this@ClothDetailDialog.let {
-//            val builder: AlertDialog.Builder = AlertDialog.Builder(it)
-//            builder.apply {
-//                this.setMessage("해당 옷을 삭제하시겠습니까?")
-//                this.setCancelable(false)
-//                this.setPositiveButton("삭제") { dialog, _ ->
-//                    CheckAdapter.ClothDataDelete(position)
-//                    dialog.dismiss()
-//                }
-//                this.setNegativeButton("취소") { dialog, _ ->
-//                    dialog.cancel()
-//                }
-//            }
-//            builder.create()
-//        }
-//        dialog.show()
     }
 }
 
