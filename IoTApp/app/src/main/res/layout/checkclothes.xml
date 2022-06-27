@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -12,6 +13,7 @@
         android:orientation="vertical">
 
         <TextView
+            style="@style/content_font_style"
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,6 +26,7 @@
     </LinearLayout>
 
     <TextView
+        style="@style/content_font_style"
         android:id="@+id/textView10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,6 +38,7 @@
         android:textStyle="bold" />
 
     <TextView
+        style="@style/content_font_style"
         android:id="@+id/result_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
